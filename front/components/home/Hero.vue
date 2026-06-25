@@ -84,7 +84,7 @@ function entranceProps(delay: number) {
       strength="5%"
     />
 
-    <div class="container hero-shell relative z-10 flex min-h-[92dvh] items-center py-16">
+    <div class="container hero-shell relative z-10 flex min-h-[92dvh]">
       <div class="hero-content w-full max-w-[540px] text-left">
         <component
           :is="motionEnabled ? motion.div : 'div'"
@@ -103,7 +103,9 @@ function entranceProps(delay: number) {
           <span
             class="text-muted text-[13px]/none font-medium tracking-[0.08em] uppercase"
           >
-            {{ t("home.hero.eyebrow") }}
+            {{ t("home.hero.eyebrowBefore") }}
+            <CommonTrustpilotStarIcon scale="em" />
+            {{ t("home.hero.eyebrowAfter") }}
           </span>
         </component>
 
@@ -240,12 +242,28 @@ function entranceProps(delay: number) {
 </template>
 
 <style scoped>
+/* Navbar floats fixed at top-7.5 + h-14.75 (tv-layout Navbar.vue) — all breakpoints */
+.hero-section {
+  --hero-nav-offset: 1.875rem;
+  --hero-nav-height: 3.6875rem;
+  --hero-nav-clearance: calc(var(--hero-nav-offset) + var(--hero-nav-height));
+  --hero-eyebrow-gap: 1rem;
+}
+
+.hero-shell {
+  padding-top: calc(var(--hero-nav-clearance) + var(--hero-eyebrow-gap));
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 821px) {
+  .hero-shell {
+    align-items: flex-start;
+    --hero-eyebrow-gap: 1.25rem;
+  }
+}
+
 @media (max-width: 820px) {
   .hero-section {
-    --hero-nav-offset: 1.875rem; /* navbar top-7.5 */
-    --hero-nav-height: 3.6875rem; /* navbar h-14.75 */
-    --hero-nav-clearance: calc(var(--hero-nav-offset) + var(--hero-nav-height));
-    --hero-eyebrow-gap: 1rem;
     min-height: 100svh;
   }
 
@@ -254,7 +272,6 @@ function entranceProps(delay: number) {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding-top: calc(var(--hero-nav-clearance) + var(--hero-eyebrow-gap));
     padding-bottom: 2rem;
   }
 

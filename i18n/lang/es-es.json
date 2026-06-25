@@ -87,9 +87,10 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "En vivo ahora · Más de 20.000 canales",
-      "title": "Entretenimiento, siempre en vivo.",
-      "subtitle": "Más de 20.000 canales en vivo, deporte en 4K y miles de películas y series — en todas tus pantallas.",
+      "eyebrowBefore": "Amado por miles · Valorado 4.9",
+      "eyebrowAfter": "en Trustpilot",
+      "title": "Deja de conformarte. Empieza a ver.",
+      "subtitle": "20.000+ canales en directo, deporte en 4K y miles de películas y series — en cada pantalla que tengas.",
       "cta": "Empezar a ver",
       "trialCta": "Prueba gratis",
       "orDivider": "o",

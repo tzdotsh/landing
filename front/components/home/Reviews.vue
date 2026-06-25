@@ -1,18 +1,11 @@
 <script lang="ts" setup>
 const { t } = useI18n();
-
-const trustpilotUrl = "https://www.trustpilot.com/review/maxcotv.com";
-
-const TRUSTPILOT_GREEN = "#00B67A";
 </script>
 
 <template>
-  <a
+  <div
     id="reviews"
-    :href="trustpilotUrl"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="border-line hover:border-line-2 relative flex w-full max-w-[420px] items-center justify-between gap-4 overflow-hidden rounded-card border bg-panel px-4 py-3.5 shadow-[0_0_0_1px_var(--color-glow),0_10px_32px_rgba(0,0,0,0.2)] transition-[border-color,box-shadow] duration-300 ease-[var(--ease-brand)] hover:shadow-[0_0_0_1px_var(--color-glow),0_12px_36px_rgba(0,0,0,0.26)] sm:gap-5 sm:px-5"
+    class="border-line relative flex w-full max-w-[420px] items-center justify-between gap-4 overflow-hidden rounded-card border bg-panel px-4 py-3.5 shadow-[0_0_0_1px_var(--color-glow),0_10px_32px_rgba(0,0,0,0.2)] sm:gap-5 sm:px-5"
   >
     <span
       class="brand-gradient pointer-events-none absolute inset-x-0 top-0 h-px opacity-50"
@@ -35,18 +28,8 @@ const TRUSTPILOT_GREEN = "#00B67A";
           <span
             v-if="starIndex <= 4"
             class="inline-flex h-5 w-5 items-center justify-center rounded-[2px]"
-            :style="{ backgroundColor: TRUSTPILOT_GREEN }"
           >
-            <svg
-              viewBox="0 0 16 16"
-              class="h-3 w-3 fill-white"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                d="M8 1.5l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.67 4.48 12.34l.67-3.92L2.3 5.64l3.94-.57L8 1.5z"
-              />
-            </svg>
+            <CommonTrustpilotStarIcon />
           </span>
 
           <span
@@ -58,21 +41,7 @@ const TRUSTPILOT_GREEN = "#00B67A";
               class="absolute inset-0 overflow-hidden"
               style="width: 60%"
             >
-              <span
-                class="inline-flex h-5 w-5 items-center justify-center rounded-[2px]"
-                :style="{ backgroundColor: TRUSTPILOT_GREEN }"
-              >
-                <svg
-                  viewBox="0 0 16 16"
-                  class="h-3 w-3 fill-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M8 1.5l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.67 4.48 12.34l.67-3.92L2.3 5.64l3.94-.57L8 1.5z"
-                  />
-                </svg>
-              </span>
+              <CommonTrustpilotStarIcon />
             </span>
           </span>
         </template>
@@ -94,5 +63,5 @@ const TRUSTPILOT_GREEN = "#00B67A";
         aria-hidden="true"
       />
     </div>
-  </a>
+  </div>
 </template>

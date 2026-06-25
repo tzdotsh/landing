@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="resellers-api-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D4F04D" />
+      <stop offset="0.52" stop-color="#44D77A" />
+      <stop offset="1" stop-color="#22C8A0" />
+    </linearGradient>
+  </defs>
+  <path d="m18 16 4-4-4-4" stroke="url(#resellers-api-grad)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="m6 8-4 4 4 4" stroke="url(#resellers-api-grad)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="m14.5 4-5 16" stroke="url(#resellers-api-grad)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

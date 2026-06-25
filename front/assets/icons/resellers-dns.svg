@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="resellers-dns-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D4F04D" />
+      <stop offset="0.52" stop-color="#44D77A" />
+      <stop offset="1" stop-color="#22C8A0" />
+    </linearGradient>
+  </defs>
+  <circle cx="12" cy="12" r="10" stroke="url(#resellers-dns-grad)" stroke-width="1.75" />
+  <path d="M2 12h20" stroke="url(#resellers-dns-grad)" stroke-width="1.75" stroke-linecap="round" />
+  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="url(#resellers-dns-grad)" stroke-width="1.75" />
+</svg>

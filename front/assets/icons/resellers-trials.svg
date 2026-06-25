@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="resellers-trials-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D4F04D" />
+      <stop offset="0.52" stop-color="#44D77A" />
+      <stop offset="1" stop-color="#22C8A0" />
+    </linearGradient>
+  </defs>
+  <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" stroke="url(#resellers-trials-grad)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M13 5v2M13 11v2M13 17v2" stroke="url(#resellers-trials-grad)" stroke-width="1.75" stroke-linecap="round" />
+</svg>

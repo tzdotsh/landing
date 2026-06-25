@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 4</title>
+    <g id="Website" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Verify-check" transform="translate(-449, -293)">
+            <g id="Group-10" transform="translate(404, 174)">
+                <g id="Group-6" transform="translate(25, 104)">
+                    <g id="Group-4" transform="translate(20, 15)">
+                        <circle id="Oval" stroke="#FFFFFF" stroke-width="1.2" fill-opacity="0" fill="#D8D8D8" cx="11" cy="11" r="10.4"></circle>
+                        <g id="i" transform="translate(9.7778, 4.8889)" fill="#FFFFFF" fill-rule="nonzero">
+                            <path d="M0.0875651042,11.2749837 L0.0875651042,3.27498372 L2.30419922,3.27498372 L2.30419922,11.2749837 L0.0875651042,11.2749837 Z M1.20157878,2.24161784 C0.871392144,2.24161784 0.588582357,2.13186306 0.353149414,1.91235352 C0.117716471,1.69284397 0,1.42895508 0,1.12068685 C0,0.81241862 0.117865668,0.548570421 0.353597005,0.329142253 C0.589328342,0.109714084 0.871473524,0 1.20003255,0 C1.53125,0 1.81404622,0.109754774 2.04842122,0.329264323 C2.28279622,0.548773872 2.39998372,0.81266276 2.39998372,1.12093099 C2.39998372,1.42919922 2.28279622,1.69304742 2.04842122,1.91247559 C1.81404622,2.13190375 1.53176541,2.24161784 1.20157878,2.24161784 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

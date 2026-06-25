@@ -1,0 +1,61 @@
+<script lang="ts" setup>
+import {
+  BLOG_POSTS_PER_PAGE,
+  flattenBlogPosts,
+  useBlogPostsQuery,
+} from "~/queries/blog";
+
+const { version } = useProject();
+const blogPostsQuery = useBlogPostsQuery();
+
+const allPosts = computed(() =>
+  flattenBlogPosts(blogPostsQuery.state.value.data?.pages),
+);
+const hasMorePosts = computed(() => blogPostsQuery.hasNextPage.value);
+const isLoadingInitial = computed(
+  () => blogPostsQuery.state.value.status === "pending",
+);
+const isLoadingMore = computed(
+  () =>
+    blogPostsQuery.asyncStatus.value === "loading" &&
+    Boolean(blogPostsQuery.state.value.data?.pages.length),
+);
+const isLoading = computed(() => isLoadingInitial.value || isLoadingMore.value);
+
+function loadMorePosts() {
+  return blogPostsQuery.loadNextPage({ cancelRefetch: false });
+}
+</script>
+
+<template>
+  <section id="last-articles">
+    <div v-auto-animate class="container mx-auto px-4">
+      <div
+        v-auto-animate
+        class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
+      >
+        <NuxtLinkLocale
+          v-for="(post, index) in allPosts"
+          :key="post.title"
+          :to="post ? `/v${version}/blog/${post.slug}` : ''"
+          class="lg:first:col-span-3"
+        >
+          <ArticleCard :latest="!index" :post="post" />
+        </NuxtLinkLocale>
+
+        <template v-if="isLoading">
+          <ArticleCard v-for="i in BLOG_POSTS_PER_PAGE" :key="i" />
+        </template>
+      </div>
+
+      <Button
+        v-if="hasMorePosts"
+        variant="primary"
+        class="mx-auto mt-10 px-15"
+        @click="loadMorePosts"
+      >
+        Show More
+      </Button>
+    </div>
+  </section>
+</template>

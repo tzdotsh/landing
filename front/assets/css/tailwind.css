@@ -1,0 +1,240 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@import "tailwindcss/preflight.css" layer(base);
+@import "@splidejs/vue-splide/css/core";
+
+@source "../../formkit.theme.ts";
+@source "../../../../tv-layout/front";
+
+@plugin "@formkit/themes/tailwindcss";
+@plugin "@fahdlaabi12/tailwindcss-inner-border";
+@plugin "tailwind-scrollbar";
+
+@theme {
+  --container-xs: 23.75rem;
+
+  --shadow-black-15: 0 2px 4px rgba(0, 0, 0, 0.15);
+  --shadow-input: 0 5px 8px rgb(17, 37, 93, 0.05);
+
+  --text-shadow-black-15: 0 2px 4px rgba(0, 0, 0, 0.15);
+  --text-shadow-black-25: 0 2px 4px rgba(0, 0, 0, 0.25);
+
+  /* surfaces */
+  --color-bg: #081623;
+  --color-bg-deep: #050d16;
+  --color-panel: #142637;
+  --color-panel-2: #0e2030;
+
+  /* lines / text */
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-2: rgba(255, 255, 255, 0.15);
+  --color-ink: #edf3f8;
+  --color-muted: #8aa0b2;
+  --color-faint: #5f7588;
+
+  /* brand gradient stops */
+  --color-lime: #d4f04d;
+  --color-green: #44d77a;
+  --color-teal: #22c8a0;
+  --color-glow: rgba(68, 215, 122, 0.28);
+
+  /* semantic */
+  --color-primary: var(--color-teal);
+  --color-on-accent: #06160f;
+  --color-danger: #ff5a6e;
+  --color-success: #44d77a;
+  --color-warning: #f5b53d;
+  --color-on-danger: #2a0a0e;
+
+  /* type */
+  --font-heading: "Poppins", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+
+  /* shape / motion */
+  --radius-card: 16px;
+  --radius-btn: 12px;
+  --ease-brand: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* LEGACY ALIASES — remove as components migrate in Phase 2 */
+  --color-blue-1: var(--color-teal);
+  --color-green-2: var(--color-teal);
+  --color-btn-1: var(--color-ink);
+  --color-btn-2: var(--color-teal);
+  --color-red-1: var(--color-lime);
+  --color-red-2: var(--color-green);
+
+  --animate-marquee: marquee 20s linear infinite;
+  --animate-top-to-bottom: top-to-bottom 50s linear infinite;
+  --animate-bottom-to-top: bottom-to-top 50s linear infinite;
+
+  --animate-slide-down-and-fade: slideDownAndFade 400ms
+    cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-left-and-fade: slideLeftAndFade 400ms
+    cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-up-and-fade: slideUpAndFade 400ms
+    cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-right-and-fade: slideRightAndFade 400ms
+    cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes top-to-bottom {
+    to {
+      transform: translateY(-25%);
+    }
+  }
+
+  @keyframes bottom-to-top {
+    to {
+      transform: translateY(25%);
+    }
+  }
+
+  @keyframes slideDownAndFade {
+    from {
+      opacity: 0;
+      transform: translateY(-2px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideLeftAndFade {
+    from {
+      opacity: 0;
+      transform: translateX(2px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideUpAndFade {
+    from {
+      opacity: 0;
+      transform: translateY(2px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideRightAndFade {
+    from {
+      opacity: 0;
+      transform: translateX(-2px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+@utility home-page-depth {
+  background-image: linear-gradient(
+    180deg,
+    var(--color-bg-deep) 0%,
+    var(--color-bg) 38%,
+    var(--color-bg) 62%,
+    var(--color-panel-2) 100%
+  );
+}
+
+@utility home-atmosphere-glow {
+  background-image: radial-gradient(
+    ellipse 72% 58% at 50% 50%,
+    color-mix(in srgb, var(--color-glow) var(--glow-strength, 6%), transparent),
+    transparent 70%
+  );
+}
+
+@utility brand-gradient {
+  background-image: linear-gradient(110deg, #d4f04d, #44d77a 52%, #22c8a0);
+}
+
+@utility brand-gradient-text {
+  background-image: linear-gradient(110deg, #d4f04d, #44d77a 52%, #22c8a0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility container {
+  @apply mx-auto px-2.25 sm:px-3.75 md:px-8.75 lg:max-w-299! lg:px-12;
+}
+
+@utility glass-effect {
+  @apply shadow-black-15 bg-white/8;
+}
+
+@utility glass-effect-ring {
+  @apply glass-effect ring ring-white/16;
+}
+
+@utility glass-scroll {
+  @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/16;
+}
+
+@utility skeleton {
+  @apply animate-pulse rounded-md bg-white/10;
+}
+
+@utility before-full {
+  @apply relative before:absolute before:inset-0 before:-z-10 before:h-full before:w-full before:rounded-[inherit] before:transition-[opacity,transform];
+}
+
+@utility after-full {
+  @apply relative after:absolute after:inset-0 after:-z-10 after:h-full after:w-full after:rounded-[inherit] after:transition-[opacity,];
+}
+
+@utility box-bg {
+  @apply before-full isolate rounded-[20px] bg-[url(/img/background_box.webp)] bg-size-[100%_100%] bg-no-repeat before:bg-white/85 before:backdrop-blur-xl;
+}
+
+@utility bg-green-gradient {
+  @apply from-green/29 to-green/51 bg-linear-to-b;
+}
+
+@layer base {
+  body {
+    @apply font-body scroll-smooth;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  button,
+  a {
+    @apply cursor-pointer transition active:scale-98;
+  }
+
+  :focus-visible {
+    @apply outline-none;
+  }
+
+  h4 {
+    @apply mb-5 text-[22px]/[26px] font-bold;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s !important;
+  }
+
+  img {
+    user-select: none;
+  }
+}

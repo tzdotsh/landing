@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="resellers-dashboard-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D4F04D" />
+      <stop offset="0.52" stop-color="#44D77A" />
+      <stop offset="1" stop-color="#22C8A0" />
+    </linearGradient>
+  </defs>
+  <rect width="7" height="9" x="3" y="3" rx="1" stroke="url(#resellers-dashboard-grad)" stroke-width="1.75" />
+  <rect width="7" height="5" x="14" y="3" rx="1" stroke="url(#resellers-dashboard-grad)" stroke-width="1.75" />
+  <rect width="7" height="9" x="14" y="12" rx="1" stroke="url(#resellers-dashboard-grad)" stroke-width="1.75" />
+  <rect width="7" height="5" x="3" y="16" rx="1" stroke="url(#resellers-dashboard-grad)" stroke-width="1.75" />
+</svg>

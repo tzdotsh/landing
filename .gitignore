@@ -1,0 +1,12 @@
+node_modules
+.nuxt
+.env
+.infisical.json
+.playwright-browsersnode_modules/
+.nuxt/
+.output/
+.env
+dump.rdb
+.playwright-browsers/
+.DS_Store
+**/.DS_Store

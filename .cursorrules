@@ -1,0 +1,9 @@
+# maxco. landing — always-on rules
+Always follow the project docs before making changes:
+- docs/CLAUDE.md        (architecture, scope, hard rules)
+- docs/BRANDING.md      (maxco design system + tokens — change values here, never inline)
+- docs/REBRAND-PLAN.md  (execution order)
+
+This repo is the maxco. marketing site (brochure, not the app). Reskin + redesign
+the page layer; never edit billing/auth logic. Brand = data (tokens/SVG/i18n),
+not structure. Ration the lime→teal gradient. No secrets in source.

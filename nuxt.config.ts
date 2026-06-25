@@ -1,0 +1,267 @@
+import tailwindcss from "@tailwindcss/vite";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+// Environment: Nuxt loads `.env` from the project root at build/dev time.
+// Shared billing vars come from the tv-api-nuxt layer (`runtimeConfig` ← process.env).
+// Server deploy: place `.env` here, run `bun build`, then `pm2 start ecosystem.config.cjs`.
+
+export default defineNuxtConfig({
+  app: {
+    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: { name: "layout", mode: "out-in" },
+  },
+
+  compatibilityDate: "latest",
+
+  extends: [
+    process.env.LOCAL_LAYER === "true"
+      ? "../tv-layout"
+      : ["github:tzdotsh/tv-layout#main", { auth: process.env.GIT_LAYER_TOKEN, install: true }],
+  ],
+
+  experimental: {
+    typedPages: true,
+    emitRouteChunkError: "automatic-immediate",
+    inlineRouteRules: true,
+  },
+
+  modules: [
+    "@nuxt/fonts",
+    "nuxt-echarts",
+    "@nuxtjs/mdc",
+    "nuxt-vitalizer",
+    "@nuxtjs/fontaine",
+    "nuxt-delay-hydration",
+    "@pinia/colada-nuxt",
+    "@nuxt/eslint",
+  ],
+
+  css: [
+    join(currentDir, "./front/assets/css/tailwind.css"),
+    join(currentDir, "./front/assets/css/markdown.css"),
+  ],
+
+  fonts: {
+    families: [
+      {
+        name: "Poppins",
+        provider: "google",
+        weights: [400, 500, 600, 700, 800],
+      },
+      {
+        name: "Hanken Grotesk",
+        provider: "google",
+        weights: [400, 500, 600, 700, 800],
+      },
+    ],
+    defaults: {
+      weights: [400, 500, 600, 700, 800],
+    },
+    provider: "google",
+    devtools: true,
+  },
+
+  devtools: {
+    enabled: true,
+
+    timeline: {
+      enabled: true,
+    },
+  },
+
+  delayHydration: {
+    mode: "manual",
+  },
+
+  srcDir: "front",
+
+  formkit: {
+    configFile: "./front/configs/formkit.config.ts",
+  },
+
+  echarts: {
+    renderer: "svg",
+    charts: ["BarChart"],
+    components: ["DatasetComponent", "GridComponent"],
+  },
+
+  i18n: {
+    baseUrl: process.env.SITE_URL || "http://localhost:3000",
+
+    redirectStatusCode: 301,
+
+    locales: [
+      {
+        code: "en-en",
+        file: "en-en.json",
+        language: "en-GB",
+        name: "English",
+      },
+
+      {
+        code: "es-es",
+        file: "es-es.json",
+        language: "es-ES",
+        name: "Spanish",
+      },
+    ],
+
+    defaultLocale: "en-en",
+
+    strategy: "prefix_except_default",
+
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "browserLang",
+      alwaysRedirect: true,
+      redirectOn: "root",
+    },
+
+    experimental: {
+      typedOptionsAndMessages: "default",
+    },
+
+    hmr: true,
+
+    langDir: "lang",
+  },
+
+  sitemap: {
+    sources: ["/api/__sitemap__/urls"],
+
+    excludeAppSources: true,
+  },
+
+  runtimeConfig: {
+    public: {
+      validDomain: process.env.VALID_DOMAIN,
+      enableAnimations: process.env.ENABLE_ANIMATIONS !== "false",
+    },
+  },
+
+  nitro: {
+    compressPublicAssets: {
+      gzip: true,
+      brotli: true,
+    },
+
+    // experimental: {
+    //   wasm: true,
+    // },
+
+    devStorage: {
+      cache: {
+        driver: "redis",
+        base: "website:",
+      },
+    },
+
+    storage: {
+      cache: {
+        driver: "redis",
+        base: "website:",
+      },
+    },
+  },
+
+  // Route rules for performance optimization
+  routeRules: {
+    // Homepage - prerender and cache
+    "/": {
+      prerender: true,
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    // Static pages - prerender
+    "/faq": {
+      prerender: true,
+      headers: {
+        "Cache-Control": "public, max-age=3600, s-maxage=3600",
+      },
+    },
+    "/support": {
+      prerender: true,
+      headers: {
+        "Cache-Control": "public, max-age=3600, s-maxage=3600",
+      },
+    },
+    "/apps": {
+      prerender: true,
+      headers: {
+        "Cache-Control": "public, max-age=3600, s-maxage=3600",
+      },
+    },
+    "/iptv-resellers": {
+      prerender: true,
+      headers: {
+        "Cache-Control": "public, max-age=3600, s-maxage=3600",
+      },
+    },
+    // Blog pages - ISR with revalidation
+    "/blog/**": {
+      isr: 3600, // Revalidate every hour
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    // Channels - cache with shorter TTL
+    "/channels": {
+      headers: {
+        "Cache-Control": "public, max-age=300, s-maxage=600",
+      },
+    },
+    // API-like routes - no cache
+    "/auth-check": {
+      headers: {
+        "Cache-Control": "no-store, no-cache, must-revalidate",
+      },
+    },
+    // Spanish locale routes
+    "/es-es/**": {
+      headers: {
+        "Cache-Control": "public, max-age=3600, s-maxage=3600",
+      },
+    },
+  },
+
+  // Bundle optimization
+  vite: {
+    plugins: [tailwindcss()],
+
+    server: {
+      fs: {
+        allow: [join(currentDir, "..")],
+      },
+    },
+
+    ssr: {
+      noExternal: ["tv-layout", /tv-layout/, /tv-layout\/front/],
+    },
+
+    optimizeDeps: {
+      include: [
+        "vue-slider-component/dist-css/vue-slider-component.umd.min.js", // CJS,
+        "@tanstack/vue-virtual",
+        "reka-ui",
+        "@formkit/core",
+        "@unhead/schema-org/vue",
+        "@formkit/addons",
+        "tailwind-merge",
+        "@formkit/themes",
+        "@headlessui/vue",
+        "@fahdlaabi12/sileo/vue",
+        "@payloadcms/sdk",
+      ],
+    },
+  },
+
+  sentry: {
+    enabled: false,
+  },
+});

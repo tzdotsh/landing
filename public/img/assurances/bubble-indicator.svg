@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="14px" viewBox="0 0 19 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Shape</title>
+    <g id="Website" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home" transform="translate(-238, -7063)" fill="#FFFFFF" stroke="#FFFFFF">
+            <g id="support-illu" transform="translate(183, 6832)">
+                <g id="Group-49" transform="translate(0, 13)">
+                    <g id="Group-52" transform="translate(9, 0)">
+                        <g id="Group-44" transform="translate(12, 199.0099)">
+                            <g id="Message" transform="translate(32.72, 0)">
+                                <path d="M6.79388178,23.2294017 C7.5253401,22.6693084 8.40228693,22.7911123 9.5119822,23.054582 C10.9141823,23.3874998 12.7093555,23.8571688 14.2547058,24.2775958 C15.2418516,24.546158 16.1270855,24.7946293 16.7429647,24.9744985 C17.0589229,25.0667749 17.3051839,25.1413918 17.459961,25.1918655 L18.6407849,25.5769391 L17.5225177,26.1174067 C11.959659,28.8059818 7.29216418,29.241273 5.01135194,29.2690541 C4.5110183,29.2751483 4.14558606,29.2606984 3.93406359,29.2483593 C3.73139759,29.2365369 3.38817347,29.2102109 2.92337935,29.1512339 C3.13743769,28.9235981 3.35878735,28.6800541 3.58726491,28.419531 C6.08952184,25.5663155 6.68424656,23.8265099 6.79388178,23.2294017 Z" id="Shape" transform="translate(10.4002, 25.9359) scale(-1, 1) rotate(21) translate(-10.4002, -25.9359)"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

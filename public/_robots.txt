@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /*
+
+# Sitemap
+Sitemap: /sitemap.xml
+
+# Disallow crawling of admin/private areas (if any)
+Disallow: /.nuxt/
+Disallow: /_ipx/*
+Disallow: /auth-check
+Disallow: /legal/*

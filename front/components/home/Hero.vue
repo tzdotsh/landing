@@ -35,12 +35,24 @@ function validateEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 }
 
+/** Root-proxied apps (/checkout, /trial) — never version- or locale-prefixed. */
+function externalAppPath(path: "/checkout" | "/trial", withEmail = false) {
+  const trimmed = email.value.trim();
+
+  if (!withEmail || !validateEmail(trimmed)) {
+    return path;
+  }
+
+  return `${path}?${new URLSearchParams({ email: trimmed }).toString()}`;
+}
+
+const trialHref = computed(() => externalAppPath("/trial", true));
+
 function handleSubmit() {
   emailInvalid.value = !validateEmail(email.value);
   if (emailInvalid.value) return;
 
-  // TODO: hand email to checkout via cookie scoped to .maxco.one
-  navigateTo("/checkout", { external: true });
+  window.location.assign(externalAppPath("/checkout", true));
 }
 
 function entranceProps(delay: number) {
@@ -166,6 +178,21 @@ function entranceProps(delay: number) {
               </Button>
             </MotionWrapper>
           </div>
+
+          <MotionWrapper
+            :enabled="motionEnabled"
+            :while-hover="{ scale: 1.02 }"
+            :while-tap="{ scale: 0.98 }"
+            :transition="{ type: 'spring', stiffness: 400, damping: 22 }"
+            class="w-full"
+          >
+            <a
+              :href="trialHref"
+              class="text-ink ring-line hover:bg-panel-2 bg-panel flex h-12 w-full items-center justify-center rounded-[10px] px-6 text-[16px] font-semibold ring-1 transition duration-300 ease-[var(--ease-brand)]"
+            >
+              {{ t("home.hero.trialCta") }}
+            </a>
+          </MotionWrapper>
 
           <p
             v-if="emailInvalid"

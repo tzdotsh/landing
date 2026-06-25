@@ -20,7 +20,7 @@ useHead(() => ({
     // Resource hints for performance
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
     { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
-    { rel: "dns-prefetch", href: "https://cccambox.com" },
+    { rel: "dns-prefetch", href: "https://maxco.one" },
     ...locales.value.map((el) => {
       let href = `${url.origin}`;
 
@@ -65,7 +65,7 @@ useSchemaOrg([
     description: t("seo.site.description"),
     url: baseUrl || "http://localhost:3000",
     logo: "/logo.png",
-    email: "hello@cccambox.com",
+    email: "hello@maxcotv.com",
   }),
 
   {
@@ -75,7 +75,7 @@ useSchemaOrg([
     description: t("seo.site.description"),
     logo: "/logo.png",
     url: baseUrl || "http://localhost:3000",
-    email: "hello@cccambox.com",
+    email: "hello@maxcotv.com",
   },
 ]);
 </script>

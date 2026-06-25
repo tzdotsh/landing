@@ -39,7 +39,7 @@ const { t } = useI18n();
           >
             <span
               class="absolute inset-0 overflow-hidden"
-              style="width: 60%"
+              style="width: 90%"
             >
               <CommonTrustpilotStarIcon />
             </span>

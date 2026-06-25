@@ -127,7 +127,7 @@ function entranceProps(delay: number) {
         <component
           :is="motionEnabled ? motion.form : 'form'"
           v-bind="entranceProps(0.24)"
-          class="mb-4 w-full max-w-[480px]"
+          class="mb-4 flex w-full max-w-[480px] flex-col"
           @submit.prevent="handleSubmit"
         >
           <div
@@ -179,6 +179,26 @@ function entranceProps(delay: number) {
             </MotionWrapper>
           </div>
 
+          <p
+            v-if="emailInvalid"
+            id="hero-email-error"
+            role="alert"
+            class="text-danger mt-2 text-[12px]/[15px]"
+          >
+            {{ t("home.hero.emailError") }}
+          </p>
+
+          <div
+            class="my-4 flex items-center gap-x-3"
+            aria-hidden="true"
+          >
+            <span class="bg-line-2 h-px flex-1" />
+            <span class="text-muted text-[13px] font-medium lowercase">
+              {{ t("home.hero.orDivider") }}
+            </span>
+            <span class="bg-line-2 h-px flex-1" />
+          </div>
+
           <MotionWrapper
             :enabled="motionEnabled"
             :while-hover="{ scale: 1.02 }"
@@ -188,37 +208,24 @@ function entranceProps(delay: number) {
           >
             <a
               :href="trialHref"
-              class="text-ink ring-line hover:bg-panel-2 bg-panel flex h-12 w-full items-center justify-center rounded-[10px] px-6 text-[16px] font-semibold ring-1 transition duration-300 ease-[var(--ease-brand)]"
+              class="brand-gradient text-on-accent flex h-12 w-full items-center justify-center rounded-[10px] px-6 text-[16px] font-semibold transition duration-300 ease-[var(--ease-brand)]"
             >
               {{ t("home.hero.trialCta") }}
             </a>
           </MotionWrapper>
 
-          <p
-            v-if="emailInvalid"
-            id="hero-email-error"
-            role="alert"
-            class="text-danger mt-2 text-[12px]/[15px]"
-          >
-            {{ t("home.hero.emailError") }}
-          </p>
-        </component>
+          <div class="mt-4 flex flex-col items-center gap-y-2 text-center">
+            <div class="flex items-center justify-center gap-x-1.5">
+              <SvgoMoneyBack class="fill-muted h-4 w-4 flex-none opacity-80" />
+              <p class="text-muted text-[12px]/[15px] opacity-90">
+                {{ t("common.notices.money_back_guarantee") }}
+              </p>
+            </div>
 
-        <component
-          :is="motionEnabled ? motion.div : 'div'"
-          v-bind="entranceProps(0.32)"
-          class="flex w-full max-w-[480px] flex-col gap-y-2"
-        >
-          <div class="flex items-center gap-x-1.5">
-            <SvgoMoneyBack class="fill-muted h-4 w-4 flex-none opacity-80" />
             <p class="text-muted text-[12px]/[15px] opacity-90">
-              {{ t("common.notices.money_back_guarantee") }}
+              {{ t("home.hero.socialproof") }}
             </p>
           </div>
-
-          <p class="text-muted text-[12px]/[15px] opacity-90">
-            {{ t("home.hero.socialproof") }}
-          </p>
         </component>
       </div>
     </div>

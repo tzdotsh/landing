@@ -73,7 +73,7 @@ function entranceProps(delay: number) {
 <template>
   <section
     id="hero"
-    class="relative min-h-[92dvh] overflow-hidden bg-transparent"
+    class="hero-section relative overflow-hidden bg-transparent"
   >
     <HomeHeroBackground2 />
 
@@ -84,14 +84,12 @@ function entranceProps(delay: number) {
       strength="5%"
     />
 
-    <div
-      class="container relative z-10 flex min-h-[92dvh] items-center py-16 max-[820px]:items-start max-[820px]:pt-28 max-[820px]:pb-10"
-    >
-      <div class="w-full max-w-[540px] text-left">
+    <div class="container hero-shell relative z-10 flex min-h-[92dvh] items-center py-16">
+      <div class="hero-content w-full max-w-[540px] text-left">
         <component
           :is="motionEnabled ? motion.div : 'div'"
           v-bind="entranceProps(0)"
-          class="mb-4 flex items-center gap-x-2.5"
+          class="mb-4 flex items-center gap-x-2.5 max-[820px]:mb-3"
         >
           <span class="relative flex h-2 w-2 shrink-0">
             <span
@@ -112,7 +110,7 @@ function entranceProps(delay: number) {
         <component
           :is="motionEnabled ? motion.h1 : 'h1'"
           v-bind="entranceProps(0.08)"
-          class="font-heading text-ink mb-5 text-[clamp(2.5rem,5.6vw,4.25rem)] leading-[0.95] font-extrabold tracking-[-0.02em] uppercase max-[820px]:text-[clamp(2.125rem,10vw,2.75rem)] max-[820px]:leading-[1]"
+          class="font-heading text-ink hero-title mb-5 text-[clamp(2.5rem,5.6vw,4.25rem)] leading-[0.95] font-extrabold tracking-[-0.02em] uppercase max-[820px]:mb-4 max-[820px]:text-[clamp(2.125rem,10vw,2.75rem)] max-[820px]:leading-[1]"
         >
           <span class="block">{{ titleLine1 }}</span>
           <span class="block">{{ titleLine2 }}</span>
@@ -121,7 +119,7 @@ function entranceProps(delay: number) {
         <component
           :is="motionEnabled ? motion.p : 'p'"
           v-bind="entranceProps(0.16)"
-          class="text-muted mb-8 max-w-[440px] text-[17px]/[1.55] font-medium text-pretty sm:text-[18px]/[1.55] max-[820px]:mb-6 max-[820px]:max-w-none"
+          class="text-muted hero-subtitle mb-8 max-w-[440px] text-[17px]/[1.55] font-medium text-pretty sm:text-[18px]/[1.55] max-[820px]:mb-6 max-[820px]:max-w-none"
         >
           {{ t("home.hero.subtitle") }}
         </component>
@@ -242,6 +240,51 @@ function entranceProps(delay: number) {
 </template>
 
 <style scoped>
+@media (max-width: 820px) {
+  .hero-section {
+    --hero-nav-offset: 1.875rem; /* navbar top-7.5 */
+    --hero-nav-height: 3.6875rem; /* navbar h-14.75 */
+    --hero-nav-clearance: calc(var(--hero-nav-offset) + var(--hero-nav-height));
+    --hero-eyebrow-gap: 1rem;
+    min-height: 100svh;
+  }
+
+  .hero-shell {
+    min-height: 100svh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: calc(var(--hero-nav-clearance) + var(--hero-eyebrow-gap));
+    padding-bottom: 2rem;
+  }
+
+  .hero-content {
+    width: 100%;
+  }
+}
+
+@media (max-width: 820px) and (max-height: 700px) {
+  .hero-section {
+    --hero-eyebrow-gap: 0.75rem;
+  }
+
+  .hero-shell {
+    justify-content: flex-start;
+    padding-bottom: 1.25rem;
+  }
+
+  .hero-title {
+    margin-bottom: 0.75rem;
+    font-size: clamp(1.875rem, 9vw, 2.25rem);
+  }
+
+  .hero-subtitle {
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
 .hero-fade {
   background:
     linear-gradient(

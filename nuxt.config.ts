@@ -148,6 +148,17 @@ export default defineNuxtConfig({
       brotli: true,
     },
 
+    externals: {
+      inline: [
+        "vue",
+        "@vue/server-renderer",
+        "@vue/runtime-core",
+        "@vue/runtime-dom",
+        "@vue/shared",
+        "@vue/reactivity",
+      ],
+    },
+
     // experimental: {
     //   wasm: true,
     // },

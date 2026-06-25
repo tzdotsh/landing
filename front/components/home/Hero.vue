@@ -84,7 +84,9 @@ function entranceProps(delay: number) {
       strength="5%"
     />
 
-    <div class="container relative z-10 flex min-h-[92dvh] items-center py-16 max-[820px]:py-12">
+    <div
+      class="container relative z-10 flex min-h-[92dvh] items-center py-16 max-[820px]:items-start max-[820px]:pt-28 max-[820px]:pb-10"
+    >
       <div class="w-full max-w-[540px] text-left">
         <component
           :is="motionEnabled ? motion.div : 'div'"
@@ -110,7 +112,7 @@ function entranceProps(delay: number) {
         <component
           :is="motionEnabled ? motion.h1 : 'h1'"
           v-bind="entranceProps(0.08)"
-          class="font-heading text-ink mb-5 text-[clamp(2.5rem,5.6vw,4.25rem)] leading-[0.95] font-extrabold tracking-[-0.02em] uppercase"
+          class="font-heading text-ink mb-5 text-[clamp(2.5rem,5.6vw,4.25rem)] leading-[0.95] font-extrabold tracking-[-0.02em] uppercase max-[820px]:text-[clamp(2.125rem,10vw,2.75rem)] max-[820px]:leading-[1]"
         >
           <span class="block">{{ titleLine1 }}</span>
           <span class="block">{{ titleLine2 }}</span>
@@ -119,7 +121,7 @@ function entranceProps(delay: number) {
         <component
           :is="motionEnabled ? motion.p : 'p'"
           v-bind="entranceProps(0.16)"
-          class="text-muted mb-8 max-w-[440px] text-[17px]/[1.55] font-medium text-pretty sm:text-[18px]/[1.55]"
+          class="text-muted mb-8 max-w-[440px] text-[17px]/[1.55] font-medium text-pretty sm:text-[18px]/[1.55] max-[820px]:mb-6 max-[820px]:max-w-none"
         >
           {{ t("home.hero.subtitle") }}
         </component>
@@ -127,12 +129,12 @@ function entranceProps(delay: number) {
         <component
           :is="motionEnabled ? motion.form : 'form'"
           v-bind="entranceProps(0.24)"
-          class="mb-4 flex w-full max-w-[480px] flex-col"
+          class="flex w-full flex-col"
           @submit.prevent="handleSubmit"
         >
           <div
             :class="[
-              'flex w-full flex-col gap-2 rounded-[14px] border bg-panel/80 p-1.5 backdrop-blur-md transition-[border-color,box-shadow] duration-300 ease-[var(--ease-brand)] sm:flex-row sm:items-stretch',
+              'flex w-full flex-col gap-2 rounded-[14px] border bg-panel/80 p-1.5 backdrop-blur-md transition-[border-color,box-shadow] duration-300 ease-[var(--ease-brand)] max-[820px]:gap-2.5 sm:flex-row sm:items-stretch',
               emailInvalid
                 ? 'border-danger ring-1 ring-danger/40'
                 : 'border-line-2 ring-1 ring-white/5 focus-within:ring-white/10',
@@ -162,7 +164,7 @@ function entranceProps(delay: number) {
               :while-hover="{ scale: 1.02 }"
               :while-tap="{ scale: 0.98 }"
               :transition="{ type: 'spring', stiffness: 400, damping: 22 }"
-              class="w-full sm:w-auto"
+              class="block w-full sm:w-auto"
             >
               <Button
                 type="submit"
@@ -183,20 +185,20 @@ function entranceProps(delay: number) {
             v-if="emailInvalid"
             id="hero-email-error"
             role="alert"
-            class="text-danger mt-2 text-[12px]/[15px]"
+            class="text-danger mt-2 text-center text-[12px]/[15px] sm:text-left"
           >
             {{ t("home.hero.emailError") }}
           </p>
 
           <div
-            class="my-4 flex items-center gap-x-3"
+            class="my-4 flex w-full items-center gap-x-3 max-[820px]:my-5"
             aria-hidden="true"
           >
-            <span class="bg-line-2 h-px flex-1" />
-            <span class="text-muted text-[13px] font-medium lowercase">
+            <span class="bg-line-2 h-px min-w-0 flex-1" />
+            <span class="text-muted shrink-0 px-1 text-[13px] font-medium lowercase">
               {{ t("home.hero.orDivider") }}
             </span>
-            <span class="bg-line-2 h-px flex-1" />
+            <span class="bg-line-2 h-px min-w-0 flex-1" />
           </div>
 
           <MotionWrapper
@@ -204,7 +206,7 @@ function entranceProps(delay: number) {
             :while-hover="{ scale: 1.02 }"
             :while-tap="{ scale: 0.98 }"
             :transition="{ type: 'spring', stiffness: 400, damping: 22 }"
-            class="w-full"
+            class="block w-full"
           >
             <a
               :href="trialHref"
@@ -214,15 +216,22 @@ function entranceProps(delay: number) {
             </a>
           </MotionWrapper>
 
-          <div class="mt-4 flex flex-col items-center gap-y-2 text-center">
-            <div class="flex items-center justify-center gap-x-1.5">
-              <SvgoMoneyBack class="fill-muted h-4 w-4 flex-none opacity-80" />
-              <p class="text-muted text-[12px]/[15px] opacity-90">
-                {{ t("common.notices.money_back_guarantee") }}
-              </p>
-            </div>
+          <div
+            class="mt-5 flex w-full flex-col items-center gap-y-2.5 text-center max-[820px]:mt-6"
+          >
+            <p
+              class="text-muted max-w-[22rem] text-[12px]/[1.45] text-pretty opacity-90 max-[820px]:max-w-[19rem] max-[820px]:text-[11px]/[1.5]"
+            >
+              <SvgoMoneyBack
+                class="fill-muted mr-1 inline-block h-4 w-4 shrink-0 align-[-0.15em] opacity-80"
+                aria-hidden="true"
+              />
+              {{ t("common.notices.money_back_guarantee") }}
+            </p>
 
-            <p class="text-muted text-[12px]/[15px] opacity-90">
+            <p
+              class="text-muted max-w-[20rem] text-[12px]/[1.45] text-pretty opacity-90 max-[820px]:max-w-[17.5rem] max-[820px]:text-[11px]/[1.5]"
+            >
               {{ t("home.hero.socialproof") }}
             </p>
           </div>

@@ -76,7 +76,7 @@ const posterCardClass =
       <div
         v-for="(row, rowIndex) in staticRows"
         :key="`collection-static-row-${rowIndex}`"
-        class="flex gap-3 overflow-x-auto overscroll-x-contain px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        class="flex gap-3 overflow-x-auto overscroll-x-contain px-4 pb-2 min-h-[225px] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         <div
           v-for="id in row"
@@ -118,12 +118,12 @@ const posterCardClass =
 
       <div
         v-else
-        class="relative left-1/2 w-screen max-w-full -translate-x-1/2 space-y-4"
+        class="relative left-1/2 w-screen max-w-full -translate-x-1/2 space-y-4 min-h-[466px]"
       >
         <div
           v-for="(row, rowIndex) in marqueeRows"
           :key="`collection-marquee-row-${rowIndex}`"
-          class="relative [mask-image:linear-gradient(90deg,transparent,#000_6%,#000_94%,transparent)]"
+          class="relative min-h-[225px] [mask-image:linear-gradient(90deg,transparent,#000_6%,#000_94%,transparent)]"
         >
           <CommonMarquee
             :base-velocity="row.velocity"

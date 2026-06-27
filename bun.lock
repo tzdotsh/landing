@@ -59,6 +59,7 @@
     },
   },
   "trustedDependencies": [
+    "better-sqlite3",
     "sharp",
   ],
   "overrides": {

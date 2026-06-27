@@ -47,9 +47,9 @@
   --color-warning: #f5b53d;
   --color-on-danger: #2a0a0e;
 
-  /* type */
-  --font-heading: "Poppins", system-ui, sans-serif;
-  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  /* type — include fontaine metric-adjusted fallbacks to prevent CLS on swap */
+  --font-heading: "Poppins", "Poppins fallback", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", "Hanken Grotesk fallback", system-ui, sans-serif;
 
   /* shape / motion */
   --radius-card: 16px;

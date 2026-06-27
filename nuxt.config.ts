@@ -83,6 +83,7 @@ export default defineNuxtConfig({
         name: "Poppins",
         provider: "google",
         weights: [400, 500, 600, 700, 800],
+        preload: true,
       },
       {
         name: "Hanken Grotesk",
@@ -92,9 +93,20 @@ export default defineNuxtConfig({
     ],
     defaults: {
       weights: [400, 500, 600, 700, 800],
+      display: "swap",
+      preload: false,
     },
     provider: "google",
     devtools: true,
+  },
+
+  fontMetrics: {
+    fonts: ["Poppins", "Hanken Grotesk"],
+  },
+
+  vitalizer: {
+    disablePrefetchLinks: true,
+    disableStylesheets: "entry",
   },
 
   devtools: {
@@ -106,7 +118,9 @@ export default defineNuxtConfig({
   },
 
   delayHydration: {
+    // Manual mode requires <DelayHydration> wrappers — none on homepage hero path.
     mode: "manual",
+    debug: process.env.NODE_ENV === "development",
   },
 
   srcDir: "front",

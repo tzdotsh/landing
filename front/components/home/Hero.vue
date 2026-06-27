@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { motion } from "motion-v";
-
 const { t } = useI18n();
 const config = useRuntimeConfig();
 const reducedMotion = usePreferredReducedMotion();
@@ -12,6 +10,9 @@ const motionEnabled = computed(
   () =>
     config.public.enableAnimations && reducedMotion.value !== "reduce",
 );
+
+/** Eyebrow ping only — never hide LCP text behind motion opacity. */
+const eyebrowMotionEnabled = computed(() => motionEnabled.value);
 
 const titleLine1 = computed(() => {
   const title = t("home.hero.title");
@@ -55,19 +56,9 @@ function handleSubmit() {
   window.location.assign(externalAppPath("/checkout", true));
 }
 
-function entranceProps(delay: number) {
-  return motionEnabled.value
-    ? {
-        initial: { opacity: 0, y: 16 },
-        animate: { opacity: 1, y: 0 },
-        transition: {
-          duration: 0.5,
-          delay,
-          ease: [0.16, 1, 0.3, 1] as const,
-        },
-      }
-    : {};
-}
+const heroEntranceClass = computed(() =>
+  motionEnabled.value ? "hero-entrance" : "",
+);
 </script>
 
 <template>
@@ -86,14 +77,16 @@ function entranceProps(delay: number) {
 
     <div class="container hero-shell relative z-10 flex">
       <div class="hero-content w-full max-w-[540px] text-left">
-        <component
-          :is="motionEnabled ? motion.div : 'div'"
-          v-bind="entranceProps(0)"
-          class="mb-4 flex items-center gap-x-2.5 max-[820px]:mb-3"
+        <div
+          :class="[
+            'mb-4 flex items-center gap-x-2.5 max-[820px]:mb-3',
+            heroEntranceClass,
+          ]"
+          style="--hero-entrance-delay: 0ms"
         >
           <span class="relative flex h-2 w-2 shrink-0">
             <span
-              v-if="motionEnabled"
+              v-if="eyebrowMotionEnabled"
               class="brand-gradient absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"
             />
             <span
@@ -107,29 +100,32 @@ function entranceProps(delay: number) {
             <CommonTrustpilotStarIcon scale="em" />
             {{ t("home.hero.eyebrowAfter") }}
           </span>
-        </component>
+        </div>
 
-        <component
-          :is="motionEnabled ? motion.h1 : 'h1'"
-          v-bind="entranceProps(0.08)"
-          class="font-heading text-ink hero-title mb-5 text-[clamp(2.5rem,5.6vw,4.25rem)] leading-[0.95] font-extrabold tracking-[-0.02em] uppercase max-[820px]:mb-4 max-[820px]:text-[clamp(2.125rem,10vw,2.75rem)] max-[820px]:leading-[1]"
+        <h1
+          :class="[
+            'font-heading text-ink hero-title mb-5 text-[clamp(2.5rem,5.6vw,4.25rem)] leading-[0.95] font-extrabold tracking-[-0.02em] uppercase max-[820px]:mb-4 max-[820px]:text-[clamp(2.125rem,10vw,2.75rem)] max-[820px]:leading-[1]',
+            heroEntranceClass,
+          ]"
+          style="--hero-entrance-delay: 80ms"
         >
           <span class="block">{{ titleLine1 }}</span>
           <span class="block">{{ titleLine2 }}</span>
-        </component>
+        </h1>
 
-        <component
-          :is="motionEnabled ? motion.p : 'p'"
-          v-bind="entranceProps(0.16)"
-          class="text-muted hero-subtitle mb-8 max-w-[440px] text-[17px]/[1.55] font-medium text-pretty sm:text-[18px]/[1.55] max-[820px]:mb-6 max-[820px]:max-w-none"
+        <p
+          :class="[
+            'text-muted hero-subtitle mb-8 max-w-[440px] text-[17px]/[1.55] font-medium text-pretty sm:text-[18px]/[1.55] max-[820px]:mb-6 max-[820px]:max-w-none',
+            heroEntranceClass,
+          ]"
+          style="--hero-entrance-delay: 160ms"
         >
           {{ t("home.hero.subtitle") }}
-        </component>
+        </p>
 
-        <component
-          :is="motionEnabled ? motion.form : 'form'"
-          v-bind="entranceProps(0.24)"
-          class="flex w-full flex-col"
+        <form
+          :class="['flex w-full flex-col', heroEntranceClass]"
+          style="--hero-entrance-delay: 240ms"
           @submit.prevent="handleSubmit"
         >
           <div
@@ -235,13 +231,33 @@ function entranceProps(delay: number) {
               {{ t("home.hero.socialproof") }}
             </p>
           </div>
-        </component>
+        </form>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
+.hero-entrance {
+  animation: hero-rise 0.5s var(--ease-brand) var(--hero-entrance-delay, 0ms) both;
+}
+
+@keyframes hero-rise {
+  from {
+    transform: translateY(16px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-entrance {
+    animation: none;
+  }
+}
+
 /* Navbar floats fixed at top-7.5 + h-14.75 (tv-layout Navbar.vue) — all breakpoints */
 .hero-section {
   --hero-nav-offset: 1.875rem;

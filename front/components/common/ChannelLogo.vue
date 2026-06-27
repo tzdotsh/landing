@@ -59,6 +59,8 @@ function handleError() {
       v-if="showLogo"
       :src="resolvedLogo!"
       :alt="altText"
+      width="120"
+      height="32"
       loading="lazy"
       decoding="async"
       :class="twMerge('max-h-full max-w-full object-contain', imgClass)"

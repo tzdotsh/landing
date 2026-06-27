@@ -21,6 +21,16 @@ const useScrollNarrative = computed(
   () => !isSmallScreen.value && !staticMotion.value,
 );
 
+/** Scroll narrative needs client measurements — SSR always renders the static grid. */
+const scrollNarrativeReady = ref(false);
+onMounted(() => {
+  scrollNarrativeReady.value = true;
+});
+
+const showScrollNarrative = computed(
+  () => scrollNarrativeReady.value && useScrollNarrative.value,
+);
+
 const assuranceKeys = [
   "no_buffering",
   "no_downtime",
@@ -56,11 +66,10 @@ const items = computed(() =>
         </h2>
       </div>
 
-      <ClientOnly>
-        <div
-          v-if="!useScrollNarrative"
-          class="mx-auto flex max-w-[920px] flex-col gap-y-5 md:gap-y-6"
-        >
+      <div
+        v-if="!showScrollNarrative"
+        class="mx-auto flex max-w-[920px] flex-col gap-y-5 md:gap-y-6"
+      >
           <article
             v-for="item in items"
             :key="item.key"
@@ -142,7 +151,6 @@ const items = computed(() =>
             </ScrollTrigger>
           </ScrollTriggerGroup>
         </ScrollObserver>
-      </ClientOnly>
     </div>
   </HomeBackground>
 </template>

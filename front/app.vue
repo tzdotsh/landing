@@ -36,9 +36,6 @@ const pathWithoutLocale = computed(() => {
 useHead(() => ({
   link: [
     { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-    // Resource hints for performance
-    { rel: "preconnect", href: "https://fonts.googleapis.com" },
-    { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
     { rel: "dns-prefetch", href: "https://maxco.one" },
     ...locales.value.map((el) => {
       let href = `${url.origin}`;

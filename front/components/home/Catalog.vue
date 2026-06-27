@@ -77,7 +77,7 @@ const contextualLinkClass =
 
     <div
       v-else
-      class="relative [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]"
+      class="relative min-h-14 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]"
     >
       <CommonMarquee class="relative flex w-max items-center justify-start">
         <div

@@ -73,6 +73,7 @@ function posterId(columnIndex: number, itemIndex: number) {
 
 .hero-wall__poster {
   width: 100%;
+  aspect-ratio: 198 / 294;
   height: auto;
   flex: none;
   border-radius: 14px;

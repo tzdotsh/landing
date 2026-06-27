@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { SPORTS_FEATURED_REVIEWS } from "~/data/sportsFeaturedReviews";
-
 const { t } = useI18n();
 </script>
 
@@ -40,13 +38,7 @@ const { t } = useI18n();
         </p>
       </div>
 
-      <div class="mx-auto grid w-full max-w-[960px] grid-cols-1 gap-5 md:grid-cols-2">
-        <HomeReviewMarqueeCard
-          v-for="review in SPORTS_FEATURED_REVIEWS"
-          :key="review.name"
-          :review="review"
-        />
-      </div>
+      <CommonReviewsMarquee />
     </div>
   </section>
 </template>

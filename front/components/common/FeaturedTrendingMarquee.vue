@@ -12,7 +12,9 @@ const props = withDefaults(
 );
 
 const reducedMotion = usePreferredReducedMotion();
-const staticMotion = computed(() => reducedMotion.value === "reduce");
+const staticMotion = computed(
+  () => import.meta.server || reducedMotion.value === "reduce",
+);
 const velocity = computed(() =>
   props.reverse ? -HOME_MARQUEE_VELOCITY : HOME_MARQUEE_VELOCITY,
 );

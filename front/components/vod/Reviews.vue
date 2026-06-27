@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { VOD_FEATURED_REVIEW } from "~/data/vodFeaturedReviews";
-
 const { t } = useI18n();
 </script>
 
@@ -40,9 +38,7 @@ const { t } = useI18n();
         </p>
       </div>
 
-      <div class="mx-auto w-full max-w-[480px]">
-        <HomeReviewMarqueeCard :review="VOD_FEATURED_REVIEW" />
-      </div>
+      <CommonReviewsMarquee />
     </div>
   </section>
 </template>

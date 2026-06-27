@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { motion } from "motion-v";
-
 const { t } = useI18n();
 const config = useRuntimeConfig();
 const reducedMotion = usePreferredReducedMotion();
@@ -35,20 +33,6 @@ function handleSubmit() {
 
   window.location.assign(externalAppPath("/checkout", true));
 }
-
-function entranceProps(delay: number) {
-  return motionEnabled.value
-    ? {
-        initial: { opacity: 0, y: 16 },
-        animate: { opacity: 1, y: 0 },
-        transition: {
-          duration: 0.5,
-          delay,
-          ease: [0.16, 1, 0.3, 1] as const,
-        },
-      }
-    : {};
-}
 </script>
 
 <template>
@@ -64,33 +48,25 @@ function entranceProps(delay: number) {
 
     <div class="container vod-hero-shell relative z-10 flex">
       <div class="vod-hero-content w-full max-w-[540px] text-left">
-        <component
-          :is="motionEnabled ? motion.p : 'p'"
-          v-bind="entranceProps(0)"
+        <p
           class="text-muted mb-4 text-[13px]/none font-medium tracking-[0.12em] uppercase max-[820px]:mb-3"
         >
           {{ t("vod.hero.eyebrow") }}
-        </component>
+        </p>
 
-        <component
-          :is="motionEnabled ? motion.h1 : 'h1'"
-          v-bind="entranceProps(0.08)"
+        <h1
           class="font-heading text-ink vod-hero-title mb-5 text-[clamp(2.5rem,5.6vw,4.25rem)] leading-[0.95] font-extrabold tracking-[-0.02em] max-[820px]:mb-4 max-[820px]:text-[clamp(2.125rem,10vw,2.75rem)] max-[820px]:leading-[1.05]"
         >
           {{ t("vod.hero.title") }}
-        </component>
+        </h1>
 
-        <component
-          :is="motionEnabled ? motion.p : 'p'"
-          v-bind="entranceProps(0.16)"
+        <p
           class="text-muted vod-hero-subtitle mb-8 max-w-[480px] text-[17px]/[1.55] font-medium text-pretty sm:text-[18px]/[1.55] max-[820px]:mb-6 max-[820px]:max-w-none"
         >
           {{ t("vod.hero.subline") }}
-        </component>
+        </p>
 
-        <component
-          :is="motionEnabled ? motion.form : 'form'"
-          v-bind="entranceProps(0.24)"
+        <form
           class="flex w-full flex-col"
           @submit.prevent="handleSubmit"
         >
@@ -178,7 +154,7 @@ function entranceProps(delay: number) {
               {{ t("vod.hero.cta_secondary") }}
             </a>
           </MotionWrapper>
-        </component>
+        </form>
       </div>
     </div>
   </section>

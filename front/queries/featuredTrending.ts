@@ -16,6 +16,7 @@ export const FEATURED_TRENDING_QUERY_KEY = "featured-trending";
 export function useFeaturedTrendingQuery() {
   return useFetch<FeaturedTrendingResponse>("/api/featured/trending", {
     key: FEATURED_TRENDING_QUERY_KEY,
+    server: false,
     default: () => ({
       movies: [],
       series: [],

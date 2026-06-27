@@ -4,7 +4,7 @@ import { useVodGenrePostersQuery } from "~/queries/vodGenrePosters";
 
 const { t } = useI18n();
 
-const { data: genrePostersResponse } = await useVodGenrePostersQuery();
+const { data: genrePostersResponse } = useVodGenrePostersQuery();
 
 const tiles = computed(() => {
   const posterMap = new Map(

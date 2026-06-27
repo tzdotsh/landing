@@ -3,7 +3,7 @@ import { useFeaturedTrendingQuery } from "~/queries/featuredTrending";
 
 const { t } = useI18n();
 
-const { data: trendingResponse } = await useFeaturedTrendingQuery();
+const { data: trendingResponse } = useFeaturedTrendingQuery();
 
 const trendingMovies = computed(
   () => trendingResponse.value?.movies ?? [],

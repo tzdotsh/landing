@@ -48,23 +48,25 @@ function selectSection(section: string) {
             {{ rt(section.title) }}
           </p>
 
-          <AnimatePresence>
-            <motion.div
-              v-if="selectedSection === section.key"
-              layout-id="background"
-              class="absolute inset-0 -z-10"
-              :transition="{
-                type: 'spring',
-                stiffness: 300,
-                damping: 25,
-                duration: 0.3,
-              }"
-            >
-              <AnimatedBorder border-radius="1000" class="h-full w-full">
-                <GradientBg></GradientBg>
-              </AnimatedBorder>
-            </motion.div>
-          </AnimatePresence>
+          <ClientOnly>
+            <AnimatePresence>
+              <motion.div
+                v-if="selectedSection === section.key"
+                layout-id="background"
+                class="absolute inset-0 -z-10"
+                :transition="{
+                  type: 'spring',
+                  stiffness: 300,
+                  damping: 25,
+                  duration: 0.3,
+                }"
+              >
+                <AnimatedBorder border-radius="1000" class="h-full w-full">
+                  <GradientBg />
+                </AnimatedBorder>
+              </motion.div>
+            </AnimatePresence>
+          </ClientOnly>
         </button>
       </div>
 

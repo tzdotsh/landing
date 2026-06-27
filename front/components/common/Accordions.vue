@@ -1,16 +1,6 @@
-<script lang="ts"></script>
-
 <script lang="ts" setup generic="T extends Record<string, string>">
 import { twMerge } from "tailwind-merge";
-import { AnimatePresence } from "motion-v";
 
-import {
-  AccordionContent,
-  AccordionHeader,
-  AccordionItem,
-  AccordionRoot,
-  AccordionTrigger,
-} from "reka-ui";
 export type AccordionItemType = {
   title: string;
   content: string;
@@ -29,74 +19,65 @@ const props = withDefaults(defineProps<PropsType>(), {
 
 const { rt } = useI18n();
 
-const items = computed(() => {
-  return props.items.map((item) => ({
+const items = computed(() =>
+  props.items.map((item) => ({
     title: item[props.titleKey] as string,
     content: item[props.contentKey] as string,
-  }));
-});
+  })),
+);
+
+const openItems = ref<Record<number, boolean>>({});
+
+function onToggle(index: number, event: Event) {
+  openItems.value[index] = (event.target as HTMLDetailsElement).open;
+}
 </script>
 
 <template>
-  <AccordionRoot class="flex flex-col gap-y-[15px]">
-    <AccordionItem
+  <div class="flex flex-col gap-y-[15px]">
+    <details
       v-for="(item, j) in items"
       :key="`item-${j}`"
-      #="{ open }"
-      :value="`item-${j}`"
+      class="faq-details group"
+      @toggle="onToggle(j, $event)"
     >
       <AnimatedBorder
-        :enabled="open"
         class="text-white before:overflow-hidden before:transition"
         border-radius="15"
+        :enabled="openItems[j] ?? false"
       >
-        <GradientBg :enabled="open">
-          <AccordionHeader>
-            <AccordionTrigger
-              class="group flex w-full items-center justify-between gap-x-2 pt-4 pr-[21px] pb-4.5 pl-[24.5px] text-left text-[22px]/[calc(26/22)] active:scale-100"
-            >
-              {{ rt(item.title) }}
+        <GradientBg :enabled="openItems[j] ?? false">
+          <summary
+            class="flex w-full cursor-pointer list-none items-center justify-between gap-x-2 pt-4 pr-[21px] pb-4.5 pl-[24.5px] text-left text-[22px]/[calc(26/22)] marker:content-none active:scale-100"
+          >
+            {{ rt(item.title) }}
 
-              <div class="relative aspect-square h-auto w-[19px] flex-none">
-                <div
-                  v-for="lineIndex in 2"
-                  :key="lineIndex"
-                  :class="
-                    twMerge(
-                      'absolute top-1/2 h-[3px] w-full -translate-y-1/2 rounded-full bg-white transition odd:rotate-90',
-                      open && 'odd:scale-x-0',
-                    )
-                  "
-                />
-              </div>
-            </AccordionTrigger>
-          </AccordionHeader>
+            <div class="relative aspect-square h-auto w-[19px] flex-none">
+              <div
+                v-for="lineIndex in 2"
+                :key="lineIndex"
+                :class="
+                  twMerge(
+                    'absolute top-1/2 h-[3px] w-full -translate-y-1/2 rounded-full bg-white transition group-open:odd:scale-x-0 odd:rotate-90',
+                  )
+                "
+              />
+            </div>
+          </summary>
 
-          <AccordionContent force-mount>
-            <AnimatePresence>
-              <MotionWrapper
-                v-if="open"
-                :initial="{ height: 0, opacity: 0 }"
-                :animate="{ height: 'auto', opacity: 1 }"
-                :exit="{ height: 0, opacity: 0 }"
-                :transition="{
-                  type: 'spring',
-                  stiffness: 300,
-                  damping: 25,
-                  duration: 0.3,
-                }"
-                class="overflow-hidden"
-              >
-                <div
-                  class="-mt-1 pr-[21px] pb-4.5 pl-[24.5px] text-[18px]/[calc(22/18)] opacity-60"
-                >
-                  {{ rt(item.content) }}
-                </div>
-              </MotionWrapper>
-            </AnimatePresence>
-          </AccordionContent>
+          <div
+            class="-mt-1 pr-[21px] pb-4.5 pl-[24.5px] text-[18px]/[calc(22/18)] opacity-60"
+          >
+            {{ rt(item.content) }}
+          </div>
         </GradientBg>
       </AnimatedBorder>
-    </AccordionItem>
-  </AccordionRoot>
+    </details>
+  </div>
 </template>
+
+<style scoped>
+.faq-details summary::-webkit-details-marker {
+  display: none;
+}
+</style>

@@ -1050,6 +1050,8 @@
 
   "layout": {
     "pages": {
+      "apps": "Setup",
+      "resellers": "Resellers",
       "tv-channels": "Channels",
       "checkout": "Pricing",
       "members-area": "My Account",

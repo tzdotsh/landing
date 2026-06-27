@@ -1061,6 +1061,8 @@
 
   "layout": {
     "pages": {
+      "apps": "Configuración",
+      "resellers": "Revendedores",
       "tv-channels": "Canales",
       "checkout": "Precios",
       "members-area": "Mi Cuenta",

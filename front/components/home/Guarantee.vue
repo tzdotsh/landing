@@ -16,12 +16,12 @@ const { t } = useI18n();
       strength="7%"
     />
 
+    <HomeReviews class="mb-8 md:mb-10" />
+
     <div class="container relative">
       <div
         class="mx-auto flex max-w-[640px] flex-col items-center gap-5 md:gap-6"
       >
-        <HomeReviews />
-
         <div
           class="guarantee-badge"
           role="img"

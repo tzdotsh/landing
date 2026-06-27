@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 import { twMerge } from "tailwind-merge";
 
-import { getChannelCategoryImage } from "~/configs/channelsCategoryImages";
+import type { ChannelsHeroSlide } from "~/data/channelsHeroSports";
 
 const props = defineProps<{
-  category: string;
-  alt: string;
+  slide: Pick<ChannelsHeroSlide, "src" | "srcset" | "alt">;
   imgClass?: string;
   class?: string;
 }>();
@@ -13,14 +12,11 @@ const props = defineProps<{
 const failed = ref(false);
 
 watch(
-  () => props.category,
+  () => props.slide.src,
   () => {
     failed.value = false;
   },
 );
-
-const image = computed(() => getChannelCategoryImage(props.category));
-const showFallback = computed(() => failed.value || !image.value);
 
 function handleError() {
   failed.value = true;
@@ -30,25 +26,30 @@ function handleError() {
 <template>
   <div :class="twMerge('relative overflow-hidden', $props.class)">
     <div
-      v-if="showFallback"
+      v-if="failed"
       class="brand-gradient flex h-full w-full items-center justify-center"
       role="img"
-      :aria-label="alt"
+      :aria-label="slide.alt"
     >
       <SvgoLogoIcon class="h-7 w-auto opacity-90" aria-hidden="true" />
     </div>
 
-    <MyNuxtImg
+    <img
       v-else
-      :src="image!.src"
-      :srcset="image!.srcset"
-      :alt="alt"
+      :key="slide.src"
+      :src="slide.src"
+      :srcset="slide.srcset"
+      :alt="slide.alt"
       :class="
         twMerge(
           'h-full w-full object-cover opacity-0 transition duration-1000 data-[state=ready]:opacity-100',
           imgClass,
         )
       "
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      @load="($event.target as HTMLImageElement).dataset.state = 'ready'"
       @error="handleError"
     />
   </div>

@@ -8,6 +8,7 @@ import {
   useChannelsCategoriesQuery,
   useChannelsSearchQuery,
 } from "~/queries/channels";
+import { resolveCategoryIso } from "~/utils/resolveCategoryIso";
 
 import Flag from "../common/Flag.vue";
 
@@ -41,6 +42,11 @@ const hasActiveFilters = computed(
 const showEmptyState = computed(
   () => !isChannelsLoading.value && !channels.value.length,
 );
+
+function channelFlagIso(catId: number) {
+  const category = categoriesObject.value?.[catId];
+  return category ? resolveCategoryIso(category) : undefined;
+}
 
 const channelsVirtualizerOptions = computed(() => ({
   count: hasMore.value ? channels.value.length + 1 : channels.value.length,
@@ -150,7 +156,7 @@ watch(isLargeScreen, () => {
           class="bg-panel ring-line absolute top-0 left-0 flex h-10 w-full flex-none items-center gap-x-[15px] rounded-[10px] px-2 ring-1 lg:w-[calc(50%-5px)]"
         >
           <Flag
-            :country="categoriesObject?.[channels[index]!.cat_id]?.iso"
+            :country="channelFlagIso(channels[index]!.cat_id)"
             class="ring-line aspect-11/7 h-7 w-11 flex-none rounded-md object-cover ring-1"
           />
 

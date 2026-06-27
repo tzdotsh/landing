@@ -29,7 +29,7 @@ export const PREPAID_TIERS: PrepaidTier[] = [
     credits: 80,
     rate: "£3.75/credit",
     subResellers: false,
-    orderUrl: "#",
+    orderUrl: "/checkout/resellers",
   },
   {
     id: "maxco-silver",
@@ -39,7 +39,7 @@ export const PREPAID_TIERS: PrepaidTier[] = [
     rate: "£3.13/credit",
     subResellers: true,
     featured: true,
-    orderUrl: "#",
+    orderUrl: "/checkout/resellers",
   },
   {
     id: "maxco-platinum",
@@ -48,7 +48,7 @@ export const PREPAID_TIERS: PrepaidTier[] = [
     credits: 400,
     rate: "£2.50/credit",
     subResellers: true,
-    orderUrl: "#",
+    orderUrl: "/checkout/resellers",
   },
 ];
 
@@ -59,7 +59,7 @@ export const UNLIMITED_TIERS: UnlimitedTier[] = [
     price: 1000,
     capacity: "1K–2K lines",
     subResellers: "No",
-    orderUrl: "#",
+    orderUrl: "/checkout/resellers",
   },
   {
     id: "plus-unlimited",
@@ -68,7 +68,7 @@ export const UNLIMITED_TIERS: UnlimitedTier[] = [
     capacity: "2K–3.5K lines",
     subResellers: "Up to 5",
     featured: true,
-    orderUrl: "#",
+    orderUrl: "/checkout/resellers",
   },
   {
     id: "platinum-unlimited",
@@ -76,7 +76,7 @@ export const UNLIMITED_TIERS: UnlimitedTier[] = [
     price: 2000,
     capacity: "5K–7K lines",
     subResellers: "Up to 20",
-    orderUrl: "#",
+    orderUrl: "/checkout/resellers",
   },
 ];
 

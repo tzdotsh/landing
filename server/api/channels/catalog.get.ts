@@ -1,5 +1,4 @@
-import { HOME_CATALOG_CHANNELS } from "../../data/homeCatalogChannels";
+import { HOME_CATALOG_CHANNELS } from "../../../front/data/homeCatalogChannels";
 
-export default cachedEventHandler(async () => HOME_CATALOG_CHANNELS, {
-  maxAge: 60 * 60 * 24 * 7,
-});
+/** Static curated list only — never proxy live stream_icon URLs (often country flags). */
+export default defineEventHandler(() => HOME_CATALOG_CHANNELS);

@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import { HOME_MARQUEE_VELOCITY } from "~/constants/homeMarquee";
+
 const { t } = useI18n();
 const reducedMotion = usePreferredReducedMotion();
 
 const staticMotion = computed(() => reducedMotion.value === "reduce");
 
-/** ~65s loop at velocity 0.62 (Marquee: duration = 40 / |velocity|) */
-const MARQUEE_VELOCITY = 0.62;
+const MARQUEE_VELOCITY = HOME_MARQUEE_VELOCITY;
 
 const POSTER_IDS = Array.from({ length: 68 }, (_, index) => String(index + 1));
 const row1Posters = POSTER_IDS.slice(0, 34);

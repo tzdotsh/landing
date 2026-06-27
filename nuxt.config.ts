@@ -136,6 +136,7 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    tmdbApiKey: process.env.TMDB_API_KEY || process.env.NUXT_TMDB_API_KEY,
     public: {
       validDomain: process.env.VALID_DOMAIN,
       enableAnimations: process.env.ENABLE_ANIMATIONS !== "false",
@@ -225,6 +226,12 @@ export default defineNuxtConfig({
     "/channels": {
       headers: {
         "Cache-Control": "public, max-age=300, s-maxage=600",
+      },
+    },
+    "/api/featured/trending": {
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=43200",
       },
     },
     // API-like routes - no cache

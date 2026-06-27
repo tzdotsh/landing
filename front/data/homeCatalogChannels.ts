@@ -2,6 +2,8 @@
  * Curated home catalog marquee channels.
  * Logos sourced from mediaportal-uk-logos (Dark variants for panel bg):
  * https://github.com/Jasmeet181/mediaportal-uk-logos
+ *
+ * Sync assets: `python3 scripts/sync-channel-logos.py`
  */
 export type HomeCatalogChannel = {
   id: number;
@@ -31,7 +33,7 @@ export const HOME_CATALOG_CHANNELS: HomeCatalogChannel[] = [
     name: "Sky Atlantic",
     logo: "/img/channel-logos/sky-atlantic-hd.png",
   },
-  // Sports (La Liga / international coverage common on ES IPTV)
+  // Sports
   {
     id: 9,
     name: "Premier Sports",

@@ -21,6 +21,8 @@ import {
   useChannelsCategoriesQuery,
   useChannelsSearchCategoriesQuery,
 } from "~/queries/channels";
+import { formatChannelCategoryName } from "~/utils/formatChannelCategoryName";
+import { resolveCategoryIso } from "~/utils/resolveCategoryIso";
 
 import Flag from "../common/Flag.vue";
 
@@ -86,6 +88,10 @@ const categoriesTotalSize = computed(() => {
   if (isSmallScreen.value) return 0;
   return categoriesVirtualizer.value.getTotalSize();
 });
+
+function categoryFlagIso(category: (typeof categories.value)[number] | undefined) {
+  return category ? resolveCategoryIso(category) : undefined;
+}
 </script>
 
 <template>
@@ -96,7 +102,7 @@ const categoriesTotalSize = computed(() => {
 
     <template v-else>
       <SelectTrigger
-        class="text-ink data-placeholder:text-muted w-full capitalize data-placeholder:normal-case"
+        class="text-ink data-placeholder:text-muted w-full data-placeholder:normal-case"
         aria-label="Customise options"
       >
         <div
@@ -110,7 +116,7 @@ const categoriesTotalSize = computed(() => {
           <div class="flex items-center gap-x-2">
             <Flag
               v-if="selectedCategory"
-              :country="categoriesObject?.[selectedCategory]?.iso"
+              :country="categoryFlagIso(categoriesObject?.[selectedCategory])"
               class="ring-line aspect-11/7 h-7 w-11 flex-none rounded-md object-cover ring-1"
             />
 
@@ -145,7 +151,7 @@ const categoriesTotalSize = computed(() => {
               v-for="(category, index) in categories"
               :key="index"
               :value="category.id"
-              class="text-ink relative flex items-center text-[18px]/[21px] capitalize select-none"
+              class="text-ink relative flex items-center text-[18px]/[21px] select-none"
             >
               <button
                 type="button"
@@ -157,7 +163,7 @@ const categoriesTotalSize = computed(() => {
                 ]"
               >
                 <SelectItemText>
-                  {{ category.name }}
+                  {{ formatChannelCategoryName(category.name) }}
                 </SelectItemText>
               </button>
             </SelectItem>
@@ -216,14 +222,18 @@ const categoriesTotalSize = computed(() => {
           ]"
         >
           <Flag
-            :country="categories?.[index]?.iso"
+            :country="categoryFlagIso(categories?.[index])"
             class="ring-line aspect-11/7 h-7 w-11 flex-none rounded-md object-cover ring-1"
           />
 
           <p
-            class="text-ink line-clamp-2 text-left text-[18px]/[calc(21/18)] font-medium capitalize"
+            class="text-ink line-clamp-2 text-left text-[18px]/[calc(21/18)] font-medium"
           >
-            {{ categories?.[index]?.name }}
+            {{
+              categories?.[index]?.name
+                ? formatChannelCategoryName(categories[index]!.name)
+                : ""
+            }}
           </p>
         </div>
       </div>

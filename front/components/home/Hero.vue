@@ -84,7 +84,7 @@ function entranceProps(delay: number) {
       strength="5%"
     />
 
-    <div class="container hero-shell relative z-10 flex min-h-[92dvh]">
+    <div class="container hero-shell relative z-10 flex">
       <div class="hero-content w-full max-w-[540px] text-left">
         <component
           :is="motionEnabled ? motion.div : 'div'"
@@ -248,31 +248,29 @@ function entranceProps(delay: number) {
   --hero-nav-height: 3.6875rem;
   --hero-nav-clearance: calc(var(--hero-nav-offset) + var(--hero-nav-height));
   --hero-eyebrow-gap: 1rem;
+  min-height: 100svh;
 }
 
 .hero-shell {
-  padding-top: calc(var(--hero-nav-clearance) + var(--hero-eyebrow-gap));
-  padding-bottom: 4rem;
+  min-height: calc(100svh - var(--hero-nav-clearance));
+  margin-top: var(--hero-nav-clearance);
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: var(--hero-eyebrow-gap);
+  padding-bottom: 2rem;
 }
 
 @media (min-width: 821px) {
   .hero-shell {
-    align-items: flex-start;
+    justify-content: center;
+    padding-bottom: var(--hero-eyebrow-gap);
     --hero-eyebrow-gap: 1.25rem;
   }
 }
 
 @media (max-width: 820px) {
-  .hero-section {
-    min-height: 100svh;
-  }
-
   .hero-shell {
-    min-height: 100svh;
-    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    padding-bottom: 2rem;
   }
 
   .hero-content {

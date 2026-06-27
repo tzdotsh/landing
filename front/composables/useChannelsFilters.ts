@@ -6,7 +6,23 @@ export function useChannelsFilters() {
     "channels:selected-category",
     () => undefined,
   );
+  const defaultCategoryId = useState<number | undefined>(
+    "channels:default-category",
+    () => undefined,
+  );
   const debouncedSearch = refDebounced(searchedChannel, 250);
+
+  function setDefaultCategory(categoryId: number | undefined) {
+    defaultCategoryId.value = categoryId;
+
+    if (
+      categoryId !== undefined &&
+      selectedCategory.value === undefined &&
+      !searchedChannel.value.trim()
+    ) {
+      selectedCategory.value = categoryId;
+    }
+  }
 
   function toggleCategory(categoryId: number | undefined) {
     if (selectedCategory.value === categoryId) {
@@ -21,13 +37,15 @@ export function useChannelsFilters() {
 
   function reset() {
     searchedChannel.value = "";
-    selectedCategory.value = undefined;
+    selectedCategory.value = defaultCategoryId.value;
   }
 
   return {
     searchedChannel,
     debouncedSearch,
     selectedCategory,
+    defaultCategoryId,
+    setDefaultCategory,
     toggleCategory,
     reset,
   };

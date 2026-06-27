@@ -1,24 +1,14 @@
 <script lang="ts" setup>
-import type { HomeChannelPreview } from "~/queries/channels";
+import { HOME_CATALOG_CHANNELS } from "~/data/homeCatalogChannels";
 
 const { t } = useI18n();
 const reducedMotion = usePreferredReducedMotion();
 
 const staticMotion = computed(() => reducedMotion.value === "reduce");
 
-const { data: channels } = await useFetch<HomeChannelPreview[]>(
-  "/api/channels/catalog",
-  {
-    lazy: true,
-    default: () => [],
-    key: "home-catalog-channels",
-  },
-);
+const channels = HOME_CATALOG_CHANNELS;
 
-const marqueeChannels = computed(() => {
-  const list = channels.value ?? [];
-  return list.length ? [...list, ...list] : [];
-});
+const marqueeChannels = computed(() => [...channels, ...channels]);
 </script>
 
 <template>

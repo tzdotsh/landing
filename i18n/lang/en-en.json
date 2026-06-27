@@ -87,7 +87,7 @@
   },
   "home": {
     "hero": {
-      "eyebrowBefore": "Loved by thousands · Rated 4.9",
+      "eyebrowBefore": "Loved by thousands · Rated 4.6",
       "eyebrowAfter": "on Trustpilot",
       "title": "Stop settling. Start watching.",
       "subtitle": "20,000+ live channels, 4K sport and thousands of films & series — on every screen you own.",
@@ -179,7 +179,7 @@
       "subtitle": "Real reviews from viewers who stream live TV, sport, and films with Maxco every day.",
       "rating": {
         "excellent": "Excellent",
-        "score": "4.9 out of 5",
+        "score": "4.6 out of 5",
         "count": "Based on 334+ reviews"
       },
       "cta": "Start watching",
@@ -238,9 +238,9 @@
         },
         "cinema": {
           "name": "Cinema",
-          "title": "Oppenheimer",
-          "description": "Experience the gripping story of J. Robert Oppenheimer, the father of the atomic bomb, in this cinematic masterpiece. Directed by Christopher Nolan, this film delves into the moral complexities of scientific discovery and the profound impact of Oppenheimer's work on the world. With stunning visuals and a powerful narrative, it explores the ethical dilemmas faced by scientists and the consequences of their actions.",
-          "notice": "#1 in USA"
+          "title": "Michael",
+          "description": "MICHAEL is the cinematic portrayal of the life and legacy of one of the most influential artists the world has ever known. Directed by Antoine Fuqua, the film traces Michael Jackson's journey from the Jackson 5 to global superstardom — highlighting iconic performances and the story beyond the music.",
+          "notice": "#1 Biopic"
         },
         "culture": {
           "name": "Culture",
@@ -249,7 +249,7 @@
           "notice": "#1 in Global Culture"
         },
         "tdt": {
-          "name": "TDT",
+          "name": "Channels",
           "title": "ANTENA 3",
           "description": "Access a wide range of Antena 3 channels, offering a variety of content including news, entertainment, sports, and cultural programming. Stay informed and entertained with local and national broadcasts.",
           "notice": "#1 in Local Broadcasting"
@@ -265,6 +265,64 @@
           "title": "Formula 1",
           "description": "Experience the thrill of Formula 1 racing with exclusive coverage of all the high-speed action. From practice laps to the final race, we bring you closer to the track with expert commentary and in-depth analysis.",
           "notice": "#1 in Motorsport"
+        }
+      },
+      "slides": {
+        "sports": {
+          "la-liga": {
+            "title": "M+ LA LIGA TV 4K",
+            "description": "Immerse yourself in the exhilarating world of Spanish football with M+ LaLiga, your ultimate destination for all things LaLiga. This dedicated channel brings you every match, every goal, and every moment of the most prestigious football league in Spain, featuring powerhouse teams like FC Barcelona, Real Madrid, and Atlético Madrid.",
+            "notice": "#1 in Spain"
+          },
+          "formula-1": {
+            "title": "Formula 1",
+            "description": "Experience the thrill of Formula 1 racing with exclusive coverage of all the high-speed action. From practice laps to the final race, we bring you closer to the track with expert commentary and in-depth analysis.",
+            "notice": "#1 in Motorsport"
+          },
+          "premier-league": {
+            "title": "Premier League",
+            "description": "Follow every Premier League match in stunning quality — from title races and relegation battles to derby day drama across England's top flight.",
+            "notice": "#1 in the UK"
+          },
+          "uefa": {
+            "title": "UEFA Champions League",
+            "description": "Watch Europe's elite clubs compete in the UEFA Champions League — knockout nights, group-stage thrillers, and the road to the final.",
+            "notice": "#1 in Europe"
+          }
+        },
+        "cinema": {
+          "michael": {
+            "title": "Michael",
+            "description": "MICHAEL is the cinematic portrayal of the life and legacy of one of the most influential artists the world has ever known. Directed by Antoine Fuqua, the film traces Michael Jackson's journey from the Jackson 5 to global superstardom — highlighting iconic performances and the story beyond the music.",
+            "notice": "#1 Biopic"
+          }
+        },
+        "channels": {
+          "antena-3": {
+            "title": "ANTENA 3",
+            "description": "Access a wide range of Antena 3 channels, offering a variety of content including news, entertainment, sports, and cultural programming. Stay informed and entertained with local and national broadcasts.",
+            "notice": "#1 in Local Broadcasting"
+          },
+          "bbc-one": {
+            "title": "BBC One",
+            "description": "From breaking news and live sport to drama, documentaries, and entertainment — BBC One brings the best of British free-to-air television.",
+            "notice": "#1 in the UK"
+          },
+          "itv": {
+            "title": "ITV",
+            "description": "Catch up on ITV's biggest shows, live football, reality hits, and prime-time entertainment — all in one place on your screen.",
+            "notice": "#1 in the UK"
+          },
+          "channel-4": {
+            "title": "Channel 4",
+            "description": "Bold originals, films, comedy, and news from Channel 4 — the home of distinctive free-to-air programming in the UK.",
+            "notice": "#1 in the UK"
+          },
+          "rtve": {
+            "title": "RTVE",
+            "description": "Spain's public broadcaster — news, sport, cinema, and culture from RTVE's free-to-air channels, live and on demand.",
+            "notice": "#1 in Spain"
+          }
         }
       }
     },
@@ -760,6 +818,17 @@
       "submit": "Submit Report",
       "success": "We received your abuse report. We will get back to you shortly.",
       "error": "An unexpected error occurred"
+    }
+  },
+
+  "layout": {
+    "pages": {
+      "tv-channels": "Channels",
+      "checkout": "Pricing",
+      "members-area": "My Account",
+      "terms-and-conditions": "Terms | Terms of Service",
+      "abuse-report": "Report Abuse",
+      "authenticity-check": "Verify Subscription"
     }
   }
 }

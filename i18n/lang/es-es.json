@@ -87,7 +87,7 @@
   },
   "home": {
     "hero": {
-      "eyebrowBefore": "Amado por miles · Valorado 4.9",
+      "eyebrowBefore": "Amado por miles · Valorado 4,6",
       "eyebrowAfter": "en Trustpilot",
       "title": "Deja de conformarte. Empieza a ver.",
       "subtitle": "20.000+ canales en directo, deporte en 4K y miles de películas y series — en cada pantalla que tengas.",
@@ -179,7 +179,7 @@
       "subtitle": "Reseñas reales de quienes disfrutan de TV en vivo, deporte y cine con Maxco cada día.",
       "rating": {
         "excellent": "Excelente",
-        "score": "4,9 de 5",
+        "score": "4,6 de 5",
         "count": "Basado en más de 334 reseñas"
       },
       "cta": "Empezar a ver",
@@ -238,9 +238,9 @@
         },
         "cinema": {
           "name": "Cine",
-          "title": "Oppenheimer",
-          "description": "Experimenta la conmovedora historia de J. Robert Oppenheimer, el padre de la bomba atómica, en esta obra maestra cinematográfica. Dirigida por Christopher Nolan, esta película profundiza en las complejidades morales del descubrimiento científico y el profundo impacto del trabajo de Oppenheimer en el mundo. Con efectos visuales impresionantes y una narrativa poderosa, explora los dilemas éticos enfrentados por los científicos y las consecuencias de sus acciones.",
-          "notice": "#1 en EE. UU."
+          "title": "Michael",
+          "description": "MICHAEL es el retrato cinematográfico de la vida y el legado de uno de los artistas más influyentes del mundo. Dirigida por Antoine Fuqua, la película sigue el camino de Michael Jackson desde los Jackson 5 hasta la superstardom global, con actuaciones icónicas y la historia más allá de la música.",
+          "notice": "#1 en Biografías"
         },
         "culture": {
           "name": "Cultura",
@@ -249,7 +249,7 @@
           "notice": "#1 en Cultura Global"
         },
         "tdt": {
-          "name": "TDT",
+          "name": "Canales",
           "title": "ANTENA 3",
           "description": "Accede a una amplia gama de canales Antena 3, ofreciendo una variedad de contenido que incluye noticias, entretenimiento, deportes y programación cultural. Mantente informado y entretenido con transmisiones locales y nacionales.",
           "notice": "#1 en Transmisión Local"
@@ -265,6 +265,64 @@
           "title": "Formula 1",
           "description": "Experimenta la emoción de las carreras de Formula 1 con cobertura exclusiva de toda la acción a alta velocidad. Desde las vueltas de práctica hasta la carrera final, te acercamos a la pista con comentarios de expertos y análisis en profundidad.",
           "notice": "#1 en Motorsport"
+        }
+      },
+      "slides": {
+        "sports": {
+          "la-liga": {
+            "title": "M+ LA LIGA TV 4K",
+            "description": "Sumérgete en el emocionante mundo del fútbol español con M+ LaLiga, tu destino definitivo para todo lo relacionado con LaLiga. Este canal dedicado te trae cada partido, cada gol y cada momento de la liga de fútbol más prestigiosa de España.",
+            "notice": "#1 en España"
+          },
+          "formula-1": {
+            "title": "Formula 1",
+            "description": "Experimenta la emoción de las carreras de Formula 1 con cobertura exclusiva de toda la acción a alta velocidad. Desde las vueltas de práctica hasta la carrera final, te acercamos a la pista con comentarios de expertos y análisis en profundidad.",
+            "notice": "#1 en Motorsport"
+          },
+          "premier-league": {
+            "title": "Premier League",
+            "description": "Sigue cada partido de la Premier League con la máxima calidad: título, descenso y clásicos de la liga inglesa.",
+            "notice": "#1 en el Reino Unido"
+          },
+          "uefa": {
+            "title": "UEFA Champions League",
+            "description": "Los mejores clubes de Europa en la UEFA Champions League: noches de eliminatorias, fase de grupos y camino a la final.",
+            "notice": "#1 en Europa"
+          }
+        },
+        "cinema": {
+          "michael": {
+            "title": "Michael",
+            "description": "MICHAEL es el retrato cinematográfico de la vida y el legado de uno de los artistas más influyentes del mundo. Dirigida por Antoine Fuqua, la película sigue el camino de Michael Jackson desde los Jackson 5 hasta la superstardom global.",
+            "notice": "#1 en Biografías"
+          }
+        },
+        "channels": {
+          "antena-3": {
+            "title": "ANTENA 3",
+            "description": "Accede a una amplia gama de canales Antena 3: noticias, entretenimiento, deportes y programación cultural en emisión local y nacional.",
+            "notice": "#1 en Transmisión Local"
+          },
+          "bbc-one": {
+            "title": "BBC One",
+            "description": "Noticias, deporte en directo, drama, documentales y entretenimiento: lo mejor de la televisión británica en abierto.",
+            "notice": "#1 en el Reino Unido"
+          },
+          "itv": {
+            "title": "ITV",
+            "description": "Grandes series, fútbol en directo, reality y prime time: todo el universo ITV en tu pantalla.",
+            "notice": "#1 en el Reino Unido"
+          },
+          "channel-4": {
+            "title": "Channel 4",
+            "description": "Originales, cine, comedia y noticias de Channel 4: televisión en abierto con personalidad propia.",
+            "notice": "#1 en el Reino Unido"
+          },
+          "rtve": {
+            "title": "RTVE",
+            "description": "La radiotelevisión pública española: noticias, deporte, cine y cultura en directo y bajo demanda.",
+            "notice": "#1 en España"
+          }
         }
       }
     },
@@ -760,6 +818,17 @@
       "submit": "Enviar Reporte",
       "success": "Hemos recibido tu reporte de abuso. Te responderemos lo antes posible.",
       "error": "Ocurrió un error inesperado"
+    }
+  },
+
+  "layout": {
+    "pages": {
+      "tv-channels": "Canales",
+      "checkout": "Precios",
+      "members-area": "Mi Cuenta",
+      "terms-and-conditions": "Términos | Términos de Servicio",
+      "abuse-report": "Reportar Abuso",
+      "authenticity-check": "Verificar Suscripción"
     }
   }
 }

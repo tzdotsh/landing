@@ -30,7 +30,14 @@ watch(
   },
 );
 
-const showLogo = computed(() => Boolean(props.logo) && !failed.value);
+/** Home marquee uses bundled logos under /img/channel-logos/ only. */
+const resolvedLogo = computed(() => {
+  const logo = props.logo?.trim();
+  if (!logo?.startsWith("/img/channel-logos/")) return null;
+  return logo;
+});
+
+const showLogo = computed(() => Boolean(resolvedLogo.value) && !failed.value);
 const monogram = computed(() => getChannelMonogram(props.name));
 const altText = computed(() => props.alt || props.name);
 
@@ -50,7 +57,7 @@ function handleError() {
   >
     <img
       v-if="showLogo"
-      :src="logo!"
+      :src="resolvedLogo!"
       :alt="altText"
       loading="lazy"
       decoding="async"

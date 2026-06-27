@@ -1,4 +1,9 @@
 <script lang="ts" setup>
+import {
+  TRUSTPILOT_AGGREGATE_RATING,
+  TRUSTPILOT_REVIEW_COUNT,
+} from "~/data/trustpilotReviews";
+
 const route = useRoute();
 const url = useRequestURL();
 const { t, locale, locales, defaultLocale, baseUrl } = useI18n();
@@ -76,6 +81,13 @@ useSchemaOrg([
     logo: "/logo.png",
     url: baseUrl || "http://localhost:3000",
     email: "hello@maxcotv.com",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: String(TRUSTPILOT_AGGREGATE_RATING),
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: String(TRUSTPILOT_REVIEW_COUNT),
+    },
   },
 ]);
 </script>

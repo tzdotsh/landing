@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useChannelsDefaultCategory } from "~/composables/useChannelsDefaultCategory";
 import { useChannelsFilters } from "~/composables/useChannelsFilters";
 import {
   useChannelsCategoriesQuery,
@@ -8,6 +9,7 @@ import {
 const { t } = useI18n();
 const { reset } = useChannelsFilters();
 
+useChannelsDefaultCategory();
 useChannelsSearchQuery();
 useChannelsCategoriesQuery();
 

@@ -1,6 +1,7 @@
 import tailwindcss from "@tailwindcss/vite";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import { CRITICAL_HEAD } from "./front/constants/criticalTheme";
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
 
@@ -42,8 +43,10 @@ const contentSqliteConnector = resolveContentSqliteConnector();
 
 export default defineNuxtConfig({
   app: {
-    pageTransition: { name: "page", mode: "out-in" },
-    layoutTransition: { name: "layout", mode: "out-in" },
+    // out-in transitions delay first paint and inflate CLS on marketing pages
+    pageTransition: false,
+    layoutTransition: false,
+    head: CRITICAL_HEAD,
   },
 
   compatibilityDate: "latest",
@@ -82,17 +85,18 @@ export default defineNuxtConfig({
       {
         name: "Poppins",
         provider: "google",
-        weights: [400, 500, 600, 700, 800],
-        preload: true,
+        weights: [400, 500, 600, 700],
+        subsets: ["latin"],
       },
       {
         name: "Hanken Grotesk",
         provider: "google",
-        weights: [400, 500, 600, 700, 800],
+        weights: [400, 500, 600, 700],
+        subsets: ["latin"],
       },
     ],
     defaults: {
-      weights: [400, 500, 600, 700, 800],
+      weights: [400, 500, 600, 700],
       display: "swap",
       preload: false,
     },
@@ -106,7 +110,6 @@ export default defineNuxtConfig({
 
   vitalizer: {
     disablePrefetchLinks: true,
-    disableStylesheets: "entry",
   },
 
   devtools: {

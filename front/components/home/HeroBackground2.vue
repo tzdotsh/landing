@@ -14,7 +14,7 @@ function posterId(columnIndex: number, itemIndex: number) {
 
 <template>
   <div
-    class="hero-wall pointer-events-none absolute inset-0 z-0 overflow-hidden bg-transparent"
+    class="hero-wall pointer-events-none absolute inset-0 z-0 overflow-hidden bg-bg-deep/40"
     aria-hidden="true"
   >
     <div

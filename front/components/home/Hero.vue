@@ -60,10 +60,6 @@ function handleSubmit() {
 function handleTrialClick() {
   trackUmamiEvent("start-trial");
 }
-
-const heroEntranceClass = computed(() =>
-  motionEnabled.value ? "hero-entrance" : "",
-);
 </script>
 
 <template>
@@ -82,13 +78,7 @@ const heroEntranceClass = computed(() =>
 
     <div class="container hero-shell relative z-10 flex">
       <div class="hero-content w-full max-w-[540px] text-left">
-        <div
-          :class="[
-            'mb-4 flex items-center gap-x-2.5 max-[820px]:mb-3',
-            heroEntranceClass,
-          ]"
-          style="--hero-entrance-delay: 0ms"
-        >
+        <div class="mb-4 flex items-center gap-x-2.5 max-[820px]:mb-3">
           <span class="relative flex h-2 w-2 shrink-0">
             <span
               v-if="eyebrowMotionEnabled"
@@ -108,29 +98,20 @@ const heroEntranceClass = computed(() =>
         </div>
 
         <h1
-          :class="[
-            'font-heading text-ink hero-title mb-5 text-[clamp(2.5rem,5.6vw,4.25rem)] leading-[0.95] font-extrabold tracking-[-0.02em] uppercase max-[820px]:mb-4 max-[820px]:text-[clamp(2.125rem,10vw,2.75rem)] max-[820px]:leading-[1]',
-            heroEntranceClass,
-          ]"
-          style="--hero-entrance-delay: 80ms"
+          class="font-heading text-ink hero-title mb-5 text-[clamp(2.5rem,5.6vw,4.25rem)] leading-[0.95] font-extrabold tracking-[-0.02em] uppercase max-[820px]:mb-4 max-[820px]:text-[clamp(2.125rem,10vw,2.75rem)] max-[820px]:leading-[1]"
         >
           <span class="block">{{ titleLine1 }}</span>
           <span class="block">{{ titleLine2 }}</span>
         </h1>
 
         <p
-          :class="[
-            'text-muted hero-subtitle mb-8 max-w-[440px] text-[17px]/[1.55] font-medium text-pretty sm:text-[18px]/[1.55] max-[820px]:mb-6 max-[820px]:max-w-none',
-            heroEntranceClass,
-          ]"
-          style="--hero-entrance-delay: 160ms"
+          class="text-muted hero-subtitle mb-8 max-w-[440px] text-[17px]/[1.55] font-medium text-pretty sm:text-[18px]/[1.55] max-[820px]:mb-6 max-[820px]:max-w-none"
         >
           {{ t("home.hero.subtitle") }}
         </p>
 
         <form
-          :class="['flex w-full flex-col', heroEntranceClass]"
-          style="--hero-entrance-delay: 240ms"
+          class="flex w-full flex-col"
           @submit.prevent="handleSubmit"
         >
           <div
@@ -244,26 +225,6 @@ const heroEntranceClass = computed(() =>
 </template>
 
 <style scoped>
-.hero-entrance {
-  animation: hero-rise 0.5s var(--ease-brand) var(--hero-entrance-delay, 0ms) both;
-}
-
-@keyframes hero-rise {
-  from {
-    transform: translateY(16px);
-  }
-
-  to {
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-entrance {
-    animation: none;
-  }
-}
-
 /* Navbar floats fixed at top-7.5 + h-14.75 (tv-layout Navbar.vue) — all breakpoints */
 .hero-section {
   --hero-nav-offset: 1.875rem;

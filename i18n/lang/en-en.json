@@ -981,7 +981,7 @@
           },
           {
             "title": "Can I use my own custom DNS?",
-            "content": "For security reasons, custom DNS is not currently available. However, we understand the importance of this feature for branding purposes, and we're actively working on adding custom DNS capabilities in a future update. Stay tuned for announcements about this feature."
+            "content": "Yes. We support custom DNS so you can white-label your reseller service under your own domain—your customers see your brand, not ours. It's ideal for professional branding and building trust with your audience. Contact support or check the reseller dashboard for setup details."
           },
           {
             "title": "How do free trial accounts work for resellers?",

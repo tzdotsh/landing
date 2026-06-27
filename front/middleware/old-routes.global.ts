@@ -57,6 +57,7 @@ export default defineNuxtRouteMiddleware((to) => {
           path: targetPath,
           query,
         }),
+        { redirectCode: 301 },
       );
     }
   }

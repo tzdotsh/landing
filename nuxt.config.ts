@@ -204,6 +204,14 @@ export default defineNuxtConfig({
       validDomain: process.env.VALID_DOMAIN,
       enableAnimations: process.env.ENABLE_ANIMATIONS !== "false",
       siteUrl: process.env.SITE_URL || "https://maxco.one",
+      umamiUrl:
+        process.env.NUXT_PUBLIC_UMAMI_URL || "https://analytics.maxco.one",
+      umamiWebsiteId:
+        process.env.NUXT_PUBLIC_UMAMI_ID ||
+        "57811e23-d90d-441e-b2d6-a66ba498e4fd",
+      umamiEnabled:
+        process.env.NODE_ENV === "production" &&
+        process.env.NUXT_PUBLIC_UMAMI_DISABLED !== "true",
     },
   },
 

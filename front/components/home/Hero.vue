@@ -53,7 +53,12 @@ function handleSubmit() {
   emailInvalid.value = !validateEmail(email.value);
   if (emailInvalid.value) return;
 
+  trackUmamiEvent("start-watching");
   window.location.assign(externalAppPath("/checkout", true));
+}
+
+function handleTrialClick() {
+  trackUmamiEvent("start-trial");
 }
 
 const heroEntranceClass = computed(() =>
@@ -207,6 +212,7 @@ const heroEntranceClass = computed(() =>
             <a
               :href="trialHref"
               class="brand-gradient text-on-accent flex h-12 w-full items-center justify-center rounded-[10px] px-6 text-[16px] font-semibold transition duration-300 ease-[var(--ease-brand)]"
+              @click="handleTrialClick"
             >
               {{ t("home.hero.trialCta") }}
             </a>

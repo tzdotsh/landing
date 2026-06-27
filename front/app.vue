@@ -33,6 +33,8 @@ const pathWithoutLocale = computed(() => {
   return route.path;
 });
 
+useUmami();
+
 useHead(() => ({
   link: [
     { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },

@@ -16,6 +16,7 @@
     "update:tmdb": "bun scripts/update-tmdb-images.ts",
     "bootstrap:channels-hero": "bun scripts/bootstrap-channels-hero-images.ts",
     "bootstrap:blog-images": "bun scripts/bootstrap-blog-images.ts",
+    "optimize:sports-images": "bun scripts/optimize-sports-images.ts",
     "import:kb": "python3 scripts/import-kb-articles.py",
     "sync:logos": "python3 scripts/sync-channel-logos.py",
     "lint": "eslint .",

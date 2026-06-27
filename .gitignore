@@ -10,3 +10,4 @@ dump.rdb
 .playwright-browsers/
 .DS_Store
 **/.DS_Store
+.data/

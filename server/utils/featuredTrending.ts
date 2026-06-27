@@ -1,4 +1,8 @@
-import { TRENDING_FALLBACK_ITEMS } from "../data/trendingFallback";
+import {
+  TRENDING_FALLBACK_MOVIES,
+  TRENDING_FALLBACK_SERIES,
+} from "../data/trendingFallback";
+import { tmdbFetch, tmdbPosterUrl } from "./tmdb";
 
 export type FeaturedTrendingItem = {
   title: string;
@@ -6,28 +10,29 @@ export type FeaturedTrendingItem = {
   type: "movie" | "tv";
 };
 
+export type FeaturedTrendingPayload = {
+  movies: FeaturedTrendingItem[];
+  series: FeaturedTrendingItem[];
+  source: "cache" | "tmdb" | "fallback";
+};
+
 type TmdbTrendingResult = {
   id: number;
   title?: string;
   name?: string;
   poster_path: string | null;
-  vote_count?: number;
-  popularity?: number;
 };
 
 type TmdbTrendingResponse = {
   results: TmdbTrendingResult[];
 };
 
-const TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
-const CACHE_KEY = "featured:trending";
-const CACHE_TTL_SECONDS = 60 * 60 * 12; // 12 hours
-const MIN_VOTE_COUNT = 200;
-const MIN_POPULARITY = 15;
-const RESULT_LIMIT = 18;
+const CACHE_KEY = "featured:trending:v3";
+const CACHE_TTL_SECONDS = 60 * 60 * 12;
+const PER_TYPE_LIMIT = 12;
 
-function toPosterUrl(posterPath: string) {
-  return `${TMDB_IMAGE_BASE}${posterPath}`;
+function dedupeByPoster(items: FeaturedTrendingItem[]) {
+  return [...new Map(items.map((item) => [item.posterUrl, item])).values()];
 }
 
 function mapTrendingItem(
@@ -35,13 +40,6 @@ function mapTrendingItem(
   type: FeaturedTrendingItem["type"],
 ): FeaturedTrendingItem | null {
   if (!item.poster_path) {
-    return null;
-  }
-
-  const voteCount = item.vote_count ?? 0;
-  const popularity = item.popularity ?? 0;
-
-  if (voteCount < MIN_VOTE_COUNT && popularity < MIN_POPULARITY) {
     return null;
   }
 
@@ -53,37 +51,44 @@ function mapTrendingItem(
 
   return {
     title,
-    posterUrl: toPosterUrl(item.poster_path),
+    posterUrl: tmdbPosterUrl(item.poster_path),
     type,
   };
+}
+
+function mapTrendingResults(
+  results: TmdbTrendingResult[],
+  type: FeaturedTrendingItem["type"],
+) {
+  return dedupeByPoster(
+    results
+      .map((item) => mapTrendingItem(item, type))
+      .filter((item): item is FeaturedTrendingItem => item !== null)
+      .slice(0, PER_TYPE_LIMIT),
+  );
 }
 
 async function fetchTrendingPage(
   apiKey: string,
   path: string,
 ): Promise<TmdbTrendingResult[]> {
-  const response = await fetch(`https://api.themoviedb.org/3${path}`, {
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      Accept: "application/json",
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(
-      `TMDB request failed (${path}): ${response.status} ${response.statusText}`,
-    );
-  }
-
-  const data = (await response.json()) as TmdbTrendingResponse;
+  const data = await tmdbFetch<TmdbTrendingResponse>(apiKey, path);
   return data.results ?? [];
 }
 
 export async function fetchFeaturedTrending(
   apiKey: string | undefined,
-): Promise<{ items: FeaturedTrendingItem[]; usedFallback: boolean }> {
+): Promise<{
+  movies: FeaturedTrendingItem[];
+  series: FeaturedTrendingItem[];
+  usedFallback: boolean;
+}> {
   if (!apiKey) {
-    return { items: [...TRENDING_FALLBACK_ITEMS], usedFallback: true };
+    return {
+      movies: [...TRENDING_FALLBACK_MOVIES],
+      series: [...TRENDING_FALLBACK_SERIES],
+      usedFallback: true,
+    };
   }
 
   try {
@@ -92,47 +97,64 @@ export async function fetchFeaturedTrending(
       fetchTrendingPage(apiKey, "/trending/tv/week?language=en-US"),
     ]);
 
-    const merged = [
-      ...movies.map((item) => mapTrendingItem(item, "movie")),
-      ...series.map((item) => mapTrendingItem(item, "tv")),
-    ].filter((item): item is FeaturedTrendingItem => item !== null);
+    const movieItems = mapTrendingResults(movies, "movie");
+    const seriesItems = mapTrendingResults(series, "tv");
 
-    const deduped = [
-      ...new Map(merged.map((item) => [item.posterUrl, item])).values(),
-    ].slice(0, RESULT_LIMIT);
-
-    if (!deduped.length) {
-      return { items: [...TRENDING_FALLBACK_ITEMS], usedFallback: true };
+    if (!movieItems.length && !seriesItems.length) {
+      return {
+        movies: [...TRENDING_FALLBACK_MOVIES],
+        series: [...TRENDING_FALLBACK_SERIES],
+        usedFallback: true,
+      };
     }
 
-    return { items: deduped, usedFallback: false };
+    return {
+      movies: movieItems.length
+        ? movieItems
+        : [...TRENDING_FALLBACK_MOVIES],
+      series: seriesItems.length
+        ? seriesItems
+        : [...TRENDING_FALLBACK_SERIES],
+      usedFallback: false,
+    };
   } catch {
-    return { items: [...TRENDING_FALLBACK_ITEMS], usedFallback: true };
+    return {
+      movies: [...TRENDING_FALLBACK_MOVIES],
+      series: [...TRENDING_FALLBACK_SERIES],
+      usedFallback: true,
+    };
   }
 }
 
 export async function getCachedFeaturedTrending(
   apiKey: string | undefined,
-): Promise<{ items: FeaturedTrendingItem[]; source: "cache" | "tmdb" | "fallback" }> {
+): Promise<FeaturedTrendingPayload> {
   const storage = useStorage("cache");
 
   try {
-    const cached = await storage.getItem<FeaturedTrendingItem[]>(CACHE_KEY);
+    const cached = await storage.getItem<{
+      movies: FeaturedTrendingItem[];
+      series: FeaturedTrendingItem[];
+    }>(CACHE_KEY);
 
-    if (cached?.length) {
-      return { items: cached, source: "cache" };
+    if (cached?.movies?.length || cached?.series?.length) {
+      return { ...cached, source: "cache" };
     }
   } catch {
     // Redis unavailable — fetch directly.
   }
 
-  const { items, usedFallback } = await fetchFeaturedTrending(apiKey);
+  const { movies, series, usedFallback } = await fetchFeaturedTrending(apiKey);
 
   try {
-    await storage.setItem(CACHE_KEY, items, { ttl: CACHE_TTL_SECONDS });
+    await storage.setItem(CACHE_KEY, { movies, series }, { ttl: CACHE_TTL_SECONDS });
   } catch {
     // Ignore cache write failures.
   }
 
-  return { items, source: usedFallback ? "fallback" : "tmdb" };
+  return {
+    movies,
+    series,
+    source: usedFallback ? "fallback" : "tmdb",
+  };
 }

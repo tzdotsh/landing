@@ -1,13 +1,9 @@
 import { getCachedFeaturedTrending } from "../../utils/featuredTrending";
+import { resolveTmdbApiKey } from "../../utils/tmdb";
 
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig(event);
-  const apiKey =
-    config.tmdbApiKey ||
-    process.env.TMDB_API_KEY ||
-    process.env.NUXT_TMDB_API_KEY;
-
-  const { items, source } = await getCachedFeaturedTrending(apiKey);
+  const apiKey = resolveTmdbApiKey(event);
+  const { movies, series, source } = await getCachedFeaturedTrending(apiKey);
 
   setResponseHeader(
     event,
@@ -16,7 +12,10 @@ export default defineEventHandler(async (event) => {
   );
 
   return {
-    items,
+    movies,
+    series,
+    /** Combined list kept for backwards compatibility */
+    items: [...movies, ...series],
     source,
   };
 });

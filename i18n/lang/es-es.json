@@ -43,6 +43,14 @@
       "blog": {
         "title": "Últimos Artículos del Blog",
         "description": "Mantente actualizado con nuestros últimos artículos del blog y noticias."
+      },
+      "sports": {
+        "title": "IPTV Deportes — Fútbol y LaLiga en Directo | Maxco",
+        "description": "Mira fútbol, F1, UFC, boxeo y más en directo con Maxco. Premier League, Champions League y las grandes ligas en 4K — una suscripción, todas tus pantallas."
+      },
+      "vod": {
+        "title": "IPTV VOD — Películas y Series Bajo Demanda | Maxco",
+        "description": "Miles de películas y series bajo demanda con Maxco. Box sets, estrenos, infantil y contenido internacional en 4K — una suscripción, mira cuando quieras."
       }
     }
   },
@@ -124,7 +132,9 @@
       }
     },
     "catalog": {
-      "title": "Los canales que te encantan, todos en un solo lugar"
+      "title": "Los canales que te encantan, todos en un solo lugar",
+      "link_sports": "Explora Deportes en directo",
+      "link_vod": "Ver Películas y Series"
     },
     "collection": {
       "title": "Selección 4K Ultra HD",
@@ -229,6 +239,8 @@
   },
   "channels": {
     "hero": {
+      "link_sports": "Ver la guía completa de Deportes",
+      "link_vod": "Explorar Películas y Series bajo demanda",
       "categories": {
         "sports": {
           "name": "Deportes",
@@ -363,6 +375,15 @@
     "hero": {
       "title": "Blog",
       "description": "Mantente actualizado con las últimas noticias, consejos e información del mundo del IPTV."
+    },
+    "articles": {
+      "latest": "Última publicación",
+      "show_more": "Ver más"
+    },
+    "post": {
+      "last_updated": "Última actualización: {date}",
+      "reading_time": "{minutes} min de lectura",
+      "related_title": "Artículos relacionados"
     }
   },
   "auth_check": {
@@ -393,6 +414,223 @@
       "recommended_description": "Para asegurar la mejor experiencia y protegerte, te recomendamos obtener acceso oficial.",
       "get_official_access": "Obtener Acceso Oficial",
       "contact_support": "Contactar Soporte"
+    }
+  },
+  "sports": {
+    "breadcrumb": {
+      "home": "Inicio",
+      "current": "Deportes"
+    },
+    "hero": {
+      "eyebrow": "DEPORTE EN DIRECTO · EN 4K",
+      "title": "Todo tu deporte en directo. Una suscripción.",
+      "subline": "Fútbol, Fórmula 1, UFC, boxeo, críquet y más — en directo y en 4K nítido en todas tus pantallas. Sin acumular suscripciones. Sin apagones.",
+      "email_placeholder": "Introduce tu email",
+      "email_error": "Introduce una dirección de email válida.",
+      "cta_primary": "Empezar a ver",
+      "cta_secondary": "Prueba gratis"
+    },
+    "categories": {
+      "heading": "Todos los deportes, en un solo lugar",
+      "items": {
+        "football": "Fútbol",
+        "formula_1": "Fórmula 1 y motor",
+        "boxing_ufc": "Boxeo y UFC",
+        "cricket": "Críquet",
+        "rugby": "Rugby",
+        "basketball": "Baloncesto",
+        "tennis": "Tenis",
+        "golf": "Golf",
+        "darts": "Darts",
+        "combat_ppv": "Deportes de combate / PPV"
+      }
+    },
+    "competitions": {
+      "heading": "Sigue las competiciones que importan",
+      "subtext": "De la Premier League a la Champions League y las grandes ligas europeas — mantente al día con las principales competiciones en un solo lugar.",
+      "items": [
+        "Premier League",
+        "Champions League",
+        "Europa League",
+        "EFL",
+        "FA Cup",
+        "LaLiga",
+        "Serie A",
+        "Bundesliga",
+        "Ligue 1"
+      ]
+    },
+    "value": {
+      "heading": "Deja de pagar el deporte en cinco facturas distintas",
+      "body": "Seguir el deporte a la antigua significa acumular suscripciones: una para la liga, otra para la copa, otra para la gran pelea. Maxco reúne la acción en una sola suscripción, por una fracción del coste de varios paquetes.",
+      "old_way": {
+        "label": "La forma antigua",
+        "description": "Varias suscripciones, varias facturas — liga por un lado, copa por otro, PPV encima."
+      },
+      "maxco_way": {
+        "label": "Maxco",
+        "description": "Una suscripción, un precio — sigue la acción en deportes y competiciones sin acumular facturas."
+      }
+    },
+    "reliability": {
+      "heading": "Hecho para aguantar cuando más importa",
+      "cards": {
+        "uptime": {
+          "title": "99,9 % de disponibilidad",
+          "description": "Streams estables en los horarios punta — cuando todo el mundo sintoniza, tu señal sigue en directo."
+        },
+        "anti_buffer": {
+          "title": "Servidores anti-buffer",
+          "description": "Sin congelaciones en el momento clave — pensado para el deporte en directo, segundo a segundo."
+        },
+        "quality": {
+          "title": "4K y FHD reales",
+          "description": "Sin upscale forzado — cada detalle en Full HD y 4K nítido cuando esté disponible."
+        }
+      }
+    },
+    "devices": {
+      "line": "Mira en Firestick, Smart TV, Android, iOS, Apple TV y más — en todas tus pantallas.",
+      "items": {
+        "firestick": "Firestick",
+        "smart_tv": "Smart TV",
+        "android": "Android",
+        "ios": "iOS",
+        "apple_tv": "Apple TV",
+        "android_box": "Android TV"
+      }
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "items": [
+        {
+          "title": "¿Puedo ver fútbol en directo con Maxco?",
+          "content": "Sí. Maxco te permite seguir las principales competiciones de fútbol — incluidas Premier League, Champions League y las mejores ligas europeas — en directo en HD y 4K."
+        },
+        {
+          "title": "¿Aguantará el stream en partidos importantes?",
+          "content": "Nuestros servidores anti-buffer y el 99,9 % de disponibilidad están pensados para la demanda punta, para que veas los saques iniciales y grandes eventos sin congelaciones."
+        },
+        {
+          "title": "¿Qué velocidad de internet necesito para deporte en 4K?",
+          "content": "Recomendamos al menos 25 Mbps para 4K fluido y 10 Mbps para HD. Una conexión por cable ofrece la imagen más estable en deporte en directo."
+        },
+        {
+          "title": "¿En qué dispositivos puedo ver deporte?",
+          "content": "Firestick, Smart TV (Samsung, LG), Android, iOS, Apple TV y Android TV — en todas tus pantallas."
+        },
+        {
+          "title": "¿Hay prueba gratis?",
+          "content": "Sí — empieza una prueba gratis y prueba los streams durante un evento en directo antes de comprometerte."
+        }
+      ]
+    },
+    "final_cta": {
+      "title": "Deja de conformarte. Empieza a ver.",
+      "email_placeholder": "Introduce tu email",
+      "email_error": "Introduce una dirección de email válida.",
+      "cta_primary": "Empezar a ver",
+      "cta_secondary": "Prueba gratis"
+    }
+  },
+  "vod": {
+    "breadcrumb": {
+      "home": "Inicio",
+      "current": "VOD"
+    },
+    "hero": {
+      "eyebrow": "PELÍCULAS Y SERIES · BAJO DEMANDA",
+      "title": "Miles de películas y series. Bajo demanda.",
+      "subline": "Box sets, blockbusters, estrenos, favoritos infantiles e hits internacionales — todo en una biblioteca, en 4K, listo cuando tú lo estés.",
+      "email_placeholder": "Introduce tu email",
+      "email_error": "Introduce una dirección de email válida.",
+      "cta_primary": "Empezar a ver",
+      "cta_secondary": "Prueba gratis"
+    },
+    "library": {
+      "heading": "Una biblioteca siempre al día",
+      "movies_row": "Películas en tendencia",
+      "series_row": "Series populares",
+      "tmdb_attribution": "Este producto utiliza la API de TMDB pero no está avalado ni certificado por TMDB."
+    },
+    "genres": {
+      "heading": "Algo para todos",
+      "items": {
+        "movies": { "label": "Películas" },
+        "tv_series": { "label": "Series de TV" },
+        "box_sets": { "label": "Box sets" },
+        "kids": { "label": "Infantil y familia" },
+        "documentaries": { "label": "Documentales" },
+        "action_thrillers": { "label": "Acción y thrillers" },
+        "comedy": { "label": "Comedia" },
+        "international": {
+          "label": "Internacional",
+          "subtitle": "Bollywood, dramas turcos, anime"
+        }
+      }
+    },
+    "value": {
+      "heading": "¿Por qué pagar cinco apps de streaming?",
+      "body": "La mayoría de hogares acumula varias suscripciones de streaming solo para ver un puñado de series — y las facturas se disparan. Maxco reúne una enorme biblioteca bajo demanda de películas y series en un solo lugar, por un solo precio."
+    },
+    "features": {
+      "cards": {
+        "anytime": {
+          "title": "Mira cuando quieras",
+          "description": "Pausa, reanuda y maratón a tu ritmo"
+        },
+        "updated": {
+          "title": "Actualizada con frecuencia",
+          "description": "Nuevas películas y series a menudo"
+        },
+        "quality": {
+          "title": "4K y FHD reales",
+          "description": "Cada detalle, sin upscale forzado"
+        }
+      }
+    },
+    "devices": {
+      "line": "Mira en Firestick, Smart TV, Android, iOS, Apple TV y más — en todas tus pantallas.",
+      "items": {
+        "firestick": "Firestick",
+        "smart_tv": "Smart TV",
+        "android": "Android",
+        "ios": "iOS",
+        "apple_tv": "Apple TV",
+        "android_box": "Android TV"
+      }
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes",
+      "items": [
+        {
+          "title": "¿Cuántas películas y series incluye?",
+          "content": "Maxco incluye una gran biblioteca bajo demanda de [CONFIRM library size] películas y series, con títulos nuevos añadidos con regularidad."
+        },
+        {
+          "title": "¿Puedo ver bajo demanda en cualquier momento?",
+          "content": "Sí — la biblioteca VOD completa está disponible bajo demanda, para que empieces, pauses y reanudes cuando quieras."
+        },
+        {
+          "title": "¿Se actualiza el contenido?",
+          "content": "Sí, se añaden películas y series nuevas con regularidad para que siempre haya algo nuevo que ver."
+        },
+        {
+          "title": "¿Tenéis box sets y contenido internacional?",
+          "content": "Sí — box sets completos, contenido infantil, documentales e internacional, incluidos Bollywood, dramas turcos y anime."
+        },
+        {
+          "title": "¿Hay prueba gratis?",
+          "content": "Sí — empieza una prueba gratis y explora la biblioteca antes de suscribirte."
+        }
+      ]
+    },
+    "final_cta": {
+      "title": "Todo lo que merece la pena ver. Una suscripción.",
+      "email_placeholder": "Introduce tu email",
+      "email_error": "Introduce una dirección de email válida.",
+      "cta_primary": "Empezar a ver",
+      "cta_secondary": "Prueba gratis"
     }
   },
   "resellers": {

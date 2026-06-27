@@ -1,115 +1,142 @@
-import { defineQueryOptions, useInfiniteQuery, useQuery } from "@pinia/colada";
+import { useInfiniteQuery, useQuery } from "@pinia/colada";
 import { computed, toValue, type MaybeRefOrGetter } from "vue";
 
-export type ExtendedPost = Post & {
-  content: string;
+import {
+  BLOG_POSTS_PER_PAGE,
+  isPublishedBlogPost,
+  resolveBlogSlug,
+  sortBlogPostsNewestFirst,
+  toContentLocale,
+  withReadingTime,
+  type BlogPost,
+} from "~/utils/blog";
+
+export type BlogPostsPage = {
+  docs: BlogPost[];
+  totalDocs: number;
+  page: number;
+  hasMore: boolean;
 };
 
-type ContentLocale = "en" | "es";
+async function fetchPublishedPosts(locale: string) {
+  const posts = await queryCollection("blog").all();
 
-const BLOG_POSTS_PER_PAGE = 12;
-
-const POST_LIST_SELECT = {
-  id: true,
-  title: true,
-  slug: true,
-  thumbnail: true,
-  description: true,
-  createdAt: true,
-  updatedAt: true,
-} as const;
-
-const POST_SELECT = {
-  ...POST_LIST_SELECT,
-  content: true,
-} as const;
-
-function toContentLocale(locale: string): ContentLocale {
-  return locale.startsWith("es") ? "es" : "en";
+  return sortBlogPostsNewestFirst(
+    posts.filter((post) => isPublishedBlogPost(post, locale)),
+  ).map(withReadingTime);
 }
 
-function useContentLocale() {
+export async function fetchBlogPostsPage(locale: string, page: number) {
+  const published = await fetchPublishedPosts(locale);
+  const start = (page - 1) * BLOG_POSTS_PER_PAGE;
+  const docs = published.slice(start, start + BLOG_POSTS_PER_PAGE);
+
+  return {
+    docs,
+    totalDocs: published.length,
+    page,
+    hasMore: start + BLOG_POSTS_PER_PAGE < published.length,
+  } satisfies BlogPostsPage;
+}
+
+export async function fetchBlogPostBySlug(locale: string, slug: string) {
+  const posts = await queryCollection("blog").all();
+  const match = posts.find(
+    (post) =>
+      resolveBlogSlug(post) === slug && isPublishedBlogPost(post, locale),
+  );
+
+  return match ? withReadingTime(match) : null;
+}
+
+export async function fetchBlogPostAlternates(slug: string) {
+  const posts = await queryCollection("blog").all();
+
+  return posts.filter(
+    (post) => resolveBlogSlug(post) === slug && !post.draft,
+  );
+}
+
+export async function fetchRelatedBlogPosts(
+  post: BlogPost,
+  limit = 3,
+) {
+  const posts = await fetchPublishedPosts(post.locale);
+  const currentSlug = resolveBlogSlug(post);
+
+  const scored = posts
+    .filter((entry) => resolveBlogSlug(entry) !== currentSlug)
+    .map((entry) => {
+      let score = 0;
+
+      if (entry.category && entry.category === post.category) {
+        score += 3;
+      }
+
+      const sharedTags = entry.tags.filter((tag) => post.tags.includes(tag));
+      score += sharedTags.length;
+
+      return { entry, score };
+    })
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+
+      return (
+        new Date(b.entry.datePublished).getTime() -
+        new Date(a.entry.datePublished).getTime()
+      );
+    });
+
+  if (scored.length >= limit) {
+    return scored.slice(0, limit).map(({ entry }) => entry);
+  }
+
+  const fallback = posts
+    .filter(
+      (entry) =>
+        resolveBlogSlug(entry) !== currentSlug &&
+        !scored.some(({ entry: scoredEntry }) => scoredEntry.id === entry.id),
+    )
+    .slice(0, limit - scored.length);
+
+  return [...scored.map(({ entry }) => entry), ...fallback];
+}
+
+export { BLOG_POSTS_PER_PAGE };
+
+export const BLOG_QUERY_KEYS = {
+  root: ["blog"] as const,
+  list: (locale: ReturnType<typeof toContentLocale>) =>
+    [...BLOG_QUERY_KEYS.root, "list", { locale }] as const,
+  post: (params: { locale: ReturnType<typeof toContentLocale>; slug: string }) =>
+    [...BLOG_QUERY_KEYS.root, "post", params] as const,
+};
+
+export function useContentLocale() {
   const locale = useLocale();
 
   return computed(() => toContentLocale(locale.value));
 }
-
-async function fetchBlogPostsPage(locale: ContentLocale, page: number) {
-  const payload = usePayload();
-
-  return payload.find({
-    collection: "posts",
-    limit: BLOG_POSTS_PER_PAGE,
-    page,
-    depth: 1,
-    locale,
-    select: POST_LIST_SELECT,
-    sort: "-createdAt",
-  });
-}
-
-export type BlogPostsPage = Awaited<ReturnType<typeof fetchBlogPostsPage>>;
-
-export const BLOG_QUERY_KEYS = {
-  root: ["blog"] as const,
-  list: (locale: ContentLocale) =>
-    [...BLOG_QUERY_KEYS.root, "list", { locale }] as const,
-  post: (params: { locale: ContentLocale; slug: string }) =>
-    [...BLOG_QUERY_KEYS.root, "post", params] as const,
-};
-
-export const blogPostQuery = defineQueryOptions(
-  ({ locale, slug }: { locale: ContentLocale; slug: string }) => ({
-    key: BLOG_QUERY_KEYS.post({ locale, slug }),
-    query: async () => {
-      const payload = usePayload();
-      const result = await payload.find({
-        collection: "posts",
-        locale,
-        where: {
-          slug: {
-            equals: slug,
-          },
-        },
-        depth: 2,
-        select: POST_SELECT,
-      });
-
-      return (result.docs?.[0] as ExtendedPost | undefined) ?? null;
-    },
-    staleTime: 1000 * 60 * 5,
-  }),
-);
 
 export function useBlogPostsQuery() {
   const locale = useContentLocale();
 
   return useInfiniteQuery({
     key: () => BLOG_QUERY_KEYS.list(locale.value),
-    enabled: import.meta.client,
     initialPageParam: 1,
     query: ({ pageParam }) => fetchBlogPostsPage(locale.value, pageParam),
-    getNextPageParam: (lastPage, allPages, lastPageParam) => {
-      const loadedPosts = allPages.reduce(
-        (count, page) => count + (page.docs?.length ?? 0),
-        0,
-      );
-
-      return loadedPosts < (lastPage.totalDocs ?? 0) ? lastPageParam + 1 : null;
-    },
+    getNextPageParam: (lastPage) =>
+      lastPage.hasMore ? lastPage.page + 1 : null,
     staleTime: 1000 * 60 * 5,
   });
 }
 
-export function useBlogPostQuery(slug: MaybeRefOrGetter<string | undefined>) {
-  return useBlogPostQueryWithOptions(slug);
-}
-
 export function useBlogPostQueryWithOptions(
   slug: MaybeRefOrGetter<string | undefined>,
-  options: {
-    server?: boolean;
-  } = {},
+  options: { server?: boolean } = {},
 ) {
   const locale = useContentLocale();
 
@@ -117,16 +144,16 @@ export function useBlogPostQueryWithOptions(
     const resolvedSlug = toValue(slug) ?? "";
 
     return {
-      ...blogPostQuery({ locale: locale.value, slug: resolvedSlug }),
+      key: BLOG_QUERY_KEYS.post({ locale: locale.value, slug: resolvedSlug }),
+      query: () => fetchBlogPostBySlug(locale.value, resolvedSlug),
       enabled:
         Boolean(resolvedSlug) &&
         (import.meta.client || Boolean(options.server)),
+      staleTime: 1000 * 60 * 5,
     };
   });
 }
 
 export function flattenBlogPosts(pages: BlogPostsPage[] | undefined) {
-  return pages?.flatMap((page) => (page.docs ?? []) as Post[]) ?? [];
+  return pages?.flatMap((page) => page.docs) ?? [];
 }
-
-export { BLOG_POSTS_PER_PAGE };

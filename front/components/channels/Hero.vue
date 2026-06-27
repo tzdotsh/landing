@@ -11,6 +11,10 @@ import { CHANNELS_HERO_SPORTS_SLIDES } from "~/data/channelsHeroSports";
 import type { ChannelsHeroSlide } from "~/data/channelsHeroSports";
 
 const { t } = useI18n();
+const localePath = useLocalePath();
+
+const contextualLinkClass =
+  "text-muted hover:text-ink mt-4 inline-flex min-h-11 w-max items-center gap-x-1.5 text-[15px]/[1.4] font-medium transition-colors duration-300 ease-[var(--ease-brand)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-2 rounded-sm motion-reduce:transition-none";
 
 const target = useTemplateRef<HTMLDivElement>("target");
 const targetIsVisible = useElementVisibility(target);
@@ -177,6 +181,24 @@ onUnmounted(() => {
               >
                 {{ t("common.buttons.watch_now") }}
               </Cta>
+
+              <NuxtLinkLocale
+                v-if="selectedCategory === 'sports'"
+                :to="localePath('/iptv-sports')"
+                :class="contextualLinkClass"
+              >
+                {{ t("channels.hero.link_sports") }}
+                <span aria-hidden="true">→</span>
+              </NuxtLinkLocale>
+
+              <NuxtLinkLocale
+                v-else-if="selectedCategory === 'cinema'"
+                :to="localePath('/iptv-vod')"
+                :class="contextualLinkClass"
+              >
+                {{ t("channels.hero.link_vod") }}
+                <span aria-hidden="true">→</span>
+              </NuxtLinkLocale>
             </motion.div>
           </AnimatePresence>
         </div>

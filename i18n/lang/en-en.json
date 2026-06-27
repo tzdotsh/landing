@@ -43,6 +43,14 @@
       "blog": {
         "title": "Latest Blog Articles",
         "description": "Stay updated with our latest blog articles and news."
+      },
+      "sports": {
+        "title": "IPTV Sports — Live Football, F1, UFC & PPV | Maxco",
+        "description": "Watch live football, F1, UFC, boxing and more on Maxco. Premier League, Champions League and major leagues in 4K — one subscription, every screen."
+      },
+      "vod": {
+        "title": "IPTV VOD — Movies & Series On Demand | Maxco",
+        "description": "Thousands of movies and series on demand with Maxco. Box sets, new releases, kids and international content in 4K — one subscription, watch anytime."
       }
     }
   },
@@ -124,7 +132,9 @@
       }
     },
     "catalog": {
-      "title": "Channels you love, all in one place"
+      "title": "Channels you love, all in one place",
+      "link_sports": "Explore live Sports",
+      "link_vod": "Browse Movies & Series"
     },
     "collection": {
       "title": "4K Ultra HD picks",
@@ -229,6 +239,8 @@
   },
   "channels": {
     "hero": {
+      "link_sports": "See the full Sports lineup",
+      "link_vod": "Browse Movies & Series on demand",
       "categories": {
         "sports": {
           "name": "Sports",
@@ -363,6 +375,15 @@
     "hero": {
       "title": "Blog",
       "description": "Stay updated with the latest news, tips, and insights from the world of IPTV."
+    },
+    "articles": {
+      "latest": "Latest Post",
+      "show_more": "Show More"
+    },
+    "post": {
+      "last_updated": "Last updated: {date}",
+      "reading_time": "{minutes} min read",
+      "related_title": "Related articles"
     }
   },
   "auth_check": {
@@ -393,6 +414,212 @@
       "recommended_description": "To ensure the best experience and protect yourself, we recommend obtaining official access.",
       "get_official_access": "Get Official Access",
       "contact_support": "Contact Support"
+    }
+  },
+  "sports": {
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Sports"
+    },
+    "hero": {
+      "eyebrow": "LIVE SPORT · IN 4K",
+      "title": "All your live sport. One subscription.",
+      "subline": "Football, Formula 1, UFC, boxing, cricket and more — streamed live in crisp 4K on every screen you own. No stacking subscriptions. No blackouts.",
+      "email_placeholder": "Enter your email",
+      "email_error": "Please enter a valid email address.",
+      "cta_primary": "Start watching",
+      "cta_secondary": "Start free trial"
+    },
+    "categories": {
+      "heading": "Every sport, all in one place",
+      "items": {
+        "football": "Football",
+        "formula_1": "Formula 1 & Motorsport",
+        "boxing_ufc": "Boxing & UFC",
+        "cricket": "Cricket",
+        "rugby": "Rugby",
+        "basketball": "Basketball",
+        "tennis": "Tennis",
+        "golf": "Golf",
+        "darts": "Darts",
+        "combat_ppv": "Combat Sports / PPV"
+      }
+    },
+    "competitions": {
+      "heading": "Follow the competitions that matter",
+      "subtext": "From the Premier League to the Champions League and Europe's biggest leagues — keep up with every major competition in one place."
+    },
+    "value": {
+      "heading": "Stop paying for sport across five different bills",
+      "body": "Following sport the old way means stacking subscriptions — one for the league, another for the cup, another for the big fight. Maxco brings the action together in a single subscription, for a fraction of what stacked packages cost.",
+      "old_way": {
+        "label": "The old way",
+        "description": "Multiple subscriptions, multiple bills — league pass here, cup coverage there, PPV on top."
+      },
+      "maxco_way": {
+        "label": "Maxco",
+        "description": "One subscription, one price — follow the action across sports and competitions without stacking bills."
+      }
+    },
+    "reliability": {
+      "heading": "Built to hold up when it matters most",
+      "cards": {
+        "uptime": {
+          "title": "99.9% uptime",
+          "description": "Stable streams through peak kick-off — when everyone tunes in, your feed stays live."
+        },
+        "anti_buffer": {
+          "title": "Anti-buffer servers",
+          "description": "No freezing at the crucial moment — built for live sport when every second counts."
+        },
+        "quality": {
+          "title": "True 4K & FHD",
+          "description": "Never upscaled — see every detail in crisp full HD and 4K where available."
+        }
+      }
+    },
+    "devices": {
+      "line": "Watch on Firestick, Smart TV, Android, iOS, Apple TV and more — every screen you own.",
+      "items": {
+        "firestick": "Firestick",
+        "smart_tv": "Smart TV",
+        "android": "Android",
+        "ios": "iOS",
+        "apple_tv": "Apple TV",
+        "android_box": "Android boxes"
+      }
+    },
+    "faq": {
+      "heading": "Frequently asked questions",
+      "items": [
+        {
+          "title": "Can I watch live football on Maxco?",
+          "content": "Yes. Maxco lets you follow the major football competitions — including the Premier League, Champions League and Europe's top leagues — streamed live in HD and 4K."
+        },
+        {
+          "title": "Will the stream hold up during big matches?",
+          "content": "Our anti-buffer servers and 99.9% uptime are built for peak demand, so you can watch live kick-offs and major events without freezing."
+        },
+        {
+          "title": "What internet speed do I need for 4K sport?",
+          "content": "We recommend at least 25 Mbps for smooth 4K streaming and 10 Mbps for HD. A wired connection gives the most stable picture for live sport."
+        },
+        {
+          "title": "Which devices can I watch sport on?",
+          "content": "Firestick, Smart TVs (Samsung, LG), Android, iOS, Apple TV and Android boxes — on every screen you own."
+        },
+        {
+          "title": "Is there a free trial?",
+          "content": "Yes — start a free trial and test the streams during a live event before you commit."
+        }
+      ]
+    },
+    "final_cta": {
+      "title": "Stop settling. Start watching.",
+      "email_placeholder": "Enter your email",
+      "email_error": "Please enter a valid email address.",
+      "cta_primary": "Start watching",
+      "cta_secondary": "Start free trial"
+    }
+  },
+  "vod": {
+    "breadcrumb": {
+      "home": "Home",
+      "current": "VOD"
+    },
+    "hero": {
+      "eyebrow": "MOVIES & SERIES · ON DEMAND",
+      "title": "Thousands of films and series. On demand.",
+      "subline": "Box sets, blockbusters, new releases, kids' favourites and international hits — all in one library, in 4K, ready whenever you are.",
+      "email_placeholder": "Enter your email",
+      "email_error": "Please enter a valid email address.",
+      "cta_primary": "Start watching",
+      "cta_secondary": "Start free trial"
+    },
+    "library": {
+      "heading": "A library that's always fresh",
+      "movies_row": "Trending Movies",
+      "series_row": "Popular Series",
+      "tmdb_attribution": "This product uses the TMDB API but is not endorsed or certified by TMDB."
+    },
+    "genres": {
+      "heading": "Something for everyone",
+      "items": {
+        "movies": { "label": "Movies" },
+        "tv_series": { "label": "TV Series" },
+        "box_sets": { "label": "Box Sets" },
+        "kids": { "label": "Kids & Family" },
+        "documentaries": { "label": "Documentaries" },
+        "action_thrillers": { "label": "Action & Thrillers" },
+        "comedy": { "label": "Comedy" },
+        "international": {
+          "label": "International",
+          "subtitle": "Bollywood, Turkish dramas, Anime"
+        }
+      }
+    },
+    "value": {
+      "heading": "Why pay for five streaming apps?",
+      "body": "Most households juggle several streaming subscriptions just to watch a handful of shows — and the bills add up fast. Maxco brings a huge on-demand library of movies and series together in one place, for one price."
+    },
+    "features": {
+      "cards": {
+        "anytime": {
+          "title": "Watch anytime",
+          "description": "Pause, resume, binge on your schedule"
+        },
+        "updated": {
+          "title": "Updated regularly",
+          "description": "New films and series added often"
+        },
+        "quality": {
+          "title": "True 4K & FHD",
+          "description": "See every detail, never upscaled"
+        }
+      }
+    },
+    "devices": {
+      "line": "Watch on Firestick, Smart TV, Android, iOS, Apple TV and more — every screen you own.",
+      "items": {
+        "firestick": "Firestick",
+        "smart_tv": "Smart TV",
+        "android": "Android",
+        "ios": "iOS",
+        "apple_tv": "Apple TV",
+        "android_box": "Android boxes"
+      }
+    },
+    "faq": {
+      "heading": "Frequently asked questions",
+      "items": [
+        {
+          "title": "How many movies and series are included?",
+          "content": "Maxco includes a large on-demand library of [CONFIRM library size] films and series, with new titles added regularly."
+        },
+        {
+          "title": "Can I watch on demand anytime?",
+          "content": "Yes — the full VOD library is available on demand, so you can start, pause and resume whenever you like."
+        },
+        {
+          "title": "Is the content updated?",
+          "content": "Yes, new movies and series are added to the library regularly so there's always something new to watch."
+        },
+        {
+          "title": "Do you have box sets and international content?",
+          "content": "Yes — full box sets, kids' content, documentaries and international titles including Bollywood, Turkish dramas and anime."
+        },
+        {
+          "title": "Is there a free trial?",
+          "content": "Yes — start a free trial and explore the library before you subscribe."
+        }
+      ]
+    },
+    "final_cta": {
+      "title": "Everything worth watching. One subscription.",
+      "email_placeholder": "Enter your email",
+      "email_error": "Please enter a valid email address.",
+      "cta_primary": "Start watching",
+      "cta_secondary": "Start free trial"
     }
   },
   "resellers": {

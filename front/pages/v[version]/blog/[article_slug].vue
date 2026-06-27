@@ -1,90 +1,54 @@
 <script lang="ts" setup>
-import { useBlogPostQueryWithOptions } from "~/queries/blog";
+import {
+  fetchBlogPostAlternates,
+  fetchRelatedBlogPosts,
+  fetchBlogPostBySlug,
+} from "~/queries/blog";
+import { toContentLocale } from "~/utils/blog";
 
 const route = useRoute("vversion-blog-article_slug___en-en");
-const { public: config } = useRuntimeConfig();
+const { locale } = useI18n();
+const articleSlug = computed(() => route.params.article_slug?.toString() ?? "");
 
-const baseURL = config.payloadBaseURL;
-const articleSlug = computed(() => route.params.article_slug?.toString());
-const blogPostQuery = useBlogPostQueryWithOptions(articleSlug, {
-  server: true,
-});
+const { data: currentPost, status } = await useAsyncData(
+  () => `blog-post-${locale.value}-${articleSlug.value}`,
+  () =>
+    fetchBlogPostBySlug(
+      toContentLocale(locale.value),
+      articleSlug.value,
+    ),
+  { watch: [articleSlug, locale] },
+);
 
-if (import.meta.server) {
-  await blogPostQuery.refresh();
-
-  if (
-    blogPostQuery.state.value.status === "error" ||
-    !blogPostQuery.state.value.data
-  ) {
-    throw createError({
-      statusCode: 404,
-      statusMessage: "Post Not Found",
-      fatal: true,
-    });
-  }
+if (!currentPost.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Post Not Found",
+    fatal: true,
+  });
 }
 
-const currentPost = computed(() => blogPostQuery.state.value.data ?? null);
-const isLoadingPost = computed(
-  () =>
-    blogPostQuery.state.value.status === "pending" ||
-    blogPostQuery.asyncStatus.value === "loading",
-);
-const shouldShowPostError = computed(
-  () =>
-    !isLoadingPost.value &&
-    (blogPostQuery.state.value.status === "error" ||
-      (blogPostQuery.state.value.status === "success" &&
-        !blogPostQuery.state.value.data)),
+const isLoadingPost = computed(() => status.value === "pending");
+
+const { data: alternates } = await useAsyncData(
+  () => `blog-alternates-${articleSlug.value}`,
+  () => fetchBlogPostAlternates(articleSlug.value),
+  { watch: [articleSlug] },
 );
 
-if (import.meta.client) {
-  watch(
-    shouldShowPostError,
-    (value) => {
-      if (!value) {
-        return;
-      }
+const { data: relatedPosts } = await useAsyncData(
+  () => `blog-related-${currentPost.value?.id ?? articleSlug.value}`,
+  async () => {
+    if (!currentPost.value) {
+      return [];
+    }
 
-      showError(
-        createError({
-          statusCode: 404,
-          statusMessage: "Post Not Found",
-          fatal: true,
-        }),
-      );
-    },
-    { immediate: true },
-  );
-}
-
-const title = computed(() => currentPost.value?.title || "Blog Article");
-const description = computed(
-  () => currentPost.value?.description || "Read our latest blog article",
+    return fetchRelatedBlogPosts(currentPost.value);
+  },
+  { watch: [currentPost] },
 );
-const image = computed(() => baseURL + currentPost.value?.thumbnail?.url || "");
-const publishedAt = computed(() => currentPost.value?.createdAt || "");
-const updatedAt = computed(() => currentPost.value?.updatedAt || "");
-const wordCount = computed(() => {
-  const content = currentPost.value?.content || "";
-  return content.trim().split(/\s+/).length;
-});
 
-useReactiveSeoMeta({
-  title,
-  description,
-  image,
-  type: "article",
-  publishedDate: publishedAt,
-  updatedDate: updatedAt,
-  wordCount,
-});
-
-const { pending: mdPending, data: ast } = await useParseMarkdown(
-  `article-${route.params.article_slug}`,
-  computed(() => currentPost.value?.content),
-);
+useBlogPostSeo(currentPost, alternates);
 </script>
 
 <template>
@@ -94,15 +58,20 @@ const { pending: mdPending, data: ast } = await useParseMarkdown(
       strength="5%"
     />
 
-    <ArticleHero
+    <BlogPostHero
       :post="currentPost"
       :loading="isLoadingPost"
       class="relative pt-46.5 pb-7"
     />
-    <ArticleMarkdown :loading="isLoadingPost" class="relative pt-7 pb-27.75">
-      <CommonMarkdownRender :loading="mdPending">
-        <MDCRenderer v-if="ast" :body="ast.body" :data="ast.data" />
+
+    <BlogPostMeta v-if="currentPost" :post="currentPost" />
+
+    <ArticleMarkdown :loading="isLoadingPost" class="relative pt-7 pb-12">
+      <CommonMarkdownRender :loading="isLoadingPost">
+        <ContentRenderer v-if="currentPost" :value="currentPost" />
       </CommonMarkdownRender>
     </ArticleMarkdown>
+
+    <BlogRelatedPosts v-if="relatedPosts?.length" :posts="relatedPosts" />
   </div>
 </template>

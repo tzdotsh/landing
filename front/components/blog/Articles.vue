@@ -4,8 +4,10 @@ import {
   flattenBlogPosts,
   useBlogPostsQuery,
 } from "~/queries/blog";
+import { resolveBlogSlug } from "~/utils/blog";
 
 const { version } = useProject();
+const { t } = useI18n();
 const blogPostsQuery = useBlogPostsQuery();
 
 const allPosts = computed(() =>
@@ -36,15 +38,15 @@ function loadMorePosts() {
       >
         <NuxtLinkLocale
           v-for="(post, index) in allPosts"
-          :key="post.title"
-          :to="post ? `/v${version}/blog/${post.slug}` : ''"
+          :key="resolveBlogSlug(post)"
+          :to="`/v${version}/blog/${resolveBlogSlug(post)}`"
           class="lg:first:col-span-3"
         >
-          <ArticleCard :latest="!index" :post="post" />
+          <BlogPostCard :latest="!index" :post="post" />
         </NuxtLinkLocale>
 
         <template v-if="isLoading">
-          <ArticleCard v-for="i in BLOG_POSTS_PER_PAGE" :key="i" />
+          <BlogPostCard v-for="i in BLOG_POSTS_PER_PAGE" :key="i" />
         </template>
       </div>
 
@@ -54,7 +56,7 @@ function loadMorePosts() {
         class="mx-auto mt-10 px-15"
         @click="loadMorePosts"
       >
-        Show More
+        {{ t("blog.articles.show_more") }}
       </Button>
     </div>
   </section>

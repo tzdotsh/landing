@@ -29,6 +29,10 @@ export default defineNuxtRouteMiddleware((to) => {
     "^/channels(?:-\\d+)?/?$": "channels",
     "^/home(?:-\\d+)?/?$": "",
     "^/iptv-resellers(?:-\\d+)?/?$": "iptv-resellers",
+    "^/iptv-sports(?:-\\d+)?/?$": "iptv-sports",
+    "^/iptv-vod(?:-\\d+)?/?$": "iptv-vod",
+    "^/sports(?:-\\d+)?/?$": "iptv-sports",
+    "^/vod(?:-\\d+)?/?$": "iptv-vod",
   };
 
   // Check if path without locale matches any old route pattern

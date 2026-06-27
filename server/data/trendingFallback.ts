@@ -1,7 +1,7 @@
 import type { FeaturedTrendingItem } from "../utils/featuredTrending";
 
-/** Local posters under public/channels/cinema-fallback/ — used when TMDB is unavailable. */
-export const TRENDING_FALLBACK_ITEMS: FeaturedTrendingItem[] = [
+/** Local TMDB-sourced posters — used when the API is unavailable. */
+export const TRENDING_FALLBACK_MOVIES: FeaturedTrendingItem[] = [
   {
     title: "Michael",
     posterUrl: "/channels/cinema-fallback/michael.jpg",
@@ -12,6 +12,14 @@ export const TRENDING_FALLBACK_ITEMS: FeaturedTrendingItem[] = [
     posterUrl: "/channels/cinema-fallback/dune-2.jpg",
     type: "movie",
   },
+  {
+    title: "Gladiator II",
+    posterUrl: "/channels/cinema-fallback/gladiator-2.jpg",
+    type: "movie",
+  },
+];
+
+export const TRENDING_FALLBACK_SERIES: FeaturedTrendingItem[] = [
   {
     title: "The Bear",
     posterUrl: "/channels/cinema-fallback/the-bear.jpg",
@@ -27,9 +35,10 @@ export const TRENDING_FALLBACK_ITEMS: FeaturedTrendingItem[] = [
     posterUrl: "/channels/cinema-fallback/fallout.jpg",
     type: "tv",
   },
-  {
-    title: "Gladiator II",
-    posterUrl: "/channels/cinema-fallback/gladiator-2.jpg",
-    type: "movie",
-  },
+];
+
+/** @deprecated Use TRENDING_FALLBACK_MOVIES + TRENDING_FALLBACK_SERIES */
+export const TRENDING_FALLBACK_ITEMS: FeaturedTrendingItem[] = [
+  ...TRENDING_FALLBACK_MOVIES,
+  ...TRENDING_FALLBACK_SERIES,
 ];

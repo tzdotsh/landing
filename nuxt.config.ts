@@ -29,6 +29,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    "@nuxt/content",
     "@nuxt/fonts",
     "nuxt-echarts",
     "@nuxtjs/mdc",
@@ -135,11 +136,22 @@ export default defineNuxtConfig({
     excludeAppSources: true,
   },
 
+  mdc: {
+    components: {
+      map: {
+        stat: "content/Stat",
+        "pull-quote": "content/PullQuote",
+        faq: "content/Faq",
+      },
+    },
+  },
+
   runtimeConfig: {
     tmdbApiKey: process.env.TMDB_API_KEY || process.env.NUXT_TMDB_API_KEY,
     public: {
       validDomain: process.env.VALID_DOMAIN,
       enableAnimations: process.env.ENABLE_ANIMATIONS !== "false",
+      siteUrl: process.env.SITE_URL || "https://maxco.one",
     },
   },
 
@@ -214,9 +226,63 @@ export default defineNuxtConfig({
         "Cache-Control": "public, max-age=3600, s-maxage=3600",
       },
     },
-    // Blog pages - ISR with revalidation
+    "/iptv-sports": {
+      prerender: true,
+      headers: {
+        "Cache-Control": "public, max-age=3600, s-maxage=3600",
+      },
+    },
+    "/v*/iptv-sports": {
+      isr: 3600,
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/es-es/v*/iptv-sports": {
+      isr: 3600,
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/iptv-vod": {
+      prerender: true,
+      headers: {
+        "Cache-Control": "public, max-age=3600, s-maxage=3600",
+      },
+    },
+    "/v*/iptv-vod": {
+      isr: 3600,
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/es-es/v*/iptv-vod": {
+      isr: 3600,
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    // Blog pages - ISR with revalidation (versioned + locale-prefixed paths)
     "/blog/**": {
-      isr: 3600, // Revalidate every hour
+      isr: 3600,
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/v*/blog/**": {
+      isr: 3600,
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/es-es/v*/blog/**": {
+      isr: 3600,
       headers: {
         "Cache-Control":
           "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
@@ -232,6 +298,12 @@ export default defineNuxtConfig({
       headers: {
         "Cache-Control":
           "public, max-age=3600, s-maxage=3600, stale-while-revalidate=43200",
+      },
+    },
+    "/api/vod/genre-posters": {
+      headers: {
+        "Cache-Control":
+          "public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800",
       },
     },
     // API-like routes - no cache

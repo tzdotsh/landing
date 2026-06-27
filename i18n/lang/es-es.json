@@ -2,22 +2,22 @@
   "seo": {
     "site": {
       "name": "Maxco",
-      "title": "Mejor Proveedor de Servicio de Suscripción IPTV",
+      "title": "IPTV Premium — TV en Directo, Deporte y Cine",
       "description": "Accede a una experiencia de más de 15,000 canales de televisión aquí con Maxco, el mejor proveedor de servicio IPTV. Regístrate hoy para obtener tu suscripción al servidor IPTV.",
       "keywords": "iptv, Maxco, Maxco One",
       "ogImage": "/og-image.webp"
     },
     "pages": {
       "home": {
-        "title": "Mejor Proveedor de Servicio de Suscripción IPTV",
+        "title": "IPTV Premium — TV en Directo, Deporte y Cine | Maxco",
         "description": "Accede a una experiencia de más de 15,000 canales de televisión aquí con Maxco, el mejor proveedor de servicio IPTV. Regístrate hoy para obtener tu suscripción al servidor IPTV."
       },
       "channels": {
-        "title": "Lista de Canales IPTV",
+        "title": "Canales IPTV — TV en Directo y VOD | Maxco",
         "description": "Transmite más de 15,000 canales IPTV inteligentes disponibles en diferentes países. Regístrate para tus canales favoritos en Maxco con una garantía de devolución de dinero de 30 días."
       },
       "apps": {
-        "title": "Guías de instalación y centro de ayuda",
+        "title": "IPTV en Firestick y Smart TV | Maxco",
         "description": "Guías paso a paso de Maxco para MAG, Smart TV, Firestick, iOS, Android, Kodi y más."
       },
       "resellers": {
@@ -25,11 +25,11 @@
         "description": "Descubre cómo convertirte en un revendedor de Maxco IPTV: comienza a ganar dinero promocionando uno de los servicios IPTV más vendidos en el mercado."
       },
       "faq": {
-        "title": "Preguntas Frecuentes",
+        "title": "IPTV Preguntas Frecuentes | Maxco",
         "description": "¿Tienes preguntas sobre algo? Tenemos respuestas."
       },
       "support": {
-        "title": "Contáctanos",
+        "title": "Soporte IPTV y Centro de Ayuda | Maxco",
         "description": "Nos encantaría saber de ti. Envíanos un mensaje y responderemos lo antes posible."
       },
       "auth_check": {
@@ -41,7 +41,7 @@
         "description": "Reporta cualquier uso indebido o abuso de nuestros servicios."
       },
       "blog": {
-        "title": "Últimos Artículos del Blog",
+        "title": "Guías IPTV, Trucos y Ayuda | Maxco",
         "description": "Mantente actualizado con nuestros últimos artículos del blog y noticias."
       },
       "sports": {
@@ -49,7 +49,7 @@
         "description": "Mira fútbol, F1, UFC, boxeo y más en directo con Maxco. Premier League, Champions League y las grandes ligas en 4K — una suscripción, todas tus pantallas."
       },
       "vod": {
-        "title": "IPTV VOD — Películas y Series Bajo Demanda | Maxco",
+        "title": "IPTV VOD — Películas y Series | Maxco",
         "description": "Miles de películas y series bajo demanda con Maxco. Box sets, estrenos, infantil y contenido internacional en 4K — una suscripción, mira cuando quieras."
       }
     }

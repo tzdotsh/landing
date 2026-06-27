@@ -11,6 +11,20 @@ const { t, locale, locales, defaultLocale, baseUrl } = useI18n();
 const title = t("seo.site.title");
 const description = t("seo.site.description");
 const image = url.origin + "/poster.png";
+const siteName = t("seo.site.name");
+
+/** Append brand once — page titles in i18n already include "| Maxco" where set. */
+function seoTitleTemplate(titleChunk?: string) {
+  if (!titleChunk) {
+    return `${title} | ${siteName}`;
+  }
+
+  if (titleChunk.includes(`| ${siteName}`)) {
+    return titleChunk;
+  }
+
+  return `${titleChunk} | ${siteName}`;
+}
 
 const pathWithoutLocale = computed(() => {
   if (route.path.includes(`/${locale.value}/`)) {
@@ -53,7 +67,7 @@ useSeoMeta({
   ogLocaleAlternate: locales.value
     .filter((el) => el.code !== locale.value)
     .map((el) => el.language!),
-  titleTemplate: "%s | " + t("seo.site.name"),
+  titleTemplate: seoTitleTemplate,
   title: title,
   ogTitle: title,
   description: description,

@@ -2,38 +2,38 @@
   "seo": {
     "site": {
       "name": "Maxco",
-      "title": "Best IPTV Server Subscription Service Provider",
+      "title": "Premium IPTV — Live TV, Sport & Movies",
       "description": "Access an experience of over 15,000 TV channels here with a leading TV service provider. Sign up today to get your TV server subscription.",
       "keywords": "Maxco, Maxco One",
       "ogImage": "/og-image.webp"
     },
     "pages": {
       "home": {
-        "title": "Best TV Server Subscription Service Provider",
+        "title": "Premium IPTV — Live TV, Sport & Movies | Maxco",
         "description": "Access an experience of over 15,000 TV channels here with a leading TV service provider. Sign up today to get your TV server subscription."
       },
       "channels": {
-        "title": "TV Channels List",
+        "title": "IPTV Channels — Live TV, Sport & Movies | Maxco",
         "description": "Stream 15,000+ smart TV Channels available in different countries. Sign up for your favorite channels at Maxco with a 30 day money back guarantee."
       },
       "apps": {
-        "title": "Setup Guides & Help Center",
+        "title": "IPTV Setup: Firestick, Smart TV & Apps | Maxco",
         "description": "Step-by-step Maxco installation guides for MAG boxes, Smart TVs, Firestick, iOS, Android, Kodi, and more."
       },
       "resellers": {
-        "title": "TV Resellers Program",
+        "title": "IPTV Reseller Programme — Partner Up | Maxco",
         "description": "Find out how to become an TV reseller: Start making money by promoting one of the best-selling TV services on the market."
       },
       "faq": {
-        "title": "Frequently Asked Questions",
+        "title": "IPTV FAQ — Setup, Plans & Support | Maxco",
         "description": "Have questions about anything? We've got answers."
       },
       "support": {
-        "title": "Contact Us",
+        "title": "IPTV Support & Help Centre | Maxco",
         "description": "We'd love to hear from you. Send us a message and we'll respond as soon as possible."
       },
       "auth_check": {
-        "title": "Verify your Maxco Access",
+        "title": "Verify Your Maxco Subscription | Maxco",
         "description": "Verify your access to ensure you have authentic Maxco subscription."
       },
       "report": {
@@ -41,7 +41,7 @@
         "description": "Report any misuse or abuse of our services."
       },
       "blog": {
-        "title": "Latest Blog Articles",
+        "title": "IPTV Guides, Tips & Setup Help | Maxco",
         "description": "Stay updated with our latest blog articles and news."
       },
       "sports": {

@@ -1,44 +1,10 @@
 <script lang="ts" setup>
-import { HOME_MARQUEE_VELOCITY } from "~/constants/homeMarquee";
+import {
+  TMDB_COLLECTION_ROW1_IDS,
+  TMDB_COLLECTION_ROW2_IDS,
+} from "~/data/tmdbPosters";
 
 const { t } = useI18n();
-const reducedMotion = usePreferredReducedMotion();
-
-const staticMotion = computed(() => reducedMotion.value === "reduce");
-
-const MARQUEE_VELOCITY = HOME_MARQUEE_VELOCITY;
-
-const POSTER_IDS = Array.from({ length: 68 }, (_, index) => String(index + 1));
-const row1Posters = POSTER_IDS.slice(0, 34);
-const row2Posters = POSTER_IDS.slice(34);
-
-const marqueeRows = [
-  { posters: row1Posters, velocity: MARQUEE_VELOCITY },
-  { posters: row2Posters, velocity: -MARQUEE_VELOCITY },
-] as const;
-
-const staticRows = [row1Posters, row2Posters] as const;
-
-const failedPosters = ref<Record<string, boolean>>({});
-
-function posterSrc(id: string) {
-  return `/tmdb/high/${id}@2x.webp`;
-}
-
-function posterSrcset(id: string) {
-  return `/tmdb/high/${id}@1x.webp 1x, /tmdb/high/${id}@2x.webp 2x`;
-}
-
-function showPoster(id: string) {
-  return !failedPosters[id];
-}
-
-function handlePosterError(id: string) {
-  failedPosters[id] = true;
-}
-
-const posterCardClass =
-  "border-line bg-panel group relative mx-1.5 w-[150px] shrink-0 overflow-hidden rounded-card border aspect-[2/3] transition-[border-color,transform,box-shadow] duration-300 ease-[var(--ease-brand)] hover:-translate-y-2 hover:scale-[1.04] hover:border-line-2 hover:z-10 hover:shadow-[0_0_0_1px_var(--color-glow),0_12px_40px_rgba(0,0,0,0.35)] md:mx-2";
 </script>
 
 <template>
@@ -69,104 +35,12 @@ const posterCardClass =
         strength="6%"
       />
 
-      <div
-        v-if="staticMotion"
-        class="relative left-1/2 w-screen max-w-full -translate-x-1/2 space-y-4"
-      >
-      <div
-        v-for="(row, rowIndex) in staticRows"
-        :key="`collection-static-row-${rowIndex}`"
-        class="flex gap-3 overflow-x-auto overscroll-x-contain px-4 pb-2 min-h-[225px] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        <div
-          v-for="id in row"
-          :key="`collection-static-${rowIndex}-${id}`"
-          :class="posterCardClass"
-        >
-          <img
-            v-if="showPoster(id)"
-            :src="posterSrc(id)"
-            :srcset="posterSrcset(id)"
-            width="150"
-            height="225"
-            class="h-full w-full object-cover"
-            :alt="t('home.collection.poster_alt', { index: id })"
-            loading="lazy"
-            decoding="async"
-            @error="handlePosterError(id)"
-          />
-
-          <div
-            v-else
-            class="flex h-full w-full flex-col items-center justify-center gap-y-2 bg-[linear-gradient(145deg,var(--color-panel-2),var(--color-bg-deep))] p-4 text-center"
-          >
-            <span
-              class="brand-gradient font-heading flex h-14 w-14 items-center justify-center rounded-full text-[18px] font-bold text-on-accent shadow-[0_0_24px_var(--color-glow)]"
-              aria-hidden="true"
-            >
-              {{ id.padStart(2, "0") }}
-            </span>
-            <span
-              class="text-faint text-[11px]/none font-semibold tracking-[0.12em] uppercase"
-            >
-              {{ t("home.collection.poster_fallback") }}
-            </span>
-          </div>
-        </div>
-      </div>
-      </div>
-
-      <div
-        v-else
-        class="relative left-1/2 w-screen max-w-full -translate-x-1/2 space-y-4 min-h-[466px]"
-      >
-        <div
-          v-for="(row, rowIndex) in marqueeRows"
-          :key="`collection-marquee-row-${rowIndex}`"
-          class="relative min-h-[225px] [mask-image:linear-gradient(90deg,transparent,#000_6%,#000_94%,transparent)]"
-        >
-          <CommonMarquee
-            :base-velocity="row.velocity"
-            pause-on-hover
-            class="relative flex w-max items-stretch"
-          >
-            <div
-              v-for="id in row.posters"
-              :key="`collection-marquee-${rowIndex}-${id}`"
-              :class="posterCardClass"
-            >
-              <img
-                v-if="showPoster(id)"
-                :src="posterSrc(id)"
-                :srcset="posterSrcset(id)"
-                width="150"
-                height="225"
-                class="h-full w-full object-cover"
-                :alt="t('home.collection.poster_alt', { index: id })"
-                loading="lazy"
-                decoding="async"
-                @error="handlePosterError(id)"
-              />
-
-              <div
-                v-else
-                class="flex h-full w-full flex-col items-center justify-center gap-y-2 bg-[linear-gradient(145deg,var(--color-panel-2),var(--color-bg-deep))] p-4 text-center"
-              >
-                <span
-                  class="brand-gradient font-heading flex h-14 w-14 items-center justify-center rounded-full text-[18px] font-bold text-on-accent shadow-[0_0_24px_var(--color-glow)]"
-                  aria-hidden="true"
-                >
-                  {{ id.padStart(2, "0") }}
-                </span>
-                <span
-                  class="text-faint text-[11px]/none font-semibold tracking-[0.12em] uppercase"
-                >
-                  {{ t("home.collection.poster_fallback") }}
-                </span>
-              </div>
-            </div>
-          </CommonMarquee>
-        </div>
+      <div class="relative left-1/2 w-screen max-w-full -translate-x-1/2 space-y-4 min-h-[466px]">
+        <CommonPosterMarquee :poster-ids="TMDB_COLLECTION_ROW1_IDS" />
+        <CommonPosterMarquee
+          :poster-ids="TMDB_COLLECTION_ROW2_IDS"
+          reverse
+        />
       </div>
     </div>
   </HomeBackground>

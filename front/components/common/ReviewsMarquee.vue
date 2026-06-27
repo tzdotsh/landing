@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { HOME_MARQUEE_VELOCITY } from "~/constants/homeMarquee";
+import { MARQUEE_EDGE_MASK } from "~/data/tmdbPosters";
 import { TRUSTPILOT_REVIEWS } from "~/data/trustpilotReviews";
 
 const reducedMotion = usePreferredReducedMotion();
@@ -45,7 +46,10 @@ const staticRows = [row1Reviews, row2Reviews] as const;
       <div
         v-for="(row, rowIndex) in marqueeRows"
         :key="`reviews-marquee-row-${rowIndex}`"
-        class="relative min-h-[9.5rem] overflow-hidden"
+        :class="[
+          'relative min-h-[9.5rem] overflow-hidden',
+          MARQUEE_EDGE_MASK,
+        ]"
       >
         <CommonMarquee
           :base-velocity="row.velocity"

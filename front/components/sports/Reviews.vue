@@ -4,7 +4,7 @@ const { t } = useI18n();
 
 <template>
   <section id="reviews" class="relative py-14 md:py-20">
-    <div class="container flex flex-col gap-y-10 lg:gap-y-12">
+    <div class="container mb-5 sm:mb-6">
       <div
         class="mx-auto flex w-full max-w-[640px] flex-col items-center gap-3 px-2 text-center sm:gap-3.5"
       >
@@ -37,8 +37,8 @@ const { t } = useI18n();
           {{ t("home.reviews.rating.count") }}
         </p>
       </div>
-
-      <CommonReviewsMarquee />
     </div>
+
+    <CommonReviewsMarquee />
   </section>
 </template>

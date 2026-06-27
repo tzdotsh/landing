@@ -1,29 +1,11 @@
 <script lang="ts" setup>
-import { VOD_GENRE_TILES } from "~/data/vodGenres";
-import { useVodGenrePostersQuery } from "~/queries/vodGenrePosters";
+import {
+  VOD_GENRE_TILES,
+  vodGenrePosterSrc,
+} from "~/data/vodGenres";
+import { tmdbPosterSrcset } from "~/data/tmdbPosters";
 
 const { t } = useI18n();
-
-const { data: genrePostersResponse } = useVodGenrePostersQuery();
-
-const tiles = computed(() => {
-  const posterMap = new Map(
-    (genrePostersResponse.value?.posters ?? []).map((poster) => [
-      poster.id,
-      poster,
-    ]),
-  );
-
-  return VOD_GENRE_TILES.map((tile) => {
-    const poster = posterMap.get(tile.id);
-
-    return {
-      ...tile,
-      image: poster?.posterUrl ?? tile.image,
-      imageAlt: poster?.title ?? t(`vod.genres.items.${tile.id}.label`),
-    };
-  });
-});
 </script>
 
 <template>
@@ -39,14 +21,15 @@ const tiles = computed(() => {
         class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 lg:gap-5"
       >
         <article
-          v-for="tile in tiles"
+          v-for="tile in VOD_GENRE_TILES"
           :key="tile.id"
           class="group border-line bg-panel/60 relative overflow-hidden rounded-card border shadow-[0_8px_32px_rgba(0,0,0,0.22)] transition duration-300 ease-[var(--ease-brand)] hover:-translate-y-0.5 hover:border-line-2"
         >
           <div class="relative aspect-[4/5] overflow-hidden">
             <img
-              :src="tile.image"
-              :alt="tile.imageAlt"
+              :src="vodGenrePosterSrc(tile)"
+              :srcset="tmdbPosterSrcset(tile.posterId)"
+              :alt="t(`vod.genres.items.${tile.id}.label`)"
               width="400"
               height="500"
               class="h-full w-full object-cover transition duration-500 group-hover:scale-105"

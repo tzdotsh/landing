@@ -53,7 +53,7 @@ export default defineNuxtConfig({
 
   extends: [
     process.env.LOCAL_LAYER === "true"
-      ? "../tv-layout"
+      ? "../layout"
       : ["github:tzdotsh/tv-layout#main", { auth: process.env.GIT_LAYER_TOKEN, install: true }],
   ],
 

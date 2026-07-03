@@ -207,6 +207,7 @@ export default defineNuxtConfig({
       validDomain: process.env.VALID_DOMAIN,
       enableAnimations: process.env.ENABLE_ANIMATIONS !== "false",
       siteUrl: process.env.SITE_URL || "https://maxco.one",
+      HOSTNAME: process.env.HOSTNAME || process.env.SITE_URL || "https://maxco.one",
       umamiUrl:
         process.env.NUXT_PUBLIC_UMAMI_URL || "https://analytics.maxco.one",
       umamiWebsiteId:

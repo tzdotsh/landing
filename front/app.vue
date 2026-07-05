@@ -6,6 +6,7 @@ import {
 
 const route = useRoute();
 const url = useRequestURL();
+const { public: { canonicalHost } } = useRuntimeConfig();
 const { t, locale, locales, defaultLocale, baseUrl } = useI18n();
 
 const title = t("seo.site.title");
@@ -38,7 +39,7 @@ useUmami();
 useHead(() => ({
   link: [
     { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-    { rel: "dns-prefetch", href: "https://maxco.one" },
+    { rel: "dns-prefetch", href: `https://${canonicalHost}` },
     ...locales.value.map((el) => {
       let href = `${url.origin}`;
 

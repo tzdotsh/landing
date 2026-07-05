@@ -203,11 +203,29 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     tmdbApiKey: process.env.TMDB_API_KEY || process.env.NUXT_TMDB_API_KEY,
+
+    // Domain-agnostic cutover. `validHostnames` is the allowlist the hostname
+    // guard enforces (server/middleware/hostname.ts). `canonicalHost` is the bare
+    // host used to build absolute URLs. Cutover = flip CANONICAL_HOST + restart.
+    validHostnames:
+      process.env.VALID_HOSTNAMES || "maxco.one,web.maxcotv.com,maxcotv.com",
+    canonicalHost: process.env.CANONICAL_HOST || "maxco.one",
+
     public: {
       validDomain: process.env.VALID_DOMAIN,
       enableAnimations: process.env.ENABLE_ANIMATIONS !== "false",
-      siteUrl: process.env.SITE_URL || "https://maxco.one",
-      HOSTNAME: process.env.HOSTNAME || process.env.SITE_URL || "https://maxco.one",
+
+      // Bare canonical host for building absolute URLs client-side. Overridable
+      // at runtime via NUXT_PUBLIC_CANONICAL_HOST (no rebuild on domain cutover).
+      canonicalHost: process.env.CANONICAL_HOST || "maxco.one",
+
+      siteUrl:
+        process.env.SITE_URL ||
+        `https://${process.env.CANONICAL_HOST || "maxco.one"}`,
+      HOSTNAME:
+        process.env.HOSTNAME ||
+        process.env.SITE_URL ||
+        `https://${process.env.CANONICAL_HOST || "maxco.one"}`,
       umamiUrl:
         process.env.NUXT_PUBLIC_UMAMI_URL || "https://analytics.maxco.one",
       umamiWebsiteId:

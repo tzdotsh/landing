@@ -1,44 +1,24 @@
 <script lang="ts" setup>
 /**
- * Landing-owned LiveChat trigger — mounted from app.vue (outside layout stacking).
+ * Landing LiveChat trigger — loads the widget on mount via useLiveChat().
  */
 
 const GREETING_DISMISSED_KEY = "mxcGreetingDismissed";
 const GREETING_DELAY_MS = 4000;
-const POLL_INTERVAL_MS = 250;
-const POLL_MAX_TRIES = 40;
+
+const { ensureLoaded, openChat, whenReady } = useLiveChat();
 
 const greetingVisible = ref(false);
 const hasUnread = ref(false);
 const chatOpen = ref(false);
 
 let greetingTimer: ReturnType<typeof setTimeout> | null = null;
-let pollTimer: ReturnType<typeof setInterval> | null = null;
-let pollTries = 0;
+let stopReadyPoll: (() => void) | null = null;
 
-function openChat() {
+function handleOpenChat() {
   greetingVisible.value = false;
   hasUnread.value = false;
-
-  if (!import.meta.client) return;
-
-  const widget = window.LiveChatWidget;
-  if (widget) {
-    widget.call("maximize");
-    return;
-  }
-
-  // Widget stub not ready yet — retry briefly (home can hydrate before plugin runs).
-  let tries = 0;
-  const retry = setInterval(() => {
-    tries += 1;
-    if (window.LiveChatWidget) {
-      clearInterval(retry);
-      window.LiveChatWidget.call("maximize");
-    } else if (tries >= 20) {
-      clearInterval(retry);
-    }
-  }, 200);
+  openChat();
 }
 
 function dismissGreeting() {
@@ -96,31 +76,12 @@ function startGreetingTimer() {
   }, GREETING_DELAY_MS);
 }
 
-function startLiveChatPolling() {
-  pollTimer = setInterval(() => {
-    pollTries += 1;
-
-    if (window.LiveChatWidget) {
-      stopPolling();
-      wireLiveChat();
-    } else if (pollTries >= POLL_MAX_TRIES) {
-      stopPolling();
-    }
-  }, POLL_INTERVAL_MS);
-}
-
-function stopPolling() {
-  if (pollTimer !== null) {
-    clearInterval(pollTimer);
-    pollTimer = null;
-  }
-}
-
 onMounted(() => {
   if (!import.meta.client) return;
 
+  ensureLoaded();
   startGreetingTimer();
-  startLiveChatPolling();
+  stopReadyPoll = whenReady(wireLiveChat);
 });
 
 onBeforeUnmount(() => {
@@ -128,7 +89,8 @@ onBeforeUnmount(() => {
     clearTimeout(greetingTimer);
     greetingTimer = null;
   }
-  stopPolling();
+  stopReadyPoll?.();
+  stopReadyPoll = null;
 });
 </script>
 
@@ -141,9 +103,9 @@ onBeforeUnmount(() => {
           class="mxc-greeting"
           role="button"
           tabindex="0"
-          @click="openChat"
-          @keydown.enter.prevent="openChat"
-          @keydown.space.prevent="openChat"
+          @click="handleOpenChat"
+          @keydown.enter.prevent="handleOpenChat"
+          @keydown.space.prevent="handleOpenChat"
         >
           <p class="mxc-greeting__text">
             Need help? <strong>Chat with us</strong> — we're online
@@ -178,7 +140,7 @@ onBeforeUnmount(() => {
         type="button"
         class="mxc-bubble"
         aria-label="Open live chat"
-        @click="openChat"
+        @click="handleOpenChat"
       >
         <span
           v-if="hasUnread"

@@ -48,16 +48,23 @@ const categories = computed(() => {
   return filterCategoriesByChannels(allCategories, channels.value);
 });
 const categoriesObject = computed(() => getCategoriesLookup(categories.value));
-const isCategoriesLoading = computed(
-  () =>
-    categoriesQuery.state.value.status === "pending" ||
-    (isSearchActive.value &&
-      (searchCategoriesQuery.state.value.status === "pending" ||
-        (searchCategoriesQuery.asyncStatus.value === "loading" &&
-          !channels.value.length))) ||
-    (categoriesQuery.asyncStatus.value === "loading" &&
-      !categories.value.length),
-);
+const isCategoriesLoading = computed(() => {
+  // Base taxonomy still loading for the first time (no data yet).
+  const taxonomyLoading =
+    categoriesQuery.asyncStatus.value === "loading" &&
+    !categoriesQuery.state.value.data?.length;
+
+  // During an active search we also wait on the search-scoped channel set
+  // that narrows the category list — but ONLY while it is genuinely
+  // in-flight AND we have nothing to show yet. A disabled/idle query must
+  // never count as loading (that is what caused the permanent skeleton).
+  const searchNarrowingLoading =
+    isSearchActive.value &&
+    searchCategoriesQuery.asyncStatus.value === "loading" &&
+    !channels.value.length;
+
+  return taxonomyLoading || searchNarrowingLoading;
+});
 
 const selectedCategoryModel = computed({
   get: () => selectedCategory.value,

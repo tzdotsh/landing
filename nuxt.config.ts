@@ -42,6 +42,21 @@ const contentSqliteConnector = resolveContentSqliteConnector();
 // Server deploy: place `.env` here, run `bun build`, then `pm2 start ecosystem.config.cjs`.
 
 export default defineNuxtConfig({
+  hooks: {
+    // Drop inherited tv-layout LiveChat plugin (GitHub layer cache). Landing loads
+    // via useLiveChat() in MaxcoChatBubble; front/plugins/livechat.client.ts is a no-op shadow.
+    "app:resolve"(app) {
+      app.plugins = app.plugins.filter((plugin) => {
+        const src = (plugin.src || "").replace(/\\/g, "/");
+        if (!src.includes("livechat.client")) {
+          return true;
+        }
+        // Strip any layer / c12 copy; keep only this repo's shadow plugin.
+        return !src.includes("/.c12/") && !src.includes("/node_modules/");
+      });
+    },
+  },
+
   app: {
     // out-in transitions delay first paint and inflate CLS on marketing pages
     pageTransition: false,

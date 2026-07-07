@@ -111,7 +111,5 @@ useSchemaOrg([
     <NuxtPage />
   </NuxtLayout>
 
-  <ClientOnly>
-    <MaxcoChatBubble />
-  </ClientOnly>
+  <MaxcoChatBubble />
 </template>

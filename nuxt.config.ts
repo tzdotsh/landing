@@ -64,6 +64,16 @@ export default defineNuxtConfig({
     head: CRITICAL_HEAD,
   },
 
+  // Overrides nuxt-security defaults inherited from the tv-api-nuxt layer.
+  security: {
+    headers: {
+      // COEP (credentialless) blocks the LiveChat iframe (secure.livechatinc.com
+      // sends no CORP/COEP), leaving the widget a dead queue stub — clicking the
+      // bubble did nothing. We embed no cross-origin content that needs COEP.
+      crossOriginEmbedderPolicy: false,
+    },
+  },
+
   compatibilityDate: "latest",
 
   extends: [

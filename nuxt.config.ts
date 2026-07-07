@@ -208,12 +208,19 @@ export default defineNuxtConfig({
     // guard enforces (server/middleware/hostname.ts). `canonicalHost` is the bare
     // host used to build absolute URLs. Cutover = flip CANONICAL_HOST + restart.
     validHostnames:
-      process.env.VALID_HOSTNAMES || "maxco.one,web.maxcotv.com,maxcotv.com",
+      process.env.VALID_HOSTNAMES ||
+      "maxco.one,www.maxco.one,web.maxcotv.com,maxcotv.com",
     canonicalHost: process.env.CANONICAL_HOST || "maxco.one",
 
     public: {
       validDomain: process.env.VALID_DOMAIN,
       enableAnimations: process.env.ENABLE_ANIMATIONS !== "false",
+
+      // LiveChat — landing-owned (plugin + bubble shadow tv-layout).
+      livechatLicense: process.env.LIVECHAT_LICENSE || "16979592",
+      validHostnames:
+        process.env.VALID_HOSTNAMES ||
+        "maxco.one,www.maxco.one,web.maxcotv.com,maxcotv.com",
 
       // Bare canonical host for building absolute URLs client-side. Overridable
       // at runtime via NUXT_PUBLIC_CANONICAL_HOST (no rebuild on domain cutover).

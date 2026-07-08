@@ -236,6 +236,12 @@ export default defineNuxtConfig({
     langDir: "lang",
   },
 
+  // nuxt-site-config (used by sitemap/og-image/SEO modules). Without an
+  // explicit name it falls back to the package.json name.
+  site: {
+    name: "Maxco",
+  },
+
   sitemap: {
     sources: ["/api/__sitemap__/urls"],
 

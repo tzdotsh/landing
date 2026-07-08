@@ -286,9 +286,10 @@ export default defineNuxtConfig({
       ],
     },
 
-    // experimental: {
-    //   wasm: true,
-    // },
+    experimental: {
+      // Request context for useEvent() in server utils (e.g. sitemap sources).
+      asyncContext: true,
+    },
 
     devStorage: {
       cache: {

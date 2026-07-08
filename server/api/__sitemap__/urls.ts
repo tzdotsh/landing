@@ -11,8 +11,8 @@ type RawSitemapItem = {
   hreflangSlug?: string;
 };
 
-export default defineSitemapEventHandler(async () => {
-  const config = useRuntimeConfig();
+export default defineSitemapEventHandler(async (event) => {
+  const config = useRuntimeConfig(event);
 
   const i18nConfig = config.public.i18n;
   const baseUrl =
@@ -29,10 +29,12 @@ export default defineSitemapEventHandler(async () => {
     locales.map((locale) => [locale.code, locale.language]),
   );
 
+  const payloadBaseURL = String(config.public.payloadBaseURL || "");
+
   const [posts, tutorials, legalPages] = await Promise.all([
-    fetchPosts(),
-    fetchTutorials(),
-    fetchLegalPages(),
+    fetchPosts(event),
+    fetchTutorials(payloadBaseURL),
+    fetchLegalPages(payloadBaseURL),
   ]);
 
   const blogAlternatesBySlug = posts.reduce<
@@ -172,9 +174,9 @@ export default defineSitemapEventHandler(async () => {
   });
 });
 
-async function fetchPosts() {
+async function fetchPosts(event: Parameters<typeof queryCollection>[0]) {
   try {
-    const event = useEvent();
+    // Pass the handler's own event — no useEvent()/async-context dependency.
     const posts = await queryCollection(event, "blog").all();
 
     return posts
@@ -190,49 +192,64 @@ async function fetchPosts() {
   }
 }
 
-async function fetchTutorials() {
-  const payloadSdk = usePayload();
+/**
+ * Payload CMS REST fetch — plain server-side $fetch against the same API the
+ * client SDK targets (`${payloadBaseURL}/api/{collection}`). The `usePayload`
+ * composable is app-context only and does not exist in the Nitro bundle.
+ */
+async function fetchPayloadCollection<T>(
+  payloadBaseURL: string,
+  collection: string,
+  query: Record<string, string | number>,
+): Promise<T[]> {
+  if (!payloadBaseURL) {
+    console.error(
+      `Sitemap: payloadBaseURL is not configured — skipping ${collection}`,
+    );
+    return [];
+  }
 
+  const response = await $fetch<{ docs?: T[] }>(
+    new URL(`/api/${collection}`, payloadBaseURL).href,
+    { query, timeout: 10_000 },
+  );
+
+  return response?.docs ?? [];
+}
+
+async function fetchTutorials(payloadBaseURL: string) {
   try {
-    const tutorials = (await payloadSdk.find({
-      collection: "tutorials",
+    return await fetchPayloadCollection<{
+      slug: string;
+      updatedAt: string;
+      device: { slug: string };
+      app: { slug: string };
+    }>(payloadBaseURL, "tutorials", {
       limit: 1000,
       depth: 1,
-      select: {
-        slug: true,
-        updatedAt: true,
-        device: true,
-        app: true,
-      },
-    })) as {
-      docs: {
-        slug: string;
-        updatedAt: string;
-        device: { slug: string };
-        app: { slug: string };
-      }[];
-    };
-    return tutorials.docs || [];
+      "select[slug]": "true",
+      "select[updatedAt]": "true",
+      "select[device]": "true",
+      "select[app]": "true",
+    });
   } catch (error) {
     console.error("Sitemap: Error fetching tutorials", error);
     return [];
   }
 }
 
-async function fetchLegalPages() {
-  const payloadSdk = usePayload();
-
+async function fetchLegalPages(payloadBaseURL: string) {
   try {
-    const legalPages = (await payloadSdk.find({
-      collection: "legal",
-      limit: 100,
-      depth: 0,
-      select: {
-        slug: true,
-        updatedAt: true,
+    return await fetchPayloadCollection<{ slug: string; updatedAt: string }>(
+      payloadBaseURL,
+      "legal",
+      {
+        limit: 100,
+        depth: 0,
+        "select[slug]": "true",
+        "select[updatedAt]": "true",
       },
-    })) as { docs: { slug: string; updatedAt: string }[] };
-    return legalPages.docs || [];
+    );
   } catch (error) {
     console.error("Sitemap: Error fetching legal pages", error);
     return [];

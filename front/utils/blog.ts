@@ -17,7 +17,7 @@ export type BlogCollectionItem = {
   tags: string[];
   category?: string;
   image?: string;
-  locale: "en-en" | "es-es";
+  locale: "en-en" | "es-es" | "pt-pt";
   draft: boolean;
   faq?: BlogFaqItem[];
   body?: unknown;
@@ -31,8 +31,18 @@ export const BLOG_POSTS_PER_PAGE = 12;
 
 export const BLOG_DEFAULT_LOCALE = "en-en";
 
-export function toContentLocale(locale: string): "en-en" | "es-es" {
-  return locale.startsWith("es") ? "es-es" : "en-en";
+export function toContentLocale(
+  locale: string,
+): "en-en" | "es-es" | "pt-pt" {
+  if (locale.startsWith("es")) {
+    return "es-es";
+  }
+
+  if (locale.startsWith("pt")) {
+    return "pt-pt";
+  }
+
+  return "en-en";
 }
 
 export function resolveBlogSlug(post: BlogCollectionItem) {
@@ -173,7 +183,11 @@ export function formatBlogDate(
     return "";
   }
 
-  const dateLocale = locale.startsWith("es") ? "es-ES" : "en-GB";
+  const dateLocale = locale.startsWith("es")
+    ? "es-ES"
+    : locale.startsWith("pt")
+      ? "pt-PT"
+      : "en-GB";
 
   return new Date(value).toLocaleDateString(dateLocale, {
     year: "numeric",

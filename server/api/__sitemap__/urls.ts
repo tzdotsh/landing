@@ -7,9 +7,18 @@ type RawSitemapItem = {
   canonical?: boolean;
   /** When set, only emit this locale (used for locale-specific blog posts). */
   locale?: string;
+  /** When set, only emit these locales (used for content that isn't translated everywhere). */
+  localeCodes?: string[];
   /** Slug grouping key for blog hreflang alternates. */
   hreflangSlug?: string;
 };
+
+/**
+ * Locales with real Payload CMS content (tutorials, legal). pt-pt is excluded
+ * until the CMS carries Portuguese docs — emitting it would index
+ * fallback-English pages under /pt-pt/ as duplicate content.
+ */
+const PAYLOAD_CONTENT_LOCALES = ["en-en", "es-es"];
 
 export default defineSitemapEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
@@ -94,6 +103,7 @@ export default defineSitemapEventHandler(async (event) => {
       rawContent.push({
         path: `apps/${tutorial.device.slug}/${tutorial.app.slug}`,
         lastModified: tutorial.updatedAt,
+        localeCodes: PAYLOAD_CONTENT_LOCALES,
       });
     }
   });
@@ -103,6 +113,7 @@ export default defineSitemapEventHandler(async (event) => {
       rawContent.push({
         path: `legal/${page.slug}`,
         lastModified: page.updatedAt,
+        localeCodes: PAYLOAD_CONTENT_LOCALES,
       });
     }
   });
@@ -110,7 +121,9 @@ export default defineSitemapEventHandler(async (event) => {
   return rawContent.flatMap((item) => {
     const targetLocales = item.locale
       ? locales.filter((locale) => locale.code === item.locale)
-      : locales;
+      : item.localeCodes
+        ? locales.filter((locale) => item.localeCodes!.includes(locale.code))
+        : locales;
 
     return targetLocales.map((locale) => {
       const pathPrefix =
@@ -142,7 +155,7 @@ export default defineSitemapEventHandler(async (event) => {
                   href: `${baseUrl}${altPath}`,
                 };
               })
-          : locales
+          : targetLocales
               .filter((entry) => entry.code !== locale.code)
               .map((altLocale) => {
                 const altPathPrefix =

@@ -25,7 +25,7 @@ export default defineContentConfig({
         tags: z.array(z.string()).default([]),
         category: z.string().optional(),
         image: z.string().optional(),
-        locale: z.enum(["en-en", "es-es"]).default("en-en"),
+        locale: z.enum(["en-en", "es-es", "pt-pt"]).default("en-en"),
         draft: z.boolean().default(false),
         faq: z.array(faqItemSchema).optional(),
       }),

@@ -17,7 +17,7 @@ export default defineNuxtRouteMiddleware((to) => {
 
   // Extract locale and version from the route path
   // Pattern: /locale/vX/... or /vX/... or /locale/... or /
-  const localeMatch = to.path.match(/^\/(en-en|es-es)/);
+  const localeMatch = to.path.match(/^\/(en-en|es-es|pt-pt)/);
   const locale = localeMatch?.[1] || null;
 
   // Get the path after the locale (if present)

@@ -1,0 +1,1106 @@
+{
+  "seo": {
+    "site": {
+      "name": "Maxco",
+      "title": "IPTV Premium — TV em Direto, Desporto e Filmes",
+      "description": "Aceda a uma experiência com mais de 20.000 canais de TV com um fornecedor líder de serviços de televisão. Registe-se hoje e obtenha a sua subscrição de servidor de TV.",
+      "keywords": "Maxco, Maxco One",
+      "ogImage": "/og-image.webp"
+    },
+    "pages": {
+      "home": {
+        "title": "IPTV Premium — TV em Direto, Desporto e Filmes | Maxco",
+        "description": "Aceda a uma experiência com mais de 20.000 canais de TV com um fornecedor líder de serviços de televisão. Registe-se hoje e obtenha a sua subscrição de servidor de TV."
+      },
+      "channels": {
+        "title": "Canais IPTV — TV em Direto, Desporto e Filmes | Maxco",
+        "description": "Transmita mais de 20.000 canais de Smart TV disponíveis em vários países. Registe-se para os seus canais favoritos na Maxco com garantia de devolução do dinheiro em 30 dias."
+      },
+      "apps": {
+        "title": "Instalação IPTV: Firestick, Smart TV e Apps | Maxco",
+        "description": "Guias de instalação Maxco passo a passo para caixas MAG, Smart TVs, Firestick, iOS, Android, Kodi e muito mais."
+      },
+      "resellers": {
+        "title": "Programa de Revenda IPTV — Torne-se Parceiro | Maxco",
+        "description": "Descubra como se tornar revendedor de TV: comece a ganhar dinheiro a promover um dos serviços de TV mais vendidos do mercado."
+      },
+      "faq": {
+        "title": "FAQ IPTV — Instalação, Planos e Suporte | Maxco",
+        "description": "Tem perguntas sobre qualquer assunto? Nós temos as respostas."
+      },
+      "support": {
+        "title": "Suporte e Centro de Ajuda IPTV | Maxco",
+        "description": "Adoraríamos ouvir a sua opinião. Envie-nos uma mensagem e responderemos o mais rapidamente possível."
+      },
+      "auth_check": {
+        "title": "Verifique a Sua Subscrição Maxco | Maxco",
+        "description": "Verifique o seu acesso para garantir que tem uma subscrição Maxco autêntica."
+      },
+      "report": {
+        "title": "Denúncia de Abuso",
+        "description": "Denuncie qualquer utilização indevida ou abuso dos nossos serviços."
+      },
+      "blog": {
+        "title": "Guias, Dicas e Ajuda de Instalação IPTV | Maxco",
+        "description": "Mantenha-se atualizado com os nossos artigos e notícias mais recentes."
+      },
+      "sports": {
+        "title": "IPTV Desporto — Futebol em Direto, F1, UFC e PPV | Maxco",
+        "description": "Veja futebol em direto, F1, UFC, boxe e muito mais na Maxco. Premier League, Liga dos Campeões e as grandes ligas em 4K — uma subscrição, todos os ecrãs."
+      },
+      "vod": {
+        "title": "IPTV VOD — Filmes e Séries a Pedido | Maxco",
+        "description": "Milhares de filmes e séries a pedido com a Maxco. Temporadas completas, estreias, conteúdo infantil e internacional em 4K — uma subscrição, veja quando quiser."
+      }
+    }
+  },
+  "nuxtSiteConfig": {
+    "name": "Maxco",
+    "description": "O Melhor Fornecedor de Subscrições de Servidor de TV"
+  },
+  "common": {
+    "buttons": {
+      "start_watching": "Comece a Ver Agora",
+      "watch_now": "Ver Agora",
+      "order_today": "Peça Hoje o Seu Acesso IPTV",
+      "get_started": "Começar",
+      "become_reseller": "Torne-se Revendedor Agora",
+      "manage_account": "Gerir Conta",
+      "submit": "Enviar",
+      "verify": "Verificar",
+      "switch": "Alternar",
+      "check_status": "Verificar Estado"
+    },
+    "notices": {
+      "trusted_customers": "Mais de 250.000 clientes confiam em nós",
+      "money_back_guarantee": "SEM RISCO — Garantia de Devolução do Dinheiro em 30 Dias",
+      "online": "Online",
+      "live": "EM DIRETO"
+    },
+    "features": {
+      "anti_buffer": "Anti-Buffer V6™",
+      "multi_devices": "Vários Dispositivos",
+      "ppv_events": "Eventos PPV",
+      "hd_4k_quality": "Qualidade FHD e 4K"
+    },
+    "placeholders": {
+      "select_country": "Selecione um país...",
+      "iptv_access": "Acesso IPTV"
+    },
+    "contact_support": {
+      "need_help_title": "Precisa de Ajuda Adicional?",
+      "support_description": "A nossa equipa de suporte está disponível para o ajudar 24/7.",
+      "contact_button": "Contactar Suporte"
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrowBefore": "Adorado por milhares · Classificação 4.6",
+      "eyebrowAfter": "no Trustpilot",
+      "title": "Deixe de se contentar. Comece a ver.",
+      "subtitle": "Mais de 20.000 canais em direto, desporto em 4K e milhares de filmes e séries — em todos os ecrãs que possui.",
+      "cta": "Começar a ver",
+      "trialCta": "Iniciar teste gratuito",
+      "orDivider": "ou",
+      "emailPlaceholder": "Introduza o seu email para começar",
+      "emailError": "Introduza um endereço de email válido",
+      "socialproof": "Adorado por centenas de milhares de espectadores em todo o mundo"
+    },
+    "features": {
+      "title": "Uma subscrição. Todos os ecrãs.",
+      "description": "Mais de 20.000 canais em direto na TV, telemóvel, tablet e muito mais — uma conta, todos os ecrãs que possui.",
+      "live": "Em direto",
+      "cta": "Começar a ver",
+      "pills": {
+        "antibuffer": "Reprodução instantânea",
+        "multi_devices": "Vários Dispositivos",
+        "ppv_events": "Eventos PPV",
+        "hd_4k_quality": "Qualidade FHD e 4K"
+      },
+      "antibuffer_tagline": "Carregue em play e está lá — sem esperas, sem bloqueios, mesmo durante o desporto em direto.",
+      "tiles": {
+        "playback": {
+          "tag": "Reprodução instantânea",
+          "title": "Desporto em direto, sem falhas.",
+          "description": "Carregue em play e está lá — transmissão nítida e sem interrupções, mesmo ao pontapé de saída."
+        },
+        "uptime": {
+          "stat": "99,9%",
+          "title": "Disponibilidade, sempre ligado.",
+          "description": "Serviço sólido e fiável — dia e noite."
+        }
+      }
+    },
+    "catalog": {
+      "title": "Os canais que adora, todos num só lugar",
+      "link_sports": "Explorar Desporto em direto",
+      "link_vod": "Ver Filmes e Séries"
+    },
+    "collection": {
+      "title": "Seleção 4K Ultra HD",
+      "subtitle": "Milhares de títulos em deslumbrante 4K — atualizados todos os dias.",
+      "cta": "Começar a ver",
+      "poster_alt": "Cartaz de título a pedido {index}",
+      "poster_fallback": "VOD"
+    },
+    "assurances": {
+      "title": "Zero compromissos. Entretenimento total.",
+      "no_buffering": {
+        "title": "Visualização sem buffering",
+        "description": "Carregue em play e está lá. Transmissão fluida e sem interrupções em todos os dispositivos — sem esperas.",
+        "buffering_label": "A carregar… 67%",
+        "playback_title": "Desporto em direto — reprodução fluida",
+        "playback_meta": "HD · 50 fps"
+      },
+      "no_downtime": {
+        "title": "99,9% de disponibilidade",
+        "description": "Sempre ligado quando precisa. Serviço sólido e fiável com 99,9% de disponibilidade, dia e noite.",
+        "status": "Sempre ligado · dia e noite"
+      },
+      "high_quality": {
+        "title": "FHD e 4K reais — nunca reescalados",
+        "description": "Veja como deve ser visto. Full HD e 4K genuínos — qualidade real de origem, nunca reescalada.",
+        "true_4k": "4K Real",
+        "upscaled": "Reescalado",
+        "drag_to_compare": "Arraste para comparar",
+        "swipe_to_compare": "Deslize para comparar"
+      },
+      "quick_support": {
+        "title": "Suporte em direto 24/7",
+        "description": "Pessoas reais, a qualquer hora. A nossa equipa está no chat em direto 24/7 — a maioria das mensagens é respondida em minutos.",
+        "chat": {
+          "agent_label": "Suporte Maxco",
+          "admin_greeting": "Olá — como posso ajudar?",
+          "user_question": "Estou a tentar pagar a minha fatura mas a página de pagamento não carrega. Pode ajudar-me?",
+          "admin_answer": "Com certeza — vou repor isso agora. Tente novamente dentro de um minuto e deverá ficar resolvido.",
+          "user_thanks": "Funcionou, obrigado!",
+          "admin_closing": "Sempre às ordens — contacte-nos a qualquer momento se precisar de mais alguma coisa."
+        }
+      }
+    },
+    "guarantee": {
+      "alt_text": "Garantia de devolução do dinheiro em 30 dias",
+      "title": "Experimente a Maxco sem risco",
+      "subtitle": "Não é para si? Receba um reembolso total em 30 dias — sem perguntas.",
+      "cta": "Começar a ver"
+    },
+    "reviews": {
+      "title": "A confiança de espectadores em todo o mundo",
+      "subtitle": "Avaliações reais de espectadores que veem TV em direto, desporto e filmes com a Maxco todos os dias.",
+      "rating": {
+        "excellent": "Excelente",
+        "score": "4.6 em 5",
+        "count": "Com base em mais de 334 avaliações"
+      },
+      "cta": "Começar a ver",
+      "items": [
+        {
+          "name": "Mr Mark Fishlock",
+          "location": "Reino Unido",
+          "text": "Ótimo serviço, apoio ao cliente muito bom e um bom negócio em 3 ligações. Uso a Maxco há alguns anos e é o melhor serviço que já tive — e também a uso internacionalmente."
+        },
+        {
+          "name": "Steve",
+          "location": "Reino Unido",
+          "text": "Um serviço incrível e centrado nas pessoas. Tive apoio imediato através do chat, independentemente da hora da noite. A relação qualidade-preço é imbatível — estou com eles há mais de três anos e completamente satisfeito."
+        },
+        {
+          "name": "Shane Boyle",
+          "location": "Reino Unido",
+          "text": "Sinceramente, não tenho qualquer queixa da Max Connect. Uso o serviço há alguns anos e tem sido sempre impecável."
+        },
+        {
+          "name": "Eric M",
+          "location": "Reino Unido",
+          "text": "Não costumo escrever avaliações, mas acho que a Maxco merece uma boa recomendação. O serviço e a qualidade de imagem são muito estáveis e muito bons — mesmo com mau tempo."
+        },
+        {
+          "name": "Spikehunter",
+          "location": "Reino Unido",
+          "text": "Sempre bom serviço e suporte."
+        },
+        {
+          "name": "I.D.",
+          "location": "Reino Unido",
+          "text": "Sempre disponíveis no chat e muito prestáveis. Um prazer lidar com eles. Apoio ao cliente sem igual."
+        },
+        {
+          "name": "Helen Alice Driscoll",
+          "location": "Reino Unido",
+          "text": "Não conseguia pagar a minha fatura porque o sistema não funcionava. Usei o chat em direto e resolveram o meu problema — muito prestáveis."
+        },
+        {
+          "name": "Stuart Burgess",
+          "location": "Irlanda",
+          "text": "O apoio ao cliente da Maxco é muito atento, simpático e profissional. Recomendo vivamente este excelente serviço de IPTV."
+        }
+      ]
+    }
+  },
+  "channels": {
+    "hero": {
+      "link_sports": "Ver a programação completa de Desporto",
+      "link_vod": "Ver Filmes e Séries a pedido",
+      "categories": {
+        "sports": {
+          "name": "Desporto",
+          "title": "M+ LA LIGA TV 4K",
+          "description": "Mergulhe no mundo emocionante do futebol espanhol com o M+ LaLiga, o seu destino definitivo para tudo o que envolve a LaLiga. Este canal dedicado traz-lhe cada jogo, cada golo e cada momento da liga de futebol mais prestigiada de Espanha, com equipas de topo como o FC Barcelona, o Real Madrid e o Atlético de Madrid.",
+          "notice": "N.º 1 em Espanha"
+        },
+        "cinema": {
+          "name": "Cinema",
+          "title": "Michael",
+          "description": "MICHAEL é o retrato cinematográfico da vida e do legado de um dos artistas mais influentes que o mundo já conheceu. Realizado por Antoine Fuqua, o filme percorre o percurso de Michael Jackson desde os Jackson 5 até ao estrelato global — destacando atuações icónicas e a história para além da música.",
+          "notice": "Biografia n.º 1"
+        },
+        "culture": {
+          "name": "Cultura",
+          "title": "Discovery Channel",
+          "description": "Mergulhe na rica tapeçaria das culturas globais com o Discovery Channel. Este canal oferece uma seleção cuidada de documentários, filmes e séries que celebram a diversidade da expressão humana. Da arte e música à história e tradições, o Discovery Channel é a sua janela para as culturas do mundo.",
+          "notice": "N.º 1 em Cultura Global"
+        },
+        "tdt": {
+          "name": "Canais",
+          "title": "ANTENA 3",
+          "description": "Aceda a uma vasta gama de canais Antena 3, com uma variedade de conteúdos que inclui notícias, entretenimento, desporto e programação cultural. Mantenha-se informado e entretido com emissões locais e nacionais.",
+          "notice": "N.º 1 em Emissão Local"
+        },
+        "kids": {
+          "name": "Infantil",
+          "title": "Nickelodeon",
+          "description": "A Nickelodeon é o destino definitivo do entretenimento infantil, com uma programação diversificada de séries de animação, programas de imagem real e filmes que cativam os mais novos. Dos clássicos adorados aos novos favoritos, a Nickelodeon proporciona uma experiência divertida e segura para crianças de todas as idades.",
+          "notice": "N.º 1 em Entretenimento Infantil"
+        },
+        "formula_1": {
+          "name": "Fórmula 1",
+          "title": "Fórmula 1",
+          "description": "Viva a emoção das corridas de Fórmula 1 com cobertura exclusiva de toda a ação a alta velocidade. Dos treinos à corrida final, aproximamo-lo da pista com comentários especializados e análises aprofundadas.",
+          "notice": "N.º 1 em Desporto Motorizado"
+        }
+      },
+      "slides": {
+        "sports": {
+          "la-liga": {
+            "title": "M+ LA LIGA TV 4K",
+            "description": "Mergulhe no mundo emocionante do futebol espanhol com o M+ LaLiga, o seu destino definitivo para tudo o que envolve a LaLiga. Este canal dedicado traz-lhe cada jogo, cada golo e cada momento da liga de futebol mais prestigiada de Espanha, com equipas de topo como o FC Barcelona, o Real Madrid e o Atlético de Madrid.",
+            "notice": "N.º 1 em Espanha"
+          },
+          "formula-1": {
+            "title": "Fórmula 1",
+            "description": "Viva a emoção das corridas de Fórmula 1 com cobertura exclusiva de toda a ação a alta velocidade. Dos treinos à corrida final, aproximamo-lo da pista com comentários especializados e análises aprofundadas.",
+            "notice": "N.º 1 em Desporto Motorizado"
+          },
+          "premier-league": {
+            "title": "Premier League",
+            "description": "Acompanhe todos os jogos da Premier League com qualidade deslumbrante — das corridas ao título e lutas pela permanência aos dérbis dramáticos da principal liga inglesa.",
+            "notice": "N.º 1 no Reino Unido"
+          },
+          "uefa": {
+            "title": "Liga dos Campeões da UEFA",
+            "description": "Veja os clubes de elite da Europa a competir na Liga dos Campeões da UEFA — noites a eliminar, emoções da fase de grupos e o caminho até à final.",
+            "notice": "N.º 1 na Europa"
+          }
+        },
+        "cinema": {
+          "michael": {
+            "title": "Michael",
+            "description": "MICHAEL é o retrato cinematográfico da vida e do legado de um dos artistas mais influentes que o mundo já conheceu. Realizado por Antoine Fuqua, o filme percorre o percurso de Michael Jackson desde os Jackson 5 até ao estrelato global — destacando atuações icónicas e a história para além da música.",
+            "notice": "Biografia n.º 1"
+          }
+        },
+        "channels": {
+          "antena-3": {
+            "title": "ANTENA 3",
+            "description": "Aceda a uma vasta gama de canais Antena 3, com uma variedade de conteúdos que inclui notícias, entretenimento, desporto e programação cultural. Mantenha-se informado e entretido com emissões locais e nacionais.",
+            "notice": "N.º 1 em Emissão Local"
+          },
+          "bbc-one": {
+            "title": "BBC One",
+            "description": "De notícias de última hora e desporto em direto a drama, documentários e entretenimento — a BBC One traz o melhor da televisão britânica em sinal aberto.",
+            "notice": "N.º 1 no Reino Unido"
+          },
+          "itv": {
+            "title": "ITV",
+            "description": "Acompanhe os maiores programas da ITV, futebol em direto, êxitos de reality TV e entretenimento em horário nobre — tudo num só lugar, no seu ecrã.",
+            "notice": "N.º 1 no Reino Unido"
+          },
+          "channel-4": {
+            "title": "Channel 4",
+            "description": "Originais arrojados, filmes, comédia e notícias do Channel 4 — a casa da programação distinta em sinal aberto no Reino Unido.",
+            "notice": "N.º 1 no Reino Unido"
+          },
+          "rtve": {
+            "title": "RTVE",
+            "description": "A emissora pública de Espanha — notícias, desporto, cinema e cultura dos canais em sinal aberto da RTVE, em direto e a pedido.",
+            "notice": "N.º 1 em Espanha"
+          }
+        }
+      }
+    },
+    "search_placeholder": "Pesquisar um canal",
+    "empty_state": {
+      "title": "Nenhum canal encontrado",
+      "description": "Experimente outra palavra-chave ou limpe os filtros atuais para ver novamente a lista completa de canais.",
+      "reset_button": "Repor pesquisa"
+    }
+  },
+  "apps": {
+    "hero": {
+      "title": "Guias de instalação para{br} todos os ecrãs",
+      "description": "Explore os guias de instalação Maxco por dispositivo e aplicação. Pesquise abaixo ou escolha uma categoria para começar a ver em minutos."
+    },
+    "kb": {
+      "search_label": "Pesquisar guias de instalação",
+      "search_placeholder": "Pesquisar guias de instalação…",
+      "no_results": "Nenhum guia corresponde a “{query}”. Experimente outro dispositivo, aplicação ou palavra-chave.",
+      "updated": "Atualizado a {date}",
+      "views": "{count} visualizações",
+      "back_to_guides": "Voltar aos guias",
+      "guide_label": "Guia de instalação",
+      "empty_device": "Ainda não há guias de instalação disponíveis para este dispositivo."
+    },
+    "select": {
+      "device_title": "Selecione o seu dispositivo",
+      "app_title": "Selecione a aplicação IPTV que pretende usar",
+      "load_error": "Não foi possível carregar os guias de instalação. Verifique se o Payload CMS está em execução e se PAYLOAD_BASE_URL está corretamente configurado.",
+      "empty_devices": "Ainda não há guias de instalação disponíveis.",
+      "empty_apps": "Ainda não há aplicações disponíveis para este dispositivo."
+    },
+    "post": {
+      "title": "Siga os passos"
+    }
+  },
+  "blog": {
+    "hero": {
+      "title": "Blog",
+      "description": "Mantenha-se atualizado com as últimas notícias, dicas e novidades do mundo do IPTV."
+    },
+    "articles": {
+      "latest": "Artigo Mais Recente",
+      "show_more": "Mostrar Mais"
+    },
+    "post": {
+      "last_updated": "Última atualização: {date}",
+      "reading_time": "{minutes} min de leitura",
+      "related_title": "Artigos relacionados"
+    }
+  },
+  "auth_check": {
+    "form": {
+      "title": "Verifique o seu Acesso IPTV",
+      "card_title": "Porquê Verificar o Seu Acesso?",
+      "card_description": "Este processo de verificação garante que adquiriu um acesso IPTV Maxco autêntico diretamente connosco ou com os nossos revendedores oficiais. Ajuda a protegê-lo de serviços não autorizados ou contrafeitos e garante que recebe a qualidade e o suporte que merece.",
+      "label": "Acesso TV"
+    },
+    "verified": {
+      "title": "Acesso Verificado",
+      "card_title": "Autenticidade Verificada",
+      "card_description": "O nosso sistema confirmou que o seu acesso é autêntico. Desfrute de streaming premium com segurança, desempenho e privacidade reforçados.",
+      "quick_actions": "Ações Rápidas:"
+    },
+    "unauthorized": {
+      "title": "Acesso Não Autorizado Detetado",
+      "card_title": "Alerta de Segurança Crítico",
+      "card_description": "Detetámos que o seu acesso não provém de uma fonte oficial. Isto pode comprometer a sua experiência de visualização e a sua segurança.",
+      "what_means": "O que Isto Significa:",
+      "means_list": [
+        "O seu código de acesso não é reconhecido como oficial",
+        "Poderá ter comprado a um burlão",
+        "Os seus dados podem ser divulgados ao ISP ou às autoridades",
+        "Não receberá suporte oficial nem atualizações"
+      ],
+      "recommended_actions": "Ações Recomendadas",
+      "recommended_description": "Para garantir a melhor experiência e proteger-se, recomendamos que obtenha um acesso oficial.",
+      "get_official_access": "Obter Acesso Oficial",
+      "contact_support": "Contactar Suporte"
+    }
+  },
+  "sports": {
+    "breadcrumb": {
+      "home": "Início",
+      "current": "Desporto"
+    },
+    "hero": {
+      "eyebrow": "DESPORTO EM DIRETO · EM 4K",
+      "title": "Todo o seu desporto em direto. Uma subscrição.",
+      "subline": "Futebol, Fórmula 1, UFC, boxe, críquete e muito mais — transmitidos em direto em 4K nítido, em todos os ecrãs que possui. Sem acumular subscrições. Sem bloqueios.",
+      "email_placeholder": "Introduza o seu email",
+      "email_error": "Introduza um endereço de email válido.",
+      "cta_primary": "Começar a ver",
+      "cta_secondary": "Iniciar teste gratuito"
+    },
+    "categories": {
+      "heading": "Todos os desportos, num só lugar",
+      "items": {
+        "football": "Futebol",
+        "formula_1": "Fórmula 1 e Desporto Motorizado",
+        "boxing_ufc": "Boxe e UFC",
+        "cricket": "Críquete",
+        "rugby": "Râguebi",
+        "basketball": "Basquetebol",
+        "tennis": "Ténis",
+        "golf": "Golfe",
+        "darts": "Dardos",
+        "combat_ppv": "Desportos de Combate / PPV"
+      }
+    },
+    "competitions": {
+      "heading": "Acompanhe as competições que importam",
+      "subtext": "Da Premier League à Liga dos Campeões e às maiores ligas da Europa — acompanhe todas as grandes competições num só lugar."
+    },
+    "value": {
+      "heading": "Deixe de pagar o desporto em cinco faturas diferentes",
+      "body": "Acompanhar desporto à moda antiga significa acumular subscrições — uma para a liga, outra para a taça, outra para o grande combate. A Maxco reúne toda a ação numa única subscrição, por uma fração do custo dos pacotes acumulados.",
+      "old_way": {
+        "label": "A forma antiga",
+        "description": "Várias subscrições, várias faturas — o passe da liga aqui, a cobertura da taça ali, o PPV por cima."
+      },
+      "maxco_way": {
+        "label": "Maxco",
+        "description": "Uma subscrição, um preço — acompanhe a ação em todos os desportos e competições sem acumular faturas."
+      }
+    },
+    "reliability": {
+      "heading": "Feito para aguentar quando mais importa",
+      "cards": {
+        "uptime": {
+          "title": "99,9% de disponibilidade",
+          "description": "Transmissões estáveis nos picos de audiência — quando todos ligam, a sua emissão continua no ar."
+        },
+        "anti_buffer": {
+          "title": "Servidores anti-buffer",
+          "description": "Sem bloqueios no momento crucial — concebido para desporto em direto, quando cada segundo conta."
+        },
+        "quality": {
+          "title": "4K e FHD reais",
+          "description": "Nunca reescalado — veja cada detalhe em Full HD nítido e 4K onde disponível."
+        }
+      }
+    },
+    "devices": {
+      "line": "Veja em Firestick, Smart TV, Android, iOS, Apple TV e muito mais — todos os ecrãs que possui.",
+      "items": {
+        "firestick": "Firestick",
+        "smart_tv": "Smart TV",
+        "android": "Android",
+        "ios": "iOS",
+        "apple_tv": "Apple TV",
+        "android_box": "Caixas Android"
+      }
+    },
+    "faq": {
+      "heading": "Perguntas frequentes",
+      "items": [
+        {
+          "title": "Posso ver futebol em direto na Maxco?",
+          "content": "Sim. A Maxco permite-lhe acompanhar as principais competições de futebol — incluindo a Premier League, a Liga dos Campeões e as melhores ligas da Europa — transmitidas em direto em HD e 4K."
+        },
+        {
+          "title": "A transmissão aguenta durante os grandes jogos?",
+          "content": "Os nossos servidores anti-buffer e a disponibilidade de 99,9% foram concebidos para picos de procura, para que possa ver os pontapés de saída e os grandes eventos sem bloqueios."
+        },
+        {
+          "title": "Que velocidade de internet preciso para desporto em 4K?",
+          "content": "Recomendamos pelo menos 25 Mbps para streaming 4K fluido e 10 Mbps para HD. Uma ligação por cabo proporciona a imagem mais estável para desporto em direto."
+        },
+        {
+          "title": "Em que dispositivos posso ver desporto?",
+          "content": "Firestick, Smart TVs (Samsung, LG), Android, iOS, Apple TV e caixas Android — em todos os ecrãs que possui."
+        },
+        {
+          "title": "Existe um teste gratuito?",
+          "content": "Sim — inicie um teste gratuito e experimente as transmissões durante um evento em direto antes de se comprometer."
+        }
+      ]
+    },
+    "final_cta": {
+      "title": "Deixe de se contentar. Comece a ver.",
+      "email_placeholder": "Introduza o seu email",
+      "email_error": "Introduza um endereço de email válido.",
+      "cta_primary": "Começar a ver",
+      "cta_secondary": "Iniciar teste gratuito"
+    }
+  },
+  "vod": {
+    "breadcrumb": {
+      "home": "Início",
+      "current": "VOD"
+    },
+    "hero": {
+      "eyebrow": "FILMES E SÉRIES · A PEDIDO",
+      "title": "Milhares de filmes e séries. A pedido.",
+      "subline": "Temporadas completas, grandes êxitos, estreias, favoritos dos mais novos e sucessos internacionais — tudo numa só biblioteca, em 4K, pronto quando quiser.",
+      "email_placeholder": "Introduza o seu email",
+      "email_error": "Introduza um endereço de email válido.",
+      "cta_primary": "Começar a ver",
+      "cta_secondary": "Iniciar teste gratuito"
+    },
+    "library": {
+      "heading": "Uma biblioteca sempre atualizada",
+      "movies_row": "Filmes em Destaque",
+      "series_row": "Séries Populares",
+      "tmdb_attribution": "Este produto utiliza a API do TMDB, mas não é aprovado nem certificado pelo TMDB."
+    },
+    "genres": {
+      "heading": "Algo para todos",
+      "items": {
+        "movies": { "label": "Filmes" },
+        "tv_series": { "label": "Séries de TV" },
+        "box_sets": { "label": "Temporadas Completas" },
+        "kids": { "label": "Infantil e Família" },
+        "documentaries": { "label": "Documentários" },
+        "action_thrillers": { "label": "Ação e Thrillers" },
+        "comedy": { "label": "Comédia" },
+        "international": {
+          "label": "Internacional",
+          "subtitle": "Bollywood, séries turcas, Anime"
+        }
+      }
+    },
+    "value": {
+      "heading": "Porquê pagar cinco aplicações de streaming?",
+      "body": "A maioria das famílias faz malabarismos com várias subscrições de streaming só para ver meia dúzia de programas — e as contas somam-se depressa. A Maxco reúne uma enorme biblioteca de filmes e séries a pedido num só lugar, por um único preço."
+    },
+    "features": {
+      "cards": {
+        "anytime": {
+          "title": "Veja quando quiser",
+          "description": "Pause, retome e faça maratonas ao seu ritmo"
+        },
+        "updated": {
+          "title": "Atualizado regularmente",
+          "description": "Novos filmes e séries adicionados com frequência"
+        },
+        "quality": {
+          "title": "4K e FHD reais",
+          "description": "Veja cada detalhe, nunca reescalado"
+        }
+      }
+    },
+    "devices": {
+      "line": "Veja em Firestick, Smart TV, Android, iOS, Apple TV e muito mais — todos os ecrãs que possui.",
+      "items": {
+        "firestick": "Firestick",
+        "smart_tv": "Smart TV",
+        "android": "Android",
+        "ios": "iOS",
+        "apple_tv": "Apple TV",
+        "android_box": "Caixas Android"
+      }
+    },
+    "faq": {
+      "heading": "Perguntas frequentes",
+      "items": [
+        {
+          "title": "Quantos filmes e séries estão incluídos?",
+          "content": "A Maxco inclui uma vasta biblioteca a pedido de [CONFIRM library size] filmes e séries, com novos títulos adicionados regularmente."
+        },
+        {
+          "title": "Posso ver a pedido a qualquer momento?",
+          "content": "Sim — toda a biblioteca VOD está disponível a pedido, para que possa iniciar, pausar e retomar quando quiser."
+        },
+        {
+          "title": "O conteúdo é atualizado?",
+          "content": "Sim, novos filmes e séries são adicionados à biblioteca regularmente, por isso há sempre algo novo para ver."
+        },
+        {
+          "title": "Têm temporadas completas e conteúdo internacional?",
+          "content": "Sim — temporadas completas, conteúdo infantil, documentários e títulos internacionais, incluindo Bollywood, séries turcas e anime."
+        },
+        {
+          "title": "Existe um teste gratuito?",
+          "content": "Sim — inicie um teste gratuito e explore a biblioteca antes de subscrever."
+        }
+      ]
+    },
+    "final_cta": {
+      "title": "Tudo o que vale a pena ver. Uma subscrição.",
+      "email_placeholder": "Introduza o seu email",
+      "email_error": "Introduza um endereço de email válido.",
+      "cta_primary": "Começar a ver",
+      "cta_secondary": "Iniciar teste gratuito"
+    }
+  },
+  "resellers": {
+    "hero": {
+      "eyebrow": "Programa de revenda · Pré-pago e ilimitado",
+      "title_before": "Construa o seu negócio de IPTV com a ",
+      "title_highlight": "Maxco",
+      "title_after": "",
+      "description": "Infraestrutura de revenda premium com créditos pré-pagos ou linhas mensais ilimitadas. Tenha o seu próprio painel, cresça ao seu ritmo e ofereça streaming de qualidade cinematográfica pelo qual os seus clientes vão continuar a pagar.",
+      "cta_primary": "Ver preços",
+      "cta_secondary": "Porquê a Maxco"
+    },
+    "features": {
+      "title": "Porquê escolher a Maxco",
+      "description": "Tudo o que precisa para gerir um negócio profissional de revenda de IPTV — transmissões estáveis, ferramentas poderosas e um suporte que trata o seu sucesso como prioridade número um.",
+      "items": {
+        "reseller_dashboard": {
+          "title": "Painel de Revendedor",
+          "description": "Faça a gestão de todas as contas de clientes, subscrições e renovações num só lugar."
+        },
+        "api_access": {
+          "title": "Acesso API",
+          "description": "Automatize as operações do seu negócio com a nossa API completa e líder do setor."
+        },
+        "custom_dns": {
+          "title": "DNS Personalizado",
+          "description": "Obtenha o seu próprio DNS exclusivo com a sua marca para um serviço profissional."
+        },
+        "vip_support": {
+          "title": "Suporte VIP 24/7",
+          "description": "Obtenha suporte prioritário por ticket, com tempos de resposta mais rápidos para revendedores."
+        },
+        "data_privacy": {
+          "title": "Privacidade de Dados",
+          "description": "Servidores offshore com eliminação diária automática dos dados dos clientes."
+        },
+        "free_trials": {
+          "title": "Contas de Teste Gratuitas",
+          "description": "Gere testes gratuitos ilimitados de 24 horas para converter potenciais clientes."
+        }
+      }
+    },
+    "pricing": {
+      "title": "Preços de revenda",
+      "description": "Escolha créditos pré-pagos para um crescimento flexível pay-as-you-go, ou planos mensais ilimitados quando estiver a escalar em volume. Todos os níveis incluem o seu próprio painel de revendedor e ativação em 24 horas.",
+      "model_label": "Modelo de preços",
+      "models": {
+        "prepaid": "Pré-pago",
+        "unlimited": "Ilimitado"
+      },
+      "featured": "Mais popular",
+      "selected_plan": "Plano selecionado",
+      "best_value": "melhor valor",
+      "slider_label": "Selecione um nível de preços de revenda",
+      "order": "Encomendar {price}",
+      "yield": {
+        "credits": "créditos",
+        "capacity_note": "Capacidade mensal de linhas"
+      },
+      "features": {
+        "sub_resellers_yes": "Sub-revendedores incluídos",
+        "sub_resellers_no": "Sub-revendedores não incluídos",
+        "sub_resellers_count": "Sub-revendedores: {count}"
+      },
+      "prepaid_features": [
+        "Detalhe de créditos: 1 mês = 1 cr · 3 meses = 2 cr · 6 meses = 3 cr · 12 meses = 4 cr · teste 24h = 0 cr",
+        "Os créditos nunca expiram",
+        "Painel de revendedor próprio",
+        "Ativação em até 24h"
+      ],
+      "unlimited_features": [
+        "Linhas ilimitadas sem custo adicional",
+        "Suporte 24/7 por Telegram e WhatsApp",
+        "Ativação em até 24h"
+      ]
+    },
+    "final_cta": {
+      "title": "Pronto para lançar o seu negócio de revenda Maxco?",
+      "description": "Escolha acima o seu pacote pré-pago ou plano ilimitado — enviaremos as credenciais do seu painel em 24 horas.",
+      "button": "Escolha o seu plano"
+    },
+    "competition": {
+      "title": "O Poder Maxco",
+      "description": "Na liderança em Tecnologia, Suporte e Flexibilidade. Compare as nossas principais funcionalidades e veja porque é que a Maxco é a escolha preferida dos revendedores de IPTV.",
+      "chart_note": "*Quanto mais alto, melhor",
+      "chart_description": "Este gráfico compara a Maxco com os seus concorrentes em vários indicadores de desempenho. Como se pode ver, a Maxco destaca-se em Tecnologia, Suporte, Preços, Estabilidade, Ferramentas e Integração, demonstrando a nossa proposta de valor superior.",
+      "technology": "Tecnologia",
+      "support": "Suporte",
+      "stability": "Estabilidade",
+      "pricing": "Preços",
+      "integration": "Integração",
+      "competitor": "Concorrente {alphabet}"
+    },
+    "reviews": {
+      "title": "A Opinião dos Nossos Revendedores",
+      "description": "Os nossos revendedores adoram trabalhar connosco. Descubra porque confiam em nós para uma experiência de IPTV sem igual.",
+      "testimonials": [
+        {
+          "author": "James T.",
+          "text": "Sou revendedor há 2 anos. O painel torna muito fácil gerir os meus mais de 200 clientes. O suporte costuma responder-me numa hora quando preciso de ajuda.",
+          "image": "james-t",
+          "platform": "facebook"
+        },
+        {
+          "author": "Sophia M.",
+          "text": "Comecei pequeno com 100 créditos e agora compro 1000 de cada vez. Os descontos por volume fazem mesmo diferença quando se trabalha em escala. Margens de lucro decentes.",
+          "image": "sophia-m",
+          "platform": "trustpilot"
+        },
+        {
+          "author": "Liam J.",
+          "text": "A documentação da API é sólida. Levei um fim de semana a integrá-la com o meu site WordPress e agora tudo corre automaticamente. Poupa-me horas todas as semanas.",
+          "image": "liam-j",
+          "platform": "x"
+        },
+        {
+          "author": "Olivia R.",
+          "text": "Tive um problema de servidor no mês passado à meia-noite e o suporte ajudou-me a resolvê-lo de imediato. Os meus clientes nem repararam. É por esse tempo de resposta que fico com eles.",
+          "image": "olivia-r",
+          "platform": "facebook"
+        },
+        {
+          "author": "Noah K.",
+          "text": "O modelo pay-as-you-go é perfeito para mim, porque ainda estou a crescer. Não tenho de gastar milhares à cabeça como noutros fornecedores.",
+          "image": "noah-k",
+          "platform": "trustpilot"
+        },
+        {
+          "author": "Emma L.",
+          "text": "Passei de 50 clientes para mais de 300 em menos de um ano. O serviço é tão estável que quase não recebo queixas. A minha taxa de retenção anda nos 95%.",
+          "image": "emma-l",
+          "platform": "x"
+        },
+        {
+          "author": "Oliver B.",
+          "text": "O painel de estatísticas mostra-me exatamente que planos estão a vender e quando há renovações. Facilita o planeamento do meu marketing e o acompanhamento dos clientes.",
+          "image": "oliver-b",
+          "platform": "facebook"
+        },
+        {
+          "author": "Ava W.",
+          "text": "Usar o meu próprio DNS torna o meu serviço mais profissional. Os clientes acham que tenho a minha própria infraestrutura. Ótimo para a marca.",
+          "image": "ava-w",
+          "platform": "facebook"
+        },
+        {
+          "author": "William S.",
+          "text": "12 meses a revender e acho que tivemos talvez 2 horas de indisponibilidade no total? O meu fornecedor anterior tinha problemas semana sim, semana não. Uma diferença abismal.",
+          "image": "william-s",
+          "platform": "trustpilot"
+        },
+        {
+          "author": "Isabella H.",
+          "text": "Os testes gratuitos fecham cerca de 60% dos meus contactos. Deixo as pessoas testar a qualidade antes de comprar e normalmente subscrevem. A melhor ferramenta de vendas que tenho.",
+          "image": "isabella-h",
+          "platform": "x"
+        },
+        {
+          "author": "Elijah P.",
+          "text": "Os meus clientes dizem-me constantemente como o streaming é fluido em comparação com o serviço antigo. A tecnologia anti-buffer é a sério, não é só marketing.",
+          "image": "elijah-p",
+          "platform": "facebook"
+        },
+        {
+          "author": "Mia D.",
+          "text": "A privacidade é um enorme argumento de venda no meu mercado. As pessoas gostam de saber que os dados são eliminados diariamente. Ajuda-me a destacar-me da concorrência.",
+          "image": "mia-d",
+          "platform": "trustpilot"
+        },
+        {
+          "author": "Lucas G.",
+          "text": "A relação créditos-preço é sinceramente a melhor que encontrei. Comparei uns 8 fornecedores antes de escolher a Maxco. Mais lucro por venda para mim.",
+          "image": "lucas-g",
+          "platform": "x"
+        },
+        {
+          "author": "Charlotte F.",
+          "text": "O suporte já me salvou várias vezes quando estraguei configurações. São pacientes e ajudam mesmo, em vez de enviarem respostas genéricas. Agradeço isso.",
+          "image": "charlotte-f",
+          "platform": "facebook"
+        },
+        {
+          "author": "Benjamin N.",
+          "text": "Estou no negócio de revenda de IPTV há 4 anos, com vários fornecedores. A Maxco é o mais fiável com que já trabalhei. São factos.",
+          "image": "benjamin-n",
+          "platform": "facebook"
+        },
+        {
+          "author": "Amelia V.",
+          "text": "Mudei de fornecedor há 6 meses e só me arrependo de não o ter feito antes. As ferramentas são melhores, o serviço é mais estável e estou a ganhar mais dinheiro. Simples.",
+          "image": "amelia-v",
+          "platform": "facebook"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Perguntas Frequentes"
+    }
+  },
+  "faq": {
+    "hero": {
+      "title": "Perguntas Frequentes",
+      "description": "Tem perguntas sobre qualquer assunto? Nós temos as respostas."
+    },
+    "faqs": {
+      "general": {
+        "title": "Geral",
+        "questions": [
+          {
+            "title": "O que é a Maxco?",
+            "content": "A Maxco é um dos melhores fornecedores de IPTV do setor, especializado em streaming de alto desempenho e privacidade de dados. Desde 2010, milhares de clientes em todo o mundo confiam em nós para uma experiência de entretenimento fluida, com mais de 20.000 canais e uma vasta biblioteca de conteúdo a pedido."
+          },
+          {
+            "title": "Porquê comprar na Maxco em vez de outros fornecedores?",
+            "content": "Somos um fornecedor sério desde 2010, focado na fiabilidade a longo prazo — não um revendedor de ocasião. Muitos fornecedores desaparecem ou cortam contas assim que termina o período de reembolso; nós mantemos o seu acesso estável, respeitamos a sua privacidade encriptando todos os dados dos clientes em servidores offshore e apoiamo-lo com suporte real e disponível sempre que precisar."
+          },
+          {
+            "title": "O que é IPTV e como funciona?",
+            "content": "IPTV significa Internet Protocol Television (Televisão por Protocolo de Internet). Ao contrário da TV tradicional que usa sinais de cabo ou satélite, o IPTV entrega os conteúdos televisivos através da sua ligação à internet. Isto significa que pode ver os seus canais e programas favoritos em qualquer dispositivo com ligação à internet — seja a Smart TV, o smartphone, o tablet ou o computador. Só precisa de uma ligação à internet estável e de uma aplicação IPTV para começar a ver."
+          },
+          {
+            "title": "Quantos canais estão disponíveis na Maxco?",
+            "content": "Atualmente oferecemos mais de 20.000 canais em direto de todo o mundo. A nossa lista de canais é atualizada com frequência para garantir que tem sempre acesso ao conteúdo mais recente, incluindo canais internacionais, desporto premium, filmes, entretenimento, notícias e muito mais."
+          },
+          {
+            "title": "Que tipo de conteúdo posso ver?",
+            "content": "A Maxco oferece uma gama completa de conteúdos para toda a família. Pode desfrutar de eventos desportivos em direto, grandes êxitos de cinema, séries populares, programação infantil, documentários, canais de notícias, conteúdo cultural e muito mais. Com mais de 20.000 canais e uma vasta biblioteca VOD, há sempre algo para ver."
+          },
+          {
+            "title": "Oferecem conteúdo VOD (Vídeo a Pedido)?",
+            "content": "Sim! Oferecemos uma extensa biblioteca de Vídeo a Pedido com milhares de filmes e séries. Pode ver os seus conteúdos favoritos a qualquer momento, a pedido, sem ter de esperar pelos horários de emissão. O nosso catálogo VOD é atualizado regularmente com os últimos lançamentos."
+          },
+          {
+            "title": "O que é a tecnologia Anti-Buffer V6™ e como funciona?",
+            "content": "O Anti-Buffer V6™ é a nossa tecnologia proprietária concebida para eliminar o buffering e garantir uma transmissão fluida e sem interrupções. Utiliza um sistema algorítmico avançado que otimiza a sua ligação em tempo real, adaptando-se à velocidade da sua internet e às condições da rede. Esta tecnologia única é exclusiva da Maxco e distingue-nos dos outros fornecedores de IPTV do setor."
+          },
+          {
+            "title": "O que é a proteção por proxy e como funciona?",
+            "content": "É um sistema de encriptação interno que modifica o pedido para parecer simples navegação em sites, para que o seu ISP não saiba que está a ver IPTV. Isto não substitui uma VPN. Se o seu ISP bloquear IPTV, normalmente fá-lo bloqueando o IP do servidor, o que não pode ser contornado desta forma."
+          },
+          {
+            "title": "A Maxco é legal?",
+            "content": "A legalidade dos serviços de IPTV depende das leis e regulamentos do seu país ou região. Recomendamos que faça a sua própria pesquisa para compreender os requisitos legais onde vive. A Maxco não se responsabiliza pela forma como o serviço é utilizado. Fornecemos a plataforma de streaming e é da sua responsabilidade garantir o cumprimento das leis locais."
+          },
+          {
+            "title": "Qual é a diferença entre IPTV e TV tradicional?",
+            "content": "A principal diferença está na forma como o conteúdo é entregue. A TV por cabo e satélite tradicional exige instalações físicas e equipamento dedicado, enquanto o IPTV funciona através da sua ligação à internet, dando-lhe mais flexibilidade. Com IPTV, pode ver em vários dispositivos em qualquer lugar com acesso à internet, desfrutar de mais opções de canais a custos mais baixos e ter funcionalidades como conteúdo a pedido e sem contratos de fidelização. O IPTV também oferece melhores opções de qualidade de imagem, incluindo streaming em FHD e 4K."
+          }
+        ]
+      },
+      "setup": {
+        "title": "Instalação",
+        "questions": [
+          {
+            "title": "Que dispositivos são compatíveis com a Maxco?",
+            "content": "A Maxco funciona em quase todos os dispositivos, incluindo Smart TVs, dispositivos Android, iPhones, iPads, Amazon Fire Stick, caixas MAG, computadores e muito mais. Desde que o seu dispositivo tenha uma aplicação IPTV que suporte credenciais de início de sessão host/utilizador/palavra-passe ou URLs de listas M3U, pode usar o nosso serviço."
+          },
+          {
+            "title": "Como instalo a Maxco no meu dispositivo?",
+            "content": "Instalar a Maxco é fácil! Criámos tutoriais em vídeo passo a passo para cada tipo de dispositivo para o guiar no processo de instalação. Visite a nossa página de instalação para encontrar instruções detalhadas para o seu dispositivo específico e comece em minutos."
+          },
+          {
+            "title": "Que aplicações IPTV posso usar com a Maxco?",
+            "content": "A Maxco é compatível com a maioria das aplicações IPTV populares. Pode encontrar as nossas aplicações recomendadas para cada tipo de dispositivo na nossa página de instalação, onde fornecemos guias de configuração detalhados para as aplicações com melhor desempenho, garantindo a melhor experiência de streaming."
+          },
+          {
+            "title": "Posso ver em vários dispositivos em simultâneo?",
+            "content": "Sim! Pode ver a Maxco em vários dispositivos ao mesmo tempo. No entanto, o número de ligações simultâneas é limitado consoante o seu plano de subscrição. Se precisar de ligações adicionais, pode facilmente fazer o upgrade do seu plano na área de membros a qualquer momento."
+          },
+          {
+            "title": "Quantas ligações/dispositivos são permitidos por conta?",
+            "content": "Cada subscrição Maxco permite até 6 ligações simultâneas. Isto significa que pode transmitir em até 6 dispositivos diferentes ao mesmo tempo, tornando-a perfeita para famílias ou casas com vários utilizadores."
+          },
+          {
+            "title": "Que velocidade de internet preciso para uma transmissão fluida?",
+            "content": "A velocidade de internet necessária depende da qualidade de streaming que preferir. No entanto, recomendamos pelo menos 20 Mbps para a melhor experiência. Para definição standard (SD), 5-10 Mbps é suficiente. Para alta definição (HD), recomenda-se 10-20 Mbps. Para streaming 4K, o ideal é 25 Mbps ou mais."
+          },
+          {
+            "title": "Como configuro a minha aplicação IPTV com os meus dados IPTV?",
+            "content": "Configurar a sua aplicação IPTV é simples! Visite a nossa página de instalação, onde encontrará tutoriais em vídeo passo a passo para o seu dispositivo e aplicação específicos. Os guias mostram-lhe como introduzir as suas credenciais (host, utilizador e palavra-passe) ou o URL M3U para começar a ver de imediato."
+          },
+          {
+            "title": "Onde encontro os meus dados IPTV após a compra?",
+            "content": "Após concluir a compra, pode encontrar todas as suas credenciais de acesso IPTV (host, utilizador, palavra-passe e URL M3U) na área de membros. Basta iniciar sessão na sua conta, navegar até à secção de subscrições e selecionar a sua subscrição ativa para ver todas as informações necessárias para configurar o serviço."
+          },
+          {
+            "title": "Preciso de uma VPN para usar a Maxco?",
+            "content": "Não é necessária uma VPN para usar a Maxco, mas recomendamos vivamente que utilize uma. Uma VPN ajuda a proteger a sua privacidade e pode evitar potenciais problemas com o seu fornecedor de internet (ISP). Acrescenta uma camada extra de segurança e garante acesso ininterrupto ao nosso serviço de streaming."
+          }
+        ]
+      },
+      "payments": {
+        "title": "Pagamentos",
+        "questions": [
+          {
+            "title": "Que planos de subscrição oferecem?",
+            "content": "A Maxco oferece planos de subscrição flexíveis para as suas necessidades: planos de 1 mês, 3 meses e 12 meses. Cada plano dá-lhe acesso total a todos os nossos canais e funcionalidades. Períodos de subscrição mais longos oferecem melhor relação qualidade-preço, para que possa escolher a opção que melhor lhe convém."
+          },
+          {
+            "title": "Que métodos de pagamento aceitam?",
+            "content": "Aceitamos cartões de crédito/débito e pagamentos em criptomoeda. Para clientes que procuram subscrições de longo prazo sem o incómodo de renovações manuais, incentivamos vivamente o uso de criptomoeda, que oferece privacidade e conveniência adicionais para pagamentos recorrentes."
+          },
+          {
+            "title": "Como funciona a garantia de devolução do dinheiro em 30 dias?",
+            "content": "Garantimos a qualidade do nosso serviço com uma garantia de devolução do dinheiro em 30 dias. Se não ficar completamente satisfeito com a Maxco nos primeiros 30 dias da sua subscrição, pode pedir um reembolso total. Para todos os detalhes sobre elegibilidade e o processo de reembolso, consulte a nossa página de Termos de Serviço."
+          },
+          {
+            "title": "Como renovo a minha subscrição?",
+            "content": "Renovar a sua subscrição é simples! Receberá uma notificação por email alguns dias a semanas antes de a subscrição expirar, com o seu link de renovação personalizado. Também pode encontrar a sua fatura de renovação a qualquer momento iniciando sessão na área de membros. Basta clicar no link de renovação e concluir o pagamento para continuar o serviço sem interrupções."
+          },
+          {
+            "title": "Posso cancelar a minha subscrição a qualquer momento?",
+            "content": "A Maxco não usa renovações automáticas, por isso não há nada para cancelar. Todos os nossos planos de subscrição são pagamentos únicos pela duração selecionada (1, 3 ou 12 meses). A sua subscrição simplesmente expira no final do período escolhido, a menos que decida renová-la manualmente."
+          },
+          {
+            "title": "Oferecem um teste gratuito?",
+            "content": "Não oferecemos um teste gratuito tradicional. No entanto, oferecemos algo melhor — uma garantia de devolução do dinheiro em 30 dias. Isto permite-lhe experimentar o serviço completo sem risco durante 30 dias. Se não ficar satisfeito por qualquer motivo, pode pedir um reembolso total dentro desse período."
+          },
+          {
+            "title": "O que acontece quando a minha subscrição expira?",
+            "content": "Quando a sua subscrição expira, o serviço deixa de funcionar imediatamente. No entanto, a sua conta permanece suspensa durante 7 dias, dando-lhe tempo para renovar e reativar o serviço sem perder as suas definições. Após 7 dias, se não for renovada, a conta é removida permanentemente do nosso sistema."
+          },
+          {
+            "title": "Posso fazer upgrade ou downgrade do meu plano?",
+            "content": "Sim! Pode facilmente fazer upgrade ou downgrade do seu plano de subscrição a qualquer momento através da área de membros. Basta iniciar sessão na sua conta, navegar até às definições da subscrição e selecionar o plano que melhor se adequa às suas necessidades atuais. As alterações refletem-se no próximo ciclo de faturação."
+          },
+          {
+            "title": "A minha subscrição renova-se automaticamente?",
+            "content": "Não, nunca. A Maxco não usa renovações automáticas. Todas as nossas subscrições são pagamentos únicos, dando-lhe controlo total sobre a sua conta. Decide quando e se quer renovar — sem surpresas, sem cobranças inesperadas. Receberá emails de lembrete antes de a subscrição expirar, para que possa optar por renovar manualmente."
+          }
+        ]
+      },
+      "resellers": {
+        "title": "Revendedores",
+        "questions": [
+          {
+            "title": "Como me torno revendedor Maxco?",
+            "content": "Tornar-se revendedor Maxco é rápido e fácil! Basta visitar a nossa página de revenda, selecionar o número de créditos de que precisa, concluir o pagamento e receberá imediatamente as credenciais do seu painel de revendedor por email. Pode começar a gerir os seus próprios clientes e a fazer crescer o seu negócio de imediato."
+          },
+          {
+            "title": "Quais são as vantagens do programa de revenda?",
+            "content": "O nosso programa de revenda oferece inúmeras vantagens, incluindo preços significativamente mais baixos nas subscrições, controlo total sobre as contas dos seus clientes, acesso completo à API para automação, suporte VIP prioritário, geração de contas de teste gratuitas, capacidades de white-label e um painel completo para gerir tudo com eficiência. Terá todas as ferramentas necessárias para gerir um negócio de IPTV de sucesso."
+          },
+          {
+            "title": "Os créditos expiram?",
+            "content": "Os créditos pré-pagos de revendedor nunca expiram — use-os ao seu ritmo, sem contagem decrescente. Os planos ilimitados são faturados mensalmente e incluem um nível fixo de capacidade de linhas; escolha o plano que corresponde à sua base de clientes ativos e faça upgrade quando crescer."
+          },
+          {
+            "title": "O que é o painel de revendedor e o que posso fazer com ele?",
+            "content": "O painel de revendedor é um painel de gestão poderoso que lhe dá as mesmas capacidades que usamos para gerir contas. Pode criar, modificar e eliminar subscrições de clientes, gerar contas de teste, monitorizar a utilização, ver estatísticas detalhadas, gerir renovações e aceder a todas as ferramentas necessárias para gerir eficientemente o seu negócio de revenda de IPTV a partir de um local centralizado."
+          },
+          {
+            "title": "Disponibilizam acesso API para revendedores?",
+            "content": "Sim! Orgulhamo-nos de ser um dos poucos fornecedores de IPTV a oferecer acesso completo à API aos revendedores. A nossa API é a mais sofisticada do setor — uma afirmação que sustentamos com 100% de confiança. Com a nossa API, pode automatizar praticamente todos os aspetos das operações do seu negócio e integrar a Maxco nos seus próprios sistemas e fluxos de trabalho."
+          },
+          {
+            "title": "Que funcionalidades posso automatizar com a API?",
+            "content": "A nossa API permite-lhe automatizar quase tudo no seu negócio de revenda, incluindo criar e gerir contas de clientes, gerar subscrições, renovar serviços, criar contas de teste, verificar o estado das contas, obter informações de clientes e muito mais. Para detalhes completos sobre todos os endpoints e capacidades disponíveis, consulte a nossa documentação completa da API."
+          },
+          {
+            "title": "Posso usar o meu próprio DNS personalizado?",
+            "content": "Sim. Suportamos DNS personalizado para que possa disponibilizar o seu serviço de revenda em white-label sob o seu próprio domínio — os seus clientes veem a sua marca, não a nossa. É ideal para uma imagem profissional e para criar confiança junto do seu público. Contacte o suporte ou consulte o painel de revendedor para detalhes de configuração."
+          },
+          {
+            "title": "Como funcionam as contas de teste gratuitas para revendedores?",
+            "content": "Como revendedor, pode gerar contas de teste gratuitas de 24 horas para potenciais clientes, permitindo-lhes testar a qualidade do nosso serviço antes de se comprometerem com uma compra. Estes testes são totalmente gratuitos — não precisa de gastar créditos para os criar. É uma ferramenta poderosa para converter potenciais clientes em clientes pagantes, deixando-os experimentar a qualidade da Maxco em primeira mão."
+          },
+          {
+            "title": "Que tipo de suporte está disponível para revendedores?",
+            "content": "Os revendedores recebem suporte VIP prioritário por ticket. Quando submete um ticket de suporte, o seu pedido tem prioridade sobre as questões de clientes regulares, garantindo tempos de resposta mais rápidos e assistência dedicada. A nossa equipa entende que, como revendedor, o seu sucesso é o nosso sucesso, por isso estamos empenhados em dar-lhe o suporte premium de que precisa para servir bem os seus clientes."
+          },
+          {
+            "title": "Como funciona o modelo de preços pay-as-you-go?",
+            "content": "O nosso sistema pay-as-you-go é simples e flexível. Carrega a sua conta com o número de créditos de que precisa e usa esses créditos para criar subscrições para os seus clientes. Não há compromissos de longo prazo nem compras mínimas — compre apenas o que precisa, quando precisa. Isto dá-lhe controlo total sobre o seu fluxo de caixa e gestão de inventário."
+          },
+          {
+            "title": "Que bónus recebo em carregamentos maiores?",
+            "content": "Sim, quantos mais créditos comprar num único carregamento, maior é o desconto que recebe. Esta estrutura de bónus por níveis foi concebida para recompensar os revendedores que investem mais no crescimento do seu negócio. Pode ver as percentagens exatas de desconto para cada nível de créditos na nossa página de checkout de revenda. Compras maiores significam melhores margens para o seu negócio."
+          },
+          {
+            "title": "Posso fazer white-label do serviço?",
+            "content": "Com certeza! É livre de fazer white-label da Maxco e vendê-la sob a sua própria marca. Isto permite-lhe construir a sua identidade de marca e a fidelização dos clientes, aproveitando a nossa infraestrutura, estabilidade e funcionalidades líderes do setor. Crie a sua própria identidade de negócio enquanto nós tratamos do backend técnico."
+          },
+          {
+            "title": "Há limites no número de testes que posso criar?",
+            "content": "Não há limites rígidos no número de contas de teste que pode criar. No entanto, a geração de contas de teste está sujeita à nossa política de utilização razoável para evitar abusos. Desde que use a funcionalidade de testes de forma legítima para atrair potenciais clientes genuínos, não terá problemas. O nosso sistema foi concebido para apoiar revendedores sérios que fazem crescer negócios legítimos."
+          },
+          {
+            "title": "Como funciona a privacidade dos dados dos meus clientes?",
+            "content": "Levamos a privacidade dos dados muito a sério. Todos os nossos servidores estão localizados offshore para garantir a máxima proteção de privacidade. Além disso, dados de clientes como endereços IP e registos de visualização são automaticamente removidos dos nossos sistemas todos os dias. Isto significa que os seus clientes podem desfrutar do nosso serviço com total tranquilidade, sabendo que a sua privacidade está protegida e que os seus dados não são armazenados a longo prazo."
+          }
+        ]
+      }
+    }
+  },
+  "support": {
+    "hero": {
+      "title": "Contacte-nos",
+      "description": "Adoraríamos ouvir a sua opinião. Envie-nos uma mensagem e responderemos o mais rapidamente possível."
+    },
+    "form": {
+      "name": "Nome",
+      "email": "Endereço de Email",
+      "message": "A sua mensagem...",
+      "submit": "Enviar",
+      "subject": "Assunto",
+      "success": "Recebemos o seu pedido de suporte. Entraremos em contacto em breve.",
+      "error": "Ocorreu um erro inesperado"
+    }
+  },
+  "report": {
+    "hero": {
+      "title": "Denúncia de Abuso"
+    },
+    "form": {
+      "full_name": "Nome Completo",
+      "email": "Endereço de Email",
+      "business_name": "Nome da Empresa",
+      "channels": "Nome dos Canais",
+      "description": "Descrição da Obra Protegida por Direitos de Autor",
+      "evidence": "Prova de Titularidade dos Direitos de Autor",
+      "comments": "Comentários Adicionais:",
+      "submit": "Enviar Denúncia",
+      "success": "Recebemos a sua denúncia de abuso. Entraremos em contacto em breve.",
+      "error": "Ocorreu um erro inesperado"
+    }
+  },
+
+  "layout": {
+    "pages": {
+      "home": "Início",
+      "subscriptions": "Subscrições",
+      "invoices": "Faturas",
+      "rewards": "Recompensas",
+      "affiliate": "Afiliado | Afiliação",
+      "reseller": "Revendedor | Revendedores",
+      "channels": "Canais",
+      "sports": "Desporto",
+      "movies_tv": "Filmes e TV",
+      "apps": "Instalação",
+      "proxy": "Proxy",
+      "blog": "Blog",
+      "resellers": "Revendedores",
+      "tickets": "Tickets",
+      "dashboard": "Painel",
+      "tv-channels": "Canais",
+      "checkout": "Preços",
+      "members-area": "A Minha Conta",
+      "tutorials": "Centro de Ajuda",
+      "help_center": "Centro de Ajuda",
+      "faq": "FAQ",
+      "support": "Suporte",
+      "authenticity-check": "Verificar Subscrição",
+      "terms-and-conditions": "Termos | Termos de Serviço",
+      "privacy": "Privacidade | Política de Privacidade",
+      "abuse-report": "Denunciar Abuso",
+      "account": "Conta"
+    },
+
+    "navbar": {
+      "log-in": "Iniciar sessão",
+      "become-reseller": "Tornar-se Revendedor",
+      "join-now": "Aderir agora",
+      "log-out": "Terminar sessão"
+    },
+
+    "footer": {
+      "paragraph": "Streaming premium, sempre em direto. Todos os canais, todos os ecrãs, zero buffering.",
+      "copyright": "© {year} Maxco. Todos os direitos reservados.",
+      "tmdb": "Este produto utiliza a API do TMDB, mas não é aprovado nem certificado pelo TMDB.",
+
+      "watch": "Ver",
+      "company": "Empresa",
+      "support": "Suporte"
+    },
+
+    "error": {
+      "back": "Levar-me para o início",
+      "not-found": "A página que procura não existe ou foi movida.",
+      "server": "Algo correu mal do nosso lado. Já estamos a tratar disso.",
+      "fallback": "Ocorreu um erro inesperado. Tente novamente."
+    }
+  }
+}

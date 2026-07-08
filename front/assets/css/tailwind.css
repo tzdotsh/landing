@@ -234,6 +234,31 @@
     transition: background-color 5000s ease-in-out 0s !important;
   }
 
+  /*
+   * FormKit fields (contact + abuse report forms) render a transparent input
+   * inside a white .formkit-inner, with #404040 typed text. Browser autofill
+   * paints its own background/text color, which clashes with the white field.
+   * Browsers ignore direct background/color overrides on :-webkit-autofill,
+   * so force the background with an inset box-shadow and the text color with
+   * -webkit-text-fill-color, matching the theme in configs/formkit.theme.ts.
+   * Scoped to .formkit-inner so dark-themed inputs (hero email capture,
+   * channel search) keep their own styling.
+   */
+  .formkit-inner input:-webkit-autofill,
+  .formkit-inner input:-webkit-autofill:hover,
+  .formkit-inner input:-webkit-autofill:focus,
+  .formkit-inner input:-webkit-autofill:active,
+  .formkit-inner textarea:-webkit-autofill,
+  .formkit-inner textarea:-webkit-autofill:hover,
+  .formkit-inner textarea:-webkit-autofill:focus,
+  .formkit-inner select:-webkit-autofill {
+    -webkit-text-fill-color: #404040 !important;
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+    box-shadow: 0 0 0 1000px #ffffff inset !important;
+    caret-color: #404040 !important;
+    transition: background-color 9999s ease-in-out 0s !important;
+  }
+
   img {
     user-select: none;
   }

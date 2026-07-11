@@ -51,6 +51,10 @@
       "vod": {
         "title": "IPTV VOD — Filmes e Séries a Pedido | Maxco",
         "description": "Milhares de filmes e séries a pedido com a Maxco. Temporadas completas, estreias, conteúdo infantil e internacional em 4K — uma subscrição, veja quando quiser."
+      },
+      "affiliate-program": {
+        "title": "Programa de Afiliados",
+        "description": "Adira ao programa de afiliados da Maxco e ganhe 30% de comissão recorrente por cada referência, pago em criptomoeda."
       }
     }
   },
@@ -1027,6 +1031,48 @@
       "submit": "Enviar",
       "subject": "Assunto",
       "success": "Recebemos o seu pedido de suporte. Entraremos em contacto em breve.",
+      "error": "Ocorreu um erro inesperado"
+    }
+  },
+  "affiliate-program": {
+    "hero": {
+      "title": "Programa de Afiliados Maxco",
+      "description": "Ganhe 30% de comissão recorrente por cada cliente que indicar — enquanto este mantiver a subscrição. Adesão gratuita, pagamentos em criptomoeda."
+    },
+    "perks": {
+      "commission": {
+        "stat": "30%",
+        "title": "Comissão em cada venda",
+        "description": "Ganhe em cada pagamento que as suas referências fizerem, não apenas no primeiro."
+      },
+      "recurring": {
+        "stat": "Vitalício",
+        "title": "Recorrente nas renovações",
+        "description": "As suas referências continuam a gerar-lhe ganhos sempre que renovarem."
+      },
+      "payouts": {
+        "stat": "Cripto",
+        "title": "Pagamentos rápidos e sem fronteiras",
+        "description": "Levante os seus ganhos em USDC e outras criptomoedas."
+      }
+    },
+    "form": {
+      "join": "Aderir ao programa",
+      "name": "Nome",
+      "email": "Endereço de Email",
+      "website": "Website ou link do perfil social (opcional)",
+      "channels": "Onde nos vai promover? (YouTube, Telegram, website...)",
+      "audience": "Dimensão da audiência",
+      "audience-options": {
+        "small": "Menos de 1.000",
+        "medium": "1.000 – 10.000",
+        "large": "10.000 – 100.000",
+        "xlarge": "Mais de 100.000"
+      },
+      "promotion": "Como planeia promover a Maxco? Fale-nos da sua audiência e da sua abordagem...",
+      "experience": "Experiência anterior como afiliado ou com IPTV (opcional)",
+      "submit": "Enviar candidatura",
+      "success": "Candidatura recebida! A nossa equipa irá analisá-la e entrará em contacto em breve.",
       "error": "Ocorreu um erro inesperado"
     }
   },

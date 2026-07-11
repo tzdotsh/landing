@@ -51,6 +51,10 @@
       "vod": {
         "title": "IPTV VOD — Movies & Series On Demand | Maxco",
         "description": "Thousands of movies and series on demand with Maxco. Box sets, new releases, kids and international content in 4K — one subscription, watch anytime."
+      },
+      "affiliate-program": {
+        "title": "Affiliate Program",
+        "description": "Join the Maxco affiliate program and earn 30% recurring commission on every referral, paid in crypto."
       }
     }
   },
@@ -1027,6 +1031,48 @@
       "submit": "Submit",
       "subject": "Subject",
       "success": "We received your support request. We will get back to you shortly.",
+      "error": "An unexpected error occurred"
+    }
+  },
+  "affiliate-program": {
+    "hero": {
+      "title": "Maxco Affiliate Program",
+      "description": "Earn a 30% recurring commission on every customer you refer — for as long as they stay subscribed. Free to join, paid in crypto."
+    },
+    "perks": {
+      "commission": {
+        "stat": "30%",
+        "title": "Commission on every sale",
+        "description": "Earn on every payment your referrals make, not just the first one."
+      },
+      "recurring": {
+        "stat": "Lifetime",
+        "title": "Recurring on renewals",
+        "description": "Your referrals keep earning for you every time they renew."
+      },
+      "payouts": {
+        "stat": "Crypto",
+        "title": "Fast, borderless payouts",
+        "description": "Withdraw your earnings in USDC and other cryptocurrencies."
+      }
+    },
+    "form": {
+      "join": "Join the program",
+      "name": "Name",
+      "email": "Email Address",
+      "website": "Website or social profile link (optional)",
+      "channels": "Where will you promote us? (YouTube, Telegram, website...)",
+      "audience": "Audience size",
+      "audience-options": {
+        "small": "Under 1,000",
+        "medium": "1,000 – 10,000",
+        "large": "10,000 – 100,000",
+        "xlarge": "Over 100,000"
+      },
+      "promotion": "How do you plan to promote Maxco? Tell us about your audience and approach...",
+      "experience": "Previous affiliate or IPTV experience (optional)",
+      "submit": "Submit application",
+      "success": "Application received! Our team will review it and get back to you shortly.",
       "error": "An unexpected error occurred"
     }
   },

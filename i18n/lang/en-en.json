@@ -1056,6 +1056,64 @@
         "description": "Withdraw your earnings in USDC and other cryptocurrencies."
       }
     },
+    "earnings": {
+      "title": "How much can you earn?",
+      "subtitle": "Based on the yearly plan (£59.99). Commissions repeat with every renewal.",
+      "col-customers": "Active referred customers",
+      "col-earn": "You earn per year",
+      "rows": {
+        "r1": { "customers": "5 customers", "amount": "£90" },
+        "r2": { "customers": "25 customers", "amount": "£450" },
+        "r3": { "customers": "100 customers", "amount": "£1,800" },
+        "r4": { "customers": "500 customers", "amount": "£9,000" }
+      }
+    },
+    "steps": {
+      "title": "How it works",
+      "s1": {
+        "title": "Apply in 2 minutes",
+        "description": "Tell us where you'll promote Maxco."
+      },
+      "s2": {
+        "title": "Get your link",
+        "description": "Approved affiliates receive a personal tracked link."
+      },
+      "s3": {
+        "title": "Share it",
+        "description": "YouTube, Telegram, your website — anywhere your audience is."
+      },
+      "s4": {
+        "title": "Earn forever",
+        "description": "30% of every payment your referrals make, withdrawn in crypto."
+      }
+    },
+    "details": {
+      "title": "Program details",
+      "commission": {
+        "label": "Commission",
+        "value": "30% of every payment"
+      },
+      "duration": {
+        "label": "Duration",
+        "value": "Lifetime of the customer"
+      },
+      "tracking": {
+        "label": "Tracking window",
+        "value": "90-days"
+      },
+      "payouts": {
+        "label": "Payouts",
+        "value": "USDC and other crypto"
+      },
+      "cost": {
+        "label": "Cost to join",
+        "value": "Free"
+      },
+      "approval": {
+        "label": "Approval",
+        "value": "Manual review, 24–48h"
+      }
+    },
     "form": {
       "join": "Join the program",
       "name": "Name",

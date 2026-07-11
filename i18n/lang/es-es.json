@@ -1067,6 +1067,64 @@
         "description": "Retira tus ganancias en USDC y otras criptomonedas."
       }
     },
+    "earnings": {
+      "title": "¿Cuánto puedes ganar?",
+      "subtitle": "Basado en el plan anual (£59.99). Las comisiones se repiten con cada renovación.",
+      "col-customers": "Clientes referidos activos",
+      "col-earn": "Ganas al año",
+      "rows": {
+        "r1": { "customers": "5 clientes", "amount": "£90" },
+        "r2": { "customers": "25 clientes", "amount": "£450" },
+        "r3": { "customers": "100 clientes", "amount": "£1,800" },
+        "r4": { "customers": "500 clientes", "amount": "£9,000" }
+      }
+    },
+    "steps": {
+      "title": "Cómo funciona",
+      "s1": {
+        "title": "Solicita en 2 minutos",
+        "description": "Cuéntanos dónde vas a promocionar Maxco."
+      },
+      "s2": {
+        "title": "Recibe tu enlace",
+        "description": "Los afiliados aprobados reciben un enlace personal con seguimiento."
+      },
+      "s3": {
+        "title": "Compártelo",
+        "description": "YouTube, Telegram, tu web — donde esté tu audiencia."
+      },
+      "s4": {
+        "title": "Gana para siempre",
+        "description": "30% de cada pago que hagan tus referidos, retirado en cripto."
+      }
+    },
+    "details": {
+      "title": "Detalles del programa",
+      "commission": {
+        "label": "Comisión",
+        "value": "30% de cada pago"
+      },
+      "duration": {
+        "label": "Duración",
+        "value": "De por vida del cliente"
+      },
+      "tracking": {
+        "label": "Ventana de seguimiento",
+        "value": "90-days"
+      },
+      "payouts": {
+        "label": "Pagos",
+        "value": "USDC y otras criptomonedas"
+      },
+      "cost": {
+        "label": "Coste de unión",
+        "value": "Gratis"
+      },
+      "approval": {
+        "label": "Aprobación",
+        "value": "Revisión manual, 24–48h"
+      }
+    },
     "form": {
       "join": "Unirme al programa",
       "name": "Nombre",

@@ -16,6 +16,9 @@ usePageSeoMeta(
 
     <AffiliateHero class="relative pt-[186px] pb-10" />
     <AffiliatePerks class="relative pt-4 pb-10" />
+    <AffiliateEarnings class="relative pt-6 pb-10" />
+    <AffiliateSteps class="relative pt-4 pb-10" />
+    <AffiliateDetails class="relative pt-4 pb-10" />
     <AffiliateJoinForm class="relative pt-6 pb-[70px]" />
   </div>
 </template>

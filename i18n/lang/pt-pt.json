@@ -1056,6 +1056,64 @@
         "description": "Levante os seus ganhos em USDC e outras criptomoedas."
       }
     },
+    "earnings": {
+      "title": "Quanto pode ganhar?",
+      "subtitle": "Com base no plano anual (£59.99). As comissões repetem-se a cada renovação.",
+      "col-customers": "Clientes referidos ativos",
+      "col-earn": "Ganha por ano",
+      "rows": {
+        "r1": { "customers": "5 clientes", "amount": "£90" },
+        "r2": { "customers": "25 clientes", "amount": "£450" },
+        "r3": { "customers": "100 clientes", "amount": "£1,800" },
+        "r4": { "customers": "500 clientes", "amount": "£9,000" }
+      }
+    },
+    "steps": {
+      "title": "Como funciona",
+      "s1": {
+        "title": "Candidate-se em 2 minutos",
+        "description": "Diga-nos onde vai promover a Maxco."
+      },
+      "s2": {
+        "title": "Receba o seu link",
+        "description": "Os afiliados aprovados recebem um link pessoal com rastreio."
+      },
+      "s3": {
+        "title": "Partilhe-o",
+        "description": "YouTube, Telegram, o seu website — onde estiver a sua audiência."
+      },
+      "s4": {
+        "title": "Ganhe para sempre",
+        "description": "30% de cada pagamento das suas referências, levantado em cripto."
+      }
+    },
+    "details": {
+      "title": "Detalhes do programa",
+      "commission": {
+        "label": "Comissão",
+        "value": "30% de cada pagamento"
+      },
+      "duration": {
+        "label": "Duração",
+        "value": "Vitalício do cliente"
+      },
+      "tracking": {
+        "label": "Janela de rastreio",
+        "value": "90-days"
+      },
+      "payouts": {
+        "label": "Pagamentos",
+        "value": "USDC e outras criptomoedas"
+      },
+      "cost": {
+        "label": "Custo de adesão",
+        "value": "Gratuito"
+      },
+      "approval": {
+        "label": "Aprovação",
+        "value": "Revisão manual, 24–48h"
+      }
+    },
     "form": {
       "join": "Aderir ao programa",
       "name": "Nome",

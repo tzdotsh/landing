@@ -13,10 +13,12 @@ if (!isLegalPageSlug(slug.value)) {
   throw createError({ statusCode: 404, statusMessage: "Page Not Found" });
 }
 
+const requestFetch = useRequestFetch();
+
 const { pending: legalMdPending, data: legalDoc } = await useAsyncData(
   () => `legal-${slug.value}-${locale.value}`,
   () =>
-    $fetch(`/api/legal/${slug.value}`, {
+    requestFetch(`/api/legal/${slug.value}`, {
       query: { locale: locale.value },
     }),
   { watch: [slug, locale] },

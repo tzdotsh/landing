@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { KbArticle } from "~/data/kb-articles";
+import type { GuideCard } from "~/queries/apps";
 
 defineProps<{
-  articles: KbArticle[];
+  articles: GuideCard[];
 }>();
 </script>
 

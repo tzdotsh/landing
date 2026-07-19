@@ -24,7 +24,18 @@ export type Tutorial = {
   updatedAt: string;
 };
 
-type ContentLocale = "en" | "es";
+type ContentLocale = "en" | "es" | "pt";
+
+/** A reachable setup guide — one per device/app pair (see getGuideCards). */
+export type GuideCard = {
+  /** Tutorial id used as list key. */
+  id: number;
+  title: string;
+  deviceSlug: string;
+  deviceName: string;
+  appSlug: string;
+  updatedAt: string;
+};
 
 const METADATA_SELECT = {
   id: true,
@@ -42,7 +53,15 @@ const TUTORIAL_SELECT = {
 } as const;
 
 function toContentLocale(locale: string): ContentLocale {
-  return locale.startsWith("es") ? "es" : "en";
+  if (locale.startsWith("es")) {
+    return "es";
+  }
+
+  if (locale.startsWith("pt")) {
+    return "pt";
+  }
+
+  return "en";
 }
 
 function useContentLocale() {
@@ -60,6 +79,8 @@ export const APPS_QUERY_KEYS = {
     deviceSlug: string;
     appSlug: string;
   }) => [...APPS_QUERY_KEYS.root, "tutorial", params] as const,
+  tutorialBySlug: (params: { locale: ContentLocale; slug: string }) =>
+    [...APPS_QUERY_KEYS.root, "tutorialBySlug", params] as const,
 };
 
 export const appsMetadataQuery = defineQueryOptions(
@@ -114,8 +135,50 @@ export const appTutorialQuery = defineQueryOptions(
   }),
 );
 
+export const appTutorialBySlugQuery = defineQueryOptions(
+  ({ locale, slug }: { locale: ContentLocale; slug: string }) => ({
+    key: APPS_QUERY_KEYS.tutorialBySlug({ locale, slug }),
+    query: async () => {
+      const payload = usePayload();
+      const result = await payload.find({
+        collection: "tutorials",
+        locale,
+        depth: 1,
+        limit: 1,
+        where: {
+          slug: { equals: slug },
+        },
+        select: TUTORIAL_SELECT,
+      });
+
+      return (result.docs?.[0] as Tutorial | undefined) ?? null;
+    },
+    staleTime: 1000 * 60 * 10,
+  }),
+);
+
 export function useAppsMetadataQuery() {
   return useAppsMetadataQueryWithOptions();
+}
+
+export function useAppTutorialBySlugQueryWithOptions(
+  slug: MaybeRefOrGetter<string>,
+  options: {
+    server?: boolean;
+  } = {},
+) {
+  const locale = useContentLocale();
+
+  return useQuery(() => {
+    const resolvedSlug = toValue(slug);
+
+    return {
+      ...appTutorialBySlugQuery({ locale: locale.value, slug: resolvedSlug }),
+      enabled:
+        Boolean(resolvedSlug) &&
+        (import.meta.client || Boolean(options.server)),
+    };
+  });
 }
 
 export function useAppsMetadataQueryWithOptions(
@@ -162,6 +225,43 @@ export function useAppTutorialQueryWithOptions(
         (import.meta.client || Boolean(options.server)),
     };
   });
+}
+
+/**
+ * Reachable setup guides for the /apps index: one card per device/app pair.
+ * The detail page (`/apps/{device}/{app}`) runs `where device+app, limit:1` with
+ * no sort, so Payload's default order returns the FIRST matching tutorial. The
+ * metadata query shares that collection/order, so keeping the first tutorial
+ * seen per pair makes each index card resolve to exactly the tutorial its
+ * detail page renders — deterministic, no duplicate links to a single page.
+ */
+export function getGuideCards(
+  tutorials: Tutorial[] | undefined,
+): GuideCard[] {
+  const byPair = new Map<string, GuideCard>();
+
+  for (const tutorial of tutorials ?? []) {
+    if (!tutorial.device?.slug || !tutorial.app?.slug) {
+      continue;
+    }
+
+    const key = `${tutorial.device.slug}/${tutorial.app.slug}`;
+
+    if (byPair.has(key)) {
+      continue;
+    }
+
+    byPair.set(key, {
+      id: tutorial.id,
+      title: tutorial.title,
+      deviceSlug: tutorial.device.slug,
+      deviceName: tutorial.device.name,
+      appSlug: tutorial.app.slug,
+      updatedAt: tutorial.updatedAt,
+    });
+  }
+
+  return Array.from(byPair.values());
 }
 
 export function getDevicesFromTutorials(tutorials: Tutorial[] | undefined) {

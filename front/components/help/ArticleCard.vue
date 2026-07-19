@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type { KbArticle } from "~/data/kb-articles";
-import { formatKbUpdatedAt, formatKbViews } from "~/utils/kb";
+import type { GuideCard } from "~/queries/apps";
+import { formatGuideUpdatedAt } from "~/utils/kb";
 
 type Props = {
-  article: KbArticle;
+  article: GuideCard;
 };
 
 const props = defineProps<Props>();
@@ -11,25 +11,16 @@ const props = defineProps<Props>();
 const { version } = useProject();
 const localePath = useLocalePath();
 
+// Mirrors the deterministic detail-page resolution: the guide's device/app pair.
 const articlePath = computed(() =>
-  localePath(`/v${version}/help/${props.article.slug}`),
+  localePath(
+    `/v${version}/apps/${props.article.deviceSlug}/${props.article.appSlug}`,
+  ),
 );
 
 const updatedLabel = computed(() =>
-  formatKbUpdatedAt(props.article.updatedAt),
+  formatGuideUpdatedAt(props.article.updatedAt),
 );
-
-const metaHint = computed(() => {
-  if (updatedLabel.value) {
-    return { type: "updated" as const, value: updatedLabel.value };
-  }
-
-  if (props.article.views > 0) {
-    return { type: "views" as const, value: formatKbViews(props.article.views) };
-  }
-
-  return null;
-});
 </script>
 
 <template>
@@ -50,25 +41,17 @@ const metaHint = computed(() => {
           {{ article.title }}
         </h3>
 
-        <p
-          v-if="article.description"
-          class="text-muted mt-2 line-clamp-2 text-[15px]/[1.55]"
-        >
-          {{ article.description }}
+        <p class="text-muted mt-2 text-[15px]/[1.55]">
+          {{ article.deviceName }}
         </p>
       </div>
     </div>
 
     <p
-      v-if="metaHint"
+      v-if="updatedLabel"
       class="text-faint mt-auto text-[13px]/none font-medium tracking-wide uppercase"
     >
-      <template v-if="metaHint.type === 'updated'">
-        {{ $t("apps.kb.updated", { date: metaHint.value }) }}
-      </template>
-      <template v-else>
-        {{ $t("apps.kb.views", { count: metaHint.value }) }}
-      </template>
+      {{ $t("apps.kb.updated", { date: updatedLabel }) }}
     </p>
   </NuxtLinkLocale>
 </template>

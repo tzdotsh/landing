@@ -9,12 +9,27 @@ const route = useRoute("vversion-blog-article_slug___en-en");
 const { locale } = useI18n();
 const articleSlug = computed(() => route.params.article_slug?.toString() ?? "");
 
-const { data: currentPost, status } = await useAsyncData(
+const {
+  data: currentPost,
+  error: postError,
+  status,
+} = await useAsyncData(
   () => `blog-post-${locale.value}-${articleSlug.value}`,
   () => fetchBlogPostBySlug(locale.value, articleSlug.value),
   { watch: [articleSlug, locale] },
 );
 
+// fetchBlogPostBySlug only throws on upstream failure (BlogUpstreamError):
+// answer 503, never 404, so caches/ISR don't store a dead page for a live
+// post and search engines don't read a CMS outage as "gone".
+if (postError.value) {
+  throw createError({
+    statusCode: 503,
+    statusMessage: "Content temporarily unavailable",
+  });
+}
+
+// A well-formed empty result is the sole genuine not-found signal.
 if (!currentPost.value) {
   throw createError({
     statusCode: 404,
@@ -25,6 +40,8 @@ if (!currentPost.value) {
 
 const isLoadingPost = computed(() => status.value === "pending");
 
+// Alternates + related are enhancements: on upstream failure degrade to
+// empty arrays — never fail a page whose post already loaded.
 const { data: alternates } = await useAsyncData(
   () => `blog-alternates-${currentPost.value?.id ?? articleSlug.value}`,
   async () => {
@@ -32,7 +49,10 @@ const { data: alternates } = await useAsyncData(
       return [];
     }
 
-    return fetchBlogPostAlternates(currentPost.value.id);
+    return fetchBlogPostAlternates(currentPost.value.id).catch((error) => {
+      console.error("Blog: failed to fetch post alternates", error);
+      return [];
+    });
   },
   { watch: [currentPost] },
 );
@@ -44,7 +64,10 @@ const { data: relatedPosts } = await useAsyncData(
       return [];
     }
 
-    return fetchRelatedBlogPosts(currentPost.value);
+    return fetchRelatedBlogPosts(currentPost.value).catch((error) => {
+      console.error("Blog: failed to fetch related posts", error);
+      return [];
+    });
   },
   { watch: [currentPost] },
 );

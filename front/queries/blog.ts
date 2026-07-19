@@ -20,6 +20,19 @@ export type BlogPostsPage = {
   hasMore: boolean;
 };
 
+/**
+ * Upstream CMS failure (network error, timeout, non-2xx, malformed response).
+ * Distinct from "not found": only a well-formed `{docs: []}` with zero results
+ * resolves to null/[] — everything else throws this, so pages can answer 503
+ * instead of 404 and caches/ISR never store a dead page for a live post.
+ */
+export class BlogUpstreamError extends Error {
+  constructor(message: string, options?: { cause?: unknown }) {
+    super(message, options);
+    this.name = "BlogUpstreamError";
+  }
+}
+
 /** Raw Payload CMS `posts` doc (depth=1 resolves `thumbnail` into a media object). */
 type PayloadPostDoc = {
   id: number;
@@ -94,24 +107,49 @@ function mapPayloadPost(
   };
 }
 
+/** $fetch wrapper: any thrown error (network, timeout, non-2xx) becomes a BlogUpstreamError. */
+async function payloadFetch<T>(
+  url: string,
+  query: Record<string, string | number>,
+): Promise<T> {
+  try {
+    return await $fetch<T>(url, { query, timeout: 10_000 });
+  } catch (error) {
+    throw new BlogUpstreamError(`Blog CMS request failed: ${url}`, {
+      cause: error,
+    });
+  }
+}
+
+/** List queries must return a docs array — anything else is a malformed upstream response. */
+function assertDocsArray<T>(
+  response: { docs?: T[] } | null | undefined,
+  context: string,
+): T[] {
+  if (!response || !Array.isArray(response.docs)) {
+    throw new BlogUpstreamError(
+      `Blog CMS returned a malformed response (missing docs array): ${context}`,
+    );
+  }
+
+  return response.docs;
+}
+
 async function fetchPublishedPosts(locale: string): Promise<BlogPost[]> {
   const baseUrl = usePayloadBaseUrl();
 
-  const response = await $fetch<{ docs?: PayloadPostDoc[] }>(
+  const response = await payloadFetch<{ docs?: PayloadPostDoc[] }>(
     payloadPostsUrl(baseUrl),
     {
-      query: {
-        locale: toCmsLocale(locale),
-        "fallback-locale": "none",
-        limit: 100,
-        sort: "-createdAt",
-        depth: 1,
-      },
-      timeout: 10_000,
+      locale: toCmsLocale(locale),
+      "fallback-locale": "none",
+      limit: 100,
+      sort: "-createdAt",
+      depth: 1,
     },
   );
 
-  return (response?.docs ?? [])
+  return assertDocsArray(response, `posts list (${locale})`)
     .map((doc) => mapPayloadPost(doc, locale, baseUrl))
     .filter((post): post is BlogPost => post !== null);
 }
@@ -129,24 +167,22 @@ export async function fetchBlogPostsPage(locale: string, page: number) {
   } satisfies BlogPostsPage;
 }
 
+/** Resolves to null ONLY on a well-formed empty result — upstream failures throw BlogUpstreamError. */
 export async function fetchBlogPostBySlug(locale: string, slug: string) {
   const baseUrl = usePayloadBaseUrl();
 
-  const response = await $fetch<{ docs?: PayloadPostDoc[] }>(
+  const response = await payloadFetch<{ docs?: PayloadPostDoc[] }>(
     payloadPostsUrl(baseUrl),
     {
-      query: {
-        locale: toCmsLocale(locale),
-        "fallback-locale": "none",
-        "where[slug][equals]": slug,
-        limit: 1,
-        depth: 1,
-      },
-      timeout: 10_000,
+      locale: toCmsLocale(locale),
+      "fallback-locale": "none",
+      "where[slug][equals]": slug,
+      limit: 1,
+      depth: 1,
     },
   );
 
-  const doc = response?.docs?.[0];
+  const doc = assertDocsArray(response, `post by slug (${locale}/${slug})`)[0];
 
   return doc ? mapPayloadPost(doc, locale, baseUrl) : null;
 }
@@ -154,35 +190,28 @@ export async function fetchBlogPostBySlug(locale: string, slug: string) {
 /**
  * hreflang alternates for a post. Payload slugs are per-locale, so fetch the
  * doc with locale=all and emit only locales where both slug and title exist.
+ * Throws BlogUpstreamError on failure — callers decide how to degrade.
  */
 export async function fetchBlogPostAlternates(
   postId: number,
 ): Promise<BlogPostAlternate[]> {
   const baseUrl = usePayloadBaseUrl();
 
-  try {
-    const doc = await $fetch<PayloadPostAllLocalesDoc>(
-      payloadPostsUrl(baseUrl, `/${postId}`),
-      {
-        query: { locale: "all", depth: 0 },
-        timeout: 10_000,
-      },
-    );
+  const doc = await payloadFetch<PayloadPostAllLocalesDoc>(
+    payloadPostsUrl(baseUrl, `/${postId}`),
+    { locale: "all", depth: 0 },
+  );
 
-    return (
-      Object.entries(CMS_LOCALE_TO_SITE_LOCALE) as Array<
-        [CmsLocale, BlogPostAlternate["locale"]]
-      >
-    ).flatMap(([cmsLocale, siteLocale]) => {
-      const slug = doc?.slug?.[cmsLocale];
-      const title = doc?.title?.[cmsLocale];
+  return (
+    Object.entries(CMS_LOCALE_TO_SITE_LOCALE) as Array<
+      [CmsLocale, BlogPostAlternate["locale"]]
+    >
+  ).flatMap(([cmsLocale, siteLocale]) => {
+    const slug = doc?.slug?.[cmsLocale];
+    const title = doc?.title?.[cmsLocale];
 
-      return slug && title ? [{ locale: siteLocale, slug }] : [];
-    });
-  } catch (error) {
-    console.error("Blog: failed to fetch post alternates", error);
-    return [];
-  }
+    return slug && title ? [{ locale: siteLocale, slug }] : [];
+  });
 }
 
 export async function fetchRelatedBlogPosts(post: BlogPost, limit = 3) {

@@ -5,10 +5,19 @@ const { t, locale } = useI18n();
 
 usePageSeoMeta(t("seo.pages.blog.title"), t("seo.pages.blog.description"));
 
-await useAsyncData(
+const { error: indexError } = await useAsyncData(
   () => `blog-index-${locale.value}`,
   () => fetchBlogPostsPage(locale.value, 1),
 );
+
+// Upstream failure → 503. An empty list is only a valid state when the CMS
+// genuinely returns zero docs (well-formed {docs: []}).
+if (indexError.value) {
+  throw createError({
+    statusCode: 503,
+    statusMessage: "Content temporarily unavailable",
+  });
+}
 </script>
 
 <template>

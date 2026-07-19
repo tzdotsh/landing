@@ -130,7 +130,7 @@ const { pending: mdPending, data: ast } = await useParseMarkdown(
       <div class="container max-w-4xl">
         <CommonMarkdownRender
           :loading="mdPending || isLoading"
-          class="bg-panel/70 ring-line rounded-card border border-line/60 p-5 ring-1 backdrop-blur-sm sm:p-8 lg:p-10"
+          class="markdown-panel min-h-50 p-5 sm:p-8 lg:p-10"
         >
           <MDCRenderer v-if="ast" :body="ast.body" :data="ast.data" />
         </CommonMarkdownRender>

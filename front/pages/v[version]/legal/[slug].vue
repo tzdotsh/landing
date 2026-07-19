@@ -52,13 +52,12 @@ useReactiveSeoMeta({
 
     <section id="doc" class="relative">
       <div class="container">
-        <div
-          class="inverse-navbar box-bg min-h-50 max-lg:px-3 max-lg:py-5 lg:px-7.5 lg:py-10.5"
+        <CommonMarkdownRender
+          :loading="legalMdPending"
+          class="markdown-panel min-h-50 max-lg:px-3 max-lg:py-5 sm:p-8 lg:px-7.5 lg:py-10.5"
         >
-          <CommonMarkdownRender :loading="legalMdPending">
-            <div v-if="legalDoc?.html" v-html="legalDoc.html" />
-          </CommonMarkdownRender>
-        </div>
+          <div v-if="legalDoc?.html" v-html="legalDoc.html" />
+        </CommonMarkdownRender>
       </div>
     </section>
 

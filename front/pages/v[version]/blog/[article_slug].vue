@@ -97,11 +97,16 @@ const { pending: mdPending, data: ast } = await useParseMarkdown(
 
     <BlogPostMeta v-if="currentPost" :post="currentPost" />
 
-    <ArticleMarkdown :loading="isLoadingPost" class="relative pt-7 pb-12">
-      <CommonMarkdownRender :loading="isLoadingPost || mdPending">
-        <MDCRenderer v-if="ast" :body="ast.body" :data="ast.data" />
-      </CommonMarkdownRender>
-    </ArticleMarkdown>
+    <section id="markdown" class="relative pt-7 pb-12">
+      <div class="container">
+        <CommonMarkdownRender
+          :loading="isLoadingPost || mdPending"
+          class="markdown-panel min-h-50 p-5 sm:p-8 lg:p-10"
+        >
+          <MDCRenderer v-if="ast" :body="ast.body" :data="ast.data" />
+        </CommonMarkdownRender>
+      </div>
+    </section>
 
     <BlogRelatedPosts v-if="relatedPosts?.length" :posts="relatedPosts" />
   </div>

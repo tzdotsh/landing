@@ -27,7 +27,7 @@ const { pending: mdPending, data: ast } = await useParseMarkdown(
 
       <CommonMarkdownRender
         :loading="mdPending || isTutorialLoading"
-        class="inverse-navbar box-bg min-h-50 px-3 py-5 lg:px-11.25 lg:py-10.5"
+        class="markdown-panel min-h-50 p-5 sm:p-8 lg:p-10"
       >
         <LazyMDCRenderer v-if="ast" :body="ast.body" :data="ast.data" />
       </CommonMarkdownRender>

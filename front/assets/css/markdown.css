@@ -1,8 +1,27 @@
-.markdown-body {
-  color: rgba(71, 85, 105, 0.9);
+/*
+ * Shared prose + panel surface for all MDCRenderer / CommonMarkdownRender
+ * output (.markdown-body). Single source of truth for blog, help, tutorials,
+ * and legal — Maxco dark theme, brand tokens only (docs/BRANDING.md).
+ * Loaded after tailwind.css + the layout layer so it wins the cascade.
+ *
+ * Contrast (WCAG AA): #EDF3F8 on #142637 ≈ 13.8:1; #8AA0B2 on #142637 ≈ 5.7:1.
+ */
+
+/* Card surface — solid panel, no light box-bg / white gradient */
+.markdown-panel {
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  box-shadow: 0 0 0 1px var(--color-line);
 }
 
-.markdown-body h2:first-child {
+.markdown-body {
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+.markdown-body h2:first-child,
+.markdown-body h3:first-child {
   margin-top: 0;
 }
 
@@ -17,37 +36,73 @@
 
 .markdown-body h2,
 .markdown-body h3,
-.markdown-body h4 {
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  font-family: var(--font-heading);
+  color: var(--color-ink);
   font-weight: 700;
-  color: #1e293b;
+  letter-spacing: normal;
+  scroll-margin-top: 7rem;
 }
 
 .markdown-body h2 {
   font-size: 28px;
-  margin-bottom: 20px;
+  line-height: 1.25;
+  margin: 2.5rem 0 1.25rem;
 }
 
 .markdown-body h3 {
   font-size: 20px;
-  margin-bottom: 12px;
+  line-height: 1.35;
+  margin: 2rem 0 0.75rem;
 }
 
 .markdown-body h4 {
   font-size: 18px;
-  margin-bottom: 10px;
+  line-height: 1.4;
+  margin: 1.5rem 0 0.5rem;
 }
 
 .markdown-body p {
   font-size: 16px;
   line-height: 1.8;
   margin-bottom: 16px;
+  color: var(--color-ink);
+}
+
+.markdown-body strong,
+.markdown-body b {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+/* Link accent — teal (site primary), lime on hover. Gradient reserved for CTAs. */
+.markdown-body a {
+  color: var(--color-teal);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s var(--ease-brand);
+}
+
+.markdown-body a:hover {
+  color: var(--color-lime);
 }
 
 .markdown-body blockquote {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 1.125rem;
-  line-height: 1.5;
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+  border-left: 3px solid var(--color-teal);
+  background: var(--color-panel-2);
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+}
+
+.markdown-body blockquote p:last-child {
+  margin-bottom: 0;
 }
 
 .markdown-body ul,
@@ -67,38 +122,27 @@
 .markdown-body li {
   font-size: 16px;
   line-height: 1.8;
-  margin-bottom: 12px;
+  margin-block: 0.75rem;
+  color: var(--color-ink);
+}
+
+.markdown-body li::marker {
+  color: var(--color-teal);
 }
 
 .markdown-body img {
-  outline-offset: -0.5px;
-  outline: 0.5px solid #0000001a;
-}
-
-.markdown-body li {
-  margin-block: 0.75rem;
-}
-
-.markdown-body a {
-  transition: text-decoration-color 0.1s linear;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  display: block;
+  height: auto;
+  margin: 1.5rem 0;
+  max-width: 100%;
 }
 
 .markdown-body figcaption {
-  background-color: var(--gray50);
-  color: var(--gray600);
+  color: var(--color-muted);
   text-align: left;
-  border-radius: 0.5rem;
-  margin-top: 1rem;
-  padding: 0.75rem;
-  font-size: 0.875rem;
-}
-
-.markdown-body figcaption {
-  color: #535862;
-  text-align: left;
-  background-color: #fafafa;
+  background-color: var(--color-panel-2);
   border-radius: 0.5rem;
   margin-top: 1rem;
   padding: 0.75rem;
@@ -107,12 +151,14 @@
 
 .markdown-body hr {
   margin: 2.5rem auto 2rem;
-  border-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-top: 1px solid var(--color-line);
   width: 100%;
 }
 
 .markdown-body table {
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--color-panel-2);
+  border: 1px solid var(--color-line);
   border-collapse: collapse;
   border-radius: 12px;
   overflow: hidden;
@@ -122,14 +168,15 @@
 
 .markdown-body th,
 .markdown-body td {
-  border-bottom: 1px solid hsla(0, 0%, 0%, 0.05);
+  border-bottom: 1px solid var(--color-line);
   padding: 16px;
   text-align: left;
+  color: var(--color-ink);
 }
 
 .markdown-body th {
-  background: var(--color-primary);
-  color: white;
+  background: color-mix(in srgb, var(--color-teal) 22%, var(--color-panel-2));
+  color: var(--color-ink);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -140,14 +187,10 @@
   border-bottom: none;
 }
 
-.markdown-body strong {
-  font-weight: 700;
-  color: rgba(71, 85, 105);
-}
-
 .markdown-body pre {
-  background-color: #1e293b;
-  color: #e2e8f0;
+  background-color: var(--color-panel-2);
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
   border-radius: 1rem;
   font-size: 0.875rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -158,8 +201,9 @@
 }
 
 .markdown-body code {
-  background-color: #f1f5f9;
-  color: #334155;
+  background-color: var(--color-panel-2);
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -169,6 +213,7 @@
 .markdown-body pre code {
   background-color: transparent;
   color: inherit;
+  border: none;
   padding: 0;
   border-radius: 0;
   font-size: inherit;
@@ -181,5 +226,11 @@
 
   .markdown-body th {
     word-break: break-word;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .markdown-body a {
+    transition: none;
   }
 }

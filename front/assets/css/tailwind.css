@@ -197,10 +197,6 @@
   @apply relative after:absolute after:inset-0 after:-z-10 after:h-full after:w-full after:rounded-[inherit] after:transition-[opacity,];
 }
 
-@utility box-bg {
-  @apply before-full isolate rounded-[20px] bg-[url(/img/background_box.webp)] bg-size-[100%_100%] bg-no-repeat before:bg-white/85 before:backdrop-blur-xl;
-}
-
 @utility bg-green-gradient {
   @apply from-green/29 to-green/51 bg-linear-to-b;
 }

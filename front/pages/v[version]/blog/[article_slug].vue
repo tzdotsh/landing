@@ -4,7 +4,6 @@ import {
   fetchRelatedBlogPosts,
   fetchBlogPostBySlug,
 } from "~/queries/blog";
-import { toContentLocale } from "~/utils/blog";
 
 const route = useRoute("vversion-blog-article_slug___en-en");
 const { locale } = useI18n();
@@ -12,11 +11,7 @@ const articleSlug = computed(() => route.params.article_slug?.toString() ?? "");
 
 const { data: currentPost, status } = await useAsyncData(
   () => `blog-post-${locale.value}-${articleSlug.value}`,
-  () =>
-    fetchBlogPostBySlug(
-      toContentLocale(locale.value),
-      articleSlug.value,
-    ),
+  () => fetchBlogPostBySlug(locale.value, articleSlug.value),
   { watch: [articleSlug, locale] },
 );
 
@@ -31,9 +26,15 @@ if (!currentPost.value) {
 const isLoadingPost = computed(() => status.value === "pending");
 
 const { data: alternates } = await useAsyncData(
-  () => `blog-alternates-${articleSlug.value}`,
-  () => fetchBlogPostAlternates(articleSlug.value),
-  { watch: [articleSlug] },
+  () => `blog-alternates-${currentPost.value?.id ?? articleSlug.value}`,
+  async () => {
+    if (!currentPost.value) {
+      return [];
+    }
+
+    return fetchBlogPostAlternates(currentPost.value.id);
+  },
+  { watch: [currentPost] },
 );
 
 const { data: relatedPosts } = await useAsyncData(
@@ -49,6 +50,13 @@ const { data: relatedPosts } = await useAsyncData(
 );
 
 useBlogPostSeo(currentPost, alternates);
+
+// Payload posts carry raw markdown — parse once (server-cached via useAsyncData)
+// and render with MDCRenderer, same as the tutorials/legal markdown path.
+const { pending: mdPending, data: ast } = await useParseMarkdown(
+  () => `article-${locale.value}-${articleSlug.value}`,
+  computed(() => currentPost.value?.content),
+);
 </script>
 
 <template>
@@ -67,8 +75,8 @@ useBlogPostSeo(currentPost, alternates);
     <BlogPostMeta v-if="currentPost" :post="currentPost" />
 
     <ArticleMarkdown :loading="isLoadingPost" class="relative pt-7 pb-12">
-      <CommonMarkdownRender :loading="isLoadingPost">
-        <ContentRenderer v-if="currentPost" :value="currentPost" />
+      <CommonMarkdownRender :loading="isLoadingPost || mdPending">
+        <MDCRenderer v-if="ast" :body="ast.body" :data="ast.data" />
       </CommonMarkdownRender>
     </ArticleMarkdown>
 

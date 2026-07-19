@@ -3,37 +3,49 @@ export type BlogFaqItem = {
   answer: string;
 };
 
-/** Shape returned by queryCollection('blog') after content.config schema. */
-export type BlogCollectionItem = {
-  id: string;
-  path: string;
+export type SiteContentLocale = "en-en" | "es-es" | "pt-pt";
+
+/** Payload CMS locale codes for the posts collection. */
+export type CmsLocale = "en" | "es" | "pt";
+
+/** Blog post mapped from a Payload CMS `posts` doc into the shape the blog UI consumes. */
+export type BlogPost = {
+  id: number;
   title: string;
   slug: string;
   description: string;
-  datePublished: string | Date;
-  dateUpdated?: string | Date;
+  /** Raw markdown from Payload's `content` field. */
+  content: string;
+  /** Absolute thumbnail URL (https://cms.../api/media/file/...). */
+  image?: string;
+  datePublished: string;
+  dateUpdated?: string;
   author: string;
   authorBio?: string;
   tags: string[];
   category?: string;
-  image?: string;
-  locale: "en-en" | "es-es" | "pt-pt";
-  draft: boolean;
-  faq?: BlogFaqItem[];
-  body?: unknown;
+  locale: SiteContentLocale;
+  readingTimeMinutes: number;
+  faq: BlogFaqItem[];
 };
 
-export type BlogPost = BlogCollectionItem & {
-  readingTimeMinutes: number;
+/** hreflang alternate — Payload slugs are per-locale, so each entry carries its own slug. */
+export type BlogPostAlternate = {
+  locale: SiteContentLocale;
+  slug: string;
 };
 
 export const BLOG_POSTS_PER_PAGE = 12;
 
 export const BLOG_DEFAULT_LOCALE = "en-en";
 
-export function toContentLocale(
-  locale: string,
-): "en-en" | "es-es" | "pt-pt" {
+export const CMS_LOCALE_TO_SITE_LOCALE: Record<CmsLocale, SiteContentLocale> = {
+  en: "en-en",
+  es: "es-es",
+  pt: "pt-pt",
+};
+
+export function toContentLocale(locale: string): SiteContentLocale {
   if (locale.startsWith("es")) {
     return "es-es";
   }
@@ -45,85 +57,108 @@ export function toContentLocale(
   return "en-en";
 }
 
-export function resolveBlogSlug(post: BlogCollectionItem) {
-  return post.slug ?? post.path.split("/").filter(Boolean).pop() ?? "";
+/** Map a site locale (en-en / es-es / pt-pt) to the Payload CMS locale code. */
+export function toCmsLocale(locale: string): CmsLocale {
+  if (locale.startsWith("es")) {
+    return "es";
+  }
+
+  if (locale.startsWith("pt")) {
+    return "pt";
+  }
+
+  return "en";
 }
 
-export function isPublishedBlogPost(
-  post: BlogCollectionItem,
-  locale: string,
-) {
-  return Boolean(!post.draft) && post.locale === toContentLocale(locale);
+export function resolveBlogSlug(post: Pick<BlogPost, "slug">) {
+  return post.slug;
 }
 
-export function sortBlogPostsNewestFirst(posts: BlogCollectionItem[]) {
-  return [...posts].sort(
-    (a, b) =>
-      new Date(b.datePublished).getTime() -
-      new Date(a.datePublished).getTime(),
-  );
-}
-
-/** Nuxt Content v3 page collections expose parsed MDC/minimark trees, not raw strings. */
-export function resolveBlogBodyPlainText(body: unknown): string {
-  if (typeof body === "string") {
-    return body;
-  }
-
-  if (!body) {
-    return "";
-  }
-
-  if (Array.isArray(body)) {
-    return body.map(resolveBlogBodyPlainText).join(" ");
-  }
-
-  if (typeof body === "object") {
-    const node = body as Record<string, unknown>;
-
-    if (node.type === "minimark" && node.value) {
-      return resolveBlogBodyPlainText(node.value);
-    }
-
-    const parts: string[] = [];
-
-    if (typeof node.value === "string") {
-      parts.push(node.value);
-    }
-
-    if (typeof node.text === "string") {
-      parts.push(node.text);
-    }
-
-    if (node.children) {
-      parts.push(resolveBlogBodyPlainText(node.children));
-    }
-
-    if (node.body) {
-      parts.push(resolveBlogBodyPlainText(node.body));
-    }
-
-    return parts.join(" ");
-  }
-
-  return "";
+/** Rough markdown → plain text for word counts and FAQ answers. */
+export function markdownToPlainText(markdown: string) {
+  return markdown
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/`([^`]*)`/g, "$1")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/^::[^\n]*$/gm, " ")
+    .replace(/[*_~>|-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 export function estimateReadingTimeMinutes(
-  body: unknown,
+  markdown: string,
   wordsPerMinute = 220,
 ) {
-  const text = resolveBlogBodyPlainText(body).trim();
-  const words = text.split(/\s+/).filter(Boolean).length;
+  const words = markdownToPlainText(markdown)
+    .split(/\s+/)
+    .filter(Boolean).length;
 
   return Math.max(1, Math.ceil(words / wordsPerMinute));
 }
 
-export function withReadingTime(post: BlogCollectionItem): BlogPost {
-  return {
-    ...post,
-    readingTimeMinutes: estimateReadingTimeMinutes(post.body),
+const FAQ_HEADING_PATTERN =
+  /^(faq|faqs|frequently asked questions?|preguntas frecuentes|perguntas frequentes)$/i;
+
+/**
+ * Extract a trailing `## FAQ` markdown section (`### question` + answer
+ * paragraphs) for FAQPage JSON-LD. Returns [] when the post has no FAQ block.
+ */
+export function parseBlogFaq(markdown: string): BlogFaqItem[] {
+  const lines = markdown.split("\n");
+
+  let faqStart = -1;
+  for (let i = 0; i < lines.length; i++) {
+    const match = lines[i].match(/^##\s+(.+?)\s*$/);
+    if (match && FAQ_HEADING_PATTERN.test(match[1].trim())) {
+      faqStart = i + 1;
+    }
+  }
+
+  if (faqStart === -1) {
+    return [];
+  }
+
+  const items: BlogFaqItem[] = [];
+  let question = "";
+  let answerLines: string[] = [];
+
+  const flush = () => {
+    if (question && answerLines.length) {
+      const answer = markdownToPlainText(answerLines.join("\n"));
+      if (answer) {
+        items.push({ question, answer });
+      }
+    }
+    question = "";
+    answerLines = [];
   };
+
+  for (let i = faqStart; i < lines.length; i++) {
+    const line = lines[i];
+
+    // A following h2 ends the FAQ section.
+    if (/^##\s+[^#]/.test(line)) {
+      break;
+    }
+
+    const questionMatch = line.match(/^###\s+(.+?)\s*$/);
+    if (questionMatch) {
+      flush();
+      question = markdownToPlainText(questionMatch[1]);
+      continue;
+    }
+
+    if (question) {
+      answerLines.push(line);
+    }
+  }
+
+  flush();
+
+  return items;
 }
 
 /** Canonical blog path without /v{version} — used for SEO and sitemap. */
@@ -135,18 +170,6 @@ export function blogCanonicalPath(slug: string, locale: string) {
   }
 
   return `/${normalized}/blog/${slug}`;
-}
-
-export function blogVersionedPath(
-  slug: string,
-  version: number | string,
-  locale: string,
-) {
-  const normalized = toContentLocale(locale);
-  const prefix =
-    normalized === BLOG_DEFAULT_LOCALE ? "" : `/${normalized}`;
-
-  return `${prefix}/v${version}/blog/${slug}`.replace(/\/{2,}/g, "/");
 }
 
 export function absoluteBlogUrl(

@@ -1,11 +1,7 @@
 <script lang="ts" setup>
 import { twMerge } from "tailwind-merge";
 
-import {
-  formatBlogDate,
-  resolveBlogSlug,
-  type BlogPost,
-} from "~/utils/blog";
+import { formatBlogDate, type BlogPost } from "~/utils/blog";
 
 const props = withDefaults(
   defineProps<{

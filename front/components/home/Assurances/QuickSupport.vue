@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Bubble from "./Bubble.vue";
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     staticMotion?: boolean;
   }>(),

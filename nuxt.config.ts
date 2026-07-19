@@ -5,38 +5,6 @@ import { CRITICAL_HEAD } from "./front/constants/criticalTheme";
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
 
-/** Nuxt Content SQLite driver — avoids better-sqlite3 native bindings when possible. */
-function resolveContentSqliteConnector():
-  | "native"
-  | "bun"
-  | "better-sqlite3"
-  | undefined {
-  const override = process.env.NUXT_CONTENT_SQLITE_CONNECTOR;
-
-  if (
-    override === "native" ||
-    override === "bun" ||
-    override === "better-sqlite3"
-  ) {
-    return override;
-  }
-
-  // bun run build / bun install — no native .node binary required
-  if (process.versions.bun) {
-    return "bun";
-  }
-
-  // Node 22.5+ built-in sqlite (see content.nuxt.com docs)
-  const nodeMajor = Number(process.versions.node.split(".")[0] ?? 0);
-  if (nodeMajor >= 22) {
-    return "native";
-  }
-
-  return undefined;
-}
-
-const contentSqliteConnector = resolveContentSqliteConnector();
-
 // Environment: Nuxt loads `.env` from the project root at build/dev time.
 // Shared billing vars come from the tv-api-nuxt layer (`runtimeConfig` ← process.env).
 // Server deploy: place `.env` here, run `bun build`, then `pm2 start ecosystem.config.cjs`.
@@ -114,7 +82,6 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    "@nuxt/content",
     "@nuxt/fonts",
     "nuxt-echarts",
     "@nuxtjs/mdc",
@@ -258,12 +225,6 @@ export default defineNuxtConfig({
     },
   },
 
-  content: {
-    ...(contentSqliteConnector
-      ? { experimental: { sqliteConnector: contentSqliteConnector } }
-      : {}),
-  },
-
   runtimeConfig: {
     tmdbApiKey: process.env.TMDB_API_KEY || process.env.NUXT_TMDB_API_KEY,
 
@@ -276,6 +237,15 @@ export default defineNuxtConfig({
     canonicalHost: process.env.CANONICAL_HOST || "maxco.one",
 
     public: {
+      // Payload CMS origin (blog/tutorials/legal). Overrides the tv-layout
+      // layer default; NUXT_PUBLIC_CMS_URL is read here at BUILD time (baked
+      // runtimeConfig) — export it in the build shell, not just PM2 env.
+      payloadBaseURL:
+        process.env.NUXT_PUBLIC_CMS_URL ??
+        process.env.NUXT_PUBLIC_PAYLOAD_BASE_URL ??
+        process.env.PAYLOAD_BASE_URL ??
+        "https://cms.maxco.one",
+
       validDomain: process.env.VALID_DOMAIN,
       enableAnimations: process.env.ENABLE_ANIMATIONS !== "false",
 

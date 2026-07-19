@@ -3,12 +3,14 @@ import { computed, toValue, type MaybeRefOrGetter } from "vue";
 
 import {
   BLOG_POSTS_PER_PAGE,
-  isPublishedBlogPost,
-  resolveBlogSlug,
-  sortBlogPostsNewestFirst,
+  CMS_LOCALE_TO_SITE_LOCALE,
+  estimateReadingTimeMinutes,
+  parseBlogFaq,
+  toCmsLocale,
   toContentLocale,
-  withReadingTime,
   type BlogPost,
+  type BlogPostAlternate,
+  type CmsLocale,
 } from "~/utils/blog";
 
 export type BlogPostsPage = {
@@ -18,12 +20,100 @@ export type BlogPostsPage = {
   hasMore: boolean;
 };
 
-async function fetchPublishedPosts(locale: string) {
-  const posts = await queryCollection("blog").all();
+/** Raw Payload CMS `posts` doc (depth=1 resolves `thumbnail` into a media object). */
+type PayloadPostDoc = {
+  id: number;
+  title?: string | null;
+  description?: string | null;
+  content?: string | null;
+  slug?: string | null;
+  thumbnail?: { url?: string | null } | number | null;
+  createdAt: string;
+  updatedAt: string;
+};
 
-  return sortBlogPostsNewestFirst(
-    posts.filter((post) => isPublishedBlogPost(post, locale)),
-  ).map(withReadingTime);
+/** `GET /api/posts/{id}?locale=all` returns localized fields keyed by CMS locale. */
+type PayloadPostAllLocalesDoc = {
+  id: number;
+  title?: Partial<Record<CmsLocale, string | null>> | null;
+  slug?: Partial<Record<CmsLocale, string | null>> | null;
+};
+
+function usePayloadBaseUrl() {
+  const { public: config } = useRuntimeConfig();
+
+  return String(config.payloadBaseURL || "");
+}
+
+function payloadPostsUrl(baseUrl: string, path = "") {
+  return new URL(`/api/posts${path}`, baseUrl).href;
+}
+
+function resolveThumbnailUrl(
+  thumbnail: PayloadPostDoc["thumbnail"],
+  baseUrl: string,
+): string | undefined {
+  if (!thumbnail || typeof thumbnail !== "object" || !thumbnail.url) {
+    return undefined;
+  }
+
+  if (/^https?:\/\//.test(thumbnail.url)) {
+    return thumbnail.url;
+  }
+
+  return new URL(thumbnail.url, baseUrl).href;
+}
+
+function mapPayloadPost(
+  doc: PayloadPostDoc,
+  locale: string,
+  baseUrl: string,
+): BlogPost | null {
+  // fallback-locale=none returns docs with null localized fields for
+  // untranslated locales — drop them defensively.
+  if (!doc?.title || !doc.slug) {
+    return null;
+  }
+
+  const content = doc.content ?? "";
+
+  return {
+    id: doc.id,
+    title: doc.title,
+    slug: doc.slug,
+    description: doc.description ?? "",
+    content,
+    image: resolveThumbnailUrl(doc.thumbnail, baseUrl),
+    datePublished: doc.createdAt,
+    dateUpdated: doc.updatedAt,
+    author: "Maxco",
+    tags: [],
+    locale: toContentLocale(locale),
+    readingTimeMinutes: estimateReadingTimeMinutes(content),
+    faq: parseBlogFaq(content),
+  };
+}
+
+async function fetchPublishedPosts(locale: string): Promise<BlogPost[]> {
+  const baseUrl = usePayloadBaseUrl();
+
+  const response = await $fetch<{ docs?: PayloadPostDoc[] }>(
+    payloadPostsUrl(baseUrl),
+    {
+      query: {
+        locale: toCmsLocale(locale),
+        "fallback-locale": "none",
+        limit: 100,
+        sort: "-createdAt",
+        depth: 1,
+      },
+      timeout: 10_000,
+    },
+  );
+
+  return (response?.docs ?? [])
+    .map((doc) => mapPayloadPost(doc, locale, baseUrl))
+    .filter((post): post is BlogPost => post !== null);
 }
 
 export async function fetchBlogPostsPage(locale: string, page: number) {
@@ -40,69 +130,65 @@ export async function fetchBlogPostsPage(locale: string, page: number) {
 }
 
 export async function fetchBlogPostBySlug(locale: string, slug: string) {
-  const posts = await queryCollection("blog").all();
-  const match = posts.find(
-    (post) =>
-      resolveBlogSlug(post) === slug && isPublishedBlogPost(post, locale),
+  const baseUrl = usePayloadBaseUrl();
+
+  const response = await $fetch<{ docs?: PayloadPostDoc[] }>(
+    payloadPostsUrl(baseUrl),
+    {
+      query: {
+        locale: toCmsLocale(locale),
+        "fallback-locale": "none",
+        "where[slug][equals]": slug,
+        limit: 1,
+        depth: 1,
+      },
+      timeout: 10_000,
+    },
   );
 
-  return match ? withReadingTime(match) : null;
+  const doc = response?.docs?.[0];
+
+  return doc ? mapPayloadPost(doc, locale, baseUrl) : null;
 }
 
-export async function fetchBlogPostAlternates(slug: string) {
-  const posts = await queryCollection("blog").all();
+/**
+ * hreflang alternates for a post. Payload slugs are per-locale, so fetch the
+ * doc with locale=all and emit only locales where both slug and title exist.
+ */
+export async function fetchBlogPostAlternates(
+  postId: number,
+): Promise<BlogPostAlternate[]> {
+  const baseUrl = usePayloadBaseUrl();
 
-  return posts.filter(
-    (post) => resolveBlogSlug(post) === slug && !post.draft,
-  );
-}
+  try {
+    const doc = await $fetch<PayloadPostAllLocalesDoc>(
+      payloadPostsUrl(baseUrl, `/${postId}`),
+      {
+        query: { locale: "all", depth: 0 },
+        timeout: 10_000,
+      },
+    );
 
-export async function fetchRelatedBlogPosts(
-  post: BlogPost,
-  limit = 3,
-) {
-  const posts = await fetchPublishedPosts(post.locale);
-  const currentSlug = resolveBlogSlug(post);
+    return (
+      Object.entries(CMS_LOCALE_TO_SITE_LOCALE) as Array<
+        [CmsLocale, BlogPostAlternate["locale"]]
+      >
+    ).flatMap(([cmsLocale, siteLocale]) => {
+      const slug = doc?.slug?.[cmsLocale];
+      const title = doc?.title?.[cmsLocale];
 
-  const scored = posts
-    .filter((entry) => resolveBlogSlug(entry) !== currentSlug)
-    .map((entry) => {
-      let score = 0;
-
-      if (entry.category && entry.category === post.category) {
-        score += 3;
-      }
-
-      const sharedTags = entry.tags.filter((tag) => post.tags.includes(tag));
-      score += sharedTags.length;
-
-      return { entry, score };
-    })
-    .filter(({ score }) => score > 0)
-    .sort((a, b) => {
-      if (b.score !== a.score) {
-        return b.score - a.score;
-      }
-
-      return (
-        new Date(b.entry.datePublished).getTime() -
-        new Date(a.entry.datePublished).getTime()
-      );
+      return slug && title ? [{ locale: siteLocale, slug }] : [];
     });
-
-  if (scored.length >= limit) {
-    return scored.slice(0, limit).map(({ entry }) => entry);
+  } catch (error) {
+    console.error("Blog: failed to fetch post alternates", error);
+    return [];
   }
+}
 
-  const fallback = posts
-    .filter(
-      (entry) =>
-        resolveBlogSlug(entry) !== currentSlug &&
-        !scored.some(({ entry: scoredEntry }) => scoredEntry.id === entry.id),
-    )
-    .slice(0, limit - scored.length);
+export async function fetchRelatedBlogPosts(post: BlogPost, limit = 3) {
+  const posts = await fetchPublishedPosts(post.locale);
 
-  return [...scored.map(({ entry }) => entry), ...fallback];
+  return posts.filter((entry) => entry.id !== post.id).slice(0, limit);
 }
 
 export { BLOG_POSTS_PER_PAGE };

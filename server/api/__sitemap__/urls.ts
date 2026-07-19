@@ -9,9 +9,16 @@ type RawSitemapItem = {
   locale?: string;
   /** When set, only emit these locales (used for content that isn't translated everywhere). */
   localeCodes?: string[];
-  /** Slug grouping key for blog hreflang alternates. */
-  hreflangSlug?: string;
+  /** Payload doc id grouping key for blog hreflang alternates (slugs are per-locale). */
+  hreflangId?: number;
 };
+
+/** Payload CMS locale ↔ site locale mapping for the posts collection. */
+const CMS_LOCALES = [
+  { cms: "en", site: "en-en" },
+  { cms: "es", site: "es-es" },
+  { cms: "pt", site: "pt-pt" },
+] as const;
 
 /**
  * Locales with real Payload CMS content (tutorials, legal). pt-pt is excluded
@@ -41,24 +48,22 @@ export default defineSitemapEventHandler(async (event) => {
   const payloadBaseURL = String(config.public.payloadBaseURL || "");
 
   const [posts, tutorials, legalPages] = await Promise.all([
-    fetchPosts(event),
+    fetchPosts(payloadBaseURL),
     fetchTutorials(payloadBaseURL),
     fetchLegalPages(payloadBaseURL),
   ]);
 
-  const blogAlternatesBySlug = posts.reduce<
-    Record<string, Array<{ locale: string; language: string }>>
+  // Payload slugs are per-locale, so alternates group by doc id and each
+  // entry carries its own localized slug.
+  const blogAlternatesById = posts.reduce<
+    Record<number, Array<{ locale: string; language: string; slug: string }>>
   >((acc, post) => {
-    if (!post.slug) {
-      return acc;
-    }
-
     const language =
       locales.find((entry) => entry.code === post.locale)?.language ??
       post.locale;
 
-    acc[post.slug] ??= [];
-    acc[post.slug].push({ locale: post.locale, language });
+    acc[post.id] ??= [];
+    acc[post.id].push({ locale: post.locale, language, slug: post.slug });
 
     return acc;
   }, {});
@@ -85,16 +90,12 @@ export default defineSitemapEventHandler(async (event) => {
   );
 
   posts?.forEach((post) => {
-    if (!post.slug) {
-      return;
-    }
-
     rawContent.push({
       path: `blog/${post.slug}`,
-      lastModified: post.updatedAt as string,
+      lastModified: post.updatedAt,
       canonical: true,
       locale: post.locale,
-      hreflangSlug: post.slug,
+      hreflangId: post.id,
     });
   });
 
@@ -141,14 +142,14 @@ export default defineSitemapEventHandler(async (event) => {
       const fullUrl = `${baseUrl}${normalizedPath}`;
 
       const alternatives =
-        item.hreflangSlug && blogAlternatesBySlug[item.hreflangSlug]
-          ? blogAlternatesBySlug[item.hreflangSlug]
+        item.hreflangId != null && blogAlternatesById[item.hreflangId]
+          ? blogAlternatesById[item.hreflangId]
               .filter((entry) => entry.locale !== locale.code)
               .map((entry) => {
                 const altPath =
                   entry.locale === defaultLocale
-                    ? `/blog/${item.hreflangSlug}`
-                    : `/${entry.locale}/blog/${item.hreflangSlug}`;
+                    ? `/blog/${entry.slug}`
+                    : `/${entry.locale}/blog/${entry.slug}`;
 
                 return {
                   hreflang: entry.language,
@@ -187,22 +188,47 @@ export default defineSitemapEventHandler(async (event) => {
   });
 });
 
-async function fetchPosts(event: Parameters<typeof queryCollection>[0]) {
-  try {
-    // Pass the handler's own event — no useEvent()/async-context dependency.
-    const posts = await queryCollection(event, "blog").all();
+/**
+ * Blog posts from the Payload CMS `posts` collection, one request per CMS
+ * locale with `fallback-locale=none` so untranslated locales (null title/slug)
+ * are excluded instead of emitting fallback-English URLs.
+ */
+async function fetchPosts(payloadBaseURL: string) {
+  const results = await Promise.all(
+    CMS_LOCALES.map(async ({ cms, site }) => {
+      try {
+        const docs = await fetchPayloadCollection<{
+          id: number;
+          title?: string | null;
+          slug?: string | null;
+          updatedAt: string;
+        }>(payloadBaseURL, "posts", {
+          locale: cms,
+          "fallback-locale": "none",
+          limit: 100,
+          sort: "-createdAt",
+          depth: 0,
+          "select[title]": "true",
+          "select[slug]": "true",
+          "select[updatedAt]": "true",
+        });
 
-    return posts
-      .filter((post) => !post.draft)
-      .map((post) => ({
-        slug: post.slug,
-        locale: post.locale,
-        updatedAt: post.dateUpdated ?? post.datePublished,
-      }));
-  } catch (error) {
-    console.error("Sitemap: Error fetching blog posts", error);
-    return [];
-  }
+        return docs
+          .filter((doc) => doc.title && doc.slug)
+          .map((doc) => ({
+            id: doc.id,
+            slug: doc.slug as string,
+            locale: site as string,
+            updatedAt: doc.updatedAt,
+          }));
+      } catch (error) {
+        console.error(`Sitemap: Error fetching blog posts (${cms})`, error);
+        return [];
+      }
+    }),
+  );
+
+  return results.flat();
 }
 
 /**

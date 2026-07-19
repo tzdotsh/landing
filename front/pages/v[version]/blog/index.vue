@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { fetchBlogPostsPage } from "~/queries/blog";
-import { toContentLocale } from "~/utils/blog";
 
 const { t, locale } = useI18n();
 
@@ -8,7 +7,7 @@ usePageSeoMeta(t("seo.pages.blog.title"), t("seo.pages.blog.description"));
 
 await useAsyncData(
   () => `blog-index-${locale.value}`,
-  () => fetchBlogPostsPage(toContentLocale(locale.value), 1),
+  () => fetchBlogPostsPage(locale.value, 1),
 );
 </script>
 

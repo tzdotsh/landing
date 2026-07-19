@@ -32,7 +32,7 @@ function injectLiveChatStub(license: number) {
   }
 
   // Official LiveChat async loader (same snippet as checkout / trial).
-  (function inject(n, t, c) {
+  (function inject(n, t, _c) {
     function enqueue(entry: unknown[]) {
       return widget._h
         ? widget._h.apply(null, entry)

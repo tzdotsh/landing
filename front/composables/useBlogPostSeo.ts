@@ -1,19 +1,23 @@
 import {
   absoluteBlogUrl,
-  resolveBlogBodyPlainText,
+  markdownToPlainText,
   resolveBlogImageUrl,
   resolveBlogSlug,
   type BlogPost,
+  type BlogPostAlternate,
 } from "~/utils/blog";
 
 export function useBlogPostSeo(
   post: Ref<BlogPost | null | undefined>,
-  alternates: Ref<Array<{ locale: string }> | undefined> = ref(undefined),
+  alternates: Ref<BlogPostAlternate[] | null | undefined> = ref(undefined),
 ) {
   const { locales } = useI18n();
   const {
-    public: { siteUrl },
+    public: { canonicalHost },
   } = useRuntimeConfig();
+
+  // Canonical origin from NUXT_PUBLIC_CANONICAL_HOST (bare host).
+  const siteUrl = `https://${String(canonicalHost).replace(/^https?:\/\//, "")}`;
 
   const slug = computed(() =>
     post.value ? resolveBlogSlug(post.value) : "",
@@ -73,6 +77,7 @@ export function useBlogPostSeo(
         links.push({ rel: "canonical", href: canonicalUrl.value });
       }
 
+      // Payload slugs are per-locale: every alternate carries its own slug.
       for (const entry of alternates.value ?? []) {
         const entryLocale = locales.value.find(
           (item) => item.code === entry.locale,
@@ -81,7 +86,7 @@ export function useBlogPostSeo(
         links.push({
           rel: "alternate",
           hreflang: entryLocale?.language ?? entry.locale,
-          href: absoluteBlogUrl(siteUrl, slug.value, entry.locale),
+          href: absoluteBlogUrl(siteUrl, entry.slug, entry.locale),
         });
       }
 
@@ -119,8 +124,7 @@ export function useBlogPostSeo(
           articleSection: post.value.category
             ? [post.value.category]
             : ["Blog"],
-          wordCount: resolveBlogBodyPlainText(post.value.body)
-            .trim()
+          wordCount: markdownToPlainText(post.value.content)
             .split(/\s+/)
             .filter(Boolean).length,
         }),

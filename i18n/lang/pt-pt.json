@@ -689,7 +689,7 @@
         "sub_resellers_count": "Sub-revendedores: {count}"
       },
       "prepaid_features": [
-        "Detalhe de créditos: 1 mês = 1 cr · 3 meses = 2 cr · 6 meses = 3 cr · 12 meses = 4 cr · teste 24h = 0 cr",
+        "Detalhe de créditos: 1 mês = 5 cr · 3 meses = 10 cr · 6 meses = 15 cr · 12 meses = 20 cr · teste 24h = 0 cr",
         "Os créditos nunca expiram",
         "Painel de revendedor próprio",
         "Ativação em até 24h"

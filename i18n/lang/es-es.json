@@ -700,7 +700,7 @@
         "sub_resellers_count": "Sub-revendedores: {count}"
       },
       "prepaid_features": [
-        "Desglose: 1mo = 1cr · 3mo = 2cr · 6mo = 3cr · 12mo = 4cr · prueba 24h = 0cr",
+        "Desglose: 1mo = 5cr · 3mo = 10cr · 6mo = 15cr · 12mo = 20cr · prueba 24h = 0cr",
         "Los créditos nunca caducan",
         "Panel de revendedor propio",
         "Activación en hasta 24h"

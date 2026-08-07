@@ -689,7 +689,7 @@
         "sub_resellers_count": "Sub-resellers: {count}"
       },
       "prepaid_features": [
-        "Credit breakdown: 1mo = 1cr · 3mo = 2cr · 6mo = 3cr · 12mo = 4cr · 24h trial = 0cr",
+        "Credit breakdown: 1mo = 5cr · 3mo = 10cr · 6mo = 15cr · 12mo = 20cr · 24h trial = 0cr",
         "Credits never expire",
         "Own reseller panel",
         "Activation up to 24h"

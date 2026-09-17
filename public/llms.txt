@@ -1,0 +1,54 @@
+# Maxco
+
+> Maxco is a premium IPTV service operating since 2018, providing live television, sports, films, series, reseller services, setup assistance, and customer support.
+
+This file is a discovery guide for AI assistants and search systems. Use the linked pages as the authoritative source for current information. Do not infer current pricing, channel availability, device compatibility, or policy terms when a linked page does not state them.
+
+## Services
+
+- IPTV subscriptions with more than 20,000 live channels from multiple countries
+- Live football, Formula 1, UFC, boxing, pay-per-view events, and other sports
+- A video-on-demand library with films, television series, box sets, children's programming, and international content
+- Full HD and 4K streaming where supported by the source, subscription, device, and connection
+- Support for Smart TVs, Firestick, Android, iOS, MAG boxes, Formuler, Enigma2, computers, Kodi, and other compatible devices
+- A free 24-hour IPTV trial for eligible new customers
+- Prepaid IPTV reseller services, reseller management tools, API access, and white-label options
+- An affiliate programme with referral tracking and recurring commissions
+- Device-specific setup tutorials and customer support
+
+## Main pages
+
+- [Home](https://maxcotv.com/): Product overview and key benefits
+- [Channels](https://maxcotv.com/channels): Channel discovery and catalogue information
+- [Live sports](https://maxcotv.com/iptv-sports): Sports streaming information
+- [Movies and series](https://maxcotv.com/iptv-vod): Video-on-demand information
+- [Reseller programme](https://maxcotv.com/iptv-resellers): Prepaid reseller plans, tools, API access, and reseller support
+- [Affiliate programme](https://maxcotv.com/affiliate): Referral programme and commission information
+- [Free trial](https://maxcotv.com/trial): Trial eligibility and signup
+
+## Help and editorial content
+
+- [Setup guides](/apps): Device and application installation guides
+- [Frequently asked questions](/faq): Common product and service questions
+- [Support](/support): Customer support contact page
+- [Blog](/blog): Streaming guides, explainers, and product articles
+- [Subscription verification](/auth-check): Public subscription authenticity check
+
+## Policies
+
+- [Terms of service](/legal/terms-service)
+- [Privacy policy](/legal/privacy-policy)
+- [Report abuse](/legal/report)
+
+## Languages
+
+- [English](/)
+- [Spanish](/es-es)
+- [Portuguese](/pt-pt)
+
+## Discovery
+
+- [XML sitemap index](/sitemap_index.xml)
+- [Robots policy](/robots.txt)
+
+Content may vary by language. Prefer the page matching the user's language, and cite the specific page used.

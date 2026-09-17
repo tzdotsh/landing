@@ -138,7 +138,7 @@
   "136": "fuse.js",
   "137": "@headlessui/vue",
   "138": "motion-v",
-  "139": "nuxt",
+  "139": "eslint-plugin-tailwind-canonical-classes",
   "140": "nuxt-delay-hydration",
   "141": "nuxt-echarts",
   "142": "@nuxt/eslint",

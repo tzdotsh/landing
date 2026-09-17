@@ -1,7 +1,7 @@
 # Graph Report - landing  (2026-09-17)
 
 ## Corpus Check
-- 243 files · ~1,153,801 words
+- 243 files · ~1,154,338 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `22e1ff1a`
+- Built from commit: `3ef54ea0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -145,7 +145,7 @@
 - fuse.js
 - @headlessui/vue
 - motion-v
-- nuxt
+- eslint-plugin-tailwind-canonical-classes
 - nuxt-delay-hydration
 - nuxt-echarts
 - @nuxt/eslint
@@ -359,7 +359,7 @@ Nodes (10): Cómo instalar IPTV en un Firestick, Empieza en pocos minutos, Insta
 
 ### Community 36 - "dependencies"
 Cohesion: 0.18
-Nodes (11): echarts, eslint-plugin-tailwind-canonical-classes, nuxt-vitalizer, dependencies, echarts, eslint-plugin-tailwind-canonical-classes, nuxt-vitalizer, @pinia/nuxt (+3 more)
+Nodes (11): echarts, nuxt, nuxt-vitalizer, dependencies, echarts, nuxt, nuxt-vitalizer, @pinia/nuxt (+3 more)
 
 ### Community 37 - "JoinForm.vue"
 Cohesion: 0.20
@@ -537,7 +537,7 @@ Nodes (5): formatKb(), main(), optimizeImage(), SPORTS_DIR, TARGETS
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `dependencies` connect `dependencies` to `fuse.js`, `@headlessui/vue`, `motion-v`, `nuxt`, `nuxt-delay-hydration`, `nuxt-echarts`, `@nuxt/eslint`, `@nuxt/fonts`, `@nuxt/kit`, `@nuxtjs/fontaine`, `@nuxtjs/mdc`, `pinia`, `@pinia/colada`, `@pinia/colada-nuxt`, `reka-ui`, `sharp`, `@splidejs/splide-extension-auto-scroll`, `@splidejs/splide-extension-grid`, `@splidejs/splide-extension-intersection`, `@splidejs/vue-splide`, `tailwind-merge`, `tailwindcss`, `@tailwindcss/vite`, `@takumi-rs/core`, `tw-animate-css`, `vue`, `vue-router`, `@formkit/themes`, `@vueuse/core`, `@vueuse/router`, `zod`, `vue-slider-component`, `package.json`, `@fahdlaabi12/tailwindcss-inner-border`, `@formkit/addons`?**
+- **Why does `dependencies` connect `dependencies` to `fuse.js`, `@headlessui/vue`, `motion-v`, `eslint-plugin-tailwind-canonical-classes`, `nuxt-delay-hydration`, `nuxt-echarts`, `@nuxt/eslint`, `@nuxt/fonts`, `@nuxt/kit`, `@nuxtjs/fontaine`, `@nuxtjs/mdc`, `pinia`, `@pinia/colada`, `@pinia/colada-nuxt`, `reka-ui`, `sharp`, `@splidejs/splide-extension-auto-scroll`, `@splidejs/splide-extension-grid`, `@splidejs/splide-extension-intersection`, `@splidejs/vue-splide`, `tailwind-merge`, `tailwindcss`, `@tailwindcss/vite`, `@takumi-rs/core`, `tw-animate-css`, `vue`, `vue-router`, `@formkit/themes`, `@vueuse/core`, `@vueuse/router`, `zod`, `vue-slider-component`, `package.json`, `@fahdlaabi12/tailwindcss-inner-border`, `@formkit/addons`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **Why does `sharp` connect `package.json` to `optimize-sports-images.ts`, `bootstrap-blog-images.ts`, `update-tmdb-images.ts`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._

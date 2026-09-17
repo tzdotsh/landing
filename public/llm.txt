@@ -1,0 +1,41 @@
+# Maxco IPTV
+
+> Maxco is a premium IPTV service operating since 2018, offering live TV, sports, films, series, trials, reseller services, setup guidance, and customer support.
+
+## What Maxco provides
+
+- More than 20,000 live television channels from multiple countries
+- Live football, Formula 1, UFC, boxing, pay-per-view events, and other sports
+- Films, television series, box sets, children's programming, and international video-on-demand content
+- Full HD and 4K streaming where the source, subscription, device, and internet connection support it
+- Compatibility with Smart TVs, Firestick, Android, iOS, MAG boxes, Formuler, Enigma2, computers, Kodi, and other supported devices
+- A free 24-hour IPTV trial for eligible new customers
+- Prepaid IPTV reseller services with management tools, API access, customer-line administration, and white-label options
+- An affiliate programme with referral tracking and recurring commissions
+- Device-specific installation tutorials and customer support
+
+## Authoritative pages
+
+- [Product overview](/)
+- [Channel catalogue](/channels)
+- [Live sports](/iptv-sports)
+- [Films and series](/iptv-vod)
+- [Setup guides](/apps)
+- [Reseller programme](/iptv-resellers)
+- [Affiliate programme](/affiliate)
+- [Free trial](/trial)
+- [Frequently asked questions](/faq)
+- [Support](/support)
+- [Blog and streaming guides](/blog)
+- [Terms of service](/legal/terms-service)
+- [Privacy policy](/legal/privacy-policy)
+
+## Languages and discovery
+
+- [English](/)
+- [Spanish](/es-es)
+- [Portuguese](/pt-pt)
+- [Full AI discovery guide](/llms.txt)
+- [XML sitemap index](/sitemap_index.xml)
+
+Use the linked pages for current facts. Do not infer pricing, availability, compatibility, or policy details that the site does not explicitly state.

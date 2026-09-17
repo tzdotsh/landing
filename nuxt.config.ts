@@ -24,13 +24,8 @@ export default defineNuxtConfig({
       });
     },
 
-    // robots.txt should advertise a single sitemap. @nuxtjs/sitemap runs in
-    // multi-sitemap mode (i18n) and unconditionally pushes "/sitemap_index.xml"
-    // onto nuxt-robots' sitemap list (via a robots:config listener that runs
-    // after any config-level hook), on top of the "/sitemap.xml" from
-    // public/_robots.txt. Both resolve to the same index. We can't win the
-    // build-hook ordering, so pin the final baked runtime config to a single
-    // /sitemap.xml here (nitro:config runs after robots writes runtimeConfig).
+    // Advertise the multilingual sitemap index directly, without a redirect
+    // through /sitemap.xml. This stays relative for multi-domain deployments.
     "nitro:config"(nitroConfig) {
       const runtimeConfig = nitroConfig.runtimeConfig as
         | Record<string, unknown>
@@ -45,7 +40,7 @@ export default defineNuxtConfig({
           | undefined;
 
         if (robots) {
-          robots.sitemap = ["/sitemap.xml"];
+          robots.sitemap = ["/sitemap_index.xml"];
         }
       }
     },

@@ -18,9 +18,9 @@
     "semantic_hash": ""
   },
   "front/app.vue": {
-    "mtime": 1789628214.3733475,
-    "seen": 1789628363.325548,
-    "ast_hash": "c69b1da6a5656f8dbcce5ecf0300c82a",
+    "mtime": 1789628933.5409005,
+    "seen": 1789629361.379701,
+    "ast_hash": "0ab128f148edabf9b3d7ee1bd18415e4",
     "semantic_hash": ""
   },
   "front/components/MaxcoChatBubble.vue": {
@@ -1092,27 +1092,27 @@
     "semantic_hash": ""
   },
   "i18n/lang/en-en.json": {
-    "mtime": 1789627021.9117055,
-    "seen": 1789627615.059093,
-    "ast_hash": "9028ebdb34c7bfd282879e5dfc58da50",
+    "mtime": 1789629185.8273754,
+    "seen": 1789629361.3798301,
+    "ast_hash": "300c21a26d78074d06a7d8b5cb21b7a5",
     "semantic_hash": ""
   },
   "i18n/lang/es-es.json": {
-    "mtime": 1789627021.9119825,
-    "seen": 1789627615.059093,
-    "ast_hash": "4a7c21153a5075e373b20ced15191a02",
+    "mtime": 1789629191.4412272,
+    "seen": 1789629361.3798301,
+    "ast_hash": "398021c7221b6b48e3204b95576393b0",
     "semantic_hash": ""
   },
   "i18n/lang/pt-pt.json": {
-    "mtime": 1789627021.9122896,
-    "seen": 1789627615.059094,
-    "ast_hash": "18dcfdd62e21a638c7e68f6405eddb9a",
+    "mtime": 1789629197.7094111,
+    "seen": 1789629361.379831,
+    "ast_hash": "673f814b46d0d739155657a418785331",
     "semantic_hash": ""
   },
   "nuxt.config.ts": {
-    "mtime": 1789628222.113749,
-    "seen": 1789628363.325679,
-    "ast_hash": "8b091b1c3101da2c26323be3971174fb",
+    "mtime": 1789628930.2738943,
+    "seen": 1789629361.379831,
+    "ast_hash": "ed15f9ef326592de06035193e6e2c491",
     "semantic_hash": ""
   },
   "package.json": {
@@ -1356,9 +1356,9 @@
     "semantic_hash": ""
   },
   "public/_robots.txt": {
-    "mtime": 1789627960.541711,
-    "seen": 1789628363.325705,
-    "ast_hash": "16b250eb62bd80dd7b0a591939e35b57",
+    "mtime": 1789628910.9273484,
+    "seen": 1789629361.37986,
+    "ast_hash": "7f3a731ba12dc4551e472876cafff902",
     "semantic_hash": ""
   },
   "docs/hero-desktop-screenshots/after-1440x700.png": {
@@ -4617,6 +4617,18 @@
     "mtime": 1782404296.0,
     "seen": 1789628363.325663,
     "ast_hash": "1d10592654a083999d348380540e3cf5",
+    "semantic_hash": ""
+  },
+  "public/llm.txt": {
+    "mtime": 1789629221.0285313,
+    "seen": 1789629361.3798609,
+    "ast_hash": "f0a4af7fd2f68607868ea3162724779b",
+    "semantic_hash": ""
+  },
+  "public/llms.txt": {
+    "mtime": 1789629278.4573379,
+    "seen": 1789629361.3798609,
+    "ast_hash": "a920f0eb1bcdc2681a8d7a29c3a36acf",
     "semantic_hash": ""
   }
 }

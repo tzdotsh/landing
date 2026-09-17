@@ -1,9 +1,22 @@
 User-agent: *
 Allow: /*
-
-# Sitemap
-Sitemap: /sitemap.xml
-
-# Disallow crawling of admin/private areas (if any)
 Disallow: /.nuxt/
 Disallow: /_ipx/*
+
+# AI search and assistant crawlers
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /.nuxt/
+Disallow: /_ipx/*
+
+# Sitemap
+Sitemap: /sitemap_index.xml

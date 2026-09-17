@@ -56,6 +56,12 @@ useUmami();
 useHead(() => ({
   link: [
     { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+    {
+      rel: "alternate",
+      type: "text/plain",
+      href: "/llms.txt",
+      title: "LLM content guide",
+    },
     { rel: "dns-prefetch", href: canonicalOrigin.value },
     ...(!isBlogArticle.value
       ? [

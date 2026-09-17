@@ -3263,7 +3263,7 @@
       "file_type": "code",
       "norm_label": "\"nitro:config\"()",
       "source_file": "nuxt.config.ts",
-      "source_location": "L34"
+      "source_location": "L29"
     },
     {
       "id": "front_components_maxcochatbubble_dismissgreeting",
@@ -6250,26 +6250,26 @@
       "source_location": "L49"
     },
     {
-      "id": "package_dependencies_nuxt",
-      "label": "nuxt",
+      "id": "package_dependencies_eslint_plugin_tailwind_canonical_classes",
+      "label": "eslint-plugin-tailwind-canonical-classes",
       "_origin": "ast",
       "community": 139,
-      "community_name": "nuxt",
+      "community_name": "eslint-plugin-tailwind-canonical-classes",
       "file_type": "code",
-      "norm_label": "nuxt",
+      "norm_label": "eslint-plugin-tailwind-canonical-classes",
       "source_file": "package.json",
-      "source_location": "L50"
+      "source_location": "L47"
     },
     {
-      "id": "nuxt",
-      "label": "nuxt",
+      "id": "eslint_plugin_tailwind_canonical_classes",
+      "label": "eslint-plugin-tailwind-canonical-classes",
       "_origin": "ast",
       "community": 139,
-      "community_name": "nuxt",
+      "community_name": "eslint-plugin-tailwind-canonical-classes",
       "file_type": "concept",
-      "norm_label": "nuxt",
+      "norm_label": "eslint-plugin-tailwind-canonical-classes",
       "source_file": "package.json",
-      "source_location": "L50"
+      "source_location": "L47"
     },
     {
       "id": "front_components_channels_category",
@@ -10706,15 +10706,15 @@
       "source_location": "L46"
     },
     {
-      "id": "package_dependencies_eslint_plugin_tailwind_canonical_classes",
-      "label": "eslint-plugin-tailwind-canonical-classes",
+      "id": "package_dependencies_nuxt",
+      "label": "nuxt",
       "_origin": "ast",
       "community": 36,
       "community_name": "dependencies",
       "file_type": "code",
-      "norm_label": "eslint-plugin-tailwind-canonical-classes",
+      "norm_label": "nuxt",
       "source_file": "package.json",
-      "source_location": "L47"
+      "source_location": "L50"
     },
     {
       "id": "package_dependencies_nuxt_vitalizer",
@@ -10761,15 +10761,15 @@
       "source_location": "L46"
     },
     {
-      "id": "eslint_plugin_tailwind_canonical_classes",
-      "label": "eslint-plugin-tailwind-canonical-classes",
+      "id": "nuxt",
+      "label": "nuxt",
       "_origin": "ast",
       "community": 36,
       "community_name": "dependencies",
       "file_type": "concept",
-      "norm_label": "eslint-plugin-tailwind-canonical-classes",
+      "norm_label": "nuxt",
       "source_file": "package.json",
-      "source_location": "L47"
+      "source_location": "L50"
     },
     {
       "id": "nuxt_vitalizer",
@@ -31074,7 +31074,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "nuxt.config.ts",
-      "source_location": "L34",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -33036,7 +33036,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "front/app.vue",
-      "source_location": "L104",
+      "source_location": "L110",
       "weight": 1.0
     },
     {
@@ -33161,5 +33161,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "22e1ff1a9c497cbea26725d282627adf46469b72"
+  "built_at_commit": "3ef54ea0d7369077d87d7ac05d3fc1202b06b2d5"
 }

@@ -1,16 +1,16 @@
 # Graph Report - landing  (2026-09-17)
 
 ## Corpus Check
-- 243 files · ~1,153,927 words
+- 243 files · ~1,153,801 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1353 nodes · 1549 edges · 194 communities (105 shown, 89 thin omitted)
+- 1354 nodes · 1550 edges · 198 communities (109 shown, 89 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bb3bdffc`
+- Built from commit: `22e1ff1a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -59,7 +59,7 @@
 - Catalog.vue
 - Pagination.vue
 - ensureLoaded
-- nuxt.config.ts
+- criticalTheme.ts
 - iptv-vs-cable-vs-streaming.md
 - iptv-vs-cabo-vs-streaming.md
 - CLAUDE.md — maxco. landing (marketing site)
@@ -112,11 +112,11 @@
 - vod/Devices.vue
 - vod/Features.vue
 - useFormatLink.ts
-- auth-check.vue
-- faq.vue
+- devDependencies
+- package.json
 - umami.d.ts
 - tsconfig.json
-- eslint-plugin-tailwind-canonical-classes
+- bootstrap-blog-images.ts
 - @fahdlaabi12/tailwindcss-inner-border
 - @formkit/addons
 - affiliate/Hero.vue
@@ -138,11 +138,10 @@
 - GridBlock.vue
 - vod/Reviews.vue
 - vod/ValueSwitch.vue
+- optimize-sports-images.ts
+- auth-check.vue
+- faq.vue
 - affiliate.vue
-- v[version]/index.vue
-- iptv-resellers.vue
-- report.vue
-- support.vue
 - fuse.js
 - @headlessui/vue
 - motion-v
@@ -179,6 +178,11 @@
 - canonical-paths.ts
 - slider.d.ts
 - splide.d.ts
+- pages/index.vue
+- iptv-resellers.vue
+- report.vue
+- support.vue
+- vue-slider-component
 
 ## God Nodes (most connected - your core abstractions)
 1. `scripts` - 17 edges
@@ -207,7 +211,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (194 total, 89 thin omitted)
+## Communities (198 total, 89 thin omitted)
 
 ### Community 0 - "queries/blog.ts"
 Cohesion: 0.06
@@ -218,8 +222,8 @@ Cohesion: 0.05
 Nodes (38): failedPosters, props, reducedMotion, staticMotion, velocity, failedPosters, props, reducedMotion (+30 more)
 
 ### Community 2 - "scripts"
-Cohesion: 0.05
-Nodes (38): devDependencies, prettier, prettier-plugin-tailwindcss, sass-embedded, tailwind-scrollbar, @types/imagemin, @types/imagemin-webp, typescript (+30 more)
+Cohesion: 0.12
+Nodes (17): scripts, bootstrap:blog-images, bootstrap:channels-hero, build, clean:layers, dev, dev:prod, dev:remote-layer (+9 more)
 
 ### Community 3 - "Pricing.vue"
 Cohesion: 0.08
@@ -238,8 +242,8 @@ Cohesion: 0.09
 Nodes (23): getHardcodedLegalDocument(), HARDCODED_LEGAL, HARDCODED_LEGAL_SLUGS, HardcodedLegalSlug, isHardcodedLegalSlug(), isLegalPageSlug(), LEGAL_PAGE_SLUGS, LegalDocument (+15 more)
 
 ### Community 7 - "update-tmdb-images.ts"
-Cohesion: 0.09
-Nodes (24): trustedDependencies, sharp, BLOG_ASSETS, BlogAsset, downloadAsWebp(), main(), formatKb(), main() (+16 more)
+Cohesion: 0.21
+Nodes (13): checkExistingImages(), downloadItemPoster(), downloadLatestMovieThumbnails(), generateImageVariant(), getDisplayName(), IMAGE_SIZES, QUALITY_SETTINGS, TMDBItem (+5 more)
 
 ### Community 8 - "channels/Hero.vue"
 Cohesion: 0.10
@@ -298,8 +302,8 @@ Cohesion: 0.14
 Nodes (15): absVelocity, animationDirection, animationDuration, groupPauseOnHover, isGroupPaused, isLocallyPaused, isReverse, marqueeStyles (+7 more)
 
 ### Community 22 - "app.vue"
-Cohesion: 0.13
-Nodes (13): canonicalOrigin, canonicalPath, description, image, isBlogArticle, isHelpCompatibilityPage, isLegalPage, pathWithoutLocale (+5 more)
+Cohesion: 0.12
+Nodes (14): canonicalOrigin, canonicalPath, description, image, isBlogArticle, isHelpCompatibilityPage, isLegalPage, pathWithoutLocale (+6 more)
 
 ### Community 23 - "Flag.vue"
 Cohesion: 0.19
@@ -355,7 +359,7 @@ Nodes (10): Cómo instalar IPTV en un Firestick, Empieza en pocos minutos, Insta
 
 ### Community 36 - "dependencies"
 Cohesion: 0.18
-Nodes (11): echarts, nuxt-vitalizer, dependencies, echarts, nuxt-vitalizer, @pinia/nuxt, @tanstack/vue-virtual, vue-slider-component (+3 more)
+Nodes (11): echarts, eslint-plugin-tailwind-canonical-classes, nuxt-vitalizer, dependencies, echarts, eslint-plugin-tailwind-canonical-classes, nuxt-vitalizer, @pinia/nuxt (+3 more)
 
 ### Community 37 - "JoinForm.vue"
 Cohesion: 0.20
@@ -385,8 +389,8 @@ Nodes (9): canGoNext, canGoPrevious, emit, Emits, goToPage(), nextPage(), previo
 Cohesion: 0.31
 Nodes (8): DEFAULT_HOSTS, hostAllowed(), injectLiveChatStub(), useLiveChat(), ensureLoaded(), openChat(), resolveLicense(), whenReady()
 
-### Community 44 - "nuxt.config.ts"
-Cohesion: 0.22
+### Community 44 - "criticalTheme.ts"
+Cohesion: 0.25
 Nodes (5): CRITICAL_HEAD, CRITICAL_INK_COLOR, CRITICAL_THEME_COLOR, CRITICAL_THEME_CSS, currentDir
 
 ### Community 45 - "iptv-vs-cable-vs-streaming.md"
@@ -509,25 +513,41 @@ Nodes (3): guidesPath, localePath, { t }
 Cohesion: 0.50
 Nodes (3): LiveChatConfig, LiveChatWidgetApi, Window
 
+### Community 98 - "devDependencies"
+Cohesion: 0.13
+Nodes (15): devDependencies, prettier, prettier-plugin-tailwindcss, sass-embedded, tailwind-scrollbar, @types/imagemin, @types/imagemin-webp, typescript (+7 more)
+
+### Community 99 - "package.json"
+Cohesion: 0.22
+Nodes (8): name, overrides, nuxt, private, trustedDependencies, type, version, sharp
+
+### Community 102 - "bootstrap-blog-images.ts"
+Cohesion: 0.29
+Nodes (4): BLOG_ASSETS, BlogAsset, downloadAsWebp(), main()
+
+### Community 128 - "optimize-sports-images.ts"
+Cohesion: 0.47
+Nodes (5): formatKb(), main(), optimizeImage(), SPORTS_DIR, TARGETS
+
 ## Knowledge Gaps
-- **728 isolated node(s):** `require`, `route`, `{ public: config }`, `{ t, locale, locales, defaultLocale }`, `title` (+723 more)
+- **729 isolated node(s):** `require`, `route`, `{ public: config }`, `requestUrl`, `{ t, locale, locales, defaultLocale }` (+724 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **89 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `dependencies` connect `dependencies` to `scripts`, `fuse.js`, `@headlessui/vue`, `motion-v`, `nuxt`, `nuxt-delay-hydration`, `nuxt-echarts`, `@nuxt/eslint`, `@nuxt/fonts`, `@nuxt/kit`, `@nuxtjs/fontaine`, `@nuxtjs/mdc`, `pinia`, `@pinia/colada`, `@pinia/colada-nuxt`, `reka-ui`, `sharp`, `@splidejs/splide-extension-auto-scroll`, `@splidejs/splide-extension-grid`, `@splidejs/splide-extension-intersection`, `@splidejs/vue-splide`, `tailwind-merge`, `tailwindcss`, `@tailwindcss/vite`, `@takumi-rs/core`, `tw-animate-css`, `vue`, `vue-router`, `@formkit/themes`, `@vueuse/core`, `@vueuse/router`, `zod`, `eslint-plugin-tailwind-canonical-classes`, `@fahdlaabi12/tailwindcss-inner-border`, `@formkit/addons`?**
+- **Why does `dependencies` connect `dependencies` to `fuse.js`, `@headlessui/vue`, `motion-v`, `nuxt`, `nuxt-delay-hydration`, `nuxt-echarts`, `@nuxt/eslint`, `@nuxt/fonts`, `@nuxt/kit`, `@nuxtjs/fontaine`, `@nuxtjs/mdc`, `pinia`, `@pinia/colada`, `@pinia/colada-nuxt`, `reka-ui`, `sharp`, `@splidejs/splide-extension-auto-scroll`, `@splidejs/splide-extension-grid`, `@splidejs/splide-extension-intersection`, `@splidejs/vue-splide`, `tailwind-merge`, `tailwindcss`, `@tailwindcss/vite`, `@takumi-rs/core`, `tw-animate-css`, `vue`, `vue-router`, `@formkit/themes`, `@vueuse/core`, `@vueuse/router`, `zod`, `vue-slider-component`, `package.json`, `@fahdlaabi12/tailwindcss-inner-border`, `@formkit/addons`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **Why does `trustedDependencies` connect `update-tmdb-images.ts` to `scripts`?**
+- **Why does `sharp` connect `package.json` to `optimize-sports-images.ts`, `bootstrap-blog-images.ts`, `update-tmdb-images.ts`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `useChannelsFilters()` (e.g. with `reset()` and `setDefaultCategory()`) actually correct?**
   _`useChannelsFilters()` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `require`, `route`, `{ public: config }` to the rest of the system?**
-  _728 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _729 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `queries/blog.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.05706760316066725 - nodes in this community are weakly interconnected._
 - **Should `PosterMarquee.vue` be split into smaller, more focused modules?**
   _Cohesion score 0.050505050505050504 - nodes in this community are weakly interconnected._
 - **Should `scripts` be split into smaller, more focused modules?**
-  _Cohesion score 0.05128205128205128 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._

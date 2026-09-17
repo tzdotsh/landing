@@ -18,9 +18,9 @@
     "semantic_hash": ""
   },
   "front/app.vue": {
-    "mtime": 1789626364.3120167,
-    "seen": 1789626461.70486,
-    "ast_hash": "48f08779154aaafcc00b00b61d1ff268",
+    "mtime": 1789628214.3733475,
+    "seen": 1789628363.325548,
+    "ast_hash": "c69b1da6a5656f8dbcce5ecf0300c82a",
     "semantic_hash": ""
   },
   "front/components/MaxcoChatBubble.vue": {
@@ -72,39 +72,39 @@
     "semantic_hash": ""
   },
   "front/components/apps/Post.vue": {
-    "mtime": 1789626364.3311296,
-    "seen": 1789626461.704868,
-    "ast_hash": "c0bc081ca249be43d2dfa0e3189654a8",
+    "mtime": 1789627782.598053,
+    "seen": 1789628363.3255548,
+    "ast_hash": "87adf7f1e201d352e6aabe2a7dcdec31",
     "semantic_hash": ""
   },
   "front/components/apps/SelectApp.vue": {
-    "mtime": 1789626364.3482442,
-    "seen": 1789626461.704869,
-    "ast_hash": "55bebdf073e06c177cec59d97e56af30",
+    "mtime": 1789627021.899611,
+    "seen": 1789627615.0589492,
+    "ast_hash": "56a3e8b700769bbacd5a1b0302152666",
     "semantic_hash": ""
   },
   "front/components/apps/SelectDevice.vue": {
-    "mtime": 1789626364.361062,
-    "seen": 1789626461.704869,
-    "ast_hash": "97ad4334fff6c6eb6ed90891eeadf489",
+    "mtime": 1789627021.8998766,
+    "seen": 1789627615.0589492,
+    "ast_hash": "b37cf477eb91e35707607404b0e803e0",
     "semantic_hash": ""
   },
   "front/components/auth-check/Form.vue": {
-    "mtime": 1789626364.370573,
-    "seen": 1789626461.70487,
-    "ast_hash": "cf4ba080c70375d7d666b0c2766b55b5",
+    "mtime": 1789627021.9002907,
+    "seen": 1789627615.05895,
+    "ast_hash": "afe59ff579d959b18764f04c943725db",
     "semantic_hash": ""
   },
   "front/components/auth-check/Unauthorized.vue": {
-    "mtime": 1789626364.380077,
-    "seen": 1789626461.70487,
-    "ast_hash": "8bd9d6c5abbace57172c5e009a2639eb",
+    "mtime": 1789627021.9005697,
+    "seen": 1789627615.058951,
+    "ast_hash": "13d7041cdd9f2cbd09455d81a535b3ac",
     "semantic_hash": ""
   },
   "front/components/auth-check/Verified.vue": {
-    "mtime": 1789626364.3861134,
-    "seen": 1789626461.704871,
-    "ast_hash": "827c9a6ac5c04842d8a59bbfdd5d9a79",
+    "mtime": 1789627021.90076,
+    "seen": 1789627615.0589519,
+    "ast_hash": "27e85c0e417eb77dd7550c04739be3ba",
     "semantic_hash": ""
   },
   "front/components/auth-check/index.vue": {
@@ -114,9 +114,9 @@
     "semantic_hash": ""
   },
   "front/components/blog/Articles.vue": {
-    "mtime": 1789626364.396057,
-    "seen": 1789626461.7048728,
-    "ast_hash": "debf1bf3d499ddca926853fdb2a519ae",
+    "mtime": 1789627021.9009364,
+    "seen": 1789627615.058953,
+    "ast_hash": "e62e8463ee29b4ffb9fecf67d3362a46",
     "semantic_hash": ""
   },
   "front/components/blog/Hero.vue": {
@@ -144,8 +144,8 @@
     "semantic_hash": ""
   },
   "front/components/blog/RelatedPosts.vue": {
-    "mtime": 1789626364.4050357,
-    "seen": 1789626461.704876,
+    "mtime": 1789627021.901087,
+    "seen": 1789627615.058957,
     "ast_hash": "d8d14276c202ad7b5a77c076df5ec2be",
     "semantic_hash": ""
   },
@@ -162,9 +162,9 @@
     "semantic_hash": ""
   },
   "front/components/channels/Hero.vue": {
-    "mtime": 1789626364.427507,
-    "seen": 1789626461.704878,
-    "ast_hash": "3c3c50777908e52d249d303a51b8d970",
+    "mtime": 1789627021.9012878,
+    "seen": 1789627615.058959,
+    "ast_hash": "26718313bc5a9bf809e0a9543883c172",
     "semantic_hash": ""
   },
   "front/components/channels/HeroSlideImage.vue": {
@@ -198,9 +198,9 @@
     "semantic_hash": ""
   },
   "front/components/common/ContactSupport.vue": {
-    "mtime": 1780933509.0,
-    "seen": 1789626203.038625,
-    "ast_hash": "5c1d022daeaf44136fb567a71cccac2a",
+    "mtime": 1789627791.64343,
+    "seen": 1789628363.325568,
+    "ast_hash": "399f0c04809627bf60ec95edd15e7bed",
     "semantic_hash": ""
   },
   "front/components/common/FeaturedTrendingMarquee.vue": {
@@ -336,14 +336,14 @@
     "semantic_hash": ""
   },
   "front/components/help/ArticleCard.vue": {
-    "mtime": 1789626364.435906,
-    "seen": 1789626461.704899,
+    "mtime": 1789627021.9015074,
+    "seen": 1789627615.058979,
     "ast_hash": "42cc31aa404dcba4431ac2bee1c09870",
     "semantic_hash": ""
   },
   "front/components/help/ArticleFooter.vue": {
-    "mtime": 1789626364.441166,
-    "seen": 1789626461.7049,
+    "mtime": 1789627021.9016685,
+    "seen": 1789627615.05898,
     "ast_hash": "c8c1c4c3502a3d84ee12a71731168bd5",
     "semantic_hash": ""
   },
@@ -756,8 +756,8 @@
     "semantic_hash": ""
   },
   "front/composables/useBlogPostSeo.ts": {
-    "mtime": 1789626364.451588,
-    "seen": 1789626461.704948,
+    "mtime": 1789627021.9018552,
+    "seen": 1789627615.059027,
     "ast_hash": "a4b6e6544b15f6e77c85f4e886d59ef6",
     "semantic_hash": ""
   },
@@ -786,9 +786,9 @@
     "semantic_hash": ""
   },
   "front/composables/useFormatLink.ts": {
-    "mtime": 1789625980.6952367,
-    "seen": 1789626203.0386791,
-    "ast_hash": "70a9272c85775c138a1a392f2bcda5d5",
+    "mtime": 1789628165.6107206,
+    "seen": 1789628363.32563,
+    "ast_hash": "6d55ce584de554effed75ff43a869e13",
     "semantic_hash": ""
   },
   "front/composables/useLiveChat.ts": {
@@ -804,9 +804,9 @@
     "semantic_hash": ""
   },
   "front/composables/useParams.ts": {
-    "mtime": 1780933509.0,
-    "seen": 1789626203.038681,
-    "ast_hash": "5a605f1778837332583af535ea1fe274",
+    "mtime": 1789627794.6835797,
+    "seen": 1789628363.325632,
+    "ast_hash": "bd783ecec9a630ca36e4949cfab02c8e",
     "semantic_hash": ""
   },
   "front/composables/useParseMarkdown.ts": {
@@ -822,8 +822,8 @@
     "semantic_hash": ""
   },
   "front/composables/useSportsPageSeo.ts": {
-    "mtime": 1789625437.239235,
-    "seen": 1789626203.0386822,
+    "mtime": 1789627021.902121,
+    "seen": 1789627615.059045,
     "ast_hash": "3ddfbbb94b6884d460b077721e83ee02",
     "semantic_hash": ""
   },
@@ -834,8 +834,8 @@
     "semantic_hash": ""
   },
   "front/composables/useVodPageSeo.ts": {
-    "mtime": 1789625443.5996149,
-    "seen": 1789626203.038683,
+    "mtime": 1789627021.9023106,
+    "seen": 1789627615.059047,
     "ast_hash": "00ddf0a355bb8de68f8ab38ced5fd6d6",
     "semantic_hash": ""
   },
@@ -977,108 +977,6 @@
     "ast_hash": "b1b9dd9416babfcd5476fcba61e376c6",
     "semantic_hash": ""
   },
-  "front/pages/v[version]/affiliate.vue": {
-    "mtime": 1783797824.8946903,
-    "seen": 1789626203.038696,
-    "ast_hash": "d804db07a58ae50aaf15f150d5bebdc2",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/apps/[device]/[app].vue": {
-    "mtime": 1789626364.4693174,
-    "seen": 1789626461.7049751,
-    "ast_hash": "e22318bd67c2fda7dd3d909fd152d407",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/apps/[device]/[app]/index.vue": {
-    "mtime": 1789626364.476974,
-    "seen": 1789626461.7049758,
-    "ast_hash": "b4d0c32ac3d9f8f681eca3e69a131281",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/apps/index.vue": {
-    "mtime": 1784440739.2549653,
-    "seen": 1789626203.038698,
-    "ast_hash": "d50d11c9264e1413916b4f64f2728688",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/auth-check.vue": {
-    "mtime": 1782404297.0,
-    "seen": 1789626203.038698,
-    "ast_hash": "b01d7e685f0fbd97d6bbfe48f6f66ea8",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/blog/[article_slug].vue": {
-    "mtime": 1784438833.476953,
-    "seen": 1789626203.038699,
-    "ast_hash": "9171ce92f10c9c3907be4e71f145807a",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/blog/index.vue": {
-    "mtime": 1784435463.442838,
-    "seen": 1789626203.038699,
-    "ast_hash": "d1514381f4f2f23dbe4447fc72d2ca03",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/channels.vue": {
-    "mtime": 1782567497.0,
-    "seen": 1789626203.0387,
-    "ast_hash": "e6274f7b436621c95bef6ba20dd240dc",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/faq.vue": {
-    "mtime": 1782404292.0,
-    "seen": 1789626203.038701,
-    "ast_hash": "e1cbe6488f9009ded3b4cdd6cbd38c64",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/help/[slug].vue": {
-    "mtime": 1789626364.4877086,
-    "seen": 1789626461.704981,
-    "ast_hash": "e7b3a2e5166efc7f79e75bbcf19e551c",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/index.vue": {
-    "mtime": 1782595587.0,
-    "seen": 1789626203.038702,
-    "ast_hash": "346beb6d3a4da878d6b425e4ef47cef9",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/iptv-resellers.vue": {
-    "mtime": 1782405789.0,
-    "seen": 1789626203.038702,
-    "ast_hash": "056c8cad2437beb3e1bc45fc15b0d465",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/iptv-sports.vue": {
-    "mtime": 1782600538.0,
-    "seen": 1789626203.0387032,
-    "ast_hash": "9a78b6c68c3de337dff1df752d296487",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/iptv-vod.vue": {
-    "mtime": 1782601806.0,
-    "seen": 1789626203.0387032,
-    "ast_hash": "0b82ffa0425665dfa8dca0820a85c562",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/legal/[slug].vue": {
-    "mtime": 1789626364.4962125,
-    "seen": 1789626461.704984,
-    "ast_hash": "d96a8f895756c61a3a339d1114986b69",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/legal/report.vue": {
-    "mtime": 1782404295.0,
-    "seen": 1789626203.0387042,
-    "ast_hash": "ca84a98debc85f6fd3bf2d00c1885b8c",
-    "semantic_hash": ""
-  },
-  "front/pages/v[version]/support.vue": {
-    "mtime": 1782404296.0,
-    "seen": 1789626203.0387049,
-    "ast_hash": "1d10592654a083999d348380540e3cf5",
-    "semantic_hash": ""
-  },
   "front/plugins/livechat.client.ts": {
     "mtime": 1783385535.1802468,
     "seen": 1789626203.0387058,
@@ -1140,9 +1038,9 @@
     "semantic_hash": ""
   },
   "front/utils/blog.ts": {
-    "mtime": 1789626364.5060828,
-    "seen": 1789626461.704993,
-    "ast_hash": "cb51299670a56c98ff4cc3479095b9a3",
+    "mtime": 1789628384.9014382,
+    "seen": 1789628392.896481,
+    "ast_hash": "8079dac18b599c3a1fdf005c49a1eb44",
     "semantic_hash": ""
   },
   "front/utils/deepMerge.ts": {
@@ -1194,27 +1092,27 @@
     "semantic_hash": ""
   },
   "i18n/lang/en-en.json": {
-    "mtime": 1789625597.2424254,
-    "seen": 1789626203.038715,
+    "mtime": 1789627021.9117055,
+    "seen": 1789627615.059093,
     "ast_hash": "9028ebdb34c7bfd282879e5dfc58da50",
     "semantic_hash": ""
   },
   "i18n/lang/es-es.json": {
-    "mtime": 1789625607.3966975,
-    "seen": 1789626203.0387158,
+    "mtime": 1789627021.9119825,
+    "seen": 1789627615.059093,
     "ast_hash": "4a7c21153a5075e373b20ced15191a02",
     "semantic_hash": ""
   },
   "i18n/lang/pt-pt.json": {
-    "mtime": 1789625616.668819,
-    "seen": 1789626203.0387158,
+    "mtime": 1789627021.9122896,
+    "seen": 1789627615.059094,
     "ast_hash": "18dcfdd62e21a638c7e68f6405eddb9a",
     "semantic_hash": ""
   },
   "nuxt.config.ts": {
-    "mtime": 1789626364.5552201,
-    "seen": 1789626461.7050009,
-    "ast_hash": "69501da8cd7c228b11eb8bd675bb3412",
+    "mtime": 1789628222.113749,
+    "seen": 1789628363.325679,
+    "ast_hash": "8b091b1c3101da2c26323be3971174fb",
     "semantic_hash": ""
   },
   "package.json": {
@@ -1260,9 +1158,9 @@
     "semantic_hash": ""
   },
   "server/api/__sitemap__/urls.ts": {
-    "mtime": 1789626364.5683222,
-    "seen": 1789626461.705007,
-    "ast_hash": "3a4f715c62bf2c753bf252ae86b6111f",
+    "mtime": 1789628218.2409952,
+    "seen": 1789628363.3256829,
+    "ast_hash": "34c9fee2046c1c6bed25000a5aa609f9",
     "semantic_hash": ""
   },
   "server/api/channels/catalog.get.ts": {
@@ -1308,8 +1206,8 @@
     "semantic_hash": ""
   },
   "server/middleware/canonical-paths.ts": {
-    "mtime": 1789625649.087284,
-    "seen": 1789626203.0387251,
+    "mtime": 1789627021.9130118,
+    "seen": 1789627615.059106,
     "ast_hash": "45a29ea8c867798c9453142a9684eed1",
     "semantic_hash": ""
   },
@@ -1317,12 +1215,6 @@
     "mtime": 1787432482.6472898,
     "seen": 1789626203.0387251,
     "ast_hash": "4d548ebe14ab4a73c08776d3275f31a8",
-    "semantic_hash": ""
-  },
-  "server/plugins/normalize-version-links.ts": {
-    "mtime": 1789625993.9991026,
-    "seen": 1789626203.0387259,
-    "ast_hash": "11c85ed555d7f216344f4bb0dacbdab2",
     "semantic_hash": ""
   },
   "server/utils/channelLogos.ts": {
@@ -1464,8 +1356,8 @@
     "semantic_hash": ""
   },
   "public/_robots.txt": {
-    "mtime": 1789625499.949218,
-    "seen": 1789626203.038738,
+    "mtime": 1789627960.541711,
+    "seen": 1789628363.325705,
     "ast_hash": "16b250eb62bd80dd7b0a591939e35b57",
     "semantic_hash": ""
   },
@@ -4617,6 +4509,114 @@
     "mtime": 1780933545.0,
     "seen": 1789626203.039016,
     "ast_hash": "60dc71595f8e2fc31ac7f615af7b69a7",
+    "semantic_hash": ""
+  },
+  "front/composables/usePublicOrigin.ts": {
+    "mtime": 1789628045.9472067,
+    "seen": 1789628363.3256361,
+    "ast_hash": "c864f24af198676f914b086297c39e59",
+    "semantic_hash": ""
+  },
+  "front/pages/affiliate.vue": {
+    "mtime": 1783797824.8946903,
+    "seen": 1789628363.325654,
+    "ast_hash": "d804db07a58ae50aaf15f150d5bebdc2",
+    "semantic_hash": ""
+  },
+  "front/pages/apps/[device]/[app].vue": {
+    "mtime": 1789627780.1331184,
+    "seen": 1789628363.325654,
+    "ast_hash": "a2ea606515d344dd3d57928bc1ca86de",
+    "semantic_hash": ""
+  },
+  "front/pages/apps/[device]/[app]/index.vue": {
+    "mtime": 1789627021.9026713,
+    "seen": 1789628363.325655,
+    "ast_hash": "7bc645e6459efa9fcedd4d74bbdf91fe",
+    "semantic_hash": ""
+  },
+  "front/pages/apps/index.vue": {
+    "mtime": 1784440739.2549653,
+    "seen": 1789628363.325655,
+    "ast_hash": "d50d11c9264e1413916b4f64f2728688",
+    "semantic_hash": ""
+  },
+  "front/pages/auth-check.vue": {
+    "mtime": 1782404297.0,
+    "seen": 1789628363.3256562,
+    "ast_hash": "b01d7e685f0fbd97d6bbfe48f6f66ea8",
+    "semantic_hash": ""
+  },
+  "front/pages/blog/[article_slug].vue": {
+    "mtime": 1789627785.3108585,
+    "seen": 1789628363.3256571,
+    "ast_hash": "66b18894898f9ef43175b939132a40ac",
+    "semantic_hash": ""
+  },
+  "front/pages/blog/index.vue": {
+    "mtime": 1784435463.442838,
+    "seen": 1789628363.3256571,
+    "ast_hash": "d1514381f4f2f23dbe4447fc72d2ca03",
+    "semantic_hash": ""
+  },
+  "front/pages/channels.vue": {
+    "mtime": 1782567497.0,
+    "seen": 1789628363.325658,
+    "ast_hash": "e6274f7b436621c95bef6ba20dd240dc",
+    "semantic_hash": ""
+  },
+  "front/pages/faq.vue": {
+    "mtime": 1782404292.0,
+    "seen": 1789628363.325658,
+    "ast_hash": "e1cbe6488f9009ded3b4cdd6cbd38c64",
+    "semantic_hash": ""
+  },
+  "front/pages/help/[slug].vue": {
+    "mtime": 1789627021.9028525,
+    "seen": 1789628363.3256588,
+    "ast_hash": "ca2ffe9e9cd5629a016cee18fef9c312",
+    "semantic_hash": ""
+  },
+  "front/pages/index.vue": {
+    "mtime": 1782595587.0,
+    "seen": 1789628363.32566,
+    "ast_hash": "346beb6d3a4da878d6b425e4ef47cef9",
+    "semantic_hash": ""
+  },
+  "front/pages/iptv-resellers.vue": {
+    "mtime": 1782405789.0,
+    "seen": 1789628363.325661,
+    "ast_hash": "056c8cad2437beb3e1bc45fc15b0d465",
+    "semantic_hash": ""
+  },
+  "front/pages/iptv-sports.vue": {
+    "mtime": 1782600538.0,
+    "seen": 1789628363.325661,
+    "ast_hash": "9a78b6c68c3de337dff1df752d296487",
+    "semantic_hash": ""
+  },
+  "front/pages/iptv-vod.vue": {
+    "mtime": 1782601806.0,
+    "seen": 1789628363.325662,
+    "ast_hash": "0b82ffa0425665dfa8dca0820a85c562",
+    "semantic_hash": ""
+  },
+  "front/pages/legal/[slug].vue": {
+    "mtime": 1789627021.902996,
+    "seen": 1789628363.325662,
+    "ast_hash": "39f6471dfddb46bdca33f303cc88ecaa",
+    "semantic_hash": ""
+  },
+  "front/pages/legal/report.vue": {
+    "mtime": 1782404295.0,
+    "seen": 1789628363.325663,
+    "ast_hash": "ca84a98debc85f6fd3bf2d00c1885b8c",
+    "semantic_hash": ""
+  },
+  "front/pages/support.vue": {
+    "mtime": 1782404296.0,
+    "seen": 1789628363.325663,
+    "ast_hash": "1d10592654a083999d348380540e3cf5",
     "semantic_hash": ""
   }
 }

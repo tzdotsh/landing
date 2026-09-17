@@ -1487,7 +1487,7 @@
       "file_type": "code",
       "norm_label": "formatblogdate()",
       "source_file": "front/utils/blog.ts",
-      "source_location": "L227"
+      "source_location": "L223"
     },
     {
       "id": "front_utils_blog_markdowntoplaintext",
@@ -1523,7 +1523,7 @@
       "file_type": "code",
       "norm_label": "resolveblogimageurl()",
       "source_file": "front/utils/blog.ts",
-      "source_location": "L212"
+      "source_location": "L208"
     },
     {
       "id": "front_utils_blog_resolveblogslug",
@@ -2195,7 +2195,7 @@
       "file_type": "code",
       "norm_label": "seotitletemplate()",
       "source_file": "front/app.vue",
-      "source_location": "L54"
+      "source_location": "L49"
     },
     {
       "id": "front_components_channels_category_categoryflagiso",
@@ -3515,7 +3515,7 @@
       "file_type": "code",
       "norm_label": "fetchpayloadcollection()",
       "source_file": "server/api/__sitemap__/urls.ts",
-      "source_location": "L215"
+      "source_location": "L214"
     },
     {
       "id": "server_api_sitemap_urls_fetchposts",
@@ -3527,7 +3527,7 @@
       "file_type": "code",
       "norm_label": "fetchposts()",
       "source_file": "server/api/__sitemap__/urls.ts",
-      "source_location": "L172"
+      "source_location": "L171"
     },
     {
       "id": "server_api_sitemap_urls_fetchtutorials",
@@ -3539,7 +3539,7 @@
       "file_type": "code",
       "norm_label": "fetchtutorials()",
       "source_file": "server/api/__sitemap__/urls.ts",
-      "source_location": "L235"
+      "source_location": "L234"
     },
     {
       "id": "front_queries_apps_getappsfordevice",
@@ -3875,7 +3875,7 @@
       "file_type": "code",
       "norm_label": "advanceslide()",
       "source_file": "front/components/channels/Hero.vue",
-      "source_location": "L47"
+      "source_location": "L51"
     },
     {
       "id": "front_components_channels_hero_slidesforcategory",
@@ -3899,7 +3899,7 @@
       "file_type": "code",
       "norm_label": "startautoswitch()",
       "source_file": "front/components/channels/Hero.vue",
-      "source_location": "L78"
+      "source_location": "L82"
     },
     {
       "id": "front_components_channels_hero_stopautoswitch",
@@ -3911,7 +3911,7 @@
       "file_type": "code",
       "norm_label": "stopautoswitch()",
       "source_file": "front/components/channels/Hero.vue",
-      "source_location": "L95"
+      "source_location": "L99"
     },
     {
       "id": "front_components_channels_heroslideimage_handleerror",
@@ -5884,7 +5884,7 @@
       "file_type": "code",
       "norm_label": "description",
       "source_file": "front/pages/v[version]/apps/[device]/[app]/index.vue",
-      "source_location": "L68"
+      "source_location": "L66"
     },
     {
       "id": "front_pages_v_version_apps_device_app_index_deviceslug",
@@ -7271,26 +7271,26 @@
       "source_location": "L61"
     },
     {
-      "id": "package_dependencies_vue_slider_component",
-      "label": "vue-slider-component",
+      "id": "package_dependencies_formkit_themes",
+      "label": "@formkit/themes",
       "_origin": "ast",
       "community": 163,
-      "community_name": "vue-slider-component",
+      "community_name": "@formkit/themes",
       "file_type": "code",
-      "norm_label": "vue-slider-component",
+      "norm_label": "@formkit/themes",
       "source_file": "package.json",
-      "source_location": "L62"
+      "source_location": "L27"
     },
     {
-      "id": "vue_slider_component",
-      "label": "vue-slider-component",
+      "id": "formkit_themes",
+      "label": "@formkit/themes",
       "_origin": "ast",
       "community": 163,
-      "community_name": "vue-slider-component",
+      "community_name": "@formkit/themes",
       "file_type": "concept",
-      "norm_label": "vue-slider-component",
+      "norm_label": "@formkit/themes",
       "source_file": "package.json",
-      "source_location": "L62"
+      "source_location": "L27"
     },
     {
       "id": "package_dependencies_vueuse_core",
@@ -8203,6 +8203,17 @@
       "source_location": "L1"
     },
     {
+      "id": "front_plugins_unversioned_logo_client",
+      "label": "unversioned-logo.client.ts",
+      "_origin": "ast",
+      "community": 194,
+      "community_name": "unversioned-logo.client.ts",
+      "file_type": "code",
+      "norm_label": "unversioned-logo.client.ts",
+      "source_file": "front/plugins/unversioned-logo.client.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "package",
       "label": "package.json",
       "_origin": "ast",
@@ -8948,7 +8959,7 @@
       "file_type": "code",
       "norm_label": "canonicalpath",
       "source_file": "front/app.vue",
-      "source_location": "L22"
+      "source_location": "L20"
     },
     {
       "id": "front_app_description",
@@ -8970,7 +8981,7 @@
       "file_type": "code",
       "norm_label": "image",
       "source_file": "front/app.vue",
-      "source_location": "L20"
+      "source_location": "L18"
     },
     {
       "id": "front_app_isblogarticle",
@@ -8981,7 +8992,7 @@
       "file_type": "code",
       "norm_label": "isblogarticle",
       "source_file": "front/app.vue",
-      "source_location": "L44"
+      "source_location": "L39"
     },
     {
       "id": "front_app_ishelpcompatibilitypage",
@@ -8992,7 +9003,7 @@
       "file_type": "code",
       "norm_label": "ishelpcompatibilitypage",
       "source_file": "front/app.vue",
-      "source_location": "L50"
+      "source_location": "L45"
     },
     {
       "id": "front_app_islegalpage",
@@ -9003,7 +9014,7 @@
       "file_type": "code",
       "norm_label": "islegalpage",
       "source_file": "front/app.vue",
-      "source_location": "L51"
+      "source_location": "L46"
     },
     {
       "id": "front_app_pathwithoutlocale",
@@ -9014,7 +9025,7 @@
       "file_type": "code",
       "norm_label": "pathwithoutlocale",
       "source_file": "front/app.vue",
-      "source_location": "L31"
+      "source_location": "L26"
     },
     {
       "id": "front_app_public_config",
@@ -10816,17 +10827,6 @@
       "source_location": "L46"
     },
     {
-      "id": "package_dependencies_formkit_themes",
-      "label": "@formkit/themes",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@formkit/themes",
-      "source_file": "package.json",
-      "source_location": "L27"
-    },
-    {
       "id": "package_dependencies_nuxt_vitalizer",
       "label": "nuxt-vitalizer",
       "_origin": "ast",
@@ -10860,6 +10860,17 @@
       "source_location": "L43"
     },
     {
+      "id": "package_dependencies_vue_slider_component",
+      "label": "vue-slider-component",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "vue-slider-component",
+      "source_file": "package.json",
+      "source_location": "L62"
+    },
+    {
       "id": "echarts",
       "label": "echarts",
       "_origin": "ast",
@@ -10869,17 +10880,6 @@
       "norm_label": "echarts",
       "source_file": "package.json",
       "source_location": "L46"
-    },
-    {
-      "id": "formkit_themes",
-      "label": "@formkit/themes",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "@formkit/themes",
-      "source_file": "package.json",
-      "source_location": "L27"
     },
     {
       "id": "nuxt_vitalizer",
@@ -10913,6 +10913,17 @@
       "norm_label": "@tanstack/vue-virtual",
       "source_file": "package.json",
       "source_location": "L43"
+    },
+    {
+      "id": "vue_slider_component",
+      "label": "vue-slider-component",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "vue-slider-component",
+      "source_file": "package.json",
+      "source_location": "L62"
     },
     {
       "id": "front_components_affiliate_joinform",
@@ -12955,7 +12966,7 @@
       "file_type": "code",
       "norm_label": "updatedlabel",
       "source_file": "front/components/help/ArticleCard.vue",
-      "source_location": "L20"
+      "source_location": "L18"
     },
     {
       "id": "front_components_help_guidegrid",
@@ -14504,7 +14515,7 @@
       "file_type": "code",
       "norm_label": "activeslide",
       "source_file": "front/components/channels/Hero.vue",
-      "source_location": "L58"
+      "source_location": "L62"
     },
     {
       "id": "front_components_channels_hero_displaycopy",
@@ -14515,7 +14526,7 @@
       "file_type": "code",
       "norm_label": "displaycopy",
       "source_file": "front/components/channels/Hero.vue",
-      "source_location": "L65"
+      "source_location": "L69"
     },
     {
       "id": "front_components_channels_hero_localepath",
@@ -15742,7 +15753,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/components/channels/Hero.vue",
-      "source_location": "L59",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -15754,7 +15765,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/components/channels/Hero.vue",
-      "source_location": "L48",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -15766,7 +15777,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/components/channels/Hero.vue",
-      "source_location": "L90",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -15934,7 +15945,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/components/help/ArticleCard.vue",
-      "source_location": "L21",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -16390,7 +16401,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/composables/useBlogPostSeo.ts",
-      "source_location": "L147",
+      "source_location": "L141",
       "weight": 1.0
     },
     {
@@ -16402,7 +16413,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/composables/useBlogPostSeo.ts",
-      "source_location": "L23",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -16414,7 +16425,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/composables/useBlogPostSeo.ts",
-      "source_location": "L31",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -16426,7 +16437,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/composables/useBlogPostSeo.ts",
-      "source_location": "L35",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -16582,7 +16593,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/pages/v[version]/apps/[device]/[app]/index.vue",
-      "source_location": "L69",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -17086,7 +17097,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/utils/blog.ts",
-      "source_location": "L207",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -22785,6 +22796,17 @@
     },
     {
       "source": "front_app",
+      "target": "front_app_image",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/app.vue",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "front_app",
       "target": "front_app_route",
       "relation": "contains",
       "_origin": "ast",
@@ -22796,7 +22818,7 @@
     },
     {
       "source": "front_app",
-      "target": "front_app_image",
+      "target": "front_app_canonicalpath",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -22807,13 +22829,13 @@
     },
     {
       "source": "front_app",
-      "target": "front_app_canonicalpath",
+      "target": "front_app_pathwithoutlocale",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/app.vue",
-      "source_location": "L22",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -22829,13 +22851,13 @@
     },
     {
       "source": "front_app",
-      "target": "front_app_pathwithoutlocale",
+      "target": "front_app_isblogarticle",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/app.vue",
-      "source_location": "L31",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -22851,24 +22873,13 @@
     },
     {
       "source": "front_app",
-      "target": "front_app_isblogarticle",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front/app.vue",
-      "source_location": "L44",
-      "weight": 1.0
-    },
-    {
-      "source": "front_app",
       "target": "front_app_ishelpcompatibilitypage",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/app.vue",
-      "source_location": "L50",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -22879,7 +22890,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/app.vue",
-      "source_location": "L51",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -23968,7 +23979,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/components/channels/Hero.vue",
-      "source_location": "L47",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -23979,7 +23990,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/components/channels/Hero.vue",
-      "source_location": "L58",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -23990,7 +24001,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/components/channels/Hero.vue",
-      "source_location": "L65",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
@@ -24001,7 +24012,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/components/channels/Hero.vue",
-      "source_location": "L78",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -24012,7 +24023,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/components/channels/Hero.vue",
-      "source_location": "L95",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -25431,7 +25442,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/components/help/ArticleCard.vue",
-      "source_location": "L20",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -29325,7 +29336,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/pages/v[version]/apps/[device]/[app]/index.vue",
-      "source_location": "L68",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -30667,7 +30678,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/utils/blog.ts",
-      "source_location": "L212",
+      "source_location": "L208",
       "weight": 1.0
     },
     {
@@ -30678,7 +30689,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/utils/blog.ts",
-      "source_location": "L227",
+      "source_location": "L223",
       "weight": 1.0
     },
     {
@@ -32460,7 +32471,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server/api/__sitemap__/urls.ts",
-      "source_location": "L172",
+      "source_location": "L171",
       "weight": 1.0
     },
     {
@@ -32471,7 +32482,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server/api/__sitemap__/urls.ts",
-      "source_location": "L215",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
@@ -32482,7 +32493,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server/api/__sitemap__/urls.ts",
-      "source_location": "L235",
+      "source_location": "L234",
       "weight": 1.0
     },
     {
@@ -33014,7 +33025,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "front/app.vue",
-      "source_location": "L117",
+      "source_location": "L111",
       "weight": 1.0
     },
     {
@@ -33139,5 +33150,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "bb3bdffc8068fd64cd633c52bbeaa1d4774ee4b6"
+  "built_at_commit": "22e1ff1a9c497cbea26725d282627adf46469b72"
 }

@@ -187,7 +187,7 @@ export function parseBlogFaq(markdown: string): BlogFaqItem[] {
   return items;
 }
 
-/** Canonical blog path without /v{version} — used for SEO and sitemap. */
+/** Canonical localized blog path used for SEO and sitemap output. */
 export function blogCanonicalPath(slug: string, locale: string) {
   const normalized = toContentLocale(locale);
 

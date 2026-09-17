@@ -5,7 +5,7 @@ import {
   fetchBlogPostBySlug,
 } from "~/queries/blog";
 
-const route = useRoute("vversion-blog-article_slug___en-en");
+const route = useRoute("blog-article_slug___en-en");
 const { locale } = useI18n();
 const articleSlug = computed(() => route.params.article_slug?.toString() ?? "");
 

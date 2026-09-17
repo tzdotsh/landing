@@ -23,7 +23,7 @@ defineProps<PropsType>();
 
       <Cta
         :external="false"
-        :to="{ name: 'vversion-support___en-en' }"
+        :to="{ name: 'support___en-en' }"
         variant="secondary"
         class="mx-auto flex w-max items-center gap-x-2.5 px-9"
       >

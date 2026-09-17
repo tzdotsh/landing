@@ -1,9 +1,9 @@
 type LinkInput = { path?: string; name: string };
 
 /**
- * Landing shadow of tv-layout's formatter. Shared layout components still
- * construct `/v{activeVersion}/…` marketing links; strip that obsolete public
- * segment here while preserving checkout/dashboard sibling-app paths.
+ * Landing shadow of tv-layout's formatter. The shared shell still sends its
+ * historical `vversion-*` route names and `/v{number}` paths, so translate
+ * those inputs at the layer boundary without exposing versioning in this app.
  */
 export default function useFormatLink() {
   const { getRoutes } = useRouter();
@@ -17,19 +17,21 @@ export default function useFormatLink() {
         return [];
       }
 
-      const baseName = route.name.split("_").at(0);
+      const baseName = route.name.replace(/___[^_]+$/, "");
       return baseName ? [[baseName, route.name] as const] : [];
     }),
   );
 
   return function formatLink<T extends LinkInput>(link: T) {
-    const localizedName = `${link.name}___${locale.value}`;
-    const isInternal =
-      internalRouteNames.has(link.name) ||
-      internalRouteNames.has(localizedName);
+    const unversionedName =
+      link.name === "vversion"
+        ? "index"
+        : link.name.replace(/^vversion-/, "");
+    const localizedName = `${unversionedName}___${locale.value}`;
+    const isInternal = internalRouteNames.has(unversionedName);
     const routeName = getRoutes().some((route) => route.name === localizedName)
       ? localizedName
-      : internalRouteNames.get(link.name) ?? link.name;
+      : internalRouteNames.get(unversionedName) ?? unversionedName;
     let path = link.path;
 
     if (path) {
@@ -44,6 +46,17 @@ export default function useFormatLink() {
       path = path.replace(baseUrl, "") || "/";
     }
 
-    return { ...link, name: routeName, path, isInternal };
+    return {
+      ...link,
+      // The inherited footer otherwise forwards its obsolete `version` param
+      // when resolving slug-based legal links. A direct path is authoritative.
+      slug:
+        isInternal && path
+          ? undefined
+          : (link as T & { slug?: string }).slug,
+      name: routeName,
+      path,
+      isInternal,
+    };
   };
 }

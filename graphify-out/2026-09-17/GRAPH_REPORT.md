@@ -1,16 +1,16 @@
 # Graph Report - landing  (2026-09-17)
 
 ## Corpus Check
-- 243 files · ~1,153,919 words
+- 244 files · ~1,154,000 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1353 nodes · 1549 edges · 194 communities (105 shown, 89 thin omitted)
+- 1354 nodes · 1549 edges · 195 communities (106 shown, 89 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bb3bdffc`
+- Built from commit: `22e1ff1a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -170,7 +170,7 @@
 - tw-animate-css
 - vue
 - vue-router
-- vue-slider-component
+- @formkit/themes
 - @vueuse/core
 - @vueuse/router
 - zod
@@ -207,7 +207,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (194 total, 89 thin omitted)
+## Communities (195 total, 89 thin omitted)
 
 ### Community 0 - "queries/blog.ts"
 Cohesion: 0.06
@@ -355,7 +355,7 @@ Nodes (10): Cómo instalar IPTV en un Firestick, Empieza en pocos minutos, Insta
 
 ### Community 36 - "dependencies"
 Cohesion: 0.18
-Nodes (11): echarts, @formkit/themes, nuxt-vitalizer, dependencies, echarts, @formkit/themes, nuxt-vitalizer, @pinia/nuxt (+3 more)
+Nodes (11): echarts, nuxt-vitalizer, dependencies, echarts, nuxt-vitalizer, @pinia/nuxt, @tanstack/vue-virtual, vue-slider-component (+3 more)
 
 ### Community 37 - "JoinForm.vue"
 Cohesion: 0.20
@@ -517,7 +517,7 @@ Nodes (3): LiveChatConfig, LiveChatWidgetApi, Window
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `dependencies` connect `dependencies` to `scripts`, `fuse.js`, `@headlessui/vue`, `motion-v`, `nuxt`, `nuxt-delay-hydration`, `nuxt-echarts`, `@nuxt/eslint`, `@nuxt/fonts`, `@nuxt/kit`, `@nuxtjs/fontaine`, `@nuxtjs/mdc`, `pinia`, `@pinia/colada`, `@pinia/colada-nuxt`, `reka-ui`, `sharp`, `@splidejs/splide-extension-auto-scroll`, `@splidejs/splide-extension-grid`, `@splidejs/splide-extension-intersection`, `@splidejs/vue-splide`, `tailwind-merge`, `tailwindcss`, `@tailwindcss/vite`, `@takumi-rs/core`, `tw-animate-css`, `vue`, `vue-router`, `vue-slider-component`, `@vueuse/core`, `@vueuse/router`, `zod`, `eslint-plugin-tailwind-canonical-classes`, `@fahdlaabi12/tailwindcss-inner-border`, `@formkit/addons`?**
+- **Why does `dependencies` connect `dependencies` to `scripts`, `fuse.js`, `@headlessui/vue`, `motion-v`, `nuxt`, `nuxt-delay-hydration`, `nuxt-echarts`, `@nuxt/eslint`, `@nuxt/fonts`, `@nuxt/kit`, `@nuxtjs/fontaine`, `@nuxtjs/mdc`, `pinia`, `@pinia/colada`, `@pinia/colada-nuxt`, `reka-ui`, `sharp`, `@splidejs/splide-extension-auto-scroll`, `@splidejs/splide-extension-grid`, `@splidejs/splide-extension-intersection`, `@splidejs/vue-splide`, `tailwind-merge`, `tailwindcss`, `@tailwindcss/vite`, `@takumi-rs/core`, `tw-animate-css`, `vue`, `vue-router`, `@formkit/themes`, `@vueuse/core`, `@vueuse/router`, `zod`, `eslint-plugin-tailwind-canonical-classes`, `@fahdlaabi12/tailwindcss-inner-border`, `@formkit/addons`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **Why does `trustedDependencies` connect `update-tmdb-images.ts` to `scripts`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._

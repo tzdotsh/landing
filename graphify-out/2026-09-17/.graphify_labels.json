@@ -162,7 +162,7 @@
   "160": "tw-animate-css",
   "161": "vue",
   "162": "vue-router",
-  "163": "vue-slider-component",
+  "163": "@formkit/themes",
   "164": "@vueuse/core",
   "165": "@vueuse/router",
   "166": "zod",
@@ -192,5 +192,6 @@
   "190": "livechat.client.ts",
   "191": "isInteger.ts",
   "192": "hostname.ts",
-  "193": "normalize-version-links.ts"
+  "193": "normalize-version-links.ts",
+  "194": "unversioned-logo.client.ts"
 }

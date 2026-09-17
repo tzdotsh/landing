@@ -1,27 +1,20 @@
 <script lang="ts" setup>
 const route = useRoute();
 const { public: config } = useRuntimeConfig();
+const requestUrl = useRequestURL();
 const { t, locale, locales, defaultLocale } = useI18n();
 
 const title = t("seo.site.title");
 const description = t("seo.site.description");
 const siteName = t("seo.site.name");
 
-const canonicalOrigin = computed(() => {
-  const configured = String(
-    config.siteUrl || config.canonicalHost || "maxco.one",
-  ).replace(/\/$/, "");
-
-  return /^https?:\/\//.test(configured) ? configured : `https://${configured}`;
-});
+const canonicalOrigin = computed(() =>
+  String(config.siteUrl || requestUrl.origin).replace(/\/$/, ""),
+);
 
 const image = computed(() => `${canonicalOrigin.value}/poster.png`);
 
-const canonicalPath = computed(() => {
-  let path = route.path.replace(/^\/v\d+(?=\/|$)/, "") || "/";
-  path = path.replace(/^\/(en-en|es-es|pt-pt)\/v\d+(?=\/|$)/, "/$1");
-  return path;
-});
+const canonicalPath = computed(() => route.path || "/");
 
 const pathWithoutLocale = computed(() => {
   const localePrefix = `/${locale.value}`;

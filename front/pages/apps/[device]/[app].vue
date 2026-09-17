@@ -2,7 +2,7 @@
 import { getAppsForDevice, useAppsMetadataQuery } from "~/queries/apps";
 
 const localePath = useLocalePath();
-const route = useRoute("vversion-apps-device-app___en-en");
+const route = useRoute("apps-device-app___en-en");
 const metadataQuery = useAppsMetadataQuery();
 
 const apps = computed(() =>

@@ -6,7 +6,7 @@ defineProps<{
 }>();
 
 const { t } = useI18n();
-const route = useRoute("vversion-apps-device-app___en-en");
+const route = useRoute("apps-device-app___en-en");
 const selectedDevice = computed(() => route.params.device?.toString() ?? "");
 const selectedApp = computed(() => route.params.app?.toString() ?? "");
 const tutorialQuery = useAppTutorialQuery(selectedDevice, selectedApp);

@@ -11,27 +11,6 @@ const currentDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineNuxtConfig({
   hooks: {
-    // The file tree keeps v[version] for component/route-name compatibility,
-    // but public marketing URLs are permanently unversioned. Re-path the
-    // parent route before @nuxtjs/i18n generates localized variants.
-    "pages:extend"(pages) {
-      const stripVersionSegment = (
-        page: (typeof pages)[number],
-        nested = false,
-      ) => {
-        page.path = page.path.replace(/^\/v:version\(\)/, "") || "/";
-        // Nuxt emits nested index files with an absolute "/" path. Once the
-        // version parent is repathed to "/", those must be relative or they
-        // collide with the homepage (notably the tutorial index route).
-        if (nested && page.path === "/") {
-          page.path = "";
-        }
-        page.children?.forEach((child) => stripVersionSegment(child, true));
-      };
-
-      pages.forEach(stripVersionSegment);
-    },
-
     // Drop inherited tv-layout LiveChat plugin (GitHub layer cache). Landing loads
     // via useLiveChat() in MaxcoChatBubble; front/plugins/livechat.client.ts is a no-op shadow.
     "app:resolve"(app) {
@@ -259,7 +238,7 @@ export default defineNuxtConfig({
     validHostnames:
       process.env.VALID_HOSTNAMES ||
       "maxco.one,www.maxco.one,web.maxcotv.com,maxcotv.com",
-    canonicalHost: process.env.CANONICAL_HOST || "maxco.one",
+    canonicalHost: process.env.CANONICAL_HOST || "",
 
     public: {
       // Payload CMS origin (blog/tutorials/legal). Overrides the tv-layout
@@ -282,15 +261,19 @@ export default defineNuxtConfig({
 
       // Bare canonical host for building absolute URLs client-side. Overridable
       // at runtime via NUXT_PUBLIC_CANONICAL_HOST (no rebuild on domain cutover).
-      canonicalHost: process.env.CANONICAL_HOST || "maxco.one",
+      canonicalHost: process.env.CANONICAL_HOST || "",
 
       siteUrl:
         process.env.SITE_URL ||
-        `https://${process.env.CANONICAL_HOST || "maxco.one"}`,
+        (process.env.CANONICAL_HOST
+          ? `https://${process.env.CANONICAL_HOST}`
+          : ""),
       HOSTNAME:
         process.env.HOSTNAME ||
         process.env.SITE_URL ||
-        `https://${process.env.CANONICAL_HOST || "maxco.one"}`,
+        (process.env.CANONICAL_HOST
+          ? `https://${process.env.CANONICAL_HOST}`
+          : ""),
       umamiUrl:
         process.env.NUXT_PUBLIC_UMAMI_URL || "https://analytics.maxco.one",
       umamiWebsiteId:

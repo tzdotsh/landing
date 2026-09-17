@@ -24,8 +24,11 @@ export default defineSitemapEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
 
   const i18nConfig = config.public.i18n;
-  const baseUrl =
-    i18nConfig?.baseUrl || config.public.siteUrl || "http://localhost:3000";
+  const baseUrl = String(
+    i18nConfig?.baseUrl ||
+      config.public.siteUrl ||
+      getRequestURL(event).origin,
+  ).replace(/\/$/, "");
   const locales = (i18nConfig?.locales || []) as Array<{
     code: string;
     language: string;

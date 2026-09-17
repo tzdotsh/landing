@@ -6,7 +6,7 @@ type FaqMessageItem = {
 };
 
 export function useSportsPageSeo() {
-  const { t, tm, rt, locale, locales } = useI18n();
+  const { t, tm, rt, locale } = useI18n();
   const {
     public: { siteUrl },
   } = useRuntimeConfig();
@@ -47,29 +47,6 @@ export function useSportsPageSeo() {
     twitterDescription: description,
     twitterCard: "summary_large_image",
     twitterImage: ogImageUrl,
-  });
-
-  useHead({
-    link: computed(() => {
-      const links: Array<Record<string, string>> = [
-        { rel: "canonical", href: canonicalUrl.value },
-      ];
-
-      for (const entry of locales.value) {
-        const path =
-          entry.code === "en-en"
-            ? "/iptv-sports"
-            : `/${entry.code}/iptv-sports`;
-
-        links.push({
-          rel: "alternate",
-          hreflang: entry.language ?? entry.code,
-          href: `${siteUrl.replace(/\/$/, "")}${path}`,
-        });
-      }
-
-      return links;
-    }),
   });
 
   useSchemaOrg(

@@ -9,6 +9,7 @@ const { t } = useI18n();
 
       <Heading
         :title="t('auth_check.verified.title')"
+        title-tag="h1"
         title-class="px-1 text-[40px]/[52px] font-black tracking-normal!"
       ></Heading>
     </div>

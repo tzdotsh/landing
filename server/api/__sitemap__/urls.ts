@@ -1,16 +1,16 @@
 import type { SitemapUrl } from "#sitemap/types";
+import {
+  getHardcodedLegalDocument,
+  LEGAL_PAGE_SLUGS,
+} from "~/data/legal-documents";
 
 type RawSitemapItem = {
   path: string;
   lastModified?: string | Date;
-  /** Canonical marketing URL — no /v{version} prefix. */
-  canonical?: boolean;
-  /** When set, only emit this locale (used for locale-specific blog posts). */
+  /** When set, emit only this real content locale. */
   locale?: string;
-  /** When set, only emit these locales (used for content that isn't translated everywhere). */
-  localeCodes?: string[];
-  /** Payload doc id grouping key for blog hreflang alternates (slugs are per-locale). */
-  hreflangId?: number;
+  /** Groups localized CMS docs for hreflang (slugs may differ by locale). */
+  alternateKey?: string;
 };
 
 /** Payload CMS locale ↔ site locale mapping for the posts collection. */
@@ -20,21 +20,12 @@ const CMS_LOCALES = [
   { cms: "pt", site: "pt-pt" },
 ] as const;
 
-/**
- * Locales with real Payload CMS content (tutorials, legal). pt-pt is excluded
- * until the CMS carries Portuguese docs — emitting it would index
- * fallback-English pages under /pt-pt/ as duplicate content.
- */
-const PAYLOAD_CONTENT_LOCALES = ["en-en", "es-es"];
-
 export default defineSitemapEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
 
   const i18nConfig = config.public.i18n;
   const baseUrl =
     i18nConfig?.baseUrl || config.public.siteUrl || "http://localhost:3000";
-  const version = config.public.activeVersion;
-
   const locales = (i18nConfig?.locales || []) as Array<{
     code: string;
     language: string;
@@ -47,26 +38,10 @@ export default defineSitemapEventHandler(async (event) => {
 
   const payloadBaseURL = String(config.public.payloadBaseURL || "");
 
-  const [posts, tutorials, legalPages] = await Promise.all([
+  const [posts, tutorials] = await Promise.all([
     fetchPosts(payloadBaseURL),
     fetchTutorials(payloadBaseURL),
-    fetchLegalPages(payloadBaseURL),
   ]);
-
-  // Payload slugs are per-locale, so alternates group by doc id and each
-  // entry carries its own localized slug.
-  const blogAlternatesById = posts.reduce<
-    Record<number, Array<{ locale: string; language: string; slug: string }>>
-  >((acc, post) => {
-    const language =
-      locales.find((entry) => entry.code === post.locale)?.language ??
-      post.locale;
-
-    acc[post.id] ??= [];
-    acc[post.id].push({ locale: post.locale, language, slug: post.slug });
-
-    return acc;
-  }, {});
 
   const rawContent: RawSitemapItem[] = [];
 
@@ -81,21 +56,16 @@ export default defineSitemapEventHandler(async (event) => {
     "faq",
     "support",
     "auth-check",
+    "affiliate",
   ];
-  staticPaths.forEach((p) =>
-    rawContent.push({
-      path: p,
-      ...(p === "iptv-sports" || p === "iptv-vod" ? { canonical: true } : {}),
-    }),
-  );
+  staticPaths.forEach((path) => rawContent.push({ path }));
 
   posts?.forEach((post) => {
     rawContent.push({
       path: `blog/${post.slug}`,
       lastModified: post.updatedAt,
-      canonical: true,
       locale: post.locale,
-      hreflangId: post.id,
+      alternateKey: `blog:${post.id}`,
     });
   });
 
@@ -104,84 +74,89 @@ export default defineSitemapEventHandler(async (event) => {
       rawContent.push({
         path: `apps/${tutorial.device.slug}/${tutorial.app.slug}`,
         lastModified: tutorial.updatedAt,
-        localeCodes: PAYLOAD_CONTENT_LOCALES,
+        locale: tutorial.locale,
+        alternateKey: `tutorial:${tutorial.device.slug}/${tutorial.app.slug}`,
       });
     }
   });
 
-  legalPages?.forEach((page) => {
-    if (page.slug) {
+  LEGAL_PAGE_SLUGS.forEach((slug) => {
+    for (const { site, cms } of CMS_LOCALES.filter(
+      ({ site }) => site !== "pt-pt",
+    )) {
+      const page = getHardcodedLegalDocument(slug, cms === "es" ? "es" : "en");
+      if (!page) {
+        continue;
+      }
+
       rawContent.push({
-        path: `legal/${page.slug}`,
+        path: `legal/${slug}`,
         lastModified: page.updatedAt,
-        localeCodes: PAYLOAD_CONTENT_LOCALES,
+        locale: site,
+        alternateKey: `legal:${slug}`,
       });
     }
   });
+
+  const localizedPath = (item: RawSitemapItem, localeCode: string) => {
+    const prefix = localeCode === defaultLocale ? "" : `/${localeCode}`;
+    return `${prefix}${item.path ? `/${item.path}` : ""}` || "/";
+  };
+
+  const itemsByAlternateKey = rawContent.reduce<
+    Record<string, RawSitemapItem[]>
+  >((groups, item) => {
+    if (item.alternateKey) {
+      groups[item.alternateKey] ??= [];
+      groups[item.alternateKey].push(item);
+    }
+    return groups;
+  }, {});
 
   return rawContent.flatMap((item) => {
     const targetLocales = item.locale
-      ? locales.filter((locale) => locale.code === item.locale)
-      : item.localeCodes
-        ? locales.filter((locale) => item.localeCodes!.includes(locale.code))
-        : locales;
+      ? locales.filter((entry) => entry.code === item.locale)
+      : locales;
 
     return targetLocales.map((locale) => {
-      const pathPrefix =
-        locale.code === defaultLocale
-          ? `/v${version}`
-          : `/${locale.code}/v${version}`;
+      const alternateItems = item.alternateKey
+        ? (itemsByAlternateKey[item.alternateKey] ?? [item])
+        : locales.map((entry) => ({ ...item, locale: entry.code }));
 
-      const urlPath = item.canonical
-        ? locale.code === defaultLocale
-          ? `/${item.path}`
-          : `/${locale.code}/${item.path}`
-        : `${pathPrefix}/${item.path}`;
+      const alternatives = alternateItems.flatMap((alternate) => {
+        const alternateLocale = locales.find(
+          (entry) => entry.code === alternate.locale,
+        );
+        if (!alternateLocale) {
+          return [];
+        }
 
-      const normalizedPath = urlPath.replace(/\/{2,}/g, "/");
-      const fullUrl = `${baseUrl}${normalizedPath}`;
+        return [
+          {
+            hreflang: alternateLocale.language,
+            href: `${baseUrl}${localizedPath(alternate, alternateLocale.code)}`,
+          },
+        ];
+      });
 
-      const alternatives =
-        item.hreflangId != null && blogAlternatesById[item.hreflangId]
-          ? blogAlternatesById[item.hreflangId]
-              .filter((entry) => entry.locale !== locale.code)
-              .map((entry) => {
-                const altPath =
-                  entry.locale === defaultLocale
-                    ? `/blog/${entry.slug}`
-                    : `/${entry.locale}/blog/${entry.slug}`;
-
-                return {
-                  hreflang: entry.language,
-                  href: `${baseUrl}${altPath}`,
-                };
-              })
-          : targetLocales
-              .filter((entry) => entry.code !== locale.code)
-              .map((altLocale) => {
-                const altPathPrefix =
-                  altLocale.code === defaultLocale
-                    ? `/v${version}`
-                    : `/${altLocale.code}/v${version}`;
-                const altUrlPath = `${altPathPrefix}/${item.path}`.replace(
-                  /\/{2,}/g,
-                  "/",
-                );
-
-                return {
-                  hreflang: altLocale.language,
-                  href: `${baseUrl}${altUrlPath}`,
-                };
-              });
+      const englishItem = alternateItems.find(
+        (alternate) => alternate.locale === defaultLocale,
+      );
+      if (englishItem) {
+        alternatives.push({
+          hreflang: "x-default",
+          href: `${baseUrl}${localizedPath(englishItem, defaultLocale)}`,
+        });
+      }
 
       return {
         _sitemap: isoLocales[locale.code],
-        loc: fullUrl,
+        loc: `${baseUrl}${localizedPath(item, locale.code)}`,
         lastmod: item.lastModified
           ? new Date(item.lastModified).toISOString()
           : undefined,
         changefreq: "daily",
-        priority: item.canonical ? 0.9 : 0.8,
+        priority: item.path === "" ? 1 : 0.8,
         alternatives,
       } satisfies SitemapUrl;
     });
@@ -257,40 +232,45 @@ async function fetchPayloadCollection<T>(
 }
 
 async function fetchTutorials(payloadBaseURL: string) {
-  try {
-    return await fetchPayloadCollection<{
-      slug: string;
-      updatedAt: string;
-      device: { slug: string };
-      app: { slug: string };
-    }>(payloadBaseURL, "tutorials", {
-      limit: 1000,
-      depth: 1,
-      "select[slug]": "true",
-      "select[updatedAt]": "true",
-      "select[device]": "true",
-      "select[app]": "true",
-    });
-  } catch (error) {
-    console.error("Sitemap: Error fetching tutorials", error);
-    return [];
-  }
-}
+  const results = await Promise.all(
+    CMS_LOCALES.map(async ({ cms, site }) => {
+      try {
+        const docs = await fetchPayloadCollection<{
+          title?: string | null;
+          updatedAt: string;
+          device: { slug: string };
+          app: { slug: string };
+        }>(payloadBaseURL, "tutorials", {
+          locale: cms,
+          "fallback-locale": "none",
+          limit: 1000,
+          depth: 1,
+          "select[title]": "true",
+          "select[updatedAt]": "true",
+          "select[device]": "true",
+          "select[app]": "true",
+        });
 
-async function fetchLegalPages(payloadBaseURL: string) {
-  try {
-    return await fetchPayloadCollection<{ slug: string; updatedAt: string }>(
-      payloadBaseURL,
-      "legal",
-      {
-        limit: 100,
-        depth: 0,
-        "select[slug]": "true",
-        "select[updatedAt]": "true",
-      },
-    );
-  } catch (error) {
-    console.error("Sitemap: Error fetching legal pages", error);
-    return [];
-  }
+        const seenPairs = new Set<string>();
+        return docs.flatMap((doc) => {
+          if (!doc.title || !doc.device?.slug || !doc.app?.slug) {
+            return [];
+          }
+
+          const pair = `${doc.device.slug}/${doc.app.slug}`;
+          if (seenPairs.has(pair)) {
+            return [];
+          }
+          seenPairs.add(pair);
+
+          return [{ ...doc, locale: site }];
+        });
+      } catch (error) {
+        console.error(`Sitemap: Error fetching tutorials (${cms})`, error);
+        return [];
+      }
+    }),
+  );
+
+  return results.flat();
 }

@@ -36,10 +36,10 @@ function getAppsByDevice(deviceSlug: string) {
 function deviceLink(slug: string) {
   const firstApp = getAppsByDevice(slug)[0]?.slug;
   if (!firstApp) {
-    return localePath(`/v${route.params.version}/apps/${slug}`);
+    return localePath(`/apps/${slug}`);
   }
 
-  return localePath(`/v${route.params.version}/apps/${slug}/${firstApp}`);
+  return localePath(`/apps/${slug}/${firstApp}`);
 }
 </script>
 
@@ -65,7 +65,7 @@ function deviceLink(slug: string) {
 
           <template v-else-if="hasMetadataError">
             <p
-              class="text-muted col-span-full rounded-card bg-panel ring-1 ring-line px-6 py-8 text-center text-[16px]/[1.5] md:col-span-3 lg:col-span-5"
+              class="text-muted rounded-card bg-panel ring-line col-span-full px-6 py-8 text-center text-[16px]/[1.5] ring-1 md:col-span-3 lg:col-span-5"
             >
               {{ t("apps.select.load_error") }}
             </p>
@@ -73,7 +73,7 @@ function deviceLink(slug: string) {
 
           <template v-else-if="showEmptyState">
             <p
-              class="text-muted col-span-full rounded-card bg-panel ring-1 ring-line px-6 py-8 text-center text-[16px]/[1.5] md:col-span-3 lg:col-span-5"
+              class="text-muted rounded-card bg-panel ring-line col-span-full px-6 py-8 text-center text-[16px]/[1.5] ring-1 md:col-span-3 lg:col-span-5"
             >
               {{ t("apps.select.empty_devices") }}
             </p>

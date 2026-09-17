@@ -31,6 +31,12 @@ if (!legalDoc.value && !legalMdPending.value) {
 const title = computed(() => legalDoc.value?.title ?? "");
 const description = computed(() => legalDoc.value?.description ?? "");
 
+useSeoMeta({
+  robots: computed(() =>
+    locale.value.startsWith("pt") ? "noindex, follow" : "index, follow",
+  ),
+});
+
 useReactiveSeoMeta({
   title,
   description,
@@ -41,7 +47,7 @@ useReactiveSeoMeta({
 <template>
   <div class="home-page-depth relative isolate min-h-full">
     <HomeSectionGlow
-      class="left-1/2 top-[28%] h-72 w-72 -translate-x-1/2 -translate-y-1/2 sm:h-80 sm:w-80"
+      class="top-[28%] left-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 sm:h-80 sm:w-80"
       strength="5%"
     />
 

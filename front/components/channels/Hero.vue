@@ -26,8 +26,12 @@ const slideIndices = ref<Record<ChannelsHeroCategoryId, number>>({
   channels: 0,
 });
 
-function slidesForCategory(categoryId: ChannelsHeroCategoryId): ChannelsHeroSlide[] {
-  const category = CHANNELS_HERO_CATEGORIES.find((entry) => entry.id === categoryId);
+function slidesForCategory(
+  categoryId: ChannelsHeroCategoryId,
+): ChannelsHeroSlide[] {
+  const category = CHANNELS_HERO_CATEGORIES.find(
+    (entry) => entry.id === categoryId,
+  );
 
   if (!category) {
     return [];
@@ -143,7 +147,7 @@ onUnmounted(() => {
           </AnimatePresence>
 
           <div
-            class="absolute inset-0 -z-10 bg-linear-to-tr from-bg-deep/80 from-40% to-transparent"
+            class="from-bg-deep/80 absolute inset-0 -z-10 bg-linear-to-tr from-40% to-transparent"
           ></div>
         </div>
 
@@ -151,10 +155,7 @@ onUnmounted(() => {
           class="relative z-10 flex h-full flex-col pb-[31px] max-lg:pt-40 lg:pt-[215px]"
         >
           <AnimatePresence mode="wait">
-            <motion.div
-              :key="`${selectedCategory}-${activeSlide.id}`"
-              layout
-            >
+            <motion.div :key="`${selectedCategory}-${activeSlide.id}`" layout>
               <div
                 class="bg-panel/80 ring-line mb-2.5 flex h-8.5 w-max items-center rounded-full px-3.5 ring-1 backdrop-blur-md"
               >
@@ -166,6 +167,7 @@ onUnmounted(() => {
               <Heading
                 :title="displayCopy.title"
                 :description="displayCopy.description"
+                title-tag="h1"
                 size="primary"
                 align="left"
                 gap="10"

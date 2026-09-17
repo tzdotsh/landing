@@ -6,7 +6,6 @@ import {
 } from "~/queries/blog";
 import { resolveBlogSlug } from "~/utils/blog";
 
-const { version } = useProject();
 const { t } = useI18n();
 const blogPostsQuery = useBlogPostsQuery();
 
@@ -39,7 +38,7 @@ function loadMorePosts() {
         <NuxtLinkLocale
           v-for="(post, index) in allPosts"
           :key="resolveBlogSlug(post)"
-          :to="`/v${version}/blog/${resolveBlogSlug(post)}`"
+          :to="`/blog/${resolveBlogSlug(post)}`"
           class="lg:first:col-span-3"
         >
           <BlogPostCard :latest="!index" :post="post" />

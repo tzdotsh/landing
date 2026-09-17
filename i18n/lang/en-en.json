@@ -18,7 +18,7 @@
       },
       "apps": {
         "title": "IPTV Setup: Firestick, Smart TV & Apps | Maxco",
-        "description": "Step-by-step Maxco installation guides for MAG boxes, Smart TVs, Firestick, iOS, Android, Kodi, and more."
+        "description": "Follow clear Maxco IPTV setup guides for Firestick, Smart TV, MAG, Android, iOS, Kodi and more, with simple steps for every device."
       },
       "resellers": {
         "title": "IPTV Reseller Programme — Partner Up | Maxco",
@@ -26,23 +26,23 @@
       },
       "faq": {
         "title": "IPTV FAQ — Setup, Plans & Support | Maxco",
-        "description": "Have questions about anything? We've got answers."
+        "description": "Find answers to common Maxco IPTV questions about setup, compatible devices, subscriptions, streaming quality, billing and support."
       },
       "support": {
         "title": "IPTV Support & Help Centre | Maxco",
-        "description": "We'd love to hear from you. Send us a message and we'll respond as soon as possible."
+        "description": "Contact the Maxco IPTV support team for help with setup, subscriptions, devices or streaming. Send a message and we will respond promptly."
       },
       "auth_check": {
         "title": "Verify Your Maxco Subscription | Maxco",
-        "description": "Verify your access to ensure you have authentic Maxco subscription."
+        "description": "Verify your IPTV subscription and confirm that your access is provided by Maxco. Check your service status securely in a few moments."
       },
       "report": {
         "title": "Abuse Report",
-        "description": "Report any misuse or abuse of our services."
+        "description": "Report suspected misuse, copyright concerns or abuse involving Maxco services. Send the relevant details to our team for review."
       },
       "blog": {
         "title": "IPTV Guides, Tips & Setup Help | Maxco",
-        "description": "Stay updated with our latest blog articles and news."
+        "description": "Read practical IPTV guides, setup tutorials, streaming tips and industry updates from Maxco for Firestick, Smart TV, mobile and more."
       },
       "sports": {
         "title": "IPTV Sports — Live Football, F1, UFC & PPV | Maxco",
@@ -54,7 +54,7 @@
       },
       "affiliate-program": {
         "title": "Affiliate Program",
-        "description": "Join the Maxco affiliate program and earn 30% recurring commission on every referral, paid in crypto."
+        "description": "Join the Maxco affiliate program and earn 30% recurring commission on every customer you refer, with simple tracking and crypto payouts."
       }
     }
   },

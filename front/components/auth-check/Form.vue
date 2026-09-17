@@ -28,6 +28,7 @@ function handleSubmit(data: { iptvAccess: string }) {
     <div class="mb-10 flex flex-col items-center gap-y-[30px]">
       <Heading
         :title="t('auth_check.form.title')"
+        title-tag="h1"
         title-class="px-1 text-[40px]/[52px] font-black tracking-normal!"
       ></Heading>
     </div>

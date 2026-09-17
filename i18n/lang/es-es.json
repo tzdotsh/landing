@@ -3,22 +3,22 @@
     "site": {
       "name": "Maxco",
       "title": "IPTV Premium — TV en Directo, Deporte y Cine",
-      "description": "Accede a una experiencia de más de 20,000 canales de televisión aquí con Maxco, el mejor proveedor de servicio IPTV. Regístrate hoy para obtener tu suscripción al servidor IPTV.",
+      "description": "Disfruta de más de 20.000 canales, deportes, películas y series con Maxco IPTV. Regístrate hoy y mira tus contenidos en todos tus dispositivos.",
       "keywords": "iptv, Maxco, Maxco One",
       "ogImage": "/og-image.webp"
     },
     "pages": {
       "home": {
         "title": "IPTV Premium — TV en Directo, Deporte y Cine | Maxco",
-        "description": "Accede a una experiencia de más de 20,000 canales de televisión aquí con Maxco, el mejor proveedor de servicio IPTV. Regístrate hoy para obtener tu suscripción al servidor IPTV."
+        "description": "Disfruta de más de 20.000 canales, deportes, películas y series con Maxco IPTV. Regístrate hoy y mira tus contenidos en todos tus dispositivos."
       },
       "channels": {
         "title": "Canales IPTV — TV en Directo y VOD | Maxco",
-        "description": "Transmite más de 20,000 canales IPTV inteligentes disponibles en diferentes países. Regístrate para tus canales favoritos en Maxco con una garantía de devolución de dinero de 30 días."
+        "description": "Explora más de 20.000 canales IPTV de distintos países, con deportes, noticias y entretenimiento. Disfruta de Maxco con garantía de 30 días."
       },
       "apps": {
         "title": "IPTV en Firestick y Smart TV | Maxco",
-        "description": "Guías paso a paso de Maxco para MAG, Smart TV, Firestick, iOS, Android, Kodi y más."
+        "description": "Sigue guías claras de instalación IPTV para Firestick, Smart TV, MAG, Android, iOS, Kodi y más, con pasos sencillos para cada dispositivo."
       },
       "resellers": {
         "title": "Programa de Revendedores IPTV",
@@ -26,23 +26,23 @@
       },
       "faq": {
         "title": "IPTV Preguntas Frecuentes | Maxco",
-        "description": "¿Tienes preguntas sobre algo? Tenemos respuestas."
+        "description": "Encuentra respuestas sobre Maxco IPTV: instalación, dispositivos compatibles, suscripciones, calidad de streaming, pagos y soporte."
       },
       "support": {
         "title": "Soporte IPTV y Centro de Ayuda | Maxco",
-        "description": "Nos encantaría saber de ti. Envíanos un mensaje y responderemos lo antes posible."
+        "description": "Contacta con el soporte de Maxco IPTV para recibir ayuda con la instalación, suscripciones, dispositivos o streaming. Te responderemos pronto."
       },
       "auth_check": {
         "title": "Verifica tu Acceso IPTV",
-        "description": "Verifica tu acceso para asegurarte de que tienes una suscripción auténtica a Maxco."
+        "description": "Verifica tu suscripción IPTV y confirma que tu acceso pertenece a Maxco. Comprueba el estado de tu servicio de forma segura en pocos minutos."
       },
       "report": {
         "title": "Reporte de Abuso",
-        "description": "Reporta cualquier uso indebido o abuso de nuestros servicios."
+        "description": "Informa sobre uso indebido, problemas de derechos de autor o abuso relacionado con los servicios de Maxco para que nuestro equipo lo revise."
       },
       "blog": {
         "title": "Guías IPTV, Trucos y Ayuda | Maxco",
-        "description": "Mantente actualizado con nuestros últimos artículos del blog y noticias."
+        "description": "Lee guías IPTV, tutoriales de instalación, consejos de streaming y novedades de Maxco para Firestick, Smart TV, móviles y mucho más."
       },
       "sports": {
         "title": "IPTV Deportes — Fútbol y LaLiga en Directo | Maxco",

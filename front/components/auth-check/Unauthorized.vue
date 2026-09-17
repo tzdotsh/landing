@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 const { t, rt, tm } = useI18n();
 
-const { version } = useProject();
-
 const means_list = tm<any, any, any, any, string[]>(
   "auth_check.unauthorized.means_list",
 );
@@ -15,6 +13,7 @@ const means_list = tm<any, any, any, any, string[]>(
 
       <Heading
         :title="t('auth_check.unauthorized.title')"
+        title-tag="h1"
         title-class="px-1 text-[40px]/[52px] font-black tracking-normal!"
       ></Heading>
     </div>
@@ -52,7 +51,7 @@ const means_list = tm<any, any, any, any, string[]>(
       </Cta>
 
       <Cta
-        :to="`/v${version}/support`"
+        to="/support"
         :external="false"
         variant="danger"
         class="items-stretch"

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useAppTutorialQueryWithOptions } from "~/queries/apps";
+import { toSeoDescription, toSeoTitle } from "~/utils/blog";
 
 const { t } = useI18n();
 const route = useRoute();
@@ -59,33 +60,25 @@ if (import.meta.client) {
   );
 }
 
-const title = computed(
-  () => currentTutorial.value?.title || t("seo.pages.apps.title"),
+const title = computed(() =>
+  toSeoTitle(currentTutorial.value?.title || t("seo.pages.apps.title")),
 );
-const description = computed(() => t("seo.pages.apps.description"));
-const publishedAt = computed(() => currentTutorial.value?.createdAt || "");
-const updatedAt = computed(() => currentTutorial.value?.updatedAt || "");
-const wordCount = computed(() => {
-  const content = currentTutorial.value?.content || "";
-  return content.trim().split(/\s+/).length;
-});
-
-useReactiveSeoMeta({
+const description = computed(() =>
+  toSeoDescription(
+    currentTutorial.value?.content || "",
+    t("seo.pages.apps.description"),
+  ),
+);
+useSeoMeta({
   title,
   description,
-  type: "article",
-  publishedDate: publishedAt,
-  updatedDate: updatedAt,
-  wordCount,
-});
-
-useSchemaOrg({
-  "@type": "HowTo",
-  name: currentTutorial.value?.title || t("seo.pages.apps.title"),
-  step: currentTutorial.value?.content,
+  ogTitle: title,
+  ogDescription: description,
+  twitterTitle: title,
+  twitterDescription: description,
 });
 </script>
 
 <template>
-  <AppsPost />
+  <AppsPost :title="currentTutorial?.title" />
 </template>

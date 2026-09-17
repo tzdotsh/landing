@@ -15,9 +15,7 @@ const apps = computed(() =>
 watchEffect(() => {
   if (route.params.device && !route.params.app && apps.value.length) {
     navigateTo(
-      localePath(
-        `/v${route.params.version}/apps/${route.params.device}/${apps.value[0]!.slug}`,
-      ),
+      localePath(`/apps/${route.params.device}/${apps.value[0]!.slug}`),
     );
   }
 });

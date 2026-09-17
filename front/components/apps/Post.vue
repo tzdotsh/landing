@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import { useAppTutorialQuery } from "~/queries/apps";
 
+defineProps<{
+  title?: string;
+}>();
+
 const { t } = useI18n();
 const route = useRoute("vversion-apps-device-app___en-en");
 const selectedDevice = computed(() => route.params.device?.toString() ?? "");
@@ -23,6 +27,13 @@ const { pending: mdPending, data: ast } = await useParseMarkdown(
 <template>
   <section id="doc">
     <div class="container flex flex-col gap-y-10">
+      <h1
+        v-if="title"
+        class="font-heading text-ink text-[clamp(2rem,4vw,2.75rem)]/none font-semibold tracking-normal text-pretty"
+      >
+        {{ title }}
+      </h1>
+
       <SectionTitle>{{ t("apps.post.title") }}</SectionTitle>
 
       <CommonMarkdownRender

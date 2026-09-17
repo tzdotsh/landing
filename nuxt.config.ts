@@ -11,6 +11,27 @@ const currentDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineNuxtConfig({
   hooks: {
+    // The file tree keeps v[version] for component/route-name compatibility,
+    // but public marketing URLs are permanently unversioned. Re-path the
+    // parent route before @nuxtjs/i18n generates localized variants.
+    "pages:extend"(pages) {
+      const stripVersionSegment = (
+        page: (typeof pages)[number],
+        nested = false,
+      ) => {
+        page.path = page.path.replace(/^\/v:version\(\)/, "") || "/";
+        // Nuxt emits nested index files with an absolute "/" path. Once the
+        // version parent is repathed to "/", those must be relative or they
+        // collide with the homepage (notably the tutorial index route).
+        if (nested && page.path === "/") {
+          page.path = "";
+        }
+        page.children?.forEach((child) => stripVersionSegment(child, true));
+      };
+
+      pages.forEach(stripVersionSegment);
+    },
+
     // Drop inherited tv-layout LiveChat plugin (GitHub layer cache). Landing loads
     // via useLiveChat() in MaxcoChatBubble; front/plugins/livechat.client.ts is a no-op shadow.
     "app:resolve"(app) {
@@ -36,9 +57,10 @@ export default defineNuxtConfig({
         | Record<string, unknown>
         | undefined;
 
-      for (const scope of [runtimeConfig, runtimeConfig?.public as
-        | Record<string, unknown>
-        | undefined]) {
+      for (const scope of [
+        runtimeConfig,
+        runtimeConfig?.public as Record<string, unknown> | undefined,
+      ]) {
         const robots = scope?.["nuxt-robots"] as
           | { sitemap?: string[] }
           | undefined;
@@ -72,7 +94,10 @@ export default defineNuxtConfig({
   extends: [
     process.env.LOCAL_LAYER === "true"
       ? "../layout"
-      : ["github:tzdotsh/tv-layout#main", { auth: process.env.GIT_LAYER_TOKEN, install: true }],
+      : [
+          "github:tzdotsh/tv-layout#main",
+          { auth: process.env.GIT_LAYER_TOKEN, install: true },
+        ],
   ],
 
   experimental: {
@@ -355,41 +380,13 @@ export default defineNuxtConfig({
         "Cache-Control": "public, max-age=3600, s-maxage=3600",
       },
     },
-    "/v*/iptv-sports": {
-      isr: 3600,
-      headers: {
-        "Cache-Control":
-          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
-      },
-    },
-    "/es-es/v*/iptv-sports": {
-      isr: 3600,
-      headers: {
-        "Cache-Control":
-          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
-      },
-    },
     "/iptv-vod": {
       prerender: true,
       headers: {
         "Cache-Control": "public, max-age=3600, s-maxage=3600",
       },
     },
-    "/v*/iptv-vod": {
-      isr: 3600,
-      headers: {
-        "Cache-Control":
-          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
-      },
-    },
-    "/es-es/v*/iptv-vod": {
-      isr: 3600,
-      headers: {
-        "Cache-Control":
-          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
-      },
-    },
-    // Blog pages - ISR with revalidation (versioned + locale-prefixed paths)
+    // CMS-backed content — cache successful SSR while allowing stale responses.
     "/blog/**": {
       isr: 3600,
       headers: {
@@ -397,16 +394,79 @@ export default defineNuxtConfig({
           "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
       },
     },
-    "/v*/blog/**": {
+    "/es-es/blog/**": {
       isr: 3600,
       headers: {
         "Cache-Control":
           "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
       },
     },
-    "/es-es/v*/blog/**": {
+    "/pt-pt/blog/**": {
       isr: 3600,
       headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/apps/**": {
+      isr: 3600,
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/es-es/apps/**": {
+      isr: 3600,
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/pt-pt/apps/**": {
+      isr: 3600,
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/legal/**": {
+      isr: 3600,
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/es-es/legal/**": {
+      isr: 3600,
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/pt-pt/legal/**": {
+      isr: 3600,
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/help/**": {
+      headers: {
+        "X-Robots-Tag": "noindex, follow",
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/es-es/help/**": {
+      headers: {
+        "X-Robots-Tag": "noindex, follow",
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    },
+    "/pt-pt/help/**": {
+      headers: {
+        "X-Robots-Tag": "noindex, follow",
         "Cache-Control":
           "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
       },
@@ -431,6 +491,16 @@ export default defineNuxtConfig({
     },
     // API-like routes - no cache
     "/auth-check": {
+      headers: {
+        "Cache-Control": "no-store, no-cache, must-revalidate",
+      },
+    },
+    "/es-es/auth-check": {
+      headers: {
+        "Cache-Control": "no-store, no-cache, must-revalidate",
+      },
+    },
+    "/pt-pt/auth-check": {
       headers: {
         "Cache-Control": "no-store, no-cache, must-revalidate",
       },

@@ -8,14 +8,11 @@ type Props = {
 
 const props = defineProps<Props>();
 
-const { version } = useProject();
 const localePath = useLocalePath();
 
 // Mirrors the deterministic detail-page resolution: the guide's device/app pair.
 const articlePath = computed(() =>
-  localePath(
-    `/v${version}/apps/${props.article.deviceSlug}/${props.article.appSlug}`,
-  ),
+  localePath(`/apps/${props.article.deviceSlug}/${props.article.appSlug}`),
 );
 
 const updatedLabel = computed(() =>
@@ -26,7 +23,7 @@ const updatedLabel = computed(() =>
 <template>
   <NuxtLinkLocale
     :to="articlePath"
-    class="group bg-panel/70 ring-line hover:border-line-2 flex h-full min-h-[148px] flex-col gap-y-3 rounded-card border border-transparent p-5 ring-1 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-brand)] hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+    class="group bg-panel/70 ring-line hover:border-line-2 rounded-card focus-visible:ring-line-2 flex h-full min-h-[148px] flex-col gap-y-3 border border-transparent p-5 ring-1 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-brand)] hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.28)] focus-visible:ring-2 focus-visible:outline-none motion-reduce:transition-none motion-reduce:hover:translate-y-0"
   >
     <div class="flex items-start gap-x-3">
       <span

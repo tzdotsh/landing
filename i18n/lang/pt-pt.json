@@ -3,22 +3,22 @@
     "site": {
       "name": "Maxco",
       "title": "IPTV Premium — TV em Direto, Desporto e Filmes",
-      "description": "Aceda a uma experiência com mais de 20.000 canais de TV com um fornecedor líder de serviços de televisão. Registe-se hoje e obtenha a sua subscrição de servidor de TV.",
+      "description": "Veja mais de 20.000 canais, desporto, filmes e séries com a Maxco IPTV. Registe-se hoje e desfrute dos seus conteúdos em todos os dispositivos.",
       "keywords": "Maxco, Maxco One",
       "ogImage": "/og-image.webp"
     },
     "pages": {
       "home": {
         "title": "IPTV Premium — TV em Direto, Desporto e Filmes | Maxco",
-        "description": "Aceda a uma experiência com mais de 20.000 canais de TV com um fornecedor líder de serviços de televisão. Registe-se hoje e obtenha a sua subscrição de servidor de TV."
+        "description": "Veja mais de 20.000 canais, desporto, filmes e séries com a Maxco IPTV. Registe-se hoje e desfrute dos seus conteúdos em todos os dispositivos."
       },
       "channels": {
         "title": "Canais IPTV — TV em Direto, Desporto e Filmes | Maxco",
-        "description": "Transmita mais de 20.000 canais de Smart TV disponíveis em vários países. Registe-se para os seus canais favoritos na Maxco com garantia de devolução do dinheiro em 30 dias."
+        "description": "Explore mais de 20.000 canais IPTV de vários países, com desporto, notícias e entretenimento. Experimente a Maxco com garantia de 30 dias."
       },
       "apps": {
         "title": "Instalação IPTV: Firestick, Smart TV e Apps | Maxco",
-        "description": "Guias de instalação Maxco passo a passo para caixas MAG, Smart TVs, Firestick, iOS, Android, Kodi e muito mais."
+        "description": "Siga guias claros de instalação IPTV para Firestick, Smart TV, MAG, Android, iOS, Kodi e muito mais, com passos simples para cada dispositivo."
       },
       "resellers": {
         "title": "Programa de Revenda IPTV — Torne-se Parceiro | Maxco",
@@ -26,23 +26,23 @@
       },
       "faq": {
         "title": "FAQ IPTV — Instalação, Planos e Suporte | Maxco",
-        "description": "Tem perguntas sobre qualquer assunto? Nós temos as respostas."
+        "description": "Encontre respostas sobre a Maxco IPTV: instalação, dispositivos compatíveis, subscrições, qualidade de transmissão, pagamentos e suporte."
       },
       "support": {
         "title": "Suporte e Centro de Ajuda IPTV | Maxco",
-        "description": "Adoraríamos ouvir a sua opinião. Envie-nos uma mensagem e responderemos o mais rapidamente possível."
+        "description": "Contacte o suporte Maxco IPTV para obter ajuda com instalação, subscrições, dispositivos ou transmissão. Envie uma mensagem e responderemos."
       },
       "auth_check": {
         "title": "Verifique a Sua Subscrição Maxco | Maxco",
-        "description": "Verifique o seu acesso para garantir que tem uma subscrição Maxco autêntica."
+        "description": "Verifique a sua subscrição IPTV e confirme que o acesso pertence à Maxco. Consulte o estado do serviço de forma segura em poucos instantes."
       },
       "report": {
         "title": "Denúncia de Abuso",
-        "description": "Denuncie qualquer utilização indevida ou abuso dos nossos serviços."
+        "description": "Denuncie utilização indevida, questões de direitos de autor ou abuso relacionado com os serviços Maxco para análise pela nossa equipa."
       },
       "blog": {
         "title": "Guias, Dicas e Ajuda de Instalação IPTV | Maxco",
-        "description": "Mantenha-se atualizado com os nossos artigos e notícias mais recentes."
+        "description": "Leia guias IPTV, tutoriais de instalação, dicas de transmissão e novidades da Maxco para Firestick, Smart TV, telemóvel e muito mais."
       },
       "sports": {
         "title": "IPTV Desporto — Futebol em Direto, F1, UFC e PPV | Maxco",
@@ -54,7 +54,7 @@
       },
       "affiliate-program": {
         "title": "Programa de Afiliados",
-        "description": "Adira ao programa de afiliados da Maxco e ganhe 30% de comissão recorrente por cada referência, pago em criptomoeda."
+        "description": "Adira ao programa de afiliados Maxco e ganhe 30% de comissão recorrente por cada cliente indicado, com rastreio simples e pagamentos em cripto."
       }
     }
   },

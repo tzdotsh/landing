@@ -88,6 +88,32 @@ export function markdownToPlainText(markdown: string) {
     .trim();
 }
 
+export function toSeoDescription(
+  markdown: string,
+  fallback: string,
+  maxLength = 155,
+) {
+  const plain = markdownToPlainText(markdown) || fallback.trim();
+  if (plain.length <= maxLength) {
+    return plain;
+  }
+
+  const clipped = plain.slice(0, maxLength - 1);
+  const lastSpace = clipped.lastIndexOf(" ");
+  return `${clipped.slice(0, lastSpace > 100 ? lastSpace : undefined).trim()}…`;
+}
+
+/** Keep the base title compact; the global title template appends " | Maxco". */
+export function toSeoTitle(title: string, maxLength = 52) {
+  if (title.length <= maxLength) {
+    return title;
+  }
+
+  const clipped = title.slice(0, maxLength - 1);
+  const lastSpace = clipped.lastIndexOf(" ");
+  return `${clipped.slice(0, lastSpace > 30 ? lastSpace : undefined).trim()}…`;
+}
+
 export function estimateReadingTimeMinutes(
   markdown: string,
   wordsPerMinute = 220,
@@ -172,11 +198,7 @@ export function blogCanonicalPath(slug: string, locale: string) {
   return `/${normalized}/blog/${slug}`;
 }
 
-export function absoluteBlogUrl(
-  siteUrl: string,
-  slug: string,
-  locale: string,
-) {
+export function absoluteBlogUrl(siteUrl: string, slug: string, locale: string) {
   const base = siteUrl.replace(/\/$/, "");
   const path = blogCanonicalPath(slug, locale);
 

@@ -19,9 +19,7 @@ export function useBlogPostSeo(
   // Canonical origin from NUXT_PUBLIC_CANONICAL_HOST (bare host).
   const siteUrl = `https://${String(canonicalHost).replace(/^https?:\/\//, "")}`;
 
-  const slug = computed(() =>
-    post.value ? resolveBlogSlug(post.value) : "",
-  );
+  const slug = computed(() => (post.value ? resolveBlogSlug(post.value) : ""));
 
   const canonicalUrl = computed(() => {
     if (!post.value) {
@@ -60,9 +58,7 @@ export function useBlogPostSeo(
         : undefined,
     ),
     articleModifiedTime: computed(() =>
-      updatedDate.value
-        ? new Date(updatedDate.value).toISOString()
-        : undefined,
+      updatedDate.value ? new Date(updatedDate.value).toISOString() : undefined,
     ),
     articleAuthor: computed(() =>
       post.value?.author ? [post.value.author] : ["Maxco"],
@@ -74,7 +70,11 @@ export function useBlogPostSeo(
       const links: Array<Record<string, string>> = [];
 
       if (canonicalUrl.value) {
-        links.push({ rel: "canonical", href: canonicalUrl.value });
+        links.push({
+          key: "canonical",
+          rel: "canonical",
+          href: canonicalUrl.value,
+        });
       }
 
       // Payload slugs are per-locale: every alternate carries its own slug.
@@ -84,9 +84,23 @@ export function useBlogPostSeo(
         );
 
         links.push({
+          key: `alternate-${entry.locale}`,
           rel: "alternate",
           hreflang: entryLocale?.language ?? entry.locale,
           href: absoluteBlogUrl(siteUrl, entry.slug, entry.locale),
+        });
+      }
+
+      const xDefault =
+        alternates.value?.find((entry) => entry.locale === "en-en") ??
+        alternates.value?.find((entry) => entry.locale === post.value?.locale);
+
+      if (xDefault) {
+        links.push({
+          key: "alternate-x-default",
+          rel: "alternate",
+          hreflang: "x-default",
+          href: absoluteBlogUrl(siteUrl, xDefault.slug, xDefault.locale),
         });
       }
 

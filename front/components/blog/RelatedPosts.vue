@@ -5,12 +5,11 @@ defineProps<{
   posts: BlogPost[];
 }>();
 
-const { version } = useProject();
 const { t } = useI18n();
 </script>
 
 <template>
-  <section v-if="posts.length" id="related-posts" class="relative pb-20 pt-6">
+  <section v-if="posts.length" id="related-posts" class="relative pt-6 pb-20">
     <div class="container">
       <Heading
         :title="t('blog.post.related_title')"
@@ -24,7 +23,7 @@ const { t } = useI18n();
         <NuxtLinkLocale
           v-for="post in posts"
           :key="resolveBlogSlug(post)"
-          :to="`/v${version}/blog/${resolveBlogSlug(post)}`"
+          :to="`/blog/${resolveBlogSlug(post)}`"
         >
           <BlogPostCard :post="post" />
         </NuxtLinkLocale>

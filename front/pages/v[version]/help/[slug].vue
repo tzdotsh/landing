@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useAppTutorialBySlugQueryWithOptions } from "~/queries/apps";
+import { toSeoDescription, toSeoTitle } from "~/utils/blog";
 
 const { t } = useI18n();
 const route = useRoute();
@@ -75,24 +76,24 @@ if (import.meta.client) {
   );
 }
 
-const title = computed(() => article.value?.title || t("seo.pages.apps.title"));
-const description = computed(() => t("seo.pages.apps.description"));
-const updatedAt = computed(() => article.value?.updatedAt || "");
-const publishedAt = computed(() => article.value?.createdAt || "");
+const title = computed(() =>
+  toSeoTitle(article.value?.title || t("seo.pages.apps.title")),
+);
+const description = computed(() =>
+  toSeoDescription(
+    article.value?.content || "",
+    t("seo.pages.apps.description"),
+  ),
+);
 
-useReactiveSeoMeta({
+useSeoMeta({
   title,
   description,
-  type: "article",
-  publishedDate: publishedAt,
-  updatedDate: updatedAt,
-});
-
-useSchemaOrg({
-  "@type": "HowTo",
-  name: title,
-  description,
-  step: computed(() => article.value?.content),
+  robots: "noindex, follow",
+  ogTitle: title,
+  ogDescription: description,
+  twitterTitle: title,
+  twitterDescription: description,
 });
 
 // Tutorial content is markdown — render via the shared useParseMarkdown +
@@ -106,7 +107,7 @@ const { pending: mdPending, data: ast } = await useParseMarkdown(
 <template>
   <div v-if="article" class="home-page-depth relative isolate min-h-full">
     <HomeSectionGlow
-      class="left-1/2 top-[20%] h-72 w-72 -translate-x-1/2 -translate-y-1/2 sm:h-80 sm:w-80"
+      class="top-[20%] left-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 sm:h-80 sm:w-80"
       strength="5%"
     />
 
@@ -115,11 +116,15 @@ const { pending: mdPending, data: ast } = await useParseMarkdown(
         <HelpArticleFooter class="mb-8" />
 
         <header class="flex flex-col gap-y-4">
-          <p class="text-faint text-[13px]/none font-semibold tracking-[0.1em] uppercase">
+          <p
+            class="text-faint text-[13px]/none font-semibold tracking-[0.1em] uppercase"
+          >
             {{ t("apps.kb.guide_label") }}
           </p>
 
-          <h1 class="font-heading text-ink text-[clamp(2rem,4vw,2.75rem)]/none font-semibold tracking-normal text-pretty">
+          <h1
+            class="font-heading text-ink text-[clamp(2rem,4vw,2.75rem)]/none font-semibold tracking-normal text-pretty"
+          >
             {{ article.title }}
           </h1>
         </header>

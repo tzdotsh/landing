@@ -22,7 +22,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-y-20">
+  <div class="flex flex-col gap-y-20 pt-32 sm:pt-36">
     <AppsSelectApp />
 
     <NuxtPage :transition="false" />
